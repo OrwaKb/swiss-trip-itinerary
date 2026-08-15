@@ -10,6 +10,10 @@ day, with the weather-dependent Jungfraujoch day flagged as floating. **Costs** 
 the money down by day, by ticket and by category. **Plan B** is the weather swaps, kept
 on their own so they are quick to find on a bad morning.
 
+During the trip the card for the current date is marked, badged **Today** and starts
+open, so opening the app on a platform answers "what are we doing now" without a tap.
+Outside 4–12 September nothing is marked.
+
 `itinerary.json` is the single source of truth. Nothing is invented, re-costed or
 re-planned in the app — every figure on screen traces back to that file.
 
@@ -45,8 +49,21 @@ Opens on <http://localhost:8501>. Python 3.11+.
    fetching the Hebrew and Arabic webfonts from Google Fonts, and there is a system
    fallback stack if that is blocked.
 
-Share links carry the language and currency: `…/?lang=he&cur=ILS` opens in Hebrew with
-shekels.
+Share links carry the language, currency and ink tone: `…/?lang=he&cur=ILS&ink=espresso`
+opens in Hebrew with shekels in the warm tone.
+
+## Ink tones
+
+A sidebar picker for the text colour, with **black** as the default. The others are dark
+tones with a cast rather than flat black — graphite (cool), espresso (warm), midnight
+(blue). The page stays light in all four; the surface and page plane take only enough of
+the same cast for the choice to read, because a cool ink on a warm page reads as a
+mistake rather than a theme. Accent blue and the amber floating badge do not change.
+
+`check.py` holds every tone to 7:1 on primary ink, 4.5:1 on secondary and 3:1 on muted,
+against **both** its own surface and its own plane — so a new tone cannot be added
+without passing. Add one by extending `INK_TONES` in `app.py` and adding a
+`ui.ink.<name>` label in each language; the checks will tell you if either is missing.
 
 ## Verification
 
@@ -59,9 +76,14 @@ Hard failures (exit 1):
 - the cost figures do not reconcile
 - a string the app renders has no Hebrew or Arabic translation
 - a UI key exists in one language but not another
+- `app.py` asks for a key nothing defines (parity alone misses a key absent from *every*
+  language, which is what happens when a new widget is added)
 - a Hebrew or Arabic string has a digit run outside a `U+2066…U+2069` isolate
 - Eastern Arabic-Indic digits anywhere (prices must match Swiss tickets)
 - a translations key points at nothing in `itinerary.json`
+- an ink tone falls below its contrast floor on its own surface or plane
+- the today marker lands on the wrong card, fires outside the trip dates, or
+  expand-all misses a card
 
 It also prints a review list of Latin tokens in the English source that do not reappear
 in a translation, so a dropped proper noun is easy to spot. The current residue is all

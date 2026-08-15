@@ -77,7 +77,7 @@
       "leg": "Transfer + Lucerne",
       "title": "Collect the van, drive to Weggis, boat into Lucerne",
       "sleep": "Weggis (night 1 of 2)",
-      "movement": "Rental Centre, Level 1 Airport Center (opens 06:00) then A4 south past Zug, exit Kussnacht am Rigi, 10 km along the lake to Weggis.",
+      "movement": "Rental Centre, Level 1 Airport Center (opens 06:00) then A4 south past Zug, exit Küssnacht am Rigi, 10 km along the lake to Weggis.",
       "drive_km": 70,
       "drive_min": 70,
       "parents": "Boat into Lucerne, flat pedestrian Old Town, Chapel Bridge, Lion Monument, boat back.",
@@ -138,20 +138,20 @@
       "tips": [
         "Buy the Day Pass - same price as a single return but covers every train and cable car on the mountain.",
         "Bring a picnic. Summit food is the most common complaint about Rigi.",
-        "Rain plan: boat to Fluelen and back by train, about CHF 27 half fare, three hours, no walking."
+        "Rain plan: boat to Flüelen and back by train, about CHF 27 half fare, three hours, no walking."
       ]
     },
     {
       "date": "2026-09-07",
       "dow": "Monday",
       "leg": "Transfer",
-      "title": "Over the Brunig to Grindelwald",
+      "title": "Over the Brünig to Grindelwald",
       "sleep": "Grindelwald (night 1 of 4)",
-      "movement": "Weggis, A2 to Hergiswil, A8 over the Brunig Pass through Sarnen and Giswil, Meiringen, north shore of Lake Brienz, Interlaken, Wilderswil, Zweilutschinen, Grindelwald.",
+      "movement": "Weggis, A2 to Hergiswil, A8 over the Brünig Pass through Sarnen and Giswil, Meiringen, north shore of Lake Brienz, Interlaken, Wilderswil, Zweilütschinen, Grindelwald.",
       "drive_km": 86,
       "drive_min": 90,
       "parents": "Pfingstegg terrace and restaurant. Flat, five minutes up by cable car.",
-      "adults": "Pfingstegg plus the Fly-Line (CHF 14) or summer toboggan (CHF 8 a run), or on toward Berghaus Baregg.",
+      "adults": "Pfingstegg plus the Fly-Line (CHF 14) or summer toboggan (CHF 8 a run), or on toward Berghaus Bäregg.",
       "per_person": [
         {
           "item": "Pfingstegg cable car, half fare",
@@ -184,16 +184,16 @@
       "date": "2026-09-08",
       "dow": "Tuesday",
       "leg": "Mountain day 2",
-      "title": "Mannlichen and the Panorama Trail",
+      "title": "Männlichen and the Panorama Trail",
       "sleep": "Grindelwald (night 2 of 4)",
-      "movement": "Walk or local bus 121 (free on the guest card) to Grindelwald Terminal, Mannlichen gondola 19-25 min. Return by cog train from Kleine Scheidegg. No driving.",
+      "movement": "Walk or local bus 121 (free on the guest card) to Grindelwald Terminal, Männlichen gondola 19-25 min. Return by cog train from Kleine Scheidegg. No driving.",
       "drive_km": 0,
       "drive_min": 0,
-      "parents": "Panorama Trail Mannlichen to Kleine Scheidegg: 4.9 km, 200 m downhill, about 90 minutes, officially rated easy and suitable for all ages and ability levels.",
+      "parents": "Panorama Trail Männlichen to Kleine Scheidegg: 4.9 km, 200 m downhill, about 90 minutes, officially rated easy and suitable for all ages and ability levels.",
       "adults": "Royal Walk to the true summit first (1 km, 15 min, steep), then the Panorama Trail, then on past Kleine Scheidegg to Wengernalp and Wengen.",
       "per_person": [
         {
-          "item": "Mannlichen gondola, half fare",
+          "item": "Männlichen gondola, half fare",
           "chf": 34.0,
           "full": 68
         },
@@ -261,13 +261,13 @@
       "date": "2026-09-10",
       "dow": "Thursday",
       "leg": "Mountain day 4",
-      "title": "Schilthorn, Piz Gloria and Murren",
+      "title": "Schilthorn, Piz Gloria and Mürren",
       "sleep": "Grindelwald (night 4 of 4)",
-      "movement": "Drive Grindelwald to Stechelberg, 22 km, about 30 min. Park at the Schilthornbahn, CHF 11 for the day, open-air, no height limit. Descend a different way: Murren, Grutschalp, Lauterbrunnen, then bus 141 back to the van.",
+      "movement": "Drive Grindelwald to Stechelberg, 22 km, about 30 min. Park at the Schilthornbahn, CHF 11 for the day, open-air, no height limit. Descend a different way: Mürren, Grütschalp, Lauterbrunnen, then bus 141 back to the van.",
       "drive_km": 44,
       "drive_min": 60,
-      "parents": "Summit, brunch at the revolving Piz Gloria, Bond World and Skyline Walk (both free). Then Murren and the easy Murren to Winteregg path, 1.5 km on level gravel with a restaurant and a station at the end.",
-      "adults": "Stop at Birg for the Thrill Walk - 200 m of grating, glass floor and rope crossing bolted to the cliff, free. Then the full Grutschalp-Murren panorama trail or the Northface Trail from Allmendhubel.",
+      "parents": "Summit, brunch at the revolving Piz Gloria, Bond World and Skyline Walk (both free). Then Mürren and the easy Mürren to Winteregg path, 1.5 km on level gravel with a restaurant and a station at the end.",
+      "adults": "Stop at Birg for the Thrill Walk - 200 m of grating, glass floor and rope crossing bolted to the cliff, free. Then the full Grütschalp-Mürren panorama trail or the Northface Trail from Allmendhubel.",
       "per_person": [
         {
           "item": "Schilthorn return from Stechelberg, half fare",
@@ -303,7 +303,7 @@
       "leg": "Transfer",
       "title": "The Aare Gorge, then back to Zurich",
       "sleep": "Kloten, near the airport (Welcome Inn, free parking)",
-      "movement": "Grindelwald to Meiringen (30 min) for the gorge, back over the Brunig, past Lucerne, A4 to Kloten. About 2h45 driving plus stops. Leave around 09:30.",
+      "movement": "Grindelwald to Meiringen (30 min) for the gorge, back over the Brünig, past Lucerne, A4 to Kloten. About 2h45 driving plus stops. Leave around 09:30.",
       "drive_km": 150,
       "drive_min": 165,
       "parents": "Aare Gorge from the west entrance - smaller wheelchairs and narrow pushchairs manage to mid-gorge.",
@@ -354,7 +354,7 @@
     },
     {
       "instead_of": "Rigi in cloud",
-      "do": "Boat to Fluelen and back by train. Three hours through the dramatic far end of the lake, seated, no walking.",
+      "do": "Boat to Flüelen and back by train. Three hours through the dramatic far end of the lake, seated, no walking.",
       "chf_pp": 27
     },
     {
@@ -374,19 +374,19 @@
     },
     {
       "instead_of": "An hour in Lauterbrunnen",
-      "do": "Trummelbach Falls. Ten glacier falls inside the mountain, but stairs beyond the halfway lift and permanently wet - adults only.",
+      "do": "Trümmelbach Falls. Ten glacier falls inside the mountain, but stairs beyond the halfway lift and permanently wet - adults only.",
       "chf_pp": 18
     }
   ],
   "booking_order": [
     "Weggis, 5-6 September. Tightest item - the Vienna Philharmonic is in Lucerne both nights. Confirm free parking.",
     "Grindelwald apartment, 7-10 September. Three bedrooms sleeping five or six, with an included parking space.",
-    "Both airport hotels - Radisson Blu or Hyatt Place for the 4th, Welcome Inn Kloten or B&B Rumlang for the 11th.",
+    "Both airport hotels - Radisson Blu or Hyatt Place for the 4th, Welcome Inn Kloten or B&B Rümlang for the 11th.",
     "Confirm the van at CHF 509 and add a second driver. Check height against 2.30 m.",
     "Five Half Fare Cards, covering 4-12 September.",
     "Jungfraujoch seat reservations, once the forecast is clear.",
     "Piz Gloria brunch for five, Thursday.",
-    "Nothing else. Rigi, Mannlichen, Schilthorn, Pfingstegg and the Aare Gorge are all walk-up."
+    "Nothing else. Rigi, Männlichen, Schilthorn, Pfingstegg and the Aare Gorge are all walk-up."
   ],
   "totals": {
     "accommodation_chf": 2754,

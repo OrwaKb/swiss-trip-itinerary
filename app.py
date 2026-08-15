@@ -9,6 +9,7 @@ from __future__ import annotations
 import html
 import json
 import re
+from datetime import date
 from pathlib import Path
 
 import streamlit as st
@@ -23,6 +24,32 @@ LRI, PDI = "⁦", "⁩"
 
 CURRENCIES = ("CHF", "EUR", "ILS")
 FX_KEY = {"EUR": "CHF_EUR", "ILS": "CHF_ILS"}
+
+# Ink tones. Black is the default; the others are dark tones with a cast rather than
+# flat black. The page stays light throughout — surface and plane carry only enough
+# of the same cast for the choice to read, since a cool ink on a warm page just looks
+# like a mistake. check.py holds every tone to 7:1 on ink, 4.5:1 on ink2 and 3:1 on
+# muted against BOTH its own surface and its own plane, so a tone cannot be added
+# without passing.
+INK_TONES = {
+    "black": {
+        "ink": "#0b0b0b", "ink2": "#52514e", "muted": "#898781",
+        "rule": "#e1e0d9", "line": "#c3c2b7", "surface": "#fcfcfb", "plane": "#f3f2ee",
+    },
+    "graphite": {
+        "ink": "#1b1d26", "ink2": "#4c4f5d", "muted": "#7f8290",
+        "rule": "#dfe0e6", "line": "#bcbec9", "surface": "#fcfcfd", "plane": "#eeeff4",
+    },
+    "espresso": {
+        "ink": "#2a1d13", "ink2": "#5c4a3b", "muted": "#8e8074",
+        "rule": "#e7ded1", "line": "#cbbfae", "surface": "#fdfbf8", "plane": "#f3ede4",
+    },
+    "midnight": {
+        "ink": "#0e1c33", "ink2": "#42536f", "muted": "#79879d",
+        "rule": "#dbe1ea", "line": "#b5bfcf", "surface": "#fbfcfd", "plane": "#ecf0f6",
+    },
+}
+DEFAULT_INK = "black"
 RECONCILE_TOLERANCE_CHF = 2.0
 DAY_TOLERANCE_CHF = 1.0
 
@@ -143,11 +170,12 @@ FONT_STACK = {
 LINE_HEIGHT = {"en": "1.5", "he": "1.65", "ar": "1.9"}
 
 
-def stylesheet(lang: str, rtl: bool) -> str:
+def stylesheet(lang: str, rtl: bool, ink: str) -> str:
     direction = "rtl" if rtl else "ltr"
     align = "right" if rtl else "left"
     align_far = "left" if rtl else "right"
     marker = f"tp-dir-{direction}"
+    tone = INK_TONES.get(ink, INK_TONES[DEFAULT_INK])
 
     return f"""
 <span id="{marker}" hidden></span>
@@ -155,17 +183,17 @@ def stylesheet(lang: str, rtl: bool) -> str:
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap');
 
 :root {{
-  --surface: #fcfcfb;
-  --plane: #f3f2ee;
-  --ink: #0b0b0b;
-  --ink2: #52514e;
-  --muted: #898781;
-  --rule: #e1e0d9;
-  --line: #c3c2b7;
+  --surface: {tone["surface"]};
+  --plane: {tone["plane"]};
+  --ink: {tone["ink"]};
+  --ink2: {tone["ink2"]};
+  --muted: {tone["muted"]};
+  --rule: {tone["rule"]};
+  --line: {tone["line"]};
   --accent: #2a78d6;
   --accent-wash: #cde2fb;
   --warning: #fab219;
-  --border: rgba(11, 11, 11, 0.10);
+  --border: color-mix(in srgb, var(--ink) 12%, transparent);
   --font: {FONT_STACK[lang]};
   --lh: {LINE_HEIGHT[lang]};
 }}
@@ -215,6 +243,9 @@ body:has(#tp-dir-ltr) [data-testid="stExpandSidebarButton"] [data-testid="stIcon
 }}
 
 .stApp {{ background: var(--plane); }}
+/* the sidebar is Streamlit's own chrome; keep it on the tone's surface so the cast
+   is consistent rather than stopping at the edge of my markup */
+[data-testid="stSidebar"] {{ background: var(--surface); }}
 html, body, .stApp, [data-testid="stSidebar"], .tp, .tp * {{
   font-family: var(--font);
   line-height: var(--lh);
@@ -310,6 +341,8 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   background: var(--plane); border: 1px solid var(--border); color: var(--ink2);
 }}
 .chip.float {{ background: var(--warning); border-color: var(--warning); color: #2a1f00; font-weight: 600; }}
+.chip.today {{ background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }}
+.tp-day[data-today="1"] {{ border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }}
 .tp-day .title {{ font-size: 1.03rem; font-weight: 600; margin: 0 0 6px; }}
 .tp-day .headfoot {{ display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }}
 .tp-day .headfoot .total {{ font-size: 0.85rem; font-weight: 600; }}
@@ -424,7 +457,7 @@ def render_header(d, T, C, tx, dirattr, cur, fx):
     dates = T("ui.range", start=trip["start"], end=trip["end"])
 
     block(
-        f'<div class="tp" dir="{dirattr}"><div class="tp-head">'
+        f'<div class="tp" {dirattr}><div class="tp-head">'
         f'<h1>{tx(C("trip.title", trip["title"]))}</h1>'
         f'<p class="sub">{num(dates)}<span class="dot">{tx(T("ui.sep"))}</span>'
         f'{tx(T("ui.header.nights", n=trip["nights"]))}'
@@ -461,7 +494,7 @@ def render_overview(d, T, C, tx, dirattr, critical):
         warn.append(f'<li><span class="when">{when}</span>{tx(text)}</li>')
 
     block(
-        f'<div class="tp" dir="{dirattr}">'
+        f'<div class="tp" {dirattr}>'
         f'<h2>{tx(T("ui.overview.warnings"))}</h2>'
         f'<p class="note">{tx(T("ui.overview.warnings_note"))}</p>'
         f'<ul class="tp-list warn">{"".join(warn)}</ul>'
@@ -496,8 +529,8 @@ def day_cost_table(day, i, n, T, C, tx, cur, fx):
     return (
         f'<details class="tp-costs"><summary>{tx(T("ui.day.show_costs"))}</summary>'
         f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
-        f'<th>{tx(T("ui.cost.item"))}</th><th class="n">{tx(T("ui.cost.each"))}</th>'
-        f'<th class="n">{tx(T("ui.cost.amount"))}</th></tr></thead>'
+        f'<th scope="col">{tx(T("ui.cost.item"))}</th><th scope="col" class="n">{tx(T("ui.cost.each"))}</th>'
+        f'<th scope="col" class="n">{tx(T("ui.cost.amount"))}</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody>'
         f'<tfoot><tr><td>{tx(T("ui.day.total"))}</td><td class="n"></td>'
         f'<td class="n">{num(money(day["day_total_chf"], cur, fx))}</td></tr></tfoot>'
@@ -505,12 +538,18 @@ def day_cost_table(day, i, n, T, C, tx, cur, fx):
     )
 
 
-def render_days(d, T, C, tx, dirattr, cur, fx):
+def render_days(d, T, C, tx, dirattr, cur, fx, expand_all):
     n = d["trip"]["party"]["total"]
+    # During the trip the app is opened on a phone to answer "what are we doing now",
+    # so today's card is marked and starts open. Outside the trip nothing matches.
+    today = date.today().isoformat()
     cards = []
     for i, day in enumerate(d["days"]):
         floating = bool(day.get("floating"))
+        is_today = day["date"] == today
         chips = f'<span class="chip">{tx(C(f"days.{i}.leg", day["leg"]))}</span>'
+        if is_today:
+            chips = f'<span class="chip today">{tx(T("ui.day.today_badge"))}</span>' + chips
         if floating:
             chips += f'<span class="chip float">{tx(T("ui.day.floating_badge"))}</span>'
 
@@ -561,10 +600,11 @@ def render_days(d, T, C, tx, dirattr, cur, fx):
         body.append(day_cost_table(day, i, n, T, C, tx, cur, fx))
 
         cards.append(
-            f'<details class="tp-day" dir="{dirattr}" data-float="{int(floating)}">'
+            f'<details class="tp-day" {dirattr} data-float="{int(floating)}"'
+            f' data-today="{int(is_today)}"{" open" if is_today or expand_all else ""}>'
             f'{head}<div class="tp-body">{"".join(body)}</div></details>'
         )
-    block(f'<div class="tp" dir="{dirattr}">{"".join(cards)}</div>')
+    block(f'<div class="tp" {dirattr}>{"".join(cards)}</div>')
 
 
 def bars(rows, cur, fx):
@@ -633,7 +673,7 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
     )
 
     block(
-        f'<div class="tp" dir="{dirattr}">'
+        f'<div class="tp" {dirattr}>'
         f'<h2>{tx(T("ui.costs.by_day"))}</h2>'
         f'<p class="note">{tx(T("ui.costs.by_day_note"))}</p>'
         f'{bars(day_rows, cur, fx)}'
@@ -641,8 +681,8 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
         f'<h2>{tx(T("ui.costs.tickets"))}</h2>'
         f'<p class="note">{tx(T("ui.costs.tickets_note"))}</p>'
         f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
-        f'<th>{tx(T("ui.cost.item"))}</th><th class="n">{tx(T("ui.costs.full"))}</th>'
-        f'<th class="n">{tx(T("ui.costs.half"))}</th></tr></thead>'
+        f'<th scope="col">{tx(T("ui.cost.item"))}</th><th scope="col" class="n">{tx(T("ui.costs.full"))}</th>'
+        f'<th scope="col" class="n">{tx(T("ui.costs.half"))}</th></tr></thead>'
         f'<tbody>{"".join(ticket_rows)}</tbody>'
         f'<tfoot><tr><td>{tx(T("ui.costs.total"))}</td>'
         f'<td class="n">{num(money(full_pp, cur, fx))}</td>'
@@ -658,7 +698,7 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
 
         f'<h2>{tx(T("ui.costs.tripwide"))}</h2>'
         f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
-        f'<th>{tx(T("ui.cost.item"))}</th><th class="n">{tx(T("ui.cost.amount"))}</th>'
+        f'<th scope="col">{tx(T("ui.cost.item"))}</th><th scope="col" class="n">{tx(T("ui.cost.amount"))}</th>'
         f'</tr></thead><tbody>{"".join(wide_rows)}</tbody></table></div>'
         f'<p class="tp-recon">{tx(recon_line)}</p>'
 
@@ -682,11 +722,11 @@ def render_options(d, T, C, tx, dirattr, cur, fx):
             f'<td class="n">{price}</td></tr>'
         )
     block(
-        f'<div class="tp" dir="{dirattr}">'
+        f'<div class="tp" {dirattr}>'
         f'<h2>{tx(T("ui.swaps.title"))}</h2>'
         f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
-        f'<th>{tx(T("ui.swaps.instead_of"))}</th><th>{tx(T("ui.swaps.do"))}</th>'
-        f'<th class="n">{tx(T("ui.swaps.cost"))}</th></tr></thead>'
+        f'<th scope="col">{tx(T("ui.swaps.instead_of"))}</th><th scope="col">{tx(T("ui.swaps.do"))}</th>'
+        f'<th scope="col" class="n">{tx(T("ui.swaps.cost"))}</th></tr></thead>'
         f'<tbody>{"".join(swaps)}</tbody></table></div>'
         f'</div>'
     )
@@ -714,14 +754,20 @@ def main() -> None:
     if "cur" not in st.session_state:
         q = st.query_params.get("cur")
         st.session_state.cur = q if q in CURRENCIES else data["trip"]["currency"]
+    if "ink" not in st.session_state:
+        q = st.query_params.get("ink")
+        st.session_state.ink = q if q in INK_TONES else DEFAULT_INK
 
     def sync_url() -> None:
         st.query_params["lang"] = st.session_state.lang
         st.query_params["cur"] = st.session_state.cur
+        st.query_params["ink"] = st.session_state.ink
 
     lang = st.session_state.lang
     rtl = lang in meta["rtl"]
-    dirattr = "rtl" if rtl else "ltr"
+    # dir drives the mirroring; lang lets a screen reader pick the right voice and
+    # the browser pick the right font for the script.
+    dirattr = f'dir="{"rtl" if rtl else "ltr"}" lang="{lang}"'
     ui = trans["ui"][lang]
     ui_default = trans["ui"][meta["default"]]
     content = trans["content"].get(lang, {})
@@ -742,7 +788,7 @@ def main() -> None:
             s = guard_numbers(s)
         return html.escape(s, quote=True)
 
-    block(stylesheet(lang, rtl))
+    block(stylesheet(lang, rtl, st.session_state.ink))
 
     with st.sidebar:
         st.selectbox(
@@ -751,9 +797,16 @@ def main() -> None:
             on_change=sync_url,
         )
         st.selectbox(T("ui.currency"), CURRENCIES, key="cur", on_change=sync_url)
+        st.selectbox(
+            T("ui.ink"), list(INK_TONES), key="ink",
+            format_func=lambda tone: T(f"ui.ink.{tone}"),
+            on_change=sync_url,
+        )
         st.caption(T("ui.currency_note"))
 
-    if st.query_params.get("lang") != lang or st.query_params.get("cur") != st.session_state.cur:
+    if (st.query_params.get("lang") != lang
+            or st.query_params.get("cur") != st.session_state.cur
+            or st.query_params.get("ink") != st.session_state.ink):
         sync_url()
 
     cur = st.session_state.cur
@@ -767,7 +820,8 @@ def main() -> None:
     with overview:
         render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
     with days:
-        render_days(data, T, C, tx, dirattr, cur, fx)
+        expand_all = st.checkbox(T("ui.day.expand_all"), key="expand_all")
+        render_days(data, T, C, tx, dirattr, cur, fx, expand_all)
     with costs:
         render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
     with options:
