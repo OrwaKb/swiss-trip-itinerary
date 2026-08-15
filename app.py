@@ -432,6 +432,10 @@ table.tp-tbl td.wrap {{ min-width: 150px; }}
   /* let the three-column tables fit a 390px phone rather than needing a swipe */
   table.tp-tbl td.wrap {{ min-width: 100px; }}
   table.tp-tbl th, table.tp-tbl td {{ padding-inline: 6px; }}
+  /* the four tabs overflow a 390px phone by 4-14px depending on language, which
+     crops the last label. Tightening the padding buys 36px, clearing all three. */
+  [data-baseweb="tab"] {{ padding: 6px 10px; }}
+  [data-baseweb="tab-list"] {{ gap: 2px; }}
 }}
 </style>
 """
