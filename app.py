@@ -79,14 +79,16 @@ def reconcile(d: dict) -> dict:
     }
 
 
+# mtime is part of the cache key, not decoration: without it an edit to either JSON
+# file is invisible until the process restarts.
 @st.cache_data(show_spinner=False)
-def load_data() -> tuple[dict, dict]:
+def load_data(mtime: float) -> tuple[dict, dict]:
     d = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     return d, reconcile(d)
 
 
 @st.cache_data(show_spinner=False)
-def load_translations() -> dict:
+def load_translations(mtime: float) -> dict:
     return json.loads(TRANS_PATH.read_text(encoding="utf-8"))
 
 
@@ -579,7 +581,7 @@ def bars(rows, cur, fx):
     return f'<div class="tp-bars">{"".join(out)}</div>'
 
 
-def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep):
+def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
     n = d["trip"]["party"]["total"]
     totals = d["totals"]
 
@@ -604,10 +606,7 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep):
     full_pp = totals["tickets_per_person_full_chf"]
     half_pp = totals["tickets_per_person_half_chf"]
 
-    cat_rows = [
-        (tx(T(f"ui.totals.{k}")), totals[k])
-        for k in load_translations()["meta"]["total_keys"]
-    ]
+    cat_rows = [(tx(T(f"ui.totals.{k}")), totals[k]) for k in total_keys]
 
     wide_rows = []
     for i, item in enumerate(d["trip_wide_costs"]):
@@ -704,8 +703,8 @@ def main() -> None:
         layout="centered",
         initial_sidebar_state="auto",
     )
-    data, recon = load_data()
-    trans = load_translations()
+    data, recon = load_data(DATA_PATH.stat().st_mtime)
+    trans = load_translations(TRANS_PATH.stat().st_mtime)
     meta = trans["meta"]
     languages = meta["languages"]
 
@@ -770,7 +769,7 @@ def main() -> None:
     with days:
         render_days(data, T, C, tx, dirattr, cur, fx)
     with costs:
-        render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"))
+        render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
     with options:
         render_options(data, T, C, tx, dirattr, cur, fx)
 
