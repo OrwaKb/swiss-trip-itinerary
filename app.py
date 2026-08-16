@@ -9,14 +9,30 @@ from __future__ import annotations
 import html
 import json
 import re
-from datetime import date
+import time
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import streamlit as st
+
+import store as notes_store
 
 BASE = Path(__file__).parent
 DATA_PATH = BASE / "itinerary.json"
 TRANS_PATH = BASE / "translations.json"
+IMAGES_PATH = BASE / "images.json"
+
+# Photos are served by Streamlit itself out of static/ (see .streamlit/config.toml).
+# Nothing is fetched from another host while the app is running.
+PHOTO_URL = "app/static/photos/{}"
+
+# Where the local store keeps its file. Git ignores it; on a shared deploy the notes
+# live in Supabase instead and this is never touched.
+NOTES_DB = BASE / ".notes" / "notes.db"
+# Note times are shown where the trip happens, not where the server happens to be.
+TRIP_TZ = "Europe/Zurich"
+POST_COOLDOWN_S = 6
 
 # Bidi isolates. Wrapping a number, price, time or Latin run in LRI…PDI stops the
 # bidi algorithm from reordering it inside a right-to-left sentence.
@@ -119,6 +135,47 @@ def load_translations(mtime: float) -> dict:
     return json.loads(TRANS_PATH.read_text(encoding="utf-8"))
 
 
+@st.cache_data(show_spinner=False)
+def load_images(mtime: float) -> dict:
+    return json.loads(IMAGES_PATH.read_text(encoding="utf-8"))
+
+
+# --------------------------------------------------------------------------- #
+# The notes store
+# --------------------------------------------------------------------------- #
+
+@st.cache_resource(show_spinner=False)
+def open_notes():
+    """One store for the whole server, not one per visitor."""
+    return notes_store.open_store(read_secrets(), NOTES_DB)
+
+
+def read_secrets() -> dict:
+    """st.secrets raises rather than returning empty when no secrets file exists,
+    which is the normal case locally."""
+    out = {}
+    for key in ("supabase_url", "supabase_key"):
+        try:
+            out[key] = st.secrets[key]
+        except Exception:
+            pass
+    return out
+
+
+# Shared across sessions on purpose: everyone should see the same notes. The TTL is
+# what makes another person's note appear without anybody reloading; a local write
+# clears it immediately so your own note never lags.
+#
+# cache_resource, not cache_data, and the difference is not cosmetic: cache_data
+# pickles what it stores, and Streamlit's file watcher reloads store.py on edit, which
+# leaves cached Note objects pointing at a class that is no longer store.Note. Pickling
+# then fails and takes the whole page down. cache_resource hands back the object itself.
+# Nothing mutates the result, so sharing one copy between sessions is safe.
+@st.cache_resource(ttl=15, show_spinner=False)
+def read_notes(_store) -> dict:
+    return _store.notes()
+
+
 # --------------------------------------------------------------------------- #
 # Text helpers
 # --------------------------------------------------------------------------- #
@@ -155,6 +212,61 @@ def money(chf: float, currency: str, fx: dict) -> str:
 def num(text: str) -> str:
     """A programmatically built number/price: force it left-to-right."""
     return f'<span class="num" dir="ltr">{html.escape(str(text), quote=True)}</span>'
+
+
+def photo(images: dict, slot: str, alt: str, cls: str, eager: bool = False) -> str:
+    """An <img> for one slot, or nothing if that slot has no picture.
+
+    width and height are stated so the page does not jump as each photo arrives, and
+    everything below the first screen is left to the browser to load lazily.
+    """
+    meta = images.get(slot)
+    if not meta:
+        return ""
+    loading = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
+    return (
+        f'<img class="{cls}" src="{PHOTO_URL.format(meta["file"])}" '
+        f'width="{meta["w"]}" height="{meta["h"]}" '
+        f'alt="{html.escape(str(alt), quote=True)}" {loading} decoding="async">'
+    )
+
+
+def thumb(images: dict, slot: str) -> str:
+    meta = images.get(slot)
+    if not meta:
+        return ""
+    # Decorative: the day's title sits right beside it, so a screen reader repeating
+    # the same words would only get in the way.
+    return (
+        f'<img class="tp-thumb" src="{PHOTO_URL.format(meta["thumb"])}" '
+        f'width="180" height="120" alt="" loading="lazy" decoding="async">'
+    )
+
+
+def note_count_key(n: int) -> str:
+    """Arabic takes the singular noun from 11 up; Hebrew and English do not."""
+    if n == 0:
+        return "ui.notes.count_zero"
+    if n == 1:
+        return "ui.notes.count_one"
+    return "ui.notes.count_many" if n < 11 else "ui.notes.count_many11"
+
+
+def local_time(iso: str) -> tuple[str, str]:
+    """A stored UTC timestamp as a Swiss-local date and time."""
+    try:
+        stamp = datetime.fromisoformat(iso)
+    except ValueError:
+        return iso, ""
+    if stamp.tzinfo is None:
+        stamp = stamp.replace(tzinfo=timezone.utc)
+    try:
+        stamp = stamp.astimezone(ZoneInfo(TRIP_TZ))
+    except Exception:
+        # No tz database on this machine: UTC is wrong by an hour or two, which is
+        # better than failing to draw the note at all.
+        stamp = stamp.astimezone(timezone.utc)
+    return stamp.strftime("%Y-%m-%d"), stamp.strftime("%H:%M")
 
 
 # --------------------------------------------------------------------------- #
@@ -273,12 +385,34 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
 
 .tp-head {{
   background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 18px 14px; margin-bottom: 14px;
+  padding: 0; margin-bottom: 14px; overflow: hidden;
 }}
-.tp-head h1 {{ font-size: 1.7rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }}
-.tp-head .sub {{ color: var(--ink2); font-size: 0.93rem; margin: 0; }}
-.tp-head .sub .dot {{ color: var(--line); padding: 0 2px; }}
-.tp-stats {{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }}
+/* The opening photo runs to the card edge and carries the title. The scrim is what
+   makes white type safe over an unknown picture, so it is not decoration — without it
+   the title's contrast would depend on whichever photo happened to be chosen. */
+.tp-hero {{ position: relative; }}
+/* Streamlit ships `.st-emotion-cache-… img {{ object-fit: scale-down }}`, which beats a
+   bare class and letterboxes the photo inside the banner with a pale gap down one side.
+   Qualifying the selector with the element outranks it without reaching for !important. */
+.tp-hero > img.tp-hero-img {{
+  display: block; width: 100%; height: clamp(148px, 26vw, 220px); object-fit: cover;
+}}
+.tp-hero::after {{
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(0,0,0,.74) 0%, rgba(0,0,0,.42) 34%, rgba(0,0,0,.06) 68%, rgba(0,0,0,0) 100%);
+}}
+.tp-hero-text {{ position: absolute; z-index: 1; bottom: 12px; inset-inline: 16px; }}
+.tp-hero-text h1 {{
+  color: #fff; font-size: 1.7rem; font-weight: 700; margin: 0 0 3px;
+  letter-spacing: -0.01em; text-shadow: 0 1px 10px rgba(0,0,0,.5);
+}}
+.tp-hero-text .sub {{
+  color: rgba(255,255,255,.94); font-size: 0.88rem; margin: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,.55);
+}}
+.tp-hero-text .sub .dot {{ color: rgba(255,255,255,.5); padding: 0 2px; }}
+.tp-stats {{ display: flex; flex-wrap: wrap; gap: 10px; padding: 13px; }}
 .tp-stat {{
   flex: 1 1 150px; border: 1px solid var(--border); border-radius: 10px;
   padding: 10px 12px; background: var(--plane);
@@ -319,8 +453,20 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
 .tp-day[data-float="1"] {{ border-color: var(--warning); }}
 .tp-day > summary {{
   list-style: none; cursor: pointer; padding: 13px 40px 13px 15px; position: relative;
+  display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
 }}
 .tp-day[dir="rtl"] > summary {{ padding: 13px 15px 13px 40px; }}
+/* the chevron is absolutely positioned, so it stays out of the grid */
+.tp-sum {{ min-width: 0; }}
+/* qualified for the same reason as the hero image */
+.tp-day img.tp-thumb {{
+  width: 76px; height: 52px; object-fit: cover; border-radius: 7px; display: block;
+  background: var(--plane);
+}}
+.tp-day img.tp-photo {{
+  display: block; width: 100%; height: auto; object-fit: cover;
+  border-top: 1px solid var(--rule);
+}}
 .tp-day > summary::-webkit-details-marker {{ display: none; }}
 .tp-day > summary::after {{
   content: ""; position: absolute; top: 20px; width: 8px; height: 8px;
@@ -419,7 +565,55 @@ table.tp-tbl td.wrap {{ min-width: 150px; }}
 .tp-saving .v {{ font-weight: 600; }}
 .tp-recon {{ color: var(--muted); font-size: 0.78rem; margin-top: 10px; }}
 
+/* ---- notes ---- */
+/* Each day is a card with its notes drawer welded to the bottom edge: the card loses
+   its lower corners, the drawer loses its upper border, and the gap Streamlit puts
+   between elements is closed so the two read as one object rather than two. */
+/* The container IS the flex column that stacks card, drawer, card, drawer. Closing the
+   gap on that element alone is the point — an earlier descendant selector also closed
+   the gaps inside each drawer, which slid the buttons up into the note text. */
+[data-testid="stVerticalBlock"].st-key-tp-days {{ gap: 0; }}
+.st-key-tp-days .tp-day {{ border-radius: 12px 12px 0 0; margin-bottom: 0; }}
+.st-key-tp-days [data-testid="stExpander"] {{ margin-bottom: 10px; }}
+.st-key-tp-days [data-testid="stExpander"] details {{
+  border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px;
+  background: var(--surface);
+}}
+.st-key-tp-days [data-testid="stExpander"] summary {{ padding-block: 4px; }}
+.st-key-tp-days [data-testid="stExpander"] summary p {{
+  font-size: 0.8rem; color: var(--ink2);
+}}
+.st-key-tp-days .stButton button {{
+  min-height: 26px; padding: 0 7px; font-size: 0.8rem;
+}}
+.tp-note {{ border-top: 1px solid var(--rule); padding: 9px 0 1px; }}
+.tp-note:first-child {{ border-top: none; padding-top: 2px; }}
+.tp-note .who {{ font-size: 0.86rem; font-weight: 600; }}
+.tp-note .who.mine {{ color: var(--accent); }}
+.tp-note .when {{ color: var(--muted); font-size: 0.73rem; margin-inline-start: 7px; }}
+/* pre-wrap keeps the writer's line breaks; anywhere stops one long unbroken word
+   from pushing the card wider than the phone */
+.tp-note .body {{
+  font-size: 0.9rem; margin: 3px 0 0; white-space: pre-wrap; overflow-wrap: anywhere;
+}}
+.tp-note .hearts {{ color: var(--muted); font-size: 0.76rem; }}
+.tp-empty {{ color: var(--muted); font-size: 0.86rem; margin: 2px 0 6px; }}
+
+/* ---- photo credits ---- */
+.tp-credits {{ list-style: none; padding: 0; margin: 0; }}
+.tp-credits li {{
+  font-size: 0.8rem; color: var(--ink2); padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+}}
+.tp-credits li:last-child {{ border-bottom: none; }}
+.tp-credits .lbl {{ color: var(--muted); }}
+.tp-credits a {{ color: var(--accent); }}
+
 @media (max-width: 560px) {{
+  .tp-hero-text h1 {{ font-size: 1.32rem; }}
+  .tp-hero-text .sub {{ font-size: 0.8rem; }}
+  .tp-day img.tp-thumb {{ width: 62px; height: 44px; }}
+  .tp-day > summary {{ gap: 10px; }}
   [data-testid="stMain"] .block-container {{ padding: 0.8rem 0.7rem 2.5rem; }}
   .tp-head {{ padding: 15px 14px 12px; }}
   .tp-head h1 {{ font-size: 1.4rem; }}
@@ -449,7 +643,7 @@ def block(markup: str) -> None:
     st.markdown(markup, unsafe_allow_html=True)
 
 
-def render_header(d, T, C, tx, dirattr, cur, fx):
+def render_header(d, T, C, tx, dirattr, cur, fx, images):
     trip, totals = d["trip"], d["totals"]
     party = trip["party"]
     per_person = {
@@ -460,13 +654,18 @@ def render_header(d, T, C, tx, dirattr, cur, fx):
     others = T("ui.sep").join(v for k, v in per_person.items() if k != cur)
     dates = T("ui.range", start=trip["start"], end=trip["end"])
 
+    title = C("trip.title", trip["title"])
     block(
         f'<div class="tp" {dirattr}><div class="tp-head">'
-        f'<h1>{tx(C("trip.title", trip["title"]))}</h1>'
+        f'<div class="tp-hero">'
+        f'{photo(images, "hero", title, "tp-hero-img", eager=True)}'
+        f'<div class="tp-hero-text">'
+        f'<h1>{tx(title)}</h1>'
         f'<p class="sub">{num(dates)}<span class="dot">{tx(T("ui.sep"))}</span>'
         f'{tx(T("ui.header.nights", n=trip["nights"]))}'
         f'<span class="dot">{tx(T("ui.sep"))}</span>'
         f'{tx(T("ui.header.party", total=party["total"], parents=party["parents"], adults=party["adults"]))}</p>'
+        f'</div></div>'
         f'<div class="tp-stats">'
         f'<div class="tp-stat"><span class="lbl">{tx(T("ui.header.trip_total"))}</span>'
         f'<span class="val">{num(money(totals["grand_total_chf"], cur, fx))}</span></div>'
@@ -474,6 +673,42 @@ def render_header(d, T, C, tx, dirattr, cur, fx):
         f'<span class="val">{num(per_person[cur])}</span>'
         f'<span class="alt">{num(others)}</span></div>'
         f'</div></div></div>'
+    )
+
+
+def render_credits(images, T, tx, dirattr, day_count):
+    """Who took the photographs, and under what licence.
+
+    Several of these are share-alike, so the credit is an obligation rather than a
+    courtesy — and cropping them makes an adapted work, which is what "modified" says.
+    """
+    rows = []
+    for slot, meta in images.items():
+        if slot == "hero":
+            label = T("ui.credits.hero")
+        elif slot.startswith("day") and slot[3:].isdigit():
+            index = int(slot[3:])
+            if index >= day_count:
+                continue
+            label = T("ui.credits.day", n=index + 1)
+        else:
+            continue
+        credit = meta["credit"]
+        licence = html.escape(credit["licence"], quote=True)
+        if credit.get("licence_url"):
+            licence = (f'<a href="{html.escape(credit["licence_url"], quote=True)}"'
+                       f' target="_blank" rel="noopener">{licence}</a>')
+        rows.append(
+            f'<li><span class="lbl">{tx(label)}</span>{tx(T("ui.sep"))}'
+            f'<a href="{html.escape(credit["page"], quote=True)}" target="_blank"'
+            f' rel="noopener">{html.escape(credit["author"], quote=True)}</a>'
+            f'{tx(T("ui.sep"))}{licence}</li>'
+        )
+    block(
+        f'<div class="tp" {dirattr}>'
+        f'<h2>{tx(T("ui.credits.title"))}</h2>'
+        f'<p class="note">{tx(T("ui.credits.note"))}</p>'
+        f'<ul class="tp-credits">{"".join(rows)}</ul></div>'
     )
 
 
@@ -542,73 +777,198 @@ def day_cost_table(day, i, n, T, C, tx, cur, fx):
     )
 
 
-def render_days(d, T, C, tx, dirattr, cur, fx, expand_all):
+def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, notes_n=0):
+    """One day card, as markup. Pure — no Streamlit, so check.py can render and read it."""
+    day = d["days"][i]
     n = d["trip"]["party"]["total"]
+    floating = bool(day.get("floating"))
+    is_today = day["date"] == today
+
+    chips = f'<span class="chip">{tx(C(f"days.{i}.leg", day["leg"]))}</span>'
+    if is_today:
+        chips = f'<span class="chip today">{tx(T("ui.day.today_badge"))}</span>' + chips
+    if floating:
+        chips += f'<span class="chip float">{tx(T("ui.day.floating_badge"))}</span>'
+    if notes_n:
+        chips += (f'<span class="chip">'
+                  f'{tx(T(note_count_key(notes_n), n=notes_n))}</span>')
+
+    drive = (
+        T("ui.day.drive", km=day["drive_km"], min=day["drive_min"])
+        if day["drive_km"] else T("ui.day.no_drive")
+    )
+    title = C(f"days.{i}.title", day["title"])
+    head = (
+        f'<summary>{thumb(images, f"day{i}")}<div class="tp-sum">'
+        f'<div class="tp-meta"><span class="date">{num(day["date"])}</span>'
+        f'<span class="dow">{tx(C(f"days.{i}.dow", day["dow"]))}</span>{chips}</div>'
+        f'<div class="title">{tx(title)}</div>'
+        f'<div class="headfoot"><span class="total">{tx(T("ui.day.total"))} '
+        f'{num(money(day["day_total_chf"], cur, fx))}</span>'
+        f'<span class="drive">{tx(drive)}</span></div></div></summary>'
+    )
+
+    body = []
+    if floating:
+        body.append(f'<div class="tp-float">{tx(T("ui.day.floating_note"))}</div>')
+    body.append(f'<span class="tp-lbl">{tx(T("ui.day.movement"))}</span>')
+    body.append(f'<div class="tp-move">{tx(C(f"days.{i}.movement", day["movement"]))}</div>')
+    if day.get("sleep"):
+        body.append(
+            f'<span class="tp-lbl">{tx(T("ui.day.sleep"))}</span>'
+            f'<p>{tx(C(f"days.{i}.sleep", day["sleep"]))}</p>'
+        )
+    if day.get("parents") or day.get("adults"):
+        cols = ""
+        if day.get("parents"):
+            cols += (
+                f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.parents"))}</span>'
+                f'<p>{tx(C(f"days.{i}.parents", day["parents"]))}</p></div>'
+            )
+        if day.get("adults"):
+            cols += (
+                f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.adults"))}</span>'
+                f'<p>{tx(C(f"days.{i}.adults", day["adults"]))}</p></div>'
+            )
+        body.append(f'<div class="tp-split">{cols}</div>')
+    if day["tips"]:
+        tips = "".join(
+            f"<li>{tx(C(f'days.{i}.tips.{k}', t))}</li>" for k, t in enumerate(day["tips"])
+        )
+        body.append(
+            f'<span class="tp-lbl">{tx(T("ui.day.tips"))}</span>'
+            f'<ul class="tp-tips">{tips}</ul>'
+        )
+    body.append(day_cost_table(day, i, n, T, C, tx, cur, fx))
+
+    return (
+        f'<div class="tp" {dirattr}>'
+        f'<details class="tp-day" {dirattr} data-float="{int(floating)}"'
+        f' data-today="{int(is_today)}"{" open" if is_today or expand_all else ""}>'
+        f'{head}{photo(images, f"day{i}", title, "tp-photo")}'
+        f'<div class="tp-body">{"".join(body)}</div></details></div>'
+    )
+
+
+def note_html(note, T, tx, dirattr, who):
+    """One note. The body is escaped, and dir="auto" lets a Hebrew note read correctly
+    inside an English page and the other way round."""
+    day_str, time_str = local_time(note.created)
+    when = T("ui.notes.when", date=day_str, time=time_str)
+    mine = notes_store.norm_author(who) == notes_store.norm_author(note.author)
+    # said in words, not only in colour — colour on its own is not a label
+    yours = f' ({tx(T("ui.notes.you"))})' if mine else ""
+    hearts = (f'<span class="hearts">{num("♥ " + str(len(note.likes)))}</span>'
+              if note.likes else "")
+    return (
+        f'<div class="tp" {dirattr}><div class="tp-note">'
+        f'<span class="who{" mine" if mine else ""}" dir="auto">'
+        f'{html.escape(note.author, quote=True)}{yours}</span>'
+        f'<span class="when">{tx(when)}</span> {hearts}'
+        f'<p class="body" dir="auto">{html.escape(note.body, quote=True)}</p>'
+        f'</div></div>'
+    )
+
+
+def notes_drawer(day_key, day_notes, store, T, tx, dirattr, who):
+    """The notes attached to one day: read them, add one, agree with one, remove yours.
+
+    Streamlit widgets cannot live inside the day card, which is a single block of
+    markup — so the drawer is welded to the underside of the card with CSS instead.
+    """
+    count = len(day_notes)
+    with st.expander(T(note_count_key(count), n=count),
+                     icon=":material/chat_bubble_outline:"):
+        if day_notes:
+            for note in day_notes:
+                block(note_html(note, T, tx, dirattr, who))
+                mine = notes_store.norm_author(who) == notes_store.norm_author(note.author)
+                with st.container(horizontal=True, gap="small"):
+                    st.button(
+                        T("ui.notes.like"), key=f"like-{note.id}", type="tertiary",
+                        icon=":material/favorite:" if note.liked_by(who) else None,
+                        on_click=act_like, args=(store, note, who, day_key),
+                    )
+                    if mine:
+                        st.button(
+                            T("ui.notes.delete"), key=f"del-{note.id}", type="tertiary",
+                            on_click=act_delete, args=(store, note.id, who, day_key),
+                        )
+            st.caption(T("ui.notes.tz"))
+        else:
+            block(f'<div class="tp" {dirattr}>'
+                  f'<p class="tp-empty">{tx(T("ui.notes.empty"))}</p></div>')
+
+        box = f"note-box-{day_key}"
+        st.text_area(
+            T("ui.notes.title"), key=box, height=80,
+            max_chars=notes_store.MAX_BODY, label_visibility="collapsed",
+            placeholder=T("ui.notes.placeholder"),
+        )
+        st.button(T("ui.notes.post"), key=f"post-{day_key}", type="primary",
+                  on_click=act_post, args=(store, day_key, who, box))
+
+        problem = st.session_state.get("notes_problem")
+        if problem and problem[0] == day_key:
+            st.warning(T(problem[1]))
+            st.session_state["notes_problem"] = None
+
+
+# --- what the buttons do ----------------------------------------------------
+# All three run as callbacks, before the next render. That is what lets act_post
+# empty the text box: after the widget has drawn, its value is read-only.
+
+def _fail(day_key: str, exc: notes_store.StoreError) -> None:
+    st.session_state["notes_problem"] = (day_key, exc.key)
+
+
+def act_post(store, day_key, who, box) -> None:
+    now = time.monotonic()
+    if now - st.session_state.get("last_post", -99.0) < POST_COOLDOWN_S:
+        return _fail(day_key, notes_store.StoreError("ui.notes.err_toofast"))
+    try:
+        store.add(day_key, who, st.session_state.get(box, ""))
+    except notes_store.StoreError as exc:
+        return _fail(day_key, exc)
+    st.session_state["last_post"] = now
+    st.session_state[box] = ""
+    read_notes.clear()
+
+
+def act_like(store, note, who, day_key) -> None:
+    try:
+        store.set_like(note.id, who, not note.liked_by(who))
+    except notes_store.StoreError as exc:
+        return _fail(day_key, exc)
+    read_notes.clear()
+
+
+def act_delete(store, note_id, who, day_key) -> None:
+    try:
+        store.delete(note_id, who)
+    except notes_store.StoreError as exc:
+        return _fail(day_key, exc)
+    read_notes.clear()
+
+
+def render_days(d, T, C, tx, dirattr, cur, fx, expand_all, images, notes, store, who):
     # During the trip the app is opened on a phone to answer "what are we doing now",
     # so today's card is marked and starts open. Outside the trip nothing matches.
     today = date.today().isoformat()
-    cards = []
-    for i, day in enumerate(d["days"]):
-        floating = bool(day.get("floating"))
-        is_today = day["date"] == today
-        chips = f'<span class="chip">{tx(C(f"days.{i}.leg", day["leg"]))}</span>'
-        if is_today:
-            chips = f'<span class="chip today">{tx(T("ui.day.today_badge"))}</span>' + chips
-        if floating:
-            chips += f'<span class="chip float">{tx(T("ui.day.floating_badge"))}</span>'
-
-        drive = (
-            T("ui.day.drive", km=day["drive_km"], min=day["drive_min"])
-            if day["drive_km"] else T("ui.day.no_drive")
-        )
-        head = (
-            f'<summary><div class="tp-meta"><span class="date">{num(day["date"])}</span>'
-            f'<span class="dow">{tx(C(f"days.{i}.dow", day["dow"]))}</span>{chips}</div>'
-            f'<div class="title">{tx(C(f"days.{i}.title", day["title"]))}</div>'
-            f'<div class="headfoot"><span class="total">{tx(T("ui.day.total"))} '
-            f'{num(money(day["day_total_chf"], cur, fx))}</span>'
-            f'<span class="drive">{tx(drive)}</span></div></summary>'
-        )
-
-        body = []
-        if floating:
-            body.append(f'<div class="tp-float">{tx(T("ui.day.floating_note"))}</div>')
-        body.append(f'<span class="tp-lbl">{tx(T("ui.day.movement"))}</span>')
-        body.append(f'<div class="tp-move">{tx(C(f"days.{i}.movement", day["movement"]))}</div>')
-        if day.get("sleep"):
-            body.append(
-                f'<span class="tp-lbl">{tx(T("ui.day.sleep"))}</span>'
-                f'<p>{tx(C(f"days.{i}.sleep", day["sleep"]))}</p>'
-            )
-        if day.get("parents") or day.get("adults"):
-            cols = ""
-            if day.get("parents"):
-                cols += (
-                    f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.parents"))}</span>'
-                    f'<p>{tx(C(f"days.{i}.parents", day["parents"]))}</p></div>'
-                )
-            if day.get("adults"):
-                cols += (
-                    f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.adults"))}</span>'
-                    f'<p>{tx(C(f"days.{i}.adults", day["adults"]))}</p></div>'
-                )
-            body.append(f'<div class="tp-split">{cols}</div>')
-        if day["tips"]:
-            tips = "".join(
-                f"<li>{tx(C(f'days.{i}.tips.{k}', t))}</li>" for k, t in enumerate(day["tips"])
-            )
-            body.append(
-                f'<span class="tp-lbl">{tx(T("ui.day.tips"))}</span>'
-                f'<ul class="tp-tips">{tips}</ul>'
-            )
-        body.append(day_cost_table(day, i, n, T, C, tx, cur, fx))
-
-        cards.append(
-            f'<details class="tp-day" {dirattr} data-float="{int(floating)}"'
-            f' data-today="{int(is_today)}"{" open" if is_today or expand_all else ""}>'
-            f'{head}<div class="tp-body">{"".join(body)}</div></details>'
-        )
-    block(f'<div class="tp" {dirattr}>{"".join(cards)}</div>')
+    # Said once, above the days. Repeating it inside all nine drawers was louder than
+    # the notes themselves.
+    if store is not None and not getattr(store, "shared", False):
+        st.caption(T("ui.notes.local"))
+    # The welded-drawer styling hangs off this key. With no store there is no drawer to
+    # weld to, so the plain key leaves the cards their own four corners.
+    with st.container(key="tp-days" if store is not None else "tp-days-plain"):
+        for i, day in enumerate(d["days"]):
+            day_notes = notes.get(day["date"], [])
+            block(day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all,
+                                images, today, len(day_notes)))
+            # No store means no drawer at all, rather than buttons that fail on click.
+            if store is not None:
+                notes_drawer(day["date"], day_notes, store, T, tx, dirattr, who)
 
 
 def bars(rows, cur, fx):
@@ -749,6 +1109,7 @@ def main() -> None:
     )
     data, recon = load_data(DATA_PATH.stat().st_mtime)
     trans = load_translations(TRANS_PATH.stat().st_mtime)
+    images = load_images(IMAGES_PATH.stat().st_mtime)
     meta = trans["meta"]
     languages = meta["languages"]
 
@@ -807,6 +1168,13 @@ def main() -> None:
             on_change=sync_url,
         )
         st.caption(T("ui.currency_note"))
+        # Asked once, here, rather than above every note box. Deliberately not put in
+        # the URL: the whole point of the link is that it gets forwarded, and a name
+        # riding along in it would sign everyone else's notes with the sender's name.
+        st.text_input(
+            T("ui.name"), key="who", max_chars=notes_store.MAX_AUTHOR,
+            help=T("ui.name.help"),
+        )
 
     if (st.query_params.get("lang") != lang
             or st.query_params.get("cur") != st.session_state.cur
@@ -816,16 +1184,29 @@ def main() -> None:
     cur = st.session_state.cur
     fx = data["trip"]["fx"]
 
-    render_header(data, T, C, tx, dirattr, cur, fx)
+    render_header(data, T, C, tx, dirattr, cur, fx, images)
+
+    # A store that cannot be opened must not take the itinerary down with it: the plan
+    # is the thing people came for, and the notes are the extra.
+    store, store_problem = None, None
+    try:
+        store = open_notes()
+        notes = read_notes(store)
+    except notes_store.StoreError as exc:
+        notes, store_problem = {}, exc.key
 
     overview, days, costs, options = st.tabs([
         T("ui.tab.overview"), T("ui.tab.days"), T("ui.tab.costs"), T("ui.tab.options"),
     ])
     with overview:
         render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
+        render_credits(images, T, tx, dirattr, len(data["days"]))
     with days:
         expand_all = st.checkbox(T("ui.day.expand_all"), key="expand_all")
-        render_days(data, T, C, tx, dirattr, cur, fx, expand_all)
+        if store_problem:
+            st.warning(T(store_problem))
+        render_days(data, T, C, tx, dirattr, cur, fx, expand_all, images, notes,
+                    store, st.session_state.get("who", ""))
     with costs:
         render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
     with options:

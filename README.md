@@ -147,3 +147,99 @@ hue, direct value labels, no legend for a single series, no axis (every value is
 labelled), 14px bars with a 4px rounded data end. The track is a two-column grid so the
 longest bar cannot squeeze out its own label, and both `justify-self` and the logical
 border radii follow `direction`, so the bars mirror for free.
+
+## Notes on the days
+
+Every day card has a drawer welded to its underside where the family can leave notes,
+agree with each other's, and delete their own. You set your name once in the sidebar;
+notes are signed with it, and that name is also what decides which notes you may remove.
+
+Nothing is written into the itinerary. `itinerary.json` stays the single source of truth
+for the plan; the notes live in their own store.
+
+### Where the notes are kept
+
+There are two backends and the app picks between them by itself.
+
+**Local (the default).** A SQLite file at `.notes/notes.db`, which git ignores. Perfect
+for running it on your own machine. On Streamlit Community Cloud it is close to useless
+and the app says so on the page: the container has no disk it can keep, so the notes are
+not shared with anybody else and are wiped whenever the app restarts or redeploys.
+
+**Supabase (what you want once you share the link).** Free, and about five minutes:
+
+1. Create a project at supabase.com.
+2. Open the SQL editor and run:
+
+   ```sql
+   create table notes (
+     id      uuid primary key,
+     day     text not null,
+     author  text not null,
+     body    text not null,
+     created timestamptz not null
+   );
+   create table likes (
+     note_id uuid not null references notes(id) on delete cascade,
+     who     text not null,
+     primary key (note_id, who)
+   );
+   create index notes_day on notes (day, created);
+
+   alter table notes enable row level security;
+   alter table likes enable row level security;
+   create policy "family reads"  on notes for select using (true);
+   create policy "family writes" on notes for insert with check (true);
+   create policy "family edits"  on notes for delete using (true);
+   create policy "likes read"    on likes for select using (true);
+   create policy "likes write"   on likes for insert with check (true);
+   create policy "likes remove"  on likes for delete using (true);
+   ```
+
+3. In the Streamlit Community Cloud app menu, choose **Settings -> Secrets** and paste
+   your project URL and its **anon** key (Project Settings -> API), never the service key:
+
+   ```toml
+   supabase_url = "https://xxxxxxxx.supabase.co"
+   supabase_key = "eyJ..."
+   ```
+
+The app switches over on the next run and the "kept on this server alone" notice
+disappears. Setting only one of the two secrets is treated as a mistake and reported
+rather than silently falling back to storage nobody else can see.
+
+Two things worth knowing. The policies above let anyone with the link read and write, so
+the link is the only lock on the board — which is the right trade for five people, and
+the wrong one if you post the URL publicly. And Supabase pauses a free project after a
+week with no traffic; a single page view counts as traffic, and restoring it from the
+dashboard does not lose data.
+
+### What is actually tested
+
+`python check.py` exercises both backends through the same set of assertions, so they
+have to agree on ordering, likes, ownership and every refusal. The Supabase one runs
+against a strict stub in `tools/stub_supabase.py` that speaks the same REST dialect,
+because reaching the real service needs somebody's account. That proves the requests the
+app sends; it does not prove Supabase accepts them. The first note you post after wiring
+the secrets is the real test.
+
+## Photographs
+
+Ten photographs, one for the header and one per day, all from Wikimedia Commons under
+licences that allow reuse. They are cropped, resized and committed to `static/photos`,
+so the app still makes no network call of its own while it is running. Author, licence
+and a link to the file page are listed under **Before you go**, which is what the
+share-alike ones require.
+
+To change the set:
+
+```bash
+python tools/fetch_candidates.py <scratch-dir>   # gather candidates + thumbnails
+# look at the thumbnails, write <scratch-dir>/picks.json
+python tools/build_images.py <scratch-dir>       # crop, resize, rewrite images.json
+```
+
+`picks.json` maps each slot to a candidate id and a `bias` between 0 and 1 saying where
+the crop window sits vertically. That is not a detail: several of these photos put the
+thing you came for near an edge, and a centred crop decapitates the Lucerne water tower
+and grazes the dome on the Sphinx observatory.

@@ -3,3 +3,7 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Notes written by the local (SQLite) store. Never committed: it is scratch data on
+# one machine, and on a shared deploy the notes live in Supabase instead.
+.notes/

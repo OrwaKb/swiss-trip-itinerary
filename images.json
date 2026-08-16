@@ -1,0 +1,152 @@
+{
+ "hero": {
+  "file": "hero.webp",
+  "thumb": "hero-t.webp",
+  "w": 1400,
+  "h": 470,
+  "credit": {
+   "title": "Eiger, Mönch und Jungfrau - Panorama.jpg",
+   "author": "Barbara Steinemann",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3AEiger%2C_M%C3%B6nch_und_Jungfrau_-_Panorama.jpg",
+   "modified": "cropped and resized",
+   "why": "Eiger, Moench and Jungfrau with snow confined to the summits and green meadows below - early-September conditions. The dark conifers along the bottom are where the title scrim sits."
+  }
+ },
+ "day0": {
+  "file": "day0.webp",
+  "thumb": "day0-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "The Circle, tunnel at Zurich Airport.jpg",
+   "author": "Olga Ernst",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3AThe_Circle%2C_tunnel_at_Zurich_Airport.jpg",
+   "modified": "cropped and resized",
+   "why": "The actual covered walkway from the terminal to The Circle, where the Radisson Blu is. Biased to keep both the wayfinding sign and the whole tunnel arch."
+  }
+ },
+ "day1": {
+  "file": "day1.webp",
+  "thumb": "day1-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Luzern Wasserturm Kapellbrücke-20130829-RM-104703.jpg",
+   "author": "Reinhold Möller Ermell",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3ALuzern_Wasserturm_Kapellbr%C3%BCcke-20130829-RM-104703.jpg",
+   "modified": "cropped and resized",
+   "why": "Overrides the picker's blue-hour frame, which is beautiful but has snow on the bridge and the rooftops. This one is late August: green, flowers on the Kapellbruecke, swans on the Reuss. Biased up so the Wasserturm keeps its spire."
+  }
+ },
+ "day2": {
+  "file": "day2.webp",
+  "thumb": "day2-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "20240906.Vitznau–Rigi-Bahn.-026.jpg",
+   "author": "Bybbisch94",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3A20240906.Vitznau%E2%80%93Rigi-Bahn.-026.jpg",
+   "modified": "cropped and resized",
+   "why": "Rigi above the sea of fog with the Alps beyond, photographed on 6 September - the same date the family will be up there."
+  }
+ },
+ "day3": {
+  "file": "day3.webp",
+  "thumb": "day3-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Eiger seen from Grindelwald village 2022-10-02 01.jpg",
+   "author": "Leonhard Lenz",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File%3AEiger_seen_from_Grindelwald_village_2022-10-02_01.jpg",
+   "modified": "cropped and resized",
+   "why": "The Eiger over Grindelwald with the valley meadows below. Biased up to hold the face rather than the road."
+  }
+ },
+ "day4": {
+  "file": "day4.webp",
+  "thumb": "day4-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Eiger, Mönch und Jungfrau.jpg",
+   "author": "Steinmann",
+   "licence": "Public domain",
+   "licence_url": "",
+   "page": "https://commons.wikimedia.org/wiki/File%3AEiger%2C_M%C3%B6nch_und_Jungfrau.jpg",
+   "modified": "cropped and resized",
+   "why": "The Maennlichen ridge with the gravel path curving away and the three summits behind - the Panorama Trail as it is actually walked."
+  }
+ },
+ "day5": {
+  "file": "day5.webp",
+  "thumb": "day5-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "CH.BE.Grindelwald 2021-04-20 Jungfraujoch Sphinx-Observatory.jpg",
+   "author": "NOTE: This image is a panorama of Jungfraujoch Sphinx-Observatory consisting of 5 frames that were merged or stitched in PTGui Pro 12.2. As a result, this image necessarily underwent some form of digital manipulation. These manipulations may include blending, blurring, cloning, and colour and perspective adjustments. As a result of these adjustments, the image content may be slightly different from reality at the points where multiple images were combined. This manipulation is often required due to lens, perspective, and parallax distortions.",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3ACH.BE.Grindelwald_2021-04-20_Jungfraujoch_Sphinx-Observatory.jpg",
+   "modified": "cropped and resized",
+   "why": "The Sphinx observatory itself, the one structure that says Top of Europe. Biased up so the dome and mast survive the band."
+  }
+ },
+ "day6": {
+  "file": "day6.webp",
+  "thumb": "day6-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Lauterbrunnen view from Mürren.jpg",
+   "author": "Deralpinbergsteiger",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3ALauterbrunnen_view_from_M%C3%BCrren.jpg",
+   "modified": "cropped and resized",
+   "why": "The Lauterbrunnen valley seen from high on the Muerren side, waterfall streaks down the far wall."
+  }
+ },
+ "day7": {
+  "file": "day7.webp",
+  "thumb": "day7-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Aareschlucht 166 7.jpg",
+   "author": "Pazit Polak",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3AAareschlucht_166_7.jpg",
+   "modified": "cropped and resized",
+   "why": "Inside the Aare gorge: walls leaning together, sunlit foliage overhanging, the river below."
+  }
+ },
+ "day8": {
+  "file": "day8.webp",
+  "thumb": "day8-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "Cloudy Alps from above (Unsplash).jpg",
+   "author": "Anastasia Zhenina disguise_truth",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File%3ACloudy_Alps_from_above_%28Unsplash%29.jpg",
+   "modified": "cropped and resized",
+   "why": "The Alps from a cabin window on the way home, CC0. Overrides the picker's Swissair press photo: 1980s film of an airline that folded in 2002, and effectively airline advertising."
+  }
+ }
+}

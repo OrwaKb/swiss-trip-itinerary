@@ -7,3 +7,8 @@ textColor = "#0b0b0b"
 
 [browser]
 gatherUsageStats = false
+
+[server]
+# The photos in static/ are served from the app itself. Nothing is fetched from
+# anywhere else at runtime, which keeps the app quick on hotel wifi.
+enableStaticServing = true

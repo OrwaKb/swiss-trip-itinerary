@@ -18,9 +18,12 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
+from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import store as notes_store  # noqa: E402
 from app import INK_TONES, guard_numbers, reconcile  # noqa: E402
 
 BASE = Path(__file__).parent
@@ -112,6 +115,13 @@ asked = set(re.findall(r'T\(\s*[\'"]([a-z0-9_.]+)[\'"]', APP_SRC))
 # f-string keys built from a loop variable, e.g. T(f"ui.totals.{k}")
 asked |= {f"ui.totals.{k}" for k in TRANS["meta"]["total_keys"]}
 asked |= {f"ui.ink.{tone}" for tone in INK_TONES}
+# store.py names its own message keys and app.py renders them as T(exc.key), so the
+# literal never appears next to a T( for the scan above to find.
+for _src in ("store.py", "app.py"):
+    asked |= set(re.findall(r'StoreError\(\s*[\'"]([a-z0-9_.]+)[\'"]',
+                            (BASE / _src).read_text(encoding="utf-8")))
+# note_count_key() picks one of these by count
+asked |= {f"ui.notes.count_{suffix}" for suffix in ("zero", "one", "many", "many11")}
 missing_keys = sorted(asked - set(TRANS["ui"][TRANS["meta"]["default"]]))
 if missing_keys:
     failures.append(f"app.py asks for keys nothing defines: {missing_keys}")
@@ -241,35 +251,39 @@ class _TripDate(datetime.date):
         return cls(2026, 9, 9)
 
 
-def _render_days(lang, fake_today, expand_all):
-    out = []
-    real_block, real_date = _app.block, _app.date
-    _app.block, _app.date = out.append, (_TripDate if fake_today else real_date)
-    try:
-        ui_l, content_l = TRANS["ui"][lang], TRANS["content"].get(lang, {})
-        rtl = lang in RTL_LANGS
+IMAGES = json.loads((BASE / "images.json").read_text(encoding="utf-8"))
 
-        def T(key, **kw):
-            s = ui_l.get(key, TRANS["ui"]["en"].get(key, key))
-            return s.format(**kw) if kw else s
 
-        def C(path, fallback):
-            v = content_l.get(path)
-            return fallback if v is None else v
+def _translators(lang):
+    ui_l, content_l = TRANS["ui"][lang], TRANS["content"].get(lang, {})
+    rtl = lang in RTL_LANGS
 
-        def tx(s):
-            if s is None:
-                return ""
-            s = str(s)
-            return _app.html.escape(_app.guard_numbers(s) if rtl else s, quote=True)
+    def T(key, **kw):
+        s = ui_l.get(key, TRANS["ui"]["en"].get(key, key))
+        return s.format(**kw) if kw else s
 
-        _app.render_days(
-            DATA, T, C, tx, f'dir="{"rtl" if rtl else "ltr"}" lang="{lang}"',
-            "CHF", DATA["trip"]["fx"], expand_all,
-        )
-    finally:
-        _app.block, _app.date = real_block, real_date
-    return out[0]
+    def C(path, fallback):
+        v = content_l.get(path)
+        return fallback if v is None else v
+
+    def tx(s):
+        if s is None:
+            return ""
+        s = str(s)
+        return _app.html.escape(_app.guard_numbers(s) if rtl else s, quote=True)
+
+    return T, C, tx, f'dir="{"rtl" if rtl else "ltr"}" lang="{lang}"'
+
+
+def _render_days(lang, fake_today, expand_all, notes_n=0):
+    """The day cards as one string. day_card_html is pure, so no Streamlit is needed."""
+    T, C, tx, dirattr = _translators(lang)
+    today = (_TripDate if fake_today else datetime.date).today().isoformat()
+    return "".join(
+        _app.day_card_html(DATA, i, T, C, tx, dirattr, "CHF", DATA["trip"]["fx"],
+                           expand_all, IMAGES, today, notes_n)
+        for i in range(len(DATA["days"]))
+    )
 
 
 def _cards(html):
@@ -299,6 +313,201 @@ if len(opened) != len(found) or len(found) != len(DATA["days"]):
 print(f"day cards   today marker fires on the right card in "
       f"{len(TRANS['meta']['languages'])} languages; expand-all opens all "
       f"{len(DATA['days'])}, nested cost tables untouched")
+
+# --- 8. every photo is present, credited and small enough -------------------
+# The photos are committed, so "it worked on my machine" is not evidence: this checks
+# the files that are actually in the repo, and that each one still carries the author
+# and licence it was taken under. Several are share-alike; dropping a credit would be
+# a licence breach, not a cosmetic slip.
+PHOTOS = BASE / "static" / "photos"
+MAX_PHOTO_KB, MAX_TOTAL_KB = 260, 2600
+wanted = ["hero"] + [f"day{i}" for i in range(len(DATA["days"]))]
+total_kb = 0.0
+for slot in wanted:
+    meta = IMAGES.get(slot)
+    if meta is None:
+        failures.append(f"photo/{slot}: no entry in images.json")
+        continue
+    for name in (meta["file"], meta["thumb"]):
+        path = PHOTOS / name
+        if not path.exists():
+            failures.append(f"photo/{slot}: {name} is in images.json but not on disk")
+            continue
+        kb = path.stat().st_size / 1024
+        total_kb += kb
+        if kb > MAX_PHOTO_KB:
+            failures.append(f"photo/{slot}: {name} is {kb:.0f} KB, over {MAX_PHOTO_KB} KB")
+    credit = meta.get("credit", {})
+    for field_name in ("author", "licence", "page", "modified"):
+        if not credit.get(field_name):
+            failures.append(f"photo/{slot}: credit is missing {field_name}")
+    if not str(credit.get("page", "")).startswith("https://commons.wikimedia.org/"):
+        failures.append(f"photo/{slot}: credit page is not a Commons URL")
+extra = set(IMAGES) - set(wanted)
+if extra:
+    failures.append(f"photo: images.json has slots for nothing that renders: {sorted(extra)}")
+if total_kb > MAX_TOTAL_KB:
+    failures.append(f"photo: {total_kb:.0f} KB of photos, over the {MAX_TOTAL_KB} KB budget")
+# every credit must actually reach the reader
+_T, _C, _tx, _dir = _translators("en")
+credits_out = []
+_real_block, _app.block = _app.block, credits_out.append
+try:
+    _app.render_credits(IMAGES, _T, _tx, _dir, len(DATA["days"]))
+finally:
+    _app.block = _real_block
+for slot in wanted:
+    author = IMAGES[slot]["credit"]["author"]
+    if _app.html.escape(author, quote=True) not in credits_out[0]:
+        failures.append(f"photo/{slot}: {author!r} never appears in the credits list")
+print(f"photos      {len(wanted)} slots, {total_kb:.0f} KB committed, "
+      f"every author and licence credited on the page")
+
+# --- 9. a note is data, never markup ----------------------------------------
+# The board is on a public URL, so anything a visitor types has to come back out as
+# text. This renders the nastiest thing someone could type and insists it stays inert.
+NASTY = '<script>alert(1)</script><img src=x onerror=alert(2)> & "quotes" \'and\''
+probe = _app.note_html(
+    notes_store.Note("n1", "2026-09-06", NASTY, NASTY, "2026-09-06T08:30:00+00:00",
+                     ("someone",)),
+    _T, _tx, _dir, "someone else",
+)
+
+# The invariant is not "the word script does not appear" — it is that nothing the
+# visitor typed becomes an element. So parse the result and look at the tree.
+class _Reader(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.tags, self.text = [], []
+
+    def handle_starttag(self, tag, attrs):
+        self.tags.append((tag, dict(attrs)))
+
+    def handle_data(self, data):
+        self.text.append(data)
+
+
+reader = _Reader()
+reader.feed(probe)
+ALLOWED = {"div", "span", "p"}
+rogue = sorted({tag for tag, _ in reader.tags} - ALLOWED)
+if rogue:
+    failures.append(f"escaping: a note produced element(s) {rogue}; only {sorted(ALLOWED)} "
+                    f"are ever written by note_html")
+handlers = sorted({a for _, attrs in reader.tags for a in attrs if a.startswith("on")})
+if handlers:
+    failures.append(f"escaping: a note produced event handler attribute(s) {handlers}")
+if NASTY not in "".join(reader.text):
+    failures.append("escaping: the note body did not survive as literal text")
+if 'dir="auto"' not in probe:
+    failures.append('escaping: notes lost dir="auto", so a Hebrew note in an '
+                    "English page would render backwards")
+print(f"escaping    a note of script tags and event handlers parses to "
+      f"{len(reader.tags)} elements, all of them mine, and comes back as text")
+
+# --- 10. both storage backends behave identically ---------------------------
+# Supabase cannot be reached from here without somebody's project, so it is exercised
+# against a strict stub that speaks the same REST dialect. That proves the requests,
+# not the service; the README says so plainly rather than implying more.
+sys.path.insert(0, str(BASE / "tools"))
+from stub_supabase import StubSupabase  # noqa: E402
+
+
+def exercise(store, label):
+    a = store.add("2026-09-05", "Orwa", "Can we take the early boat?")
+    b = store.add("2026-09-05", "Dad", "Yes, I like that.")
+    store.add("2026-09-09", "Mum", "Only if it is clear.")
+    for who in ("Dad", "dad ", "Mum"):
+        store.set_like(a, who, True)        # the middle one is the same person, folded
+    store.set_like(b, "Orwa", True)
+    store.set_like(b, "Orwa", False)
+
+    got = store.notes()
+    if sorted(got) != ["2026-09-05", "2026-09-09"]:
+        failures.append(f"store/{label}: notes came back under {sorted(got)}")
+    first = got["2026-09-05"][0]
+    if [x.author for x in got["2026-09-05"]] != ["Orwa", "Dad"]:
+        failures.append(f"store/{label}: notes are not in the order they were written")
+    if len(first.likes) != 2 or not first.liked_by("DAD") or first.liked_by("Nobody"):
+        failures.append(f"store/{label}: likes are wrong: {first.likes}")
+    if got["2026-09-05"][1].likes:
+        failures.append(f"store/{label}: unliking left the like behind")
+
+    try:
+        store.delete(a, "Dad")
+        failures.append(f"store/{label}: let somebody delete another person's note")
+    except notes_store.StoreError as exc:
+        if exc.key != "ui.notes.err_not_yours":
+            failures.append(f"store/{label}: wrong refusal {exc.key}")
+    store.delete(a, "orwa")
+    left = store.notes()
+    if len(left["2026-09-05"]) != 1:
+        failures.append(f"store/{label}: the author's own delete did not take")
+    if any(x.id == a for v in left.values() for x in v):
+        failures.append(f"store/{label}: deleted note is still readable")
+
+    for args, key in ((("d", "", "x"), "ui.notes.err_name"),
+                      (("d", "N", "   "), "ui.notes.err_body"),
+                      (("", "N", "x"), "ui.notes.err_day")):
+        try:
+            store.add(*args)
+            failures.append(f"store/{label}: accepted {args}")
+        except notes_store.StoreError as exc:
+            if exc.key != key:
+                failures.append(f"store/{label}: {args} raised {exc.key}, wanted {key}")
+
+
+with tempfile.TemporaryDirectory() as tmp:
+    local = notes_store.SqliteStore(Path(tmp) / "sub" / "notes.db")
+    exercise(local, "sqlite")
+    if local.shared:
+        failures.append("store/sqlite: claims notes are shared, and they are not")
+    local.close()
+
+stub = StubSupabase()
+remote = notes_store.SupabaseStore("https://stub.supabase.co", "test-anon-key",
+                                   opener=stub.opener)
+exercise(remote, "supabase")
+if not remote.shared:
+    failures.append("store/supabase: does not claim to share notes")
+stub.fail_next = 401
+try:
+    remote.notes()
+    failures.append("store/supabase: a 401 did not raise")
+except notes_store.StoreError as exc:
+    if exc.key != "ui.notes.err_store":
+        failures.append(f"store/supabase: a 401 surfaced as {exc.key}")
+
+
+def _unreachable(req, timeout=None):
+    raise OSError("no route to host")
+
+
+try:
+    notes_store.SupabaseStore("https://x", "k", opener=_unreachable).notes()
+    failures.append("store/supabase: being offline did not raise")
+except notes_store.StoreError as exc:
+    if exc.key != "ui.notes.err_offline":
+        failures.append(f"store/supabase: offline surfaced as {exc.key}")
+
+if notes_store.clean("a\x00b\r\nc", 99) != "ab\nc":
+    failures.append("store: clean() left control characters or CRLF behind")
+if len(notes_store.clean("x" * 9999, notes_store.MAX_BODY)) != notes_store.MAX_BODY:
+    failures.append("store: clean() did not cap the length")
+
+if notes_store.open_store({}, Path(tempfile.mkdtemp()) / "n.db").backend != "local":
+    failures.append("store: no secrets should mean the local backend")
+if notes_store.open_store({"supabase_url": "https://a", "supabase_key": "b"},
+                          Path("x")).backend != "supabase":
+    failures.append("store: both secrets set should mean Supabase")
+try:
+    notes_store.open_store({"supabase_url": "https://a"}, Path("x"))
+    failures.append("store: a half-filled config silently fell back to local storage")
+except notes_store.StoreError as exc:
+    if exc.key != "ui.notes.err_halfconfig":
+        failures.append(f"store: half config raised {exc.key}")
+print(f"notes store {len(stub.calls)} REST calls checked against the stub; sqlite and "
+      f"supabase agree on ordering, likes, ownership and refusals")
 
 # --- report -----------------------------------------------------------------
 print()
