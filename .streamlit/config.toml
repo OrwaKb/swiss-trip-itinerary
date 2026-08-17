@@ -1,9 +1,12 @@
+# Streamlit bakes one theme in at deploy time, so this is the Daylight tone — the
+# default — and it is what paints for the instant before the stylesheet lands. The
+# other three tones, including the two dark ones, are taken back in CSS at runtime.
 [theme]
 base = "light"
-primaryColor = "#2a78d6"
-backgroundColor = "#f3f2ee"
-secondaryBackgroundColor = "#fcfcfb"
-textColor = "#0b0b0b"
+primaryColor = "#B4432A"
+backgroundColor = "#E9EFF3"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#14222B"
 
 [browser]
 gatherUsageStats = false

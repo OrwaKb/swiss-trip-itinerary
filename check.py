@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import store as notes_store  # noqa: E402
-from app import INK_TONES, guard_numbers, reconcile  # noqa: E402
+from app import INK_TONES, guard_numbers, reconcile, stylesheet  # noqa: E402
 
 BASE = Path(__file__).parent
 DATA = json.loads((BASE / "itinerary.json").read_text(encoding="utf-8"))
@@ -238,7 +238,39 @@ for tone, roles in INK_TONES.items():
                 )
             if got / floor < worst[2]:
                 worst = (f"{tone}.{role}", ground, got / floor)
-print(f"ink tones   {len(INK_TONES)} tones pass contrast on their own surface and plane "
+# The accent and warn are not decoration: they carry the cost link, the today badge and
+# the floating-day chip, so they answer to the same floor as body copy — on the card, on
+# the page, and on their own wash. So does whatever is written on top of them, which is
+# the pair that is easy to get wrong: a mid-tone gold takes white, not near-black.
+for tone, roles in INK_TONES.items():
+    if roles.get("scheme") not in ("light", "dark"):
+        failures.append(f"ink/{tone}: no light/dark scheme declared")
+    for role in ("accent", "warn"):
+        for ground in ("surface", "plane", f"{role}_wash"):
+            got = contrast(roles[role], roles[ground])
+            if got < 4.5:
+                failures.append(
+                    f"ink/{tone}.{role}: {roles[role]} is {got:.2f}:1 on {ground} "
+                    f"{roles[ground]}, needs 4.5:1"
+                )
+    for role, on in (("accent", "on_accent"), ("warn", "on_warn")):
+        got = contrast(roles[on], roles[role])
+        if got < 4.5:
+            failures.append(
+                f"ink/{tone}.{on}: {roles[on]} is {got:.2f}:1 on its own {role} "
+                f"{roles[role]}, needs 4.5:1"
+            )
+
+# A colour written into the stylesheet cannot follow the theme. White over the photo
+# scrim is the one legitimate exception, so it is named rather than counted.
+STYLE = stylesheet("en", False, "night")
+literal = [m for m in re.findall(r"(?<![-\w])(?:color|background(?:-color)?)\s*:\s*(#[0-9a-fA-F]{3,8})", STYLE)
+           if m.lower() not in ("#fff", "#ffffff", "#0d1418")]
+if literal:
+    failures.append(f"theme: colours hardcoded in the stylesheet instead of a tone role: {sorted(set(literal))}")
+
+print(f"ink tones   {len(INK_TONES)} tones ({sum(r['scheme'] == 'dark' for r in INK_TONES.values())} dark) "
+      f"pass contrast on surface, plane and wash "
       f"(tightest {worst[0]} on {worst[1]}, {worst[2]:.2f}x its floor)")
 
 ui_default_keys = TRANS["ui"][TRANS["meta"]["default"]]

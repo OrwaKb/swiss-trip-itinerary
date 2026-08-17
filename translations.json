@@ -42,11 +42,7 @@
    "ui.language": "Language",
    "ui.currency": "Currency",
    "ui.currency_note": "Everything is priced in CHF. EUR and ILS are converted at the trip's fixed rates.",
-   "ui.ink": "Text colour",
-   "ui.ink.black": "Black",
-   "ui.ink.graphite": "Graphite",
-   "ui.ink.espresso": "Espresso",
-   "ui.ink.midnight": "Midnight",
+   "ui.ink": "Theme",
    "ui.sep": " · ",
    "ui.range": "{start} – {end}",
    "ui.header.nights": "{n} nights",
@@ -133,7 +129,11 @@
    "ui.credits.title": "Photographs",
    "ui.credits.note": "Every photo here comes from Wikimedia Commons, cropped and resized to fit. Photographer, then licence.",
    "ui.credits.hero": "Opening photo",
-   "ui.credits.day": "Day ⁦{n}⁩"
+   "ui.credits.day": "Day ⁦{n}⁩",
+   "ui.ink.daylight": "Daylight",
+   "ui.ink.alpenglow": "Alpenglow",
+   "ui.ink.dusk": "Dusk",
+   "ui.ink.night": "Night"
   },
   "he": {
    "lang.en": "English",
@@ -142,11 +142,7 @@
    "ui.language": "שפה",
    "ui.currency": "מטבע",
    "ui.currency_note": "כל המחירים ב־⁦CHF⁩. ⁦EUR⁩ ו־⁦ILS⁩ מומרים לפי השערים הקבועים של הטיול.",
-   "ui.ink": "צבע הטקסט",
-   "ui.ink.black": "שחור",
-   "ui.ink.graphite": "גרפיט",
-   "ui.ink.espresso": "אספרסו",
-   "ui.ink.midnight": "חצות",
+   "ui.ink": "ערכת נושא",
    "ui.sep": " · ",
    "ui.range": "{start} – {end}",
    "ui.header.nights": "⁦{n}⁩ לילות",
@@ -233,7 +229,11 @@
    "ui.credits.title": "התצלומים",
    "ui.credits.note": "כל התצלומים כאן מ־ Wikimedia Commons, חתוכים ומוקטנים להתאמה. קודם הצלם, אחר כך הרישיון.",
    "ui.credits.hero": "תצלום הפתיחה",
-   "ui.credits.day": "יום ⁦{n}⁩"
+   "ui.credits.day": "יום ⁦{n}⁩",
+   "ui.ink.daylight": "אור יום",
+   "ui.ink.alpenglow": "זוהר האלפים",
+   "ui.ink.dusk": "דימדומים",
+   "ui.ink.night": "לילה"
   },
   "ar": {
    "lang.en": "English",
@@ -242,11 +242,7 @@
    "ui.language": "اللغة",
    "ui.currency": "العملة",
    "ui.currency_note": "كل الأسعار بـ⁦CHF⁩. يُحوَّل ⁦EUR⁩ و⁦ILS⁩ حسب أسعار الصرف الثابتة للرحلة.",
-   "ui.ink": "لون النص",
-   "ui.ink.black": "أسود",
-   "ui.ink.graphite": "غرافيت",
-   "ui.ink.espresso": "إسبريسو",
-   "ui.ink.midnight": "منتصف الليل",
+   "ui.ink": "السمة",
    "ui.sep": " · ",
    "ui.range": "{start} – {end}",
    "ui.header.nights": "⁦{n}⁩ ليالٍ",
@@ -333,7 +329,11 @@
    "ui.credits.title": "الصور",
    "ui.credits.note": "كل الصور هنا من Wikimedia Commons، مقصوصة ومصغّرة لتناسب الصفحة. المصوّر أولاً ثم الرخصة.",
    "ui.credits.hero": "صورة الافتتاح",
-   "ui.credits.day": "اليوم ⁦{n}⁩"
+   "ui.credits.day": "اليوم ⁦{n}⁩",
+   "ui.ink.daylight": "ضوء النهار",
+   "ui.ink.alpenglow": "وهج القمم",
+   "ui.ink.dusk": "الغسق",
+   "ui.ink.night": "الليل"
   }
  },
  "content": {

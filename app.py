@@ -41,31 +41,47 @@ LRI, PDI = "⁦", "⁩"
 CURRENCIES = ("CHF", "EUR", "ILS")
 FX_KEY = {"EUR": "CHF_EUR", "ILS": "CHF_ILS"}
 
-# Ink tones. Black is the default; the others are dark tones with a cast rather than
-# flat black. The page stays light throughout — surface and plane carry only enough
-# of the same cast for the choice to read, since a cool ink on a warm page just looks
-# like a mistake. check.py holds every tone to 7:1 on ink, 4.5:1 on ink2 and 3:1 on
-# muted against BOTH its own surface and its own plane, so a tone cannot be added
-# without passing.
+# Themes, taken off the trip's own photographs: glacier snow, the pink-gold of
+# alpenglow on the summits, and the slate the mountain goes at dusk. Two light, two
+# dark — the dark ones are the reason every colour is named as a role here rather than
+# written into the CSS. A literal like `color: #fff` on a chip is invisible the moment
+# the page behind it turns pale, so nothing below the tone table gets to hardcode one.
+#
+# check.py holds every tone to 7:1 on ink, 4.5:1 on ink2 and 3:1 on muted against BOTH
+# its own surface and its own plane, so a tone cannot be added without passing. The
+# accent and warn carry text too, so they are held to 4.5:1 on surface, plane and their
+# own wash, and whatever sits on top of them to 4.5:1 as well.
 INK_TONES = {
-    "black": {
-        "ink": "#0b0b0b", "ink2": "#52514e", "muted": "#898781",
-        "rule": "#e1e0d9", "line": "#c3c2b7", "surface": "#fcfcfb", "plane": "#f3f2ee",
+    "daylight": {  # glacier snow
+        "scheme": "light",
+        "ink": "#14222B", "ink2": "#425C6B", "muted": "#63808F",
+        "rule": "#DCE5EA", "line": "#BDCDD7", "surface": "#FFFFFF", "plane": "#E9EFF3",
+        "accent": "#B4432A", "accent_wash": "#FAE4DC", "on_accent": "#FFFFFF",
+        "warn": "#8E5D00", "warn_wash": "#FAEFD6", "on_warn": "#FFFFFF",
     },
-    "graphite": {
-        "ink": "#1b1d26", "ink2": "#4c4f5d", "muted": "#7f8290",
-        "rule": "#dfe0e6", "line": "#bcbec9", "surface": "#fcfcfd", "plane": "#eeeff4",
+    "alpenglow": {  # the same light, on warm paper
+        "scheme": "light",
+        "ink": "#231917", "ink2": "#5A4640", "muted": "#8A6D64",
+        "rule": "#EADCD5", "line": "#D3BDB3", "surface": "#FDFAF8", "plane": "#F3ECE7",
+        "accent": "#A03C27", "accent_wash": "#F7DFD6", "on_accent": "#FFFFFF",
+        "warn": "#855400", "warn_wash": "#F7EAD2", "on_warn": "#FFFFFF",
     },
-    "espresso": {
-        "ink": "#2a1d13", "ink2": "#5c4a3b", "muted": "#8e8074",
-        "rule": "#e7ded1", "line": "#cbbfae", "surface": "#fdfbf8", "plane": "#f3ede4",
+    "dusk": {  # slate blue, dark
+        "scheme": "dark",
+        "ink": "#E9F1F6", "ink2": "#AFC4D1", "muted": "#8399A8",
+        "rule": "#28363F", "line": "#3A4C58", "surface": "#1B2832", "plane": "#121D25",
+        "accent": "#F19479", "accent_wash": "#35231E", "on_accent": "#1A0E09",
+        "warn": "#D9A44C", "warn_wash": "#2D2517", "on_warn": "#1F1804",
     },
-    "midnight": {
-        "ink": "#0e1c33", "ink2": "#42536f", "muted": "#79879d",
-        "rule": "#dbe1ea", "line": "#b5bfcf", "surface": "#fbfcfd", "plane": "#ecf0f6",
+    "night": {  # near black, dark
+        "scheme": "dark",
+        "ink": "#EDF1F4", "ink2": "#A9B7C0", "muted": "#7D8C96",
+        "rule": "#202830", "line": "#303B42", "surface": "#141A1F", "plane": "#0A0E11",
+        "accent": "#EF8E74", "accent_wash": "#2B1A15", "on_accent": "#170C08",
+        "warn": "#D6A14A", "warn_wash": "#251E12", "on_warn": "#1B1503",
     },
 }
-DEFAULT_INK = "black"
+DEFAULT_INK = "daylight"
 RECONCILE_TOLERANCE_CHF = 2.0
 DAY_TOLERANCE_CHF = 1.0
 
@@ -231,15 +247,21 @@ def photo(images: dict, slot: str, alt: str, cls: str, eager: bool = False) -> s
     )
 
 
-def thumb(images: dict, slot: str) -> str:
+def band(images: dict, slot: str, alt: str, inner: str) -> str:
+    """The photo strip a day card is headed by, with `inner` laid over it.
+
+    The thumbnail is painted underneath as the background. It is a twentieth of the
+    weight and arrives first, so the band comes up as the right colours rather than as
+    a grey hole that fills in — and if the full photo never arrives at all, the white
+    type still has something dark under it instead of the page.
+    """
     meta = images.get(slot)
     if not meta:
-        return ""
-    # Decorative: the day's title sits right beside it, so a screen reader repeating
-    # the same words would only get in the way.
+        return f'<div class="tp-band tp-band-bare">{inner}</div>'
+    thumb_url = html.escape(PHOTO_URL.format(meta["thumb"]), quote=True)
     return (
-        f'<img class="tp-thumb" src="{PHOTO_URL.format(meta["thumb"])}" '
-        f'width="180" height="120" alt="" loading="lazy" decoding="async">'
+        f'<div class="tp-band" style="background-image:url(&quot;{thumb_url}&quot;)">'
+        f'{photo(images, slot, alt, "tp-band-img")}{inner}</div>'
     )
 
 
@@ -302,12 +324,22 @@ def stylesheet(lang: str, rtl: bool, ink: str) -> str:
   --muted: {tone["muted"]};
   --rule: {tone["rule"]};
   --line: {tone["line"]};
-  --accent: #2a78d6;
-  --accent-wash: #cde2fb;
-  --warning: #fab219;
-  --border: color-mix(in srgb, var(--ink) 12%, transparent);
+  --accent: {tone["accent"]};
+  --accent-wash: {tone["accent_wash"]};
+  --on-accent: {tone["on_accent"]};
+  --warn: {tone["warn"]};
+  --warn-wash: {tone["warn_wash"]};
+  --on-warn: {tone["on_warn"]};
+  --border: color-mix(in srgb, var(--ink) {14 if tone["scheme"] == "light" else 20}%, transparent);
+  --lift: {"0 1px 2px rgba(16,32,44,.05), 0 10px 26px -20px rgba(16,32,44,.5)"
+           if tone["scheme"] == "light" else
+           "0 1px 2px rgba(0,0,0,.5), 0 12px 30px -22px rgba(0,0,0,1)"};
+  --scrim: {".72" if tone["scheme"] == "light" else ".80"};
   --font: {FONT_STACK[lang]};
   --lh: {LINE_HEIGHT[lang]};
+  /* tells the browser to paint form controls, scrollbars and the caret for this
+     theme; without it a dark page keeps white dropdowns and a white scrollbar */
+  color-scheme: {tone["scheme"]};
 }}
 
 /* ---- direction, set explicitly every run ---- */
@@ -358,6 +390,58 @@ body:has(#tp-dir-ltr) [data-testid="stExpandSidebarButton"] [data-testid="stIcon
 /* the sidebar is Streamlit's own chrome; keep it on the tone's surface so the cast
    is consistent rather than stopping at the edge of my markup */
 [data-testid="stSidebar"] {{ background: var(--surface); }}
+
+/* ---- Streamlit's own widgets ----
+   config.toml can only name one theme, and it is baked in at deploy time. The two
+   dark tones therefore have to take the widgets back by hand, or a dark page keeps
+   white dropdowns and black-on-black labels. These rules are written against roles,
+   so they are equally correct for the light tones and there is no dark-only branch
+   that can rot unnoticed. */
+html, body, .stApp, [data-testid="stSidebar"] {{ color: var(--ink); }}
+[data-testid="stSidebar"] label, [data-testid="stSidebar"] p,
+[data-testid="stWidgetLabel"] p {{ color: var(--ink2); }}
+
+[data-baseweb="select"] > div, [data-baseweb="input"] > div,
+[data-baseweb="base-input"], .stTextInput input, .stTextInput > div > div {{
+  background: var(--surface); border-color: var(--rule); color: var(--ink);
+}}
+[data-baseweb="input"]:focus-within > div, .stTextInput > div > div:focus-within {{
+  border-color: var(--accent);
+}}
+[data-baseweb="select"] div, [data-baseweb="select"] span,
+[data-baseweb="select"] svg {{ color: var(--ink); fill: var(--ink); }}
+.stTextInput input::placeholder {{ color: var(--muted); }}
+
+/* the dropdown is portalled onto <body>, outside .tp, so it needs a global selector */
+[data-baseweb="popover"] div[role="listbox"], [data-baseweb="menu"],
+[data-baseweb="menu"] ul, [data-baseweb="popover"] > div > div {{
+  background: var(--surface); color: var(--ink);
+}}
+[data-baseweb="menu"] li {{ color: var(--ink); }}
+[data-baseweb="menu"] li[aria-selected="true"], [data-baseweb="menu"] li:hover {{
+  background: var(--accent-wash); color: var(--ink);
+}}
+
+.stButton button {{
+  background: var(--surface); color: var(--ink2); border: 1px solid var(--border);
+}}
+.stButton button:hover {{ border-color: var(--accent); color: var(--accent); }}
+
+[data-baseweb="tab"] {{ color: var(--ink2); }}
+[data-baseweb="tab"][aria-selected="true"],
+[data-baseweb="tab"][aria-selected="true"] * {{ color: var(--accent); }}
+[data-baseweb="tab-highlight"] {{ background: var(--accent); }}
+[data-baseweb="tab-border"] {{ background: var(--rule); }}
+[data-testid="stHeader"] svg,
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="stExpandSidebarButton"] svg {{ fill: var(--ink2); }}
+[data-testid="stTooltipHoverTarget"] svg {{ fill: var(--muted); }}
+
+/* keyboard focus has to stay visible once the accent is a warm red on a dark plane */
+[data-testid="stSidebar"] :focus-visible, .stButton button:focus-visible,
+.tp-day > summary:focus-visible, .tp-costs > summary:focus-visible {{
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px;
+}}
 html, body, .stApp, [data-testid="stSidebar"], .tp, .tp * {{
   font-family: var(--font);
   line-height: var(--lh);
@@ -384,8 +468,8 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
 .tp .num {{ font-variant-numeric: tabular-nums; unicode-bidi: isolate; }}
 
 .tp-head {{
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  padding: 0; margin-bottom: 14px; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 0; margin-bottom: 14px; overflow: hidden; box-shadow: var(--lift);
 }}
 /* The opening photo runs to the card edge and carries the title. The scrim is what
    makes white type safe over an unknown picture, so it is not decoration — without it
@@ -430,7 +514,7 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
   padding: 11px 13px; margin-bottom: 7px; font-size: 0.92rem;
 }}
-.tp-list.warn li {{ border-inline-start: 3px solid var(--warning); }}
+.tp-list.warn li {{ border-inline-start: 3px solid var(--warn); }}
 .tp-list li .when {{ display: block; color: var(--muted); font-size: 0.74rem; margin-bottom: 3px; }}
 .tp-ol {{ list-style: none; counter-reset: step; padding: 0; margin: 0; }}
 .tp-ol li {{
@@ -445,54 +529,95 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   font-variant-numeric: tabular-nums; unicode-bidi: isolate;
 }}
 
-/* ---- day cards ---- */
+/* ---- day cards ----
+   The photograph is the card's header rather than a thumbnail beside it: the date,
+   title and total sit on the picture. Closed, the band is a strip; open, it grows and
+   gives the photo real room, which is the only animation on the page.
+
+   Everything written on the band is white against the scrim rather than against the
+   theme, and that is deliberate — the band's ground is a photograph in all four
+   themes, so a role colour would be the wrong answer there. The scrim is what makes
+   the white safe over a picture nobody has seen yet, so it is structure, not polish. */
 .tp-day {{
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  margin-bottom: 9px; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  margin-bottom: 10px; overflow: hidden; box-shadow: var(--lift);
 }}
-.tp-day[data-float="1"] {{ border-color: var(--warning); }}
+.tp-day[data-float="1"] {{ border-color: var(--warn); }}
 .tp-day > summary {{
-  list-style: none; cursor: pointer; padding: 13px 40px 13px 15px; position: relative;
-  display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
-}}
-.tp-day[dir="rtl"] > summary {{ padding: 13px 15px 13px 40px; }}
-/* the chevron is absolutely positioned, so it stays out of the grid */
-.tp-sum {{ min-width: 0; }}
-/* qualified for the same reason as the hero image */
-.tp-day img.tp-thumb {{
-  width: 76px; height: 52px; object-fit: cover; border-radius: 7px; display: block;
-  background: var(--plane);
-}}
-.tp-day img.tp-photo {{
-  display: block; width: 100%; height: auto; object-fit: cover;
-  border-top: 1px solid var(--rule);
+  list-style: none; cursor: pointer; padding: 0; position: relative; display: block;
 }}
 .tp-day > summary::-webkit-details-marker {{ display: none; }}
-.tp-day > summary::after {{
-  content: ""; position: absolute; top: 20px; width: 8px; height: 8px;
-  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
-  transform: rotate(-45deg); transition: transform .15s ease;
+
+.tp-band {{
+  position: relative; display: flex; align-items: flex-end; overflow: hidden;
+  min-height: 116px; padding: 14px 44px 13px 16px;
+  background-color: #0d1418; background-size: cover; background-position: center;
+  transition: min-height .24s ease;
 }}
-.tp-day[dir="ltr"] > summary::after {{ right: 17px; }}
-.tp-day[dir="rtl"] > summary::after {{ left: 17px; transform: rotate(135deg); }}
+.tp-day[dir="rtl"] .tp-band {{ padding: 14px 16px 13px 44px; }}
+.tp-day[open] .tp-band {{ min-height: 214px; }}
+.tp-band-bare {{ background: var(--ink); }}
+/* qualified for the same reason as the hero image: Streamlit ships an `img` rule at a
+   specificity that beats a bare class and would letterbox the photo */
+.tp-band > img.tp-band-img {{
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform .35s ease;
+}}
+.tp-band::after {{
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(8,14,18,var(--scrim)) 0%, rgba(8,14,18,.64) 38%,
+    rgba(8,14,18,.30) 68%, rgba(8,14,18,0) 100%);
+}}
+.tp-day > summary:hover .tp-band > img.tp-band-img {{ transform: scale(1.03); }}
+.tp-sum {{ position: relative; z-index: 1; min-width: 0; width: 100%; }}
+
+.tp-day > summary::after {{
+  content: ""; position: absolute; top: 19px; z-index: 2; width: 9px; height: 9px;
+  border-right: 2px solid rgba(255,255,255,.9);
+  border-bottom: 2px solid rgba(255,255,255,.9);
+  transform: rotate(-45deg); transition: transform .2s ease;
+}}
+.tp-day[dir="ltr"] > summary::after {{ right: 18px; }}
+.tp-day[dir="rtl"] > summary::after {{ left: 18px; transform: rotate(135deg); }}
 .tp-day[dir="ltr"][open] > summary::after {{ transform: rotate(45deg); }}
 .tp-day[dir="rtl"][open] > summary::after {{ transform: rotate(45deg); }}
-.tp-day > summary:hover {{ background: var(--plane); }}
 
-.tp-meta {{ display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-bottom: 4px; }}
+.tp-meta {{ display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-bottom: 5px; }}
 .tp-meta .date {{ color: var(--ink2); font-size: 0.79rem; font-variant-numeric: tabular-nums; }}
 .tp-meta .dow {{ color: var(--muted); font-size: 0.79rem; }}
 .chip {{
-  font-size: 0.7rem; padding: 2px 7px; border-radius: 999px;
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 999px;
   background: var(--plane); border: 1px solid var(--border); color: var(--ink2);
 }}
-.chip.float {{ background: var(--warning); border-color: var(--warning); color: #2a1f00; font-weight: 600; }}
-.chip.today {{ background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }}
-.tp-day[data-today="1"] {{ border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }}
-.tp-day .title {{ font-size: 1.03rem; font-weight: 600; margin: 0 0 6px; }}
-.tp-day .headfoot {{ display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }}
-.tp-day .headfoot .total {{ font-size: 0.85rem; font-weight: 600; }}
-.tp-day .headfoot .drive {{ font-size: 0.79rem; color: var(--muted); }}
+.chip.float {{ background: var(--warn); border-color: var(--warn); color: var(--on-warn); font-weight: 600; }}
+.chip.today {{ background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }}
+.tp-day[data-today="1"] {{ border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }}
+
+/* on the band, over the photograph */
+.tp-band .tp-meta .date {{ color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.8); }}
+.tp-band .tp-meta .dow {{ color: rgba(255,255,255,.8); text-shadow: 0 1px 6px rgba(0,0,0,.8); }}
+.tp-band .chip {{
+  background: rgba(8,14,18,.5); border-color: rgba(255,255,255,.34); color: #fff;
+}}
+.tp-band .chip.today {{ background: var(--accent); border-color: var(--accent); color: var(--on-accent); }}
+.tp-band .chip.float {{ background: var(--warn); border-color: var(--warn); color: var(--on-warn); }}
+.tp-day .title {{
+  font-size: 1.12rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.012em;
+  color: #fff; text-shadow: 0 1px 14px rgba(0,0,0,.5);
+}}
+.tp-day .headfoot {{ display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; }}
+.tp-day .headfoot .total {{
+  font-size: 0.88rem; font-weight: 700; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.75);
+}}
+.tp-day .headfoot .drive {{
+  font-size: 0.79rem; color: rgba(255,255,255,.82); text-shadow: 0 1px 6px rgba(0,0,0,.8);
+}}
+
+@media (prefers-reduced-motion: reduce) {{
+  .tp-band, .tp-band > img.tp-band-img, .tp-day > summary::after {{ transition: none; }}
+  .tp-day > summary:hover .tp-band > img.tp-band-img {{ transform: none; }}
+}}
 
 .tp-body {{ padding: 2px 15px 15px; border-top: 1px solid var(--rule); }}
 .tp-lbl {{
@@ -505,7 +630,7 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   margin-top: 4px; font-size: 0.91rem;
 }}
 .tp-float {{
-  background: #fff6e0; border: 1px solid var(--warning); border-radius: 9px;
+  background: var(--warn-wash); border: 1px solid var(--warn); border-radius: 9px;
   padding: 11px 12px; margin-top: 12px; font-size: 0.89rem;
 }}
 .tp-split {{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 2px; }}
@@ -573,11 +698,11 @@ table.tp-tbl td.wrap {{ min-width: 150px; }}
    gap on that element alone is the point — an earlier descendant selector also closed
    the gaps inside each drawer, which slid the buttons up into the note text. */
 [data-testid="stVerticalBlock"].st-key-tp-days {{ gap: 0; }}
-.st-key-tp-days .tp-day {{ border-radius: 12px 12px 0 0; margin-bottom: 0; }}
+.st-key-tp-days .tp-day {{ border-radius: 14px 14px 0 0; margin-bottom: 0; }}
 .st-key-tp-days [data-testid="stExpander"] {{ margin-bottom: 10px; }}
 .st-key-tp-days [data-testid="stExpander"] details {{
-  border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px;
-  background: var(--surface);
+  border: 1px solid var(--border); border-top: none; border-radius: 0 0 14px 14px;
+  background: var(--surface); box-shadow: var(--lift);
 }}
 .st-key-tp-days [data-testid="stExpander"] summary {{ padding-block: 4px; }}
 .st-key-tp-days [data-testid="stExpander"] summary p {{
@@ -612,15 +737,15 @@ table.tp-tbl td.wrap {{ min-width: 150px; }}
 @media (max-width: 560px) {{
   .tp-hero-text h1 {{ font-size: 1.32rem; }}
   .tp-hero-text .sub {{ font-size: 0.8rem; }}
-  .tp-day img.tp-thumb {{ width: 62px; height: 44px; }}
-  .tp-day > summary {{ gap: 10px; }}
+  .tp-band {{ min-height: 98px; padding: 12px 36px 11px 13px; }}
+  .tp-day[dir="rtl"] .tp-band {{ padding: 12px 13px 11px 36px; }}
+  .tp-day[open] .tp-band {{ min-height: 168px; }}
+  .tp-day .title {{ font-size: 1.02rem; }}
   [data-testid="stMain"] .block-container {{ padding: 0.8rem 0.7rem 2.5rem; }}
   .tp-head {{ padding: 15px 14px 12px; }}
   .tp-head h1 {{ font-size: 1.4rem; }}
   .tp-stat {{ flex: 1 1 100%; }}
   .tp-split {{ grid-template-columns: 1fr; gap: 2px; }}
-  .tp-day > summary {{ padding: 12px 34px 12px 13px; }}
-  .tp-day[dir="rtl"] > summary {{ padding: 12px 13px 12px 34px; }}
   .tp-body {{ padding: 2px 13px 13px; }}
   table.tp-tbl {{ font-size: 0.8rem; }}
   /* let the three-column tables fit a 390px phone rather than needing a swipe */
@@ -799,13 +924,15 @@ def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, n
     )
     title = C(f"days.{i}.title", day["title"])
     head = (
-        f'<summary>{thumb(images, f"day{i}")}<div class="tp-sum">'
-        f'<div class="tp-meta"><span class="date">{num(day["date"])}</span>'
-        f'<span class="dow">{tx(C(f"days.{i}.dow", day["dow"]))}</span>{chips}</div>'
-        f'<div class="title">{tx(title)}</div>'
-        f'<div class="headfoot"><span class="total">{tx(T("ui.day.total"))} '
-        f'{num(money(day["day_total_chf"], cur, fx))}</span>'
-        f'<span class="drive">{tx(drive)}</span></div></div></summary>'
+        "<summary>" + band(images, f"day{i}", title,
+            f'<div class="tp-sum">'
+            f'<div class="tp-meta"><span class="date">{num(day["date"])}</span>'
+            f'<span class="dow">{tx(C(f"days.{i}.dow", day["dow"]))}</span>{chips}</div>'
+            f'<div class="title">{tx(title)}</div>'
+            f'<div class="headfoot"><span class="total">{tx(T("ui.day.total"))} '
+            f'{num(money(day["day_total_chf"], cur, fx))}</span>'
+            f'<span class="drive">{tx(drive)}</span></div></div>'
+        ) + "</summary>"
     )
 
     body = []
@@ -845,7 +972,7 @@ def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, n
         f'<div class="tp" {dirattr}>'
         f'<details class="tp-day" {dirattr} data-float="{int(floating)}"'
         f' data-today="{int(is_today)}"{" open" if is_today or expand_all else ""}>'
-        f'{head}{photo(images, f"day{i}", title, "tp-photo")}'
+        f'{head}'
         f'<div class="tp-body">{"".join(body)}</div></details></div>'
     )
 
