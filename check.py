@@ -162,7 +162,16 @@ print(f"bidi        all he/ar digit runs isolated "
       f"({bare} caught at runtime by guard_numbers, rest authored with LRI/PDI)")
 
 # --- 5. proper nouns carried through ---------------------------------------
+# Capitalised words that are not names: sentence openers, plain nouns, month names
+# (which do get translated). Everything left over should be a place, an operator or a
+# product, and must survive into he/ar. The list is only worth keeping if it stays
+# exhaustive — a noisy review is one a dropped station name can hide in.
 SENTENCE_START = {
+    "Fares", "August", "September", "May", "November", "Parking", "After", "An",
+    "Then", "Follow", "Bought", "Ask", "Ninety", "Plateau", "About", "Move",
+    "Anyone", "Last", "Runs", "Fifty", "Tightest", "No", "Level", "Centre", "Town",
+    "Old", "Sundays", "Fallback", "Train", "Check", "THIS", "DAY", "FLOATS", "NOT",
+    "Most", "Leave", "Lakeside", "Summit", "Sphinx", "Ice", "Vignette",
     "Straight", "Boat", "Same", "Cable", "Walk", "Drive", "Summit", "Stop", "Get",
     "Full", "Every", "Van", "Rental", "Accommodation", "Flights", "At", "Buy",
     "Bring", "Rain", "Take", "There", "The", "Avoid", "Restaurants", "See", "Do",

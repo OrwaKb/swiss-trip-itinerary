@@ -19,7 +19,8 @@
       "Van collected Saturday 5 Sep morning at ZRH, returned Saturday 12 Sep early. Rental desks close 23:30, so no Friday-night pickup.",
       "Accommodation figures are indicative ranges from published rates, not live quotes.",
       "Flights are excluded throughout.",
-      "At five people a 7-seat MPV works: the back row folds flat for luggage. At six it would not have."
+      "At five people a 7-seat MPV works: the back row folds flat for luggage. At six it would not have.",
+      "Fares are the operators' published 2026 tariffs, read in August 2026 from Jungfraubahnen, Männlichen, Schilthornbahn, Rigi Bahnen and SGV."
     ]
   },
   "trip_wide_costs": [
@@ -36,14 +37,14 @@
       "note": "The CHF 509 quote plus a second driver"
     },
     {
-      "item": "Fuel, approx 650 km",
+      "item": "Fuel, approx 380 km",
       "total": 150,
-      "note": "Vignette already fitted on Swiss rentals"
+      "note": "Vignette already fitted on Swiss rentals. At CHF 1.97 a litre this leaves room to spare."
     },
     {
       "item": "Food beyond the two big shops",
-      "total": 545,
-      "note": "Self-catered breakfasts and lunches, four dinners out. Parking beyond Stechelberg is assumed free at Weggis and included in Grindelwald."
+      "total": 1000,
+      "note": "Self-catered breakfasts and lunches, four dinners out for five at Swiss restaurant prices. Parking at Weggis, Lungern and Stechelberg is costed on the day; Grindelwald comes with the apartment."
     }
   ],
   "days": [
@@ -85,8 +86,8 @@
       "per_person": [
         {
           "item": "Boat Weggis-Lucerne return, half fare",
-          "chf": 23.0,
-          "full": 46
+          "chf": 21.5,
+          "full": 43
         }
       ],
       "group": [
@@ -97,13 +98,18 @@
         {
           "item": "Big supermarket shop",
           "chf": 335
+        },
+        {
+          "item": "Parking in Weggis, 2 nights",
+          "chf": 26
         }
       ],
-      "day_total_chf": 745,
+      "day_total_chf": 763.5,
       "tips": [
         "The big shop must happen before 17:00 - Sunday is closed.",
         "See the Chapel Bridge early evening, not midday.",
-        "Restaurants near the KKL are jammed at 18:30 and 22:00 with concert crowds."
+        "Restaurants near the KKL are jammed at 18:30 and 22:00 with concert crowds.",
+        "The last boat back from Lucerne leaves at 19:12 and reaches Weggis at 19:53. After that it is bus 502 by way of the train, about 50 minutes."
       ]
     },
     {
@@ -134,24 +140,25 @@
           "chf": 50
         }
       ],
-      "day_total_chf": 555,
+      "day_total_chf": 555.0,
       "tips": [
         "Buy the Day Pass - same price as a single return but covers every train and cable car on the mountain.",
         "Bring a picnic. Summit food is the most common complaint about Rigi.",
-        "Rain plan: boat to Flüelen and back by train, about CHF 27 half fare, three hours, no walking."
+        "Rain plan: boat to Flüelen and back by train, about CHF 27 half fare, three hours, no walking.",
+        "First cable car up from Weggis on a Sunday is 08:10, then every half hour until 19:10. The cogwheel from Kaltbad to Kulm runs hourly, so plan around it."
       ]
     },
     {
       "date": "2026-09-07",
       "dow": "Monday",
       "leg": "Transfer",
-      "title": "Over the Brünig to Grindelwald",
+      "title": "Over the Brünig to Grindelwald, by way of Lungern",
       "sleep": "Grindelwald (night 1 of 4)",
-      "movement": "Weggis, A2 to Hergiswil, A8 over the Brünig Pass through Sarnen and Giswil, Meiringen, north shore of Lake Brienz, Interlaken, Wilderswil, Zweilütschinen, Grindelwald.",
-      "drive_km": 86,
-      "drive_min": 90,
-      "parents": "Pfingstegg terrace and restaurant. Flat, five minutes up by cable car.",
-      "adults": "Pfingstegg plus the Fly-Line (CHF 14) or summer toboggan (CHF 8 a run), or on toward Berghaus Bäregg.",
+      "movement": "Weggis, A2 to Hergiswil, A8 over the Brünig Pass through Sarnen and Giswil. At Lungern leave the main road for the old Brünigstrasse along the lake, rejoin at Lungern Süd, then Meiringen, the north shore of Lake Brienz, Interlaken, Wilderswil, Zweilütschinen, Grindelwald.",
+      "drive_km": 105,
+      "drive_min": 100,
+      "parents": "An hour at Lungern: the lakeside path at Obsee is flat and paved, with a restaurant at each end. Then the Pfingstegg terrace and restaurant, five minutes up by cable car.",
+      "adults": "Lungern and the lake, then Pfingstegg plus the Fly-Line or the summer toboggan at CHF 8 a run, or on toward Berghaus Bäregg.",
       "per_person": [
         {
           "item": "Pfingstegg cable car, half fare",
@@ -171,13 +178,22 @@
         {
           "item": "Second supermarket shop",
           "chf": 210
+        },
+        {
+          "item": "Lungern lakeside parking",
+          "chf": 5
+        },
+        {
+          "item": "Fly-Line, three adults",
+          "chf": 42
         }
       ],
-      "day_total_chf": 636,
+      "day_total_chf": 683.0,
       "tips": [
         "Take the north-shore road along Lake Brienz rather than the tunnels.",
         "Coop Grindelwald on Dorfstrasse is open 08:00-19:00 every day including Sundays.",
-        "There is no free parking in Grindelwald - insist on an included space when booking."
+        "There is no free parking in Grindelwald - insist on an included space when booking.",
+        "Lungern has a 3.5 km bypass tunnel. Follow the main road and you pass under the mountain and see nothing - take the old lakeside road, in at Lungern Nord and out at Lungern Süd."
       ]
     },
     {
@@ -193,14 +209,9 @@
       "adults": "Royal Walk to the true summit first (1 km, 15 min, steep), then the Panorama Trail, then on past Kleine Scheidegg to Wengernalp and Wengen.",
       "per_person": [
         {
-          "item": "Männlichen gondola, half fare",
-          "chf": 34.0,
-          "full": 68
-        },
-        {
-          "item": "Cog train Kleine Scheidegg to Grindelwald, half fare",
-          "chf": 18.0,
-          "full": 36
+          "item": "Männlichen Panorama round trip: gondola up, cog train down",
+          "chf": 37.3,
+          "full": 74.6
         }
       ],
       "group": [
@@ -209,10 +220,11 @@
           "chf": 346
         }
       ],
-      "day_total_chf": 606,
+      "day_total_chf": 532.5,
       "tips": [
         "The best day of the trip for the group as a whole.",
-        "Fallback if they would rather not walk: gondola back down and spend the afternoon on the flat paved Lauterbrunnen valley floor, bus 141 back every half hour."
+        "Fallback if they would rather not walk: gondola back down and spend the afternoon on the flat paved Lauterbrunnen valley floor, bus 141 back every half hour.",
+        "Ask for the Panoramaweg round trip to Grindelwald Grund. Bought as a return the gondola costs CHF 17 more each, for a ride down you never take."
       ]
     },
     {
@@ -224,13 +236,13 @@
       "movement": "Grindelwald Terminal, Eiger Express gondola to Eigergletscher (15 min), cog railway through the Eiger to Jungfraujoch (26-30 min). About 50 min each way. First departure around 08:00.",
       "drive_km": 0,
       "drive_min": 0,
-      "parents": "Sphinx observatory (lift available), Ice Palace, the Plateau. 90 minutes to two hours is plenty, then straight back down.",
+      "parents": "Sphinx observatory by lift, Ice Palace, the Plateau. Ninety minutes to two hours is plenty at this height, then straight back down.",
       "adults": "Get off at Eigergletscher on the descent and walk the Eiger Trail to Alpiglen: 6.5 km, about 2.5 hours, mostly descending along the base of the Eiger north face. Train back from Alpiglen.",
       "per_person": [
         {
           "item": "Jungfraujoch return from Grindelwald, half fare",
-          "chf": 110.5,
-          "full": 221
+          "chf": 119.6,
+          "full": 239.2
         },
         {
           "item": "Mandatory seat reservation",
@@ -241,20 +253,22 @@
       "group": [
         {
           "item": "Eiger Trail return leg, three adults",
-          "chf": 45
+          "chf": 19.5
         },
         {
           "item": "Grindelwald apartment + visitor's tax",
           "chf": 346
         }
       ],
-      "day_total_chf": 994,
+      "day_total_chf": 1013.5,
       "floating": true,
       "tips": [
         "THIS DAY FLOATS. Check the summit webcams at breakfast and go on the clearest morning.",
-        "Below freezing and windy year-round at the top. Coats, hats, gloves, sunglasses, sunscreen.",
+        "September averages a high of 1 C and a low of minus 5 C at the top, before the wind. Coats, hats, gloves, sunglasses, sunscreen.",
         "The final half-hour of the ascent is inside a tunnel with no view.",
-        "Do NOT buy the Good Morning Ticket - it cannot be combined with a Half Fare Card."
+        "Do NOT buy the Good Morning Ticket - it cannot be combined with a Half Fare Card.",
+        "3,454 m. About half of adults get a headache, dizziness or no appetite up here, and it usually starts two to twelve hours in - which is exactly why a short visit is the plan. Move slowly, drink water, skip the alcohol, take the lift.",
+        "Anyone with a heart or lung condition, sleep apnoea, or on medication for either should ask their doctor before the trip, not on the platform. There is a staffed medical room with oxygen at the top."
       ]
     },
     {
@@ -270,7 +284,7 @@
       "adults": "Stop at Birg for the Thrill Walk - 200 m of grating, glass floor and rope crossing bolted to the cliff, free. Then the full Grütschalp-Mürren panorama trail or the Northface Trail from Allmendhubel.",
       "per_person": [
         {
-          "item": "Schilthorn return from Stechelberg, half fare",
+          "item": "Schilthorn round trip via Grütschalp, half fare",
           "chf": 57.5,
           "full": 115
         },
@@ -278,6 +292,11 @@
           "item": "Bus 141 Lauterbrunnen to Stechelberg, half fare",
           "chf": 2.2,
           "full": 4.4
+        },
+        {
+          "item": "Piz Gloria brunch",
+          "chf": 38.0,
+          "full": 38
         }
       ],
       "group": [
@@ -290,11 +309,12 @@
           "chf": 346
         }
       ],
-      "day_total_chf": 656,
+      "day_total_chf": 845.5,
       "tips": [
-        "Take one of the first cable cars: 07:55, 08:25 or 08:55.",
-        "Book Piz Gloria for six. It revolves once every 45 minutes; brunch served to 14:00.",
-        "Do the round trip in both directions - the two routes are completely different rides."
+        "Take one of the first cable cars: at the summit for 07:55, 08:25 or 08:45.",
+        "Book Piz Gloria for five. It revolves once every 45 minutes, brunch is served to 14:00, and a table reservation is required rather than advisable.",
+        "Ask for the round trip via Grütschalp, not a Stechelberg return. Both are CHF 115, but only the round trip covers coming down through Mürren and Lauterbrunnen.",
+        "Last cable car off the summit is 17:50. Mürren to Lauterbrunnen runs until 19:58 and bus 141 back to the van at Stechelberg until 23:29, so there is no rush."
       ]
     },
     {
@@ -310,7 +330,7 @@
       "adults": "Full 1.4 km of the gorge walkway, about an hour.",
       "per_person": [
         {
-          "item": "Aare Gorge entry (no discount available)",
+          "item": "Aare Gorge entry",
           "chf": 13.0,
           "full": 13
         }
@@ -321,10 +341,12 @@
           "chf": 275
         }
       ],
-      "day_total_chf": 340,
+      "day_total_chf": 340.0,
       "tips": [
         "Refuel this evening, not at 04:30. Rental is full-to-full.",
-        "Fill up in a town, never at a motorway services."
+        "Fill up in a town, never at a motorway services.",
+        "The Jungfrau Region guest card takes 20% off a single entry to the gorge. Ask at the desk whether it still counts on your checkout day.",
+        "Grindelwald fills for the Eidgenössisches Jugendjodelfest, 11 to 13 September. Leave the village by 09:30."
       ]
     },
     {
@@ -376,32 +398,42 @@
       "instead_of": "An hour in Lauterbrunnen",
       "do": "Trümmelbach Falls. Ten glacier falls inside the mountain, but stairs beyond the halfway lift and permanently wet - adults only.",
       "chf_pp": 18
+    },
+    {
+      "instead_of": "A clear morning on the Brünig",
+      "do": "Lungern-Turren. Ten minutes by cable car from Lungern-Obsee to a terrace facing the Bernese Alps across the lake. Runs 14 May to 1 November, 08:20 to 17:00 on a weekday.",
+      "chf_pp": 18
+    },
+    {
+      "instead_of": "A washed-out day in the valley",
+      "do": "Blausee. Fifty minutes each way from Grindelwald down the Kandertal, a forest lake that still works in drizzle, with a 300 m paved loop and a glass-bottomed rowing boat in the price.",
+      "chf_pp": 13
     }
   ],
   "booking_order": [
-    "Weggis, 5-6 September. Tightest item - the Vienna Philharmonic is in Lucerne both nights. Confirm free parking.",
-    "Grindelwald apartment, 7-10 September. Three bedrooms sleeping five or six, with an included parking space.",
+    "Grindelwald apartment, 7-10 September. Tightest item - Grindelwald hosts the first Eidgenössisches Jugendjodelfest on 11-13 September and the village is booked out around it. Three bedrooms sleeping five, with an included parking space.",
+    "Weggis, 5-6 September. The Vienna Philharmonic plays Lucerne both nights. Ask whether parking is included; it is CHF 13 a day if not.",
     "Both airport hotels - Radisson Blu or Hyatt Place for the 4th, Welcome Inn Kloten or B&B Rümlang for the 11th.",
     "Confirm the van at CHF 509 and add a second driver. Check height against 2.30 m.",
     "Five Half Fare Cards, covering 4-12 September.",
     "Jungfraujoch seat reservations, once the forecast is clear.",
-    "Piz Gloria brunch for five, Thursday.",
-    "Nothing else. Rigi, Männlichen, Schilthorn, Pfingstegg and the Aare Gorge are all walk-up."
+    "Piz Gloria brunch for five, Thursday. The table reservation is required.",
+    "Nothing else. Rigi, Lungern, Männlichen, Schilthorn, Pfingstegg and the Aare Gorge are all walk-up."
   ],
   "totals": {
     "accommodation_chf": 2754,
-    "activities_chf": 1676,
-    "food_chf": 1140,
+    "activities_chf": 1657,
+    "food_chf": 1785,
     "half_fare_cards_chf": 750,
     "van_chf": 600,
     "fuel_chf": 150,
-    "parking_chf": 11,
-    "grand_total_chf": 7081,
-    "per_person_chf": 1416,
-    "per_person_eur": 1522,
-    "per_person_ils": 5145,
-    "tickets_per_person_full_chf": 629,
-    "tickets_per_person_half_chf": 326,
-    "note_vs_six": "At six people the total was about CHF 8,132 (CHF 1,355 each). Dropping to five saved roughly CHF 1,050 overall but raised the per-person cost, because the Grindelwald apartment, the van and the three hotel rooms at each end cost the same either way."
+    "parking_chf": 42,
+    "grand_total_chf": 7738,
+    "per_person_chf": 1548,
+    "per_person_eur": 1664,
+    "per_person_ils": 5622,
+    "tickets_per_person_full_chf": 653,
+    "tickets_per_person_half_chf": 357,
+    "note_vs_six": "At six people the total would be about CHF 8,450 (CHF 1,408 each). Five costs less overall but more each, because the Grindelwald apartment, the van and the three hotel rooms at each end cost the same either way - and at six the luggage would not have fitted."
   }
 }
