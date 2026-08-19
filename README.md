@@ -24,9 +24,12 @@ re-planned in the app — every figure on screen traces back to that file.
 | `app.py` | The whole app. Contains no user-visible copy. |
 | `itinerary.json` | The trip. Source of truth for every fact and figure. |
 | `translations.json` | Hebrew and Arabic renderings, plus UI chrome for all three languages. |
-| `check.py` | Verification pass — run it after editing either JSON file. |
+| `tripmap.py` | The map tab: the Leaflet document, and the GPX and KML exports. No copy here either. |
+| `geo.json` | Where every stop is and how you get between them. Built, not hand-written. |
+| `check.py` | Verification pass — run it after editing any of the JSON files. |
 | `requirements.txt` | Pinned dependencies. |
 | `.streamlit/config.toml` | Pins the light theme so the palette is the same on every device. |
+| `static/leaflet/` | Leaflet 1.9.4, vendored. The map draws without reaching a CDN. |
 
 ## Run locally
 
@@ -84,6 +87,17 @@ Hard failures (exit 1):
 - an ink tone falls below its contrast floor on its own surface or plane
 - the today marker lands on the wrong card, fires outside the trip dates, or
   expand-all misses a card
+- a map coordinate falls outside Switzerland (which is what a swapped lat/lon looks
+  like, and is otherwise invisible in a file of five-decimal numbers)
+- a route's line starts or ends more than 250 m from the stop it claims to join —
+  the signature of a route fetched between the wrong two places, which looks
+  perfectly plausible until somebody drives it
+- the routed kilometres disagree with `drive_km` in `itinerary.json` by more than 15 %
+- a day of the trip has nothing pinned on it
+- two route colours are too close to tell apart, or a route colour is illegible on
+  the map paper, or two modes share a dash pattern
+- the GPX or KML export does not parse, or has lost a waypoint
+- `static/leaflet/` is missing, which would render the map tab as an empty box
 
 It also prints a review list of Latin tokens in the English source that do not reappear
 in a translation, so a dropped proper noun is easy to spot. The current residue is all
@@ -222,6 +236,51 @@ against a strict stub in `tools/stub_supabase.py` that speaks the same REST dial
 because reaching the real service needs somebody's account. That proves the requests the
 app sends; it does not prove Supabase accepts them. The first note you post after wiring
 the secrets is the real test.
+
+## The map
+
+A fifth tab draws the whole trip: every stop, and every stretch you drive, walk, ride
+or sail. It is a hand-written Leaflet document inside a Streamlit HTML component —
+no `folium`, no `pydeck`, and no new Python dependency. Leaflet is vendored into
+`static/leaflet/`, so apart from the map tiles nothing is fetched from another host.
+
+The basemap is swisstopo's own national map (`wmts.geo.admin.ch`), which is free,
+needs no key, and draws the hiking paths and their difficulty grades. The two dark
+ink tones swap it for the grey edition and invert it; colour does not invert cleanly.
+Route colours are tone roles like every other colour, and the four modes are told
+apart by dash pattern as well as hue.
+
+The map never mirrors — north stays up — but the popups, legend, day switcher and
+stop list all take `dir="rtl"`, and every number is formatted in Python so it arrives
+already inside its bidi isolate.
+
+### Rebuilding geo.json
+
+```bash
+python tools/build_geo.py          # writes geo.json
+python tools/build_geo.py --dry    # fetches and reports, writes nothing
+```
+
+Stop coordinates are seeded by hand in the tool, then snapped to the real
+OpenStreetMap feature; the element id lands in `geo.json` as `source`, so every pin
+can be traced back to something. Drives come from OSRM, lifts and mountain railways
+are traced from OSM ways, and the whole lot is simplified to 10 m and rounded to five
+decimals. Nothing is fetched while the app is running.
+
+The public Overpass instance is often congested. The tool probes the mirrors once,
+paces its calls and backs off on a refusal, so a slow run is normal and a failed one
+is rare.
+
+### Taking it offline
+
+Alpine valleys lose signal, and the tiles need a connection. Two escape hatches:
+
+- If the tiles fail, the map drops the background, says so, and falls back to the
+  stop list, which still carries every coordinate and Maps link.
+- GPX and KML downloads. **GPX is the one that matters** — Organic Maps and OsmAnd
+  hold Switzerland offline and will draw every pin and path on it. KML is for Google
+  My Maps on a laptop: Google Maps on a phone shows it under Your Places but will
+  not navigate it.
 
 ## Photographs
 

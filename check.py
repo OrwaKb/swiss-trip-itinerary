@@ -24,11 +24,16 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import store as notes_store  # noqa: E402
+import tripmap  # noqa: E402
 from app import INK_TONES, guard_numbers, reconcile, stylesheet  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).parent / "tools"))
+import build_geo  # noqa: E402  (its haversine, so the distance maths cannot drift)
 
 BASE = Path(__file__).parent
 DATA = json.loads((BASE / "itinerary.json").read_text(encoding="utf-8"))
 TRANS = json.loads((BASE / "translations.json").read_text(encoding="utf-8"))
+GEO = json.loads((BASE / "geo.json").read_text(encoding="utf-8"))
 
 LRI, PDI = "⁦", "⁩"
 RTL_LANGS = TRANS["meta"]["rtl"]
@@ -62,6 +67,13 @@ def rendered_paths() -> dict[str, str]:
     for i, step in enumerate(DATA["booking_order"]):
         paths[f"booking_order.{i}"] = step
     paths["totals.note_vs_six"] = DATA["totals"]["note_vs_six"]
+    # The map's own prose. geo.json is a source of truth like itinerary.json, so
+    # its strings answer to the same coverage rule.
+    for slug, stop in GEO["stops"].items():
+        paths[f"geo.stops.{slug}.name"] = stop["name"]
+        paths[f"geo.stops.{slug}.what"] = stop["what"]
+    for i, leg in enumerate(GEO["legs"]):
+        paths[f"geo.legs.{i}.label"] = leg["label"]
     return paths
 
 
@@ -110,11 +122,14 @@ print(f"ui keys     {len(base_keys)} per language, {len(ui)} languages")
 # --- 3b. every key app.py asks for actually exists ---------------------------
 # Key parity alone cannot catch a key that is missing from every language at once,
 # which is exactly what happens when a new widget is added.
-APP_SRC = (BASE / "app.py").read_text(encoding="utf-8")
+APP_SRC = ((BASE / "app.py").read_text(encoding="utf-8")
+           + (BASE / "tripmap.py").read_text(encoding="utf-8"))
 asked = set(re.findall(r'T\(\s*[\'"]([a-z0-9_.]+)[\'"]', APP_SRC))
 # f-string keys built from a loop variable, e.g. T(f"ui.totals.{k}")
 asked |= {f"ui.totals.{k}" for k in TRANS["meta"]["total_keys"]}
 asked |= {f"ui.ink.{tone}" for tone in INK_TONES}
+# tripmap names these from the mode of each leg, so no literal appears next to a T(
+asked |= {f"ui.map.mode.{mode}" for mode in tripmap.MODES}
 # store.py names its own message keys and app.py renders them as T(exc.key), so the
 # literal never appears next to a T( for the scan above to find.
 for _src in ("store.py", "app.py"):
@@ -188,6 +203,12 @@ SENTENCE_START = {
     "Departure", "Mountain", "Landing", "Ice", "Northface", "Thrill", "Bond",
     "Skyline", "Piz", "Good", "Half", "Day", "Vienna", "Radisson", "Welcome",
     "Hyatt", "Zurich", "Lucerne", "Kloten", "Coop",
+    # From the map's own prose. Common words that happen to start a sentence, plus
+    # Europe, which is a proper noun but one that genuinely translates.
+    "Arrivals", "Airport", "Night", "Covered", "Desks", "Base", "Change", "Queen",
+    "Mountains", "Free", "Passed", "Top", "End", "Cog", "Cogwheel", "Where",
+    "Little", "Bottom", "Enter", "Walkways", "Come", "Altitude", "Europe", "Down",
+    "Into", "Through", "On", "Back", "This", "Both", "Rental", "Base",
 }
 # Latin-1 letters, not just A-Z: the Swiss names carry umlauts (Brünig, Männlichen).
 TOKEN = re.compile(r"\b[A-ZÄÖÜÉÈÀ][A-Za-zäöüéèàÄÖÜ]+\b|\b[A-Z]{2,}\b|\b[A-Z]\d+\b")
@@ -195,7 +216,10 @@ TOKEN = re.compile(r"\b[A-ZÄÖÜÉÈÀ][A-Za-zäöüéèàÄÖÜ]+\b|\b[A-Z]{2,
 for lang in RTL_LANGS:
     dropped: dict[str, list[str]] = {}
     for path, english in paths.items():
-        target = TRANS["content"][lang].get(path, "")
+        # The isolates go in between the letter and the digit, so a motorway
+        # number is stored as "A<LRI>4<PDI>" and a plain search for "A4" misses
+        # it. Strip them before looking: the token survived, it is just wrapped.
+        target = TRANS["content"][lang].get(path, "").replace(LRI, "").replace(PDI, "")
         for token in set(TOKEN.findall(english)):
             if token in SENTENCE_START:
                 continue
@@ -549,6 +573,218 @@ except notes_store.StoreError as exc:
         failures.append(f"store: half config raised {exc.key}")
 print(f"notes store {len(stub.calls)} REST calls checked against the stub; sqlite and "
       f"supabase agree on ordering, likes, ownership and refusals")
+
+# --- 9. the map -------------------------------------------------------------
+# Two of these earn their place over all the others. The bounding box catches a
+# swapped lat/lon, which puts a stop in the Indian Ocean and is otherwise invisible
+# in a file of five-decimal numbers. The endpoint test catches a route fetched
+# between the wrong two stops, which looks perfectly plausible on screen and is
+# only discovered by driving it.
+
+CH_BBOX = (45.80, 5.90, 47.85, 10.55)  # south, west, north, east
+ENDPOINT_M = 250
+DRIVE_TOLERANCE = 0.15
+
+for slug, stop in GEO["stops"].items():
+    lat, lon = stop["lat"], stop["lon"]
+    if not (CH_BBOX[0] <= lat <= CH_BBOX[2] and CH_BBOX[1] <= lon <= CH_BBOX[3]):
+        failures.append(f"geo/{slug}: {lat}, {lon} is not inside Switzerland")
+    for d in stop["days"]:
+        if not 0 <= d < len(DATA["days"]):
+            failures.append(f"geo/{slug}: day {d} is not a day of this trip")
+
+worst_end = (0.0, "nothing")
+for i, leg in enumerate(GEO["legs"]):
+    where = f"geo/leg {i} ({leg['from']} -> {leg['to']})"
+    if not 0 <= leg["day"] < len(DATA["days"]):
+        failures.append(f"{where}: day {leg['day']} is not a day of this trip")
+    if leg["mode"] not in tripmap.MODES:
+        failures.append(f"{where}: {leg['mode']} is not a way of getting anywhere")
+    geom = leg["geometry"]
+    if len(geom) < 2:
+        failures.append(f"{where}: has no geometry")
+        continue
+    for end, slug in ((geom[0], leg["from"]), (geom[-1], leg["to"])):
+        if slug not in GEO["stops"]:
+            failures.append(f"{where}: {slug} is not a stop")
+            continue
+        stop = GEO["stops"][slug]
+        gap = build_geo.haversine(end, (stop["lat"], stop["lon"]))
+        if gap > worst_end[0]:
+            worst_end = (gap, f"leg {i} at {slug}")
+        if gap > ENDPOINT_M:
+            failures.append(
+                f"{where}: the line ends {gap:.0f} m away from {slug}, past the "
+                f"{ENDPOINT_M} m tolerance — it is probably the wrong line")
+
+# Every day of the trip has to be on the map, or the day switcher has a hole in it.
+mapped_days = ({d for s in GEO["stops"].values() for d in s["days"]}
+               | {l["day"] for l in GEO["legs"]})
+blank = [i for i in range(len(DATA["days"])) if i not in mapped_days]
+if blank:
+    failures.append(f"geo: nothing is pinned on day(s) {blank}")
+
+# The routed distance is the one honest check on the itinerary's own figures, and
+# it found two places where those figures are wrong. itinerary.json is the source of
+# truth and is not edited to make a check pass, so the two are named here with what
+# the roads actually measure, and reported every run until somebody decides.
+#
+# Both were confirmed against two independent routers, OSRM and Valhalla, which
+# agree with each other to within a kilometre.
+KNOWN_DRIVE_DRIFT = {
+    3: "Weggis to Grindelwald over the Brunig is 130 km by road, not 105. There is "
+       "no shorter way: Meiringen to Grindelwald has to go back out via Brienz and "
+       "Interlaken, because the direct pass, Grosse Scheidegg, is closed to cars.",
+    8: "Kloten to Parking 3 is 2.5 km, not 10. The 12 minutes is about right for "
+       "the traffic, so only the distance is out.",
+}
+for i, day in enumerate(DATA["days"]):
+    stated = day.get("drive_km") or 0
+    routed = sum(l["km"] for l in GEO["legs"] if l["day"] == i and l["mode"] == "drive")
+    if stated == 0 and routed == 0:
+        continue
+    if stated == 0 or routed == 0:
+        failures.append(f"geo/day {i}: itinerary says {stated} km of driving, "
+                        f"the routes say {routed:.1f} km")
+        continue
+    off = abs(routed - stated) / stated
+    if off <= DRIVE_TOLERANCE:
+        continue
+    if i in KNOWN_DRIVE_DRIFT:
+        review.append(f"day {i} drive_km: itinerary {stated} km vs {routed:.1f} km "
+                      f"routed. {KNOWN_DRIVE_DRIFT[i]}")
+    else:
+        failures.append(
+            f"geo/day {i}: itinerary says {stated} km, the routed line is "
+            f"{routed:.1f} km ({off * 100:.0f}% apart)")
+stale = [i for i in KNOWN_DRIVE_DRIFT
+         if abs(sum(l["km"] for l in GEO["legs"] if l["day"] == i and l["mode"] == "drive")
+                - (DATA["days"][i].get("drive_km") or 0))
+         / max(DATA["days"][i].get("drive_km") or 1, 1) <= DRIVE_TOLERANCE]
+if stale:
+    failures.append(f"geo: day(s) {stale} are listed as known drive drift but now "
+                    f"agree — delete them from KNOWN_DRIVE_DRIFT")
+
+pts = sum(len(l["geometry"]) for l in GEO["legs"])
+traced = sum(1 for l in GEO["legs"] if str(l.get("source", "")).startswith("osm"))
+print(f"geo         {len(GEO['stops'])} stops all inside Switzerland, "
+      f"{len(GEO['legs'])} legs ({traced} traced from OSM ways), {pts:,} points; "
+      f"worst line end {worst_end[0]:.0f} m from its stop ({worst_end[1]})")
+
+# The map document answers to the same rule as the stylesheet: no colour may be
+# written down, because a literal cannot follow the theme into the dark tones.
+_T, _C, _tx, _dir = _translators("en")
+for _tone_name in INK_TONES:
+    _tone = INK_TONES[_tone_name]
+    _data = tripmap.payload(GEO, _T, _C, _tx, "en", False, _tone, -1)
+    _doc = tripmap.document(_data, _tone, "en", "sans-serif", "1.5")
+    _lit = [m for m in re.findall(
+        r"(?<![-\w])(?:color|background(?:-color)?)\s*:\s*(#[0-9a-fA-F]{3,8})", _doc)
+        if m.lower() not in ("#fff", "#ffffff", "#0d1418")]
+    if _lit:
+        failures.append(f"map/{_tone_name}: colours hardcoded in the map document "
+                        f"instead of a tone role: {sorted(set(_lit))}")
+    for _mode in tripmap.MODES:
+        if f"--{_mode}:" not in _doc:
+            failures.append(f"map/{_tone_name}: no line colour defined for {_mode}")
+
+# The route lines are not text, so they answer to a different floor: legible on the
+# paper they are drawn on, and far enough apart from each other that a drive is not
+# mistaken for a walk. The dash patterns are the real safety net, so they are checked
+# to be distinct too.
+MAP_PAPER = {"light": "#F2EFE9", "dark": "#333333"}
+ROUTE_ROLES = [f"route_{m}" for m in tripmap.MODES]
+
+
+def _lab(hexstr: str):
+    h = hexstr.lstrip("#")
+    r, g, b = (_channel(int(h[i:i + 2], 16)) for i in (0, 2, 4))
+    x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047
+    y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883
+    f = lambda t: t ** (1 / 3) if t > 0.008856 else 7.787 * t + 16 / 116  # noqa: E731
+    fx, fy, fz = f(x), f(y), f(z)
+    return (116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz))
+
+
+worst_paper, worst_apart = (99.0, ""), (999.0, "")
+for tone, roles in INK_TONES.items():
+    paper = MAP_PAPER[roles["scheme"]]
+    for role in ROUTE_ROLES:
+        if role not in roles:
+            failures.append(f"ink/{tone}: no {role} for the map to draw with")
+            continue
+        got = contrast(roles[role], paper)
+        if got < 3.0:
+            failures.append(f"ink/{tone}.{role}: {roles[role]} is {got:.2f}:1 on the "
+                            f"map paper {paper}, needs 3:1")
+        if got < worst_paper[0]:
+            worst_paper = (got, f"{tone}.{role}")
+    for a, b in ((x, y) for i, x in enumerate(ROUTE_ROLES) for y in ROUTE_ROLES[i + 1:]):
+        if a not in roles or b not in roles:
+            continue
+        la, lb = _lab(roles[a]), _lab(roles[b])
+        apart = sum((p - q) ** 2 for p, q in zip(la, lb)) ** 0.5
+        if apart < 22:
+            failures.append(f"ink/{tone}: {a} and {b} are only {apart:.0f} apart in Lab, "
+                            f"too close to tell one line from the other")
+        if apart < worst_apart[0]:
+            worst_apart = (apart, f"{tone} {a[6:]}/{b[6:]}")
+dashes = [str(tripmap.MODE_STYLE[m]["dash"]) for m in tripmap.MODES]
+if len(set(dashes)) != len(dashes):
+    failures.append(f"map: two modes share a dash pattern, so colour is the only thing "
+                    f"telling them apart: {dashes}")
+print(f"map colour  {len(ROUTE_ROLES)} route roles x {len(INK_TONES)} tones legible on "
+      f"the map and distinct (tightest {worst_paper[1]} {worst_paper[0]:.2f}:1, "
+      f"closest pair {worst_apart[1]} dE {worst_apart[0]:.0f}); "
+      f"{len(set(dashes))} distinct dash patterns")
+
+# The two downloads are the whole offline story, so they get parsed rather than
+# eyeballed: a file that does not open is worse than no file at all.
+import xml.etree.ElementTree as ET  # noqa: E402
+
+_gpx = tripmap.gpx(GEO, "Switzerland")
+_kml = tripmap.kml(GEO, "Switzerland", INK_TONES["daylight"])
+try:
+    root = ET.fromstring(_gpx)
+    ns = "{http://www.topografix.com/GPX/1/1}"
+    n_wpt = len(root.findall(f"{ns}wpt"))
+    n_trk = len(root.findall(f"{ns}trk"))
+    n_pts = len(root.findall(f".//{ns}trkpt"))
+    if n_wpt != len(GEO["stops"]):
+        failures.append(f"gpx: {n_wpt} waypoints for {len(GEO['stops'])} stops")
+    if n_trk != len(GEO["legs"]):
+        failures.append(f"gpx: {n_trk} tracks for {len(GEO['legs'])} legs")
+    if n_pts != pts:
+        failures.append(f"gpx: {n_pts} track points, geo.json holds {pts}")
+except ET.ParseError as exc:
+    failures.append(f"gpx: does not parse: {exc}")
+    n_wpt = n_trk = 0
+try:
+    kroot = ET.fromstring(_kml)
+    kns = "{http://www.opengis.net/kml/2.2}"
+    n_place = len(kroot.findall(f".//{kns}Placemark"))
+    n_style = len(kroot.findall(f".//{kns}Style"))
+    if n_place != len(GEO["stops"]) + len(GEO["legs"]):
+        failures.append(f"kml: {n_place} placemarks for "
+                        f"{len(GEO['stops'])} stops and {len(GEO['legs'])} legs")
+    if n_style != len(tripmap.MODES):
+        failures.append(f"kml: {n_style} line styles for {len(tripmap.MODES)} modes")
+    if re.search(r"<color>(?!ff)", _kml):
+        failures.append("kml: a line style is not fully opaque")
+except ET.ParseError as exc:
+    failures.append(f"kml: does not parse: {exc}")
+print(f"exports     gpx {len(_gpx) / 1024:.0f} KB parses ({n_wpt} waypoints, "
+      f"{n_trk} tracks), kml {len(_kml) / 1024:.0f} KB parses")
+
+# Leaflet has to be on disk. If it is not, the map tab renders an empty box on a
+# deploy and nothing says why.
+for _asset in ("leaflet.js", "leaflet.css"):
+    _path = BASE / "static" / "leaflet" / _asset
+    if not _path.exists():
+        failures.append(f"map: static/leaflet/{_asset} is missing, so the map cannot draw")
+    elif _path.stat().st_size < 5000:
+        failures.append(f"map: static/leaflet/{_asset} is only {_path.stat().st_size} bytes")
 
 # --- report -----------------------------------------------------------------
 print()

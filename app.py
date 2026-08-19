@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 import streamlit as st
 
 import store as notes_store
+import tripmap
 
 BASE = Path(__file__).parent
 DATA_PATH = BASE / "itinerary.json"
@@ -47,6 +48,11 @@ FX_KEY = {"EUR": "CHF_EUR", "ILS": "CHF_ILS"}
 # written into the CSS. A literal like `color: #fff` on a chip is invisible the moment
 # the page behind it turns pale, so nothing below the tone table gets to hardcode one.
 #
+# The four route_* roles are the map's lines. They are not text, so they answer to a
+# different floor: check.py holds them 3:1 against the map paper they are drawn on and
+# pairwise apart from each other, because a drive and a walk that look alike on a phone
+# in sunlight are worse than no map. The dash patterns carry the distinction anyway.
+#
 # check.py holds every tone to 7:1 on ink, 4.5:1 on ink2 and 3:1 on muted against BOTH
 # its own surface and its own plane, so a tone cannot be added without passing. The
 # accent and warn carry text too, so they are held to 4.5:1 on surface, plane and their
@@ -58,6 +64,8 @@ INK_TONES = {
         "rule": "#DCE5EA", "line": "#BDCDD7", "surface": "#FFFFFF", "plane": "#E9EFF3",
         "accent": "#B4432A", "accent_wash": "#FAE4DC", "on_accent": "#FFFFFF",
         "warn": "#8E5D00", "warn_wash": "#FAEFD6", "on_warn": "#FFFFFF",
+        "route_drive": "#A8391F", "route_walk": "#12653A",
+        "route_lift": "#134E92", "route_boat": "#653B94",
     },
     "alpenglow": {  # the same light, on warm paper
         "scheme": "light",
@@ -65,6 +73,8 @@ INK_TONES = {
         "rule": "#EADCD5", "line": "#D3BDB3", "surface": "#FDFAF8", "plane": "#F3ECE7",
         "accent": "#A03C27", "accent_wash": "#F7DFD6", "on_accent": "#FFFFFF",
         "warn": "#855400", "warn_wash": "#F7EAD2", "on_warn": "#FFFFFF",
+        "route_drive": "#96331B", "route_walk": "#115C34",
+        "route_lift": "#134887", "route_boat": "#5E3789",
     },
     "dusk": {  # slate blue, dark
         "scheme": "dark",
@@ -72,6 +82,8 @@ INK_TONES = {
         "rule": "#28363F", "line": "#3A4C58", "surface": "#1B2832", "plane": "#121D25",
         "accent": "#F19479", "accent_wash": "#35231E", "on_accent": "#1A0E09",
         "warn": "#D9A44C", "warn_wash": "#2D2517", "on_warn": "#1F1804",
+        "route_drive": "#FF9E80", "route_walk": "#54D89B",
+        "route_lift": "#7CBEFF", "route_boat": "#CBA9FF",
     },
     "night": {  # near black, dark
         "scheme": "dark",
@@ -79,6 +91,8 @@ INK_TONES = {
         "rule": "#202830", "line": "#303B42", "surface": "#141A1F", "plane": "#0A0E11",
         "accent": "#EF8E74", "accent_wash": "#2B1A15", "on_accent": "#170C08",
         "warn": "#D6A14A", "warn_wash": "#251E12", "on_warn": "#1B1503",
+        "route_drive": "#FF9B7C", "route_walk": "#4FD597",
+        "route_lift": "#78BCFF", "route_boat": "#C7A4FF",
     },
 }
 DEFAULT_INK = "daylight"
@@ -1237,6 +1251,7 @@ def main() -> None:
     data, recon = load_data(DATA_PATH.stat().st_mtime)
     trans = load_translations(TRANS_PATH.stat().st_mtime)
     images = load_images(IMAGES_PATH.stat().st_mtime)
+    geo = tripmap.load_geo(tripmap.GEO_PATH.stat().st_mtime)
     meta = trans["meta"]
     languages = meta["languages"]
 
@@ -1322,8 +1337,9 @@ def main() -> None:
     except notes_store.StoreError as exc:
         notes, store_problem = {}, exc.key
 
-    overview, days, costs, options = st.tabs([
-        T("ui.tab.overview"), T("ui.tab.days"), T("ui.tab.costs"), T("ui.tab.options"),
+    overview, days, themap, costs, options = st.tabs([
+        T("ui.tab.overview"), T("ui.tab.days"), T("ui.tab.map"),
+        T("ui.tab.costs"), T("ui.tab.options"),
     ])
     with overview:
         render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
@@ -1334,6 +1350,17 @@ def main() -> None:
             st.warning(T(store_problem))
         render_days(data, T, C, tx, dirattr, cur, fx, expand_all, images, notes,
                     store, st.session_state.get("who", ""))
+    with themap:
+        # The map wants to know which pin is today's so it can beat, the same way
+        # the day card marks itself. Outside the trip nothing matches and none do.
+        todays = [i for i, day in enumerate(data["days"])
+                  if day["date"] == date.today().isoformat()]
+        tripmap.render_map(
+            geo, T, C, tx, dirattr, lang, rtl, INK_TONES.get(st.session_state.ink,
+                                                             INK_TONES[DEFAULT_INK]),
+            FONT_STACK[lang], LINE_HEIGHT[lang],
+            todays[0] if todays else -1, block,
+        )
     with costs:
         render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
     with options:
