@@ -17,7 +17,7 @@
     "assumptions": [
       "Every traveller holds a Swiss Half Fare Card (CHF 150 each, valid one calendar month, bought to cover 4-13 September).",
       "Flights are booked. Four land at Zurich on Friday 4 September at 20:30, the fifth on Saturday 5 September at 06:30, and all five leave for Tel Aviv on Sunday 13 September at 11:45.",
-      "Van collected Friday 4 September on arrival - the Rental Centre runs 06:00 to 23:30 - and returned Friday 11 September in the evening. That is exactly seven days, so taking it a night early costs nothing.",
+      "Van collected Sunday 6 September morning and returned Saturday 12 September evening - six days, not seven, because the first two days are spent in Zurich without one. Worth asking whether a full week still prices lower.",
       "Accommodation figures are indicative ranges from published rates, except the two airport stays, which are live quotes read on 20 August 2026.",
       "Flights are excluded throughout.",
       "At five people a 7-seat MPV works: the back row folds flat for luggage. At six it would not have.",
@@ -35,10 +35,10 @@
     {
       "item": "Van, 7 days, 7-seat MPV",
       "total": 600,
-      "note": "The CHF 509 quote plus a second driver. Collected Friday evening and back Friday evening, which is the same seven days."
+      "note": "The CHF 509 quote plus a second driver, now over six days rather than seven. Left at the seven-day figure until the shorter hire is quoted."
     },
     {
-      "item": "Fuel, approx 375 km",
+      "item": "Fuel, approx 400 km",
       "total": 150,
       "note": "Vignette already fitted on Swiss rentals. At CHF 1.97 a litre this leaves room to spare."
     },
@@ -53,118 +53,73 @@
       "date": "2026-09-04",
       "dow": "Friday",
       "leg": "Arrival",
-      "title": "Land at Zurich, collect the van, sleep in Kloten",
-      "sleep": "Kloten (Allegra Lodge, one two-bedroom suite)",
-      "movement": "Land at 20:30. Passport control and bags, then the Rental Centre on Level 1 of the Airport Center, which stays open until 23:30. Five minutes by road to Kloten.",
-      "drive_km": 3,
-      "drive_min": 8,
+      "title": "Land at Zurich, sleep in Kloten",
+      "sleep": "Kloten (Allegra Lodge, one two-bedroom suite, night 1 of 2)",
+      "movement": "Land at 20:30. Passport control and bags, then the hotel's shuttle into Kloten, about ten minutes. No van tonight - it is not needed until Sunday.",
+      "drive_km": 0,
+      "drive_min": 0,
       "parents": "Straight to bed.",
       "adults": "Straight to bed.",
       "per_person": [],
       "group": [
         {
-          "item": "Allegra Lodge, two-bedroom suite sleeping four",
-          "chf": 223
-        },
-        {
-          "item": "Hotel parking, one night",
-          "chf": 18
+          "item": "Allegra Lodge, two-bedroom suite, night 1 of 2",
+          "chf": 205
         }
       ],
-      "day_total_chf": 241,
+      "day_total_chf": 205,
       "tips": [
         "Only four beds are needed tonight. The fifth traveller lands at 06:30 tomorrow.",
-        "Collecting the van tonight is the whole trick: the desk is open until 23:30, and seven days from Friday evening runs out on Friday the 11th, which is exactly when the van stops being useful. Picking it up on Saturday instead would push the return into Saturday morning and risk a whole extra day's hire.",
+        "No van for the first two days. The rest day is spent in Zurich on foot and by train, which means the hire starts on Sunday and runs six days rather than eight - and nobody drives on the evening they land.",
         "Take the free-cancellation rate and tell the hotel the flight lands at 20:30. There is a self check-in station and a mobile key, so nobody has to be at a desk.",
-        "Skip the CHF 25 breakfast. You leave before it is worth eating."
+        "Skip the CHF 25 breakfast on the first morning. Take it on the second, when there is nowhere to be."
       ]
     },
     {
       "date": "2026-09-05",
       "dow": "Saturday",
-      "leg": "Transfer + Lucerne",
-      "title": "Collect the fifth traveller, drive to Weggis, boat into Lucerne",
-      "sleep": "Weggis (night 1 of 2)",
-      "movement": "Back to the airport for the 06:30 arrival - allow until about 07:15 for passport control and bags. Then A4 south past Zug, exit Küssnacht am Rigi, 10 km along the lake to Weggis.",
-      "drive_km": 72,
-      "drive_min": 75,
-      "parents": "Boat into Lucerne, flat pedestrian Old Town, Chapel Bridge, Lion Monument, boat back.",
-      "adults": "Same, plus the Musegg Wall towers, which involve stairs.",
+      "leg": "Zurich",
+      "title": "A day in Zurich to land properly",
+      "sleep": "Kloten (Allegra Lodge, night 2 of 2)",
+      "movement": "Back to the airport for the 06:30 arrival - allow until about 07:15 for passport control and bags. Then the train into the city, 13 minutes from the airport station, and the rest of the day on foot. No van and no driving.",
+      "drive_km": 0,
+      "drive_min": 0,
+      "parents": "Lindenhof for the view over the roofs, the Fraumünster windows, and the lake promenade. All of it flat and paved, with somewhere to sit every hundred metres.",
+      "adults": "Add the Grossmünster tower, the lanes behind Niederdorf, and a swim off one of the lake badis if the weather holds.",
       "per_person": [
         {
-          "item": "Boat Weggis-Lucerne return, half fare",
-          "chf": 21.5,
-          "full": 43
+          "item": "Zurich 24-hour transport pass, half fare",
+          "chf": 8.0,
+          "full": 16
         }
       ],
       "group": [
         {
-          "item": "Rooms in Weggis",
-          "chf": 295
+          "item": "Allegra Lodge, two-bedroom suite, night 2 of 2",
+          "chf": 205
         },
         {
-          "item": "Big supermarket shop",
-          "chf": 335
-        },
-        {
-          "item": "Parking in Weggis, 2 nights",
-          "chf": 26
+          "item": "Allegra Lodge, single room for the fifth traveller",
+          "chf": 152
         }
       ],
-      "day_total_chf": 763.5,
+      "day_total_chf": 397.0,
       "tips": [
-        "The big shop must happen before 17:00 - Sunday is closed.",
-        "No rental desk this morning: the van is already outside the hotel. Arrivals is a five-minute drive, and short-term parking outside Terminal 2 is the place to wait.",
-        "See the Chapel Bridge early evening, not midday.",
-        "Restaurants near the KKL are jammed at 18:30 and 22:00 with concert crowds.",
-        "The last boat back from Lucerne leaves at 19:12 and reaches Weggis at 19:53. After that it is bus 502 by way of the train, about 50 minutes."
+        "The fifth traveller lands at 06:30 off an overnight flight. This is the day for that, not a mountain.",
+        "Zurich is one hour behind Tel Aviv in September, so there is no jet lag to fight - only the flights themselves.",
+        "The shops inside Zurich main station open on Sundays, which almost nothing else in Switzerland does. Worth knowing tomorrow.",
+        "If everyone is up to it, the Rhine Falls are 50 minutes direct from the main station and run hourly. If they are not, the lake and the old town are plenty."
       ]
     },
     {
       "date": "2026-09-06",
       "dow": "Sunday",
-      "leg": "Mountain day 1",
-      "title": "Mount Rigi",
-      "sleep": "Weggis (night 2 of 2)",
-      "movement": "Walk to the Weggis cable-car station in the village. Van stays parked.",
-      "drive_km": 0,
-      "drive_min": 0,
-      "parents": "Cable car to Kaltbad, cogwheel to Rigi Kulm. Paved summit paths with a marked easier route. Kanzeli viewpoint from Kaltbad is about an hour, gentle.",
-      "adults": "Rigi Panorama Trail, Kulm to Kaltbad: 6 km, 1h45, wide gravel, mostly downhill.",
-      "per_person": [
-        {
-          "item": "Rigi Day Pass, half fare",
-          "chf": 42.0,
-          "full": 84
-        }
-      ],
-      "group": [
-        {
-          "item": "Rooms in Weggis",
-          "chf": 295
-        },
-        {
-          "item": "Picnic",
-          "chf": 50
-        }
-      ],
-      "day_total_chf": 555.0,
-      "tips": [
-        "Buy the Day Pass - same price as a single return but covers every train and cable car on the mountain.",
-        "Bring a picnic. Summit food is the most common complaint about Rigi.",
-        "Rain plan: boat to Flüelen and back by train, about CHF 27 half fare, three hours, no walking.",
-        "First cable car up from Weggis on a Sunday is 08:10, then every half hour until 19:10. The cogwheel from Kaltbad to Kulm runs hourly, so plan around it."
-      ]
-    },
-    {
-      "date": "2026-09-07",
-      "dow": "Monday",
       "leg": "Transfer",
-      "title": "Over the Brünig to Grindelwald, by way of Lungern",
+      "title": "Collect the van and cross to Grindelwald, by way of Lungern",
       "sleep": "Grindelwald (night 1 of 4)",
-      "movement": "Weggis, A2 to Hergiswil, A8 over the Brünig Pass through Sarnen and Giswil. At Lungern leave the main road for the old Brünigstrasse along the lake, rejoin at Lungern Süd, then Meiringen, the north shore of Lake Brienz, Interlaken, Wilderswil, Zweilütschinen, Grindelwald.",
-      "drive_km": 105,
-      "drive_min": 100,
+      "movement": "Rental Centre, Level 1 of the Airport Center, from 06:00. Then A4 and A14 past Lucerne, A8 over the Brünig through Sarnen and Giswil. At Lungern leave the main road for the old Brünigstrasse along the lake, rejoin at Lungern Süd, then Meiringen, the north shore of Lake Brienz, Interlaken, Wilderswil, Zweilütschinen, Grindelwald.",
+      "drive_km": 160,
+      "drive_min": 150,
       "parents": "An hour at Lungern: the lakeside path at Obsee is flat and paved, with a restaurant at each end. Then the Pfingstegg terrace and restaurant, five minutes up by cable car.",
       "adults": "Lungern and the lake, then Pfingstegg plus the Fly-Line or the summer toboggan at CHF 8 a run, or on toward Berghaus Bäregg.",
       "per_person": [
@@ -184,8 +139,8 @@
           "chf": 26
         },
         {
-          "item": "Second supermarket shop",
-          "chf": 210
+          "item": "Big supermarket shop",
+          "chf": 335
         },
         {
           "item": "Lungern lakeside parking",
@@ -196,18 +151,18 @@
           "chf": 42
         }
       ],
-      "day_total_chf": 683.0,
+      "day_total_chf": 808.0,
       "tips": [
+        "Coop Grindelwald on Dorfstrasse is open 08:00-19:00 every day including Sundays, which is the whole reason a Sunday transfer works.",
         "Take the north-shore road along Lake Brienz rather than the tunnels.",
-        "Coop Grindelwald on Dorfstrasse is open 08:00-19:00 every day including Sundays.",
         "There is no free parking in Grindelwald - insist on an included space when booking.",
         "Lungern has a 3.5 km bypass tunnel. Follow the main road and you pass under the mountain and see nothing - take the old lakeside road, in at Lungern Nord and out at Lungern Süd."
       ]
     },
     {
-      "date": "2026-09-08",
-      "dow": "Tuesday",
-      "leg": "Mountain day 2",
+      "date": "2026-09-07",
+      "dow": "Monday",
+      "leg": "Mountain day 1",
       "title": "Männlichen and the Panorama Trail",
       "sleep": "Grindelwald (night 2 of 4)",
       "movement": "Walk or local bus 121 (free on the guest card) to Grindelwald Terminal, Männlichen gondola 19-25 min. Return by cog train from Kleine Scheidegg. No driving.",
@@ -236,9 +191,9 @@
       ]
     },
     {
-      "date": "2026-09-09",
-      "dow": "Wednesday",
-      "leg": "Mountain day 3 (floating)",
+      "date": "2026-09-08",
+      "dow": "Tuesday",
+      "leg": "Mountain day 2 (floating)",
       "title": "Jungfraujoch - Top of Europe",
       "sleep": "Grindelwald (night 3 of 4)",
       "movement": "Grindelwald Terminal, Eiger Express gondola to Eigergletscher (15 min), cog railway through the Eiger to Jungfraujoch (26-30 min). About 50 min each way. First departure around 08:00.",
@@ -280,9 +235,9 @@
       ]
     },
     {
-      "date": "2026-09-10",
-      "dow": "Thursday",
-      "leg": "Mountain day 4",
+      "date": "2026-09-09",
+      "dow": "Wednesday",
+      "leg": "Mountain day 3",
       "title": "Schilthorn, Piz Gloria and Mürren",
       "sleep": "Grindelwald (night 4 of 4)",
       "movement": "Drive Grindelwald to Stechelberg, 22 km, about 30 min. Park at the Schilthornbahn, CHF 11 for the day, open-air, no height limit. Descend a different way: Mürren, Grütschalp, Lauterbrunnen, then bus 141 back to the van.",
@@ -326,75 +281,120 @@
       ]
     },
     {
-      "date": "2026-09-11",
-      "dow": "Friday",
+      "date": "2026-09-10",
+      "dow": "Thursday",
       "leg": "Transfer",
-      "title": "The Aare Gorge, then back to Zurich",
-      "sleep": "Kloten (Welcome Inn, night 1 of 2)",
-      "movement": "Grindelwald to Meiringen (30 min) for the gorge, back over the Brünig, past Lucerne, A4 to Kloten. Refuel in town, drop the van at the airport - Parking 3 takes returns around the clock - and take the hotel's free shuttle. About 2h45 driving plus stops. Leave around 09:30.",
-      "drive_km": 153,
-      "drive_min": 170,
-      "parents": "Aare Gorge from the west entrance - smaller wheelchairs and narrow pushchairs manage to mid-gorge.",
-      "adults": "Full 1.4 km of the gorge walkway, about an hour.",
+      "title": "The Aare Gorge, over the Brünig, and Lucerne at dusk",
+      "sleep": "Weggis (night 1 of 2)",
+      "movement": "Grindelwald to Meiringen, about 30 minutes, for the gorge. Then back over the Brünig through Giswil and Sarnen, A8 and A2 to Hergiswil, and along the lake to Weggis. About two hours' driving plus the gorge. In the evening, the boat across to Lucerne and back.",
+      "drive_km": 130,
+      "drive_min": 140,
+      "parents": "Aare Gorge from the west entrance - smaller wheelchairs and narrow pushchairs manage to mid-gorge. Then the boat into Lucerne for the Chapel Bridge, the Lion Monument and a flat Old Town.",
+      "adults": "Full 1.4 km of the gorge walkway, about an hour. In Lucerne, add the Musegg Wall towers, which involve stairs.",
       "per_person": [
         {
           "item": "Aare Gorge entry",
           "chf": 13.0,
           "full": 13
+        },
+        {
+          "item": "Boat Weggis-Lucerne return, half fare",
+          "chf": 21.5,
+          "full": 43
         }
       ],
       "group": [
         {
-          "item": "Welcome Inn, a double and a triple, night 1 of 2",
-          "chf": 344.5
+          "item": "Rooms in Weggis",
+          "chf": 295
+        },
+        {
+          "item": "Second supermarket shop",
+          "chf": 210
+        },
+        {
+          "item": "Parking in Weggis, 2 nights",
+          "chf": 26
         }
       ],
-      "day_total_chf": 409.5,
+      "day_total_chf": 703.5,
       "tips": [
-        "Refuel before the airport, not on the way to it. Rental is full-to-full, and a motorway services charges the worst prices in the country.",
-        "Returning the van tonight keeps the hire at exactly seven days and saves a night of hotel parking. Parking 3 accepts returns around the clock, so a late arrival is not a problem.",
+        "See the Chapel Bridge early evening, not midday. That is exactly what this day is shaped around.",
+        "The last boat back from Lucerne leaves at 19:12 and reaches Weggis at 19:53. After that it is bus 502 by way of the train, about 50 minutes.",
         "The Jungfrau Region guest card takes 20% off a single entry to the gorge. Ask at the desk whether it still counts on your checkout day.",
-        "Grindelwald fills for the Eidgenössisches Jugendjodelfest, 11 to 13 September. Leave the village by 09:30."
+        "If the gorge and the drive have been enough, the boat slides to tomorrow evening after Rigi. Nothing here is booked."
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "dow": "Friday",
+      "leg": "Mountain day 4",
+      "title": "Mount Rigi",
+      "sleep": "Weggis (night 2 of 2)",
+      "movement": "Walk to the Weggis cable-car station in the village. Van stays parked.",
+      "drive_km": 0,
+      "drive_min": 0,
+      "parents": "Cable car to Kaltbad, cogwheel to Rigi Kulm. Paved summit paths with a marked easier route. Kanzeli viewpoint from Kaltbad is about an hour, gentle.",
+      "adults": "Rigi Panorama Trail, Kulm to Kaltbad: 6 km, 1h45, wide gravel, mostly downhill.",
+      "per_person": [
+        {
+          "item": "Rigi Day Pass, half fare",
+          "chf": 42.0,
+          "full": 84
+        }
+      ],
+      "group": [
+        {
+          "item": "Rooms in Weggis",
+          "chf": 295
+        },
+        {
+          "item": "Picnic",
+          "chf": 50
+        }
+      ],
+      "day_total_chf": 555.0,
+      "tips": [
+        "Buy the Day Pass - same price as a single return but covers every train and cable car on the mountain.",
+        "Bring a picnic. Summit food is the most common complaint about Rigi.",
+        "Rain plan: boat to Flüelen and back by train, about CHF 27 half fare, three hours, no walking.",
+        "First cable car up from Weggis is around 08:10 and then every half hour, but check the board on the day - the timetable is not the same on a weekday as on a Sunday. The cogwheel from Kaltbad to Kulm runs hourly, so plan around that."
       ]
     },
     {
       "date": "2026-09-12",
       "dow": "Saturday",
       "leg": "Zurich",
-      "title": "The Rhine Falls, Zurich, and the Knabenschiessen",
-      "sleep": "Kloten (Welcome Inn, night 2 of 2)",
-      "movement": "No van and no driving. Train from Zurich Airport: 13 minutes to the main station, then 50 minutes direct to Schloss Laufen am Rheinfall, hourly. Tram 13 out to the festival in the evening.",
-      "drive_km": 0,
-      "drive_min": 0,
-      "parents": "The Rhine Falls from the Schloss Laufen side, where lifts and a walkway drop you to a platform in the spray. Then Zurich's old town: Lindenhof, the Fraumünster windows and the lake promenade, all of it flat.",
-      "adults": "Add the boat out to the rock in the middle of the falls, then the Grossmünster tower for the view over the roofs, and stay late at the Knabenschiessen.",
+      "title": "Back to Zurich, and the Knabenschiessen",
+      "sleep": "Kloten (Allegra Lodge, one family room)",
+      "movement": "An easy morning in Weggis, then along the lake to Küssnacht am Rigi and A4 north past Zug to Kloten. About an hour. Refuel in town, drop the van at the airport - Parking 3 takes returns around the clock - and take the hotel shuttle. The evening is the festival.",
+      "drive_km": 66,
+      "drive_min": 60,
+      "parents": "The Knabenschiessen at Albisgütli: a funfair, food stalls and most of the city out. Flat ground, and you can leave whenever you like.",
+      "adults": "Same, and stay late - it runs until 01:30 and the trains keep going well past midnight.",
       "per_person": [
         {
-          "item": "Rail: Zurich 24-hour pass and the Rhine Falls return, half fare",
-          "chf": 36.0,
-          "full": 72
+          "item": "Zurich 24-hour transport pass, half fare",
+          "chf": 8.0,
+          "full": 16
         }
       ],
       "group": [
         {
-          "item": "Welcome Inn, a double and a triple, night 2 of 2",
-          "chf": 344.5
-        },
-        {
-          "item": "Rhine Falls platforms and the boat to the rock",
-          "chf": 50
+          "item": "Allegra Lodge, family room sleeping five",
+          "chf": 279
         },
         {
           "item": "Knabenschiessen, rides and stalls",
           "chf": 100
         }
       ],
-      "day_total_chf": 674.5,
+      "day_total_chf": 419.0,
       "tips": [
         "The Knabenschiessen is Zurich's own festival, 12 to 14 September, and Saturday is the opening day. Free to walk into, and it runs until 01:30.",
-        "Tram 13 normally ends at Albisgütli, but during the festival it stops at Laubegg, four minutes short. There is no visitor parking at all, which is one more reason the van is already back.",
-        "Nothing here needs booking. It is the first day of the trip with no lift to catch and no weather to check, so keep it loose.",
-        "Last trains back to the airport run well past midnight, and on a Saturday night the network keeps going until 04:00 with a CHF 5 night surcharge."
+        "Tram 13 normally ends at Albisgütli, but during the festival it stops at Laubegg, four minutes short. There is no visitor parking at all, which is one more reason the van goes back first.",
+        "Refuel before the airport, not on the way to it. Rental is full-to-full, and a motorway services charges the worst prices in the country.",
+        "One family room sleeps all five for CHF 279. If five in one room on the last night is too close for comfort, a double and a triple at the Welcome Inn is CHF 377."
       ]
     },
     {
@@ -403,7 +403,7 @@
       "leg": "Departure",
       "title": "Late morning flight home",
       "sleep": null,
-      "movement": "The hotel's free shuttle to the terminal. No van to return - it went back on Friday evening.",
+      "movement": "The hotel's free shuttle to the terminal. No van to return - it went back yesterday.",
       "drive_km": 0,
       "drive_min": 0,
       "parents": null,
@@ -460,31 +460,30 @@
     }
   ],
   "booking_order": [
-    "Grindelwald apartment, 7-10 September. Tightest item - Grindelwald hosts the first Eidgenössisches Jugendjodelfest on 11-13 September and the village is booked out around it. Three bedrooms sleeping five, with an included parking space.",
-    "Welcome Inn, Kloten, 11-13 September. Two nights, a double and a triple, the same rooms both nights. Confirm the parking is free for the Friday and that the shuttle runs that evening.",
-    "Allegra Lodge, 4 September. One two-bedroom suite sleeps all four - a large double in one room, a bunk in the other. Take the free-cancellation rate, about CHF 23 more, and tell them the flight lands at 20:30.",
-    "Weggis, 5-6 September. The Vienna Philharmonic plays Lucerne both nights. Ask whether parking is included; it is CHF 13 a day if not.",
-    "Confirm the van for a Friday 4 September evening collection and a Friday 11 September evening return, and add a second driver. Check height against 2.30 m.",
+    "Grindelwald apartment, 6-9 September. Still the tightest item, but these dates sit before the Eidgenössisches Jugendjodelfest rather than inside it, so the village is not booked out around you. Three bedrooms sleeping five, with an included parking space.",
+    "Weggis, 10-11 September. Ask whether parking is included; it is CHF 13 a day if not.",
+    "Allegra Lodge, Kloten. The two-bedroom suite for 4-6 September, plus one single room for the night of the 5th once the fifth traveller is here, plus one family room for the 12th. Take the free-cancellation rates and tell them the flight lands at 20:30.",
+    "Confirm the van for a Sunday 6 September morning collection and a Saturday 12 September evening return, and add a second driver. Six days - ask whether a full week costs less anyway. Check height against 2.30 m.",
     "Five Half Fare Cards, covering 4-13 September.",
     "Jungfraujoch seat reservations, once the forecast is clear.",
-    "Piz Gloria brunch for five, Thursday. The table reservation is required.",
-    "Nothing at all for the Saturday. The Knabenschiessen is free to enter, the Rhine Falls train is walk-up, and Zurich's old town needs no ticket.",
+    "Piz Gloria brunch for five, Wednesday. The table reservation is required.",
+    "Nothing at all for the Saturday. The Knabenschiessen is free to enter and Zurich's old town needs no ticket.",
     "Nothing else. Rigi, Lungern, Männlichen, Schilthorn, Pfingstegg and the Aare Gorge are all walk-up."
   ],
   "totals": {
-    "accommodation_chf": 2886.0,
-    "activities_chf": 1987.0,
+    "accommodation_chf": 2815.0,
+    "activities_chf": 1837.0,
     "food_chf": 1935.0,
-    "half_fare_cards_chf": 750.0,
+    "half_fare_cards_chf": 750,
     "van_chf": 600,
     "fuel_chf": 150,
-    "parking_chf": 60.0,
-    "grand_total_chf": 8368.0,
-    "per_person_chf": 1674,
-    "per_person_eur": 1799,
-    "per_person_ils": 6079,
-    "tickets_per_person_full_chf": 725,
-    "tickets_per_person_half_chf": 393,
+    "parking_chf": 42.0,
+    "grand_total_chf": 8129.0,
+    "per_person_chf": 1626,
+    "per_person_eur": 1748,
+    "per_person_ils": 5906,
+    "tickets_per_person_full_chf": 685,
+    "tickets_per_person_half_chf": 373,
     "note_vs_six": "At six the shared costs barely move - the Grindelwald apartment, the van and the airport rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted."
   }
 }

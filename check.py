@@ -215,6 +215,11 @@ SENTENCE_START = {
     "One", "Two", "Be", "Add", "Late", "Rail", "You", "Passport",
     # and from the new map prose on the spare Saturday
     "Direct", "Thirteen", "Flat", "Lifts", "Dropped", "Open", "Everything",
+    # and from the reorder that put a rest day in Zurich at the front
+    "All", "Worth", "If", "In", "Still", "Six", "Left", "Lake", "Along", "Optional",
+    # Switzerland itself, for the same reason as Europe above: a proper noun
+    # that genuinely translates, and is written in the reader's own script.
+    "Switzerland",
     # Tel Aviv is the travellers' own city. Hebrew and Arabic write it in their own
     # script, and glossing it in Latin the way a Swiss place name is glossed would
     # be absurd — so it is exempt rather than expected to survive.
@@ -388,6 +393,30 @@ if len(opened) != len(found) or len(found) != len(DATA["days"]):
 print(f"day cards   today marker fires on the right card in "
       f"{len(TRANS['meta']['languages'])} languages; expand-all opens all "
       f"{len(DATA['days'])}, nested cost tables untouched")
+
+# --- 7b. the overview's hand-picked warnings still point at real tips --------
+# critical_tips names days and tips by INDEX, so reordering the trip silently
+# aims them at the wrong advice - or off the end of a shorter tip list, which is
+# how this first showed up: an IndexError on page load, after every other check
+# had passed. Resolve each one, then render the whole tab to be sure.
+for _path in TRANS["meta"]["critical_tips"]:
+    try:
+        _, _di, _, _ti = _path.split(".")
+        DATA["days"][int(_di)]["tips"][int(_ti)]
+    except (IndexError, ValueError, KeyError):
+        failures.append(f"critical_tips: {_path} points at no tip in itinerary.json")
+_ovT, _ovC, _ovtx, _ovdir = _translators("en")
+_overview_out: list[str] = []
+_real_block, _app.block = _app.block, _overview_out.append
+try:
+    _app.render_overview(DATA, _ovT, _ovC, _ovtx, _ovdir,
+                         TRANS["meta"]["critical_tips"])
+except Exception as exc:  # noqa: BLE001 - any failure here is a broken page
+    failures.append(f"overview: the Before you go tab raises {exc!r}")
+finally:
+    _app.block = _real_block
+print(f"overview    {len(TRANS['meta']['critical_tips'])} critical tips resolve, "
+      f"and the tab renders")
 
 # --- 8. every photo is present, credited and small enough -------------------
 # The photos are committed, so "it worked on my machine" is not evidence: this checks
@@ -642,9 +671,10 @@ if blank:
 # Both were confirmed against two independent routers, OSRM and Valhalla, which
 # agree with each other to within a kilometre.
 KNOWN_DRIVE_DRIFT = {
-    3: "Weggis to Grindelwald over the Brunig is 130 km by road, not 105. There is "
-       "no shorter way: Meiringen to Grindelwald has to go back out via Brienz and "
-       "Interlaken, because the direct pass, Grosse Scheidegg, is closed to cars.",
+    # Empty, and worth saying why. The long-standing drift was day 3's Weggis to
+    # Grindelwald, costed at 105 km when the road is 130. Reordering the trip as a
+    # loop deleted that drive outright - Grindelwald is now reached from Kloten and
+    # Weggis is reached from the gorge - so the wrong figure went with it.
     # The old day-8 entry is gone on purpose. That drift was the departure day's
     # Kloten-to-Parking-3 hop, costed at 10 km when it is 2.5. The van now goes back
     # on the 11th, so the last two days have no driving at all and nothing to drift.

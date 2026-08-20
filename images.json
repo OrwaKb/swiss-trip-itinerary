@@ -35,33 +35,18 @@
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "Luzern Wasserturm Kapellbrücke-20130829-RM-104703.jpg",
-   "author": "Reinhold Möller Ermell",
-   "licence": "CC BY-SA 4.0",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3ALuzern_Wasserturm_Kapellbr%C3%BCcke-20130829-RM-104703.jpg",
+   "title": "Altstadt Zürich 2015.jpg",
+   "author": "Thomas Wolf , www.foto-tw.de",
+   "licence": "CC BY-SA 3.0 de",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File%3AAltstadt_Z%C3%BCrich_2015.jpg",
    "modified": "cropped and resized",
-   "why": "Overrides the picker's blue-hour frame, which is beautiful but has snow on the bridge and the rooftops. This one is late August: green, flowers on the Kapellbruecke, swans on the Reuss. Biased up so the Wasserturm keeps its spire."
+   "why": "Zurich's old town along the Limmat, CC BY-SA 3.0 de. The rest day is spent here on foot, which is the whole point of it."
   }
  },
  "day2": {
   "file": "day2.webp",
   "thumb": "day2-t.webp",
-  "w": 1200,
-  "h": 600,
-  "credit": {
-   "title": "20240906.Vitznau–Rigi-Bahn.-026.jpg",
-   "author": "Bybbisch94",
-   "licence": "CC BY 4.0",
-   "licence_url": "https://creativecommons.org/licenses/by/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3A20240906.Vitznau%E2%80%93Rigi-Bahn.-026.jpg",
-   "modified": "cropped and resized",
-   "why": "Rigi above the sea of fog with the Alps beyond, photographed on 6 September - the same date the family will be up there."
-  }
- },
- "day3": {
-  "file": "day3.webp",
-  "thumb": "day3-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -74,9 +59,9 @@
    "why": "Lungerersee from the old Bruenigstrasse above the shore, looking down the valley: the turquoise water, the village on the bank and a snow-capped summit beyond. The day is now named after this stop, and this is the view the tip about the bypass tunnel is telling you not to miss. Biased up to keep the peak."
   }
  },
- "day4": {
-  "file": "day4.webp",
-  "thumb": "day4-t.webp",
+ "day3": {
+  "file": "day3.webp",
+  "thumb": "day3-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -89,9 +74,9 @@
    "why": "The Maennlichen ridge with the gravel path curving away and the three summits behind - the Panorama Trail as it is actually walked."
   }
  },
- "day5": {
-  "file": "day5.webp",
-  "thumb": "day5-t.webp",
+ "day4": {
+  "file": "day4.webp",
+  "thumb": "day4-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -104,9 +89,9 @@
    "why": "The Sphinx observatory itself, the one structure that says Top of Europe. Biased up so the dome and mast survive the band."
   }
  },
- "day6": {
-  "file": "day6.webp",
-  "thumb": "day6-t.webp",
+ "day5": {
+  "file": "day5.webp",
+  "thumb": "day5-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -119,9 +104,9 @@
    "why": "The Lauterbrunnen valley seen from high on the Muerren side, waterfall streaks down the far wall."
   }
  },
- "day7": {
-  "file": "day7.webp",
-  "thumb": "day7-t.webp",
+ "day6": {
+  "file": "day6.webp",
+  "thumb": "day6-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -134,19 +119,34 @@
    "why": "Inside the Aare gorge: walls leaning together, sunlit foliage overhanging, the river below."
   }
  },
+ "day7": {
+  "file": "day7.webp",
+  "thumb": "day7-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "20240906.Vitznau–Rigi-Bahn.-026.jpg",
+   "author": "Bybbisch94",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3A20240906.Vitznau%E2%80%93Rigi-Bahn.-026.jpg",
+   "modified": "cropped and resized",
+   "why": "Rigi above the sea of fog with the Alps beyond, photographed on 6 September - the same date the family will be up there."
+  }
+ },
  "day8": {
   "file": "day8.webp",
   "thumb": "day8-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "Neuhausen am Rheinfall.jpg",
-   "author": "Jörg Braukmann",
+   "title": "Luzern Wasserturm Kapellbrücke-20130829-RM-104703.jpg",
+   "author": "Reinhold Möller Ermell",
    "licence": "CC BY-SA 4.0",
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3ANeuhausen_am_Rheinfall.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File%3ALuzern_Wasserturm_Kapellbr%C3%BCcke-20130829-RM-104703.jpg",
    "modified": "cropped and resized",
-   "why": "The Rhine Falls seen whole, CC BY-SA 4.0. The Saturday's first stop and the only water on the trip that is not a lake."
+   "why": "Overrides the picker's blue-hour frame, which is beautiful but has snow on the bridge and the rooftops. This one is late August: green, flowers on the Kapellbruecke, swans on the Reuss. Biased up so the Wasserturm keeps its spire."
   }
  },
  "day9": {
