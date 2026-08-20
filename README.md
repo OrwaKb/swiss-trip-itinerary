@@ -4,15 +4,23 @@ A Streamlit app that presents one family trip itinerary in English, Hebrew and A
 with a CHF / EUR / ILS currency toggle. Mobile-first: it is meant to be opened on a
 phone in a train station.
 
-Four tabs. **Before you go** is the pre-trip briefing — what breaks the trip, what the
+Five tabs. **Before you go** is the pre-trip briefing — what breaks the trip, what the
 plan assumes, what to book and in what order. **Day by day** is one expandable card per
-day, with the weather-dependent Jungfraujoch day flagged as floating. **Costs** breaks
-the money down by day, by ticket and by category. **Plan B** is the weather swaps, kept
-on their own so they are quick to find on a bad morning.
+day, with the weather-dependent Jungfraujoch day flagged as floating. **Map** draws every
+stop and every drive, walk, lift and boat between them. **Costs** breaks the money down
+by day, by ticket and by category. **Plan B** is the weather swaps, kept on their own so
+they are quick to find on a bad morning.
+
+Prices are off by default. The plan is what people open this for, so the two big figures
+stay out of the header, the day cards and Plan B until **Show prices** is switched on in
+the sidebar — the Costs tab always has them, which makes looking at the money a choice
+rather than the first thing you meet. The setting rides in the URL alongside language,
+currency and ink tone, so a forwarded link arrives the way it was sent. Prices quoted
+inside a tip stay put: a night surcharge is advice, not a running total.
 
 During the trip the card for the current date is marked, badged **Today** and starts
 open, so opening the app on a platform answers "what are we doing now" without a tap.
-Outside 4–12 September nothing is marked.
+Outside 4–13 September nothing is marked.
 
 `itinerary.json` is the single source of truth. Nothing is invented, re-costed or
 re-planned in the app — every figure on screen traces back to that file.

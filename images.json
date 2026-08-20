@@ -140,6 +140,21 @@
   "w": 1200,
   "h": 600,
   "credit": {
+   "title": "Neuhausen am Rheinfall.jpg",
+   "author": "Jörg Braukmann",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3ANeuhausen_am_Rheinfall.jpg",
+   "modified": "cropped and resized",
+   "why": "The Rhine Falls seen whole, CC BY-SA 4.0. The Saturday's first stop and the only water on the trip that is not a lake."
+  }
+ },
+ "day9": {
+  "file": "day9.webp",
+  "thumb": "day9-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
    "title": "Cloudy Alps from above (Unsplash).jpg",
    "author": "Anastasia Zhenina disguise_truth",
    "licence": "CC0",

@@ -55,18 +55,18 @@ COORD_DP = 5  # ~1.1 m at this latitude
 STOPS = [
     # --- day 0, land and sleep at the airport ------------------------------
     dict(slug="zrh-terminal", name="Zurich Airport, Arrivals", kind="airport",
-         lat=47.45045, lon=8.56198, days=[0, 8],
-         what="Land here Friday evening. Leave from here Saturday morning.",
+         lat=47.45045, lon=8.56198, days=[0, 1, 7, 9],
+         what="Land here Friday 20:30. Back Saturday 07:00 for the fifth traveller, and again on the 13th.",
          osm=('nwr[aeroway=terminal]', 900)),
-    dict(slug="zrh-radisson", name="Radisson Blu Hotel, Zurich Airport", kind="hotel",
-         lat=47.44980, lon=8.56100, days=[0],
-         what="Night 0, three rooms. Covered indoor walkway from the terminal, about 10 minutes.",
-         osm=('nwr[tourism=hotel][name~"Radisson",i]', 700)),
+    dict(slug="kloten-allegra", name="Allegra Lodge, Kloten", kind="hotel",
+         lat=47.45100, lon=8.58400, days=[0],
+         what="Night 0, one two-bedroom suite for four. Self check-in, so a 20:30 landing needs nobody at a desk.",
+         osm=('nwr[tourism=hotel][name~"Allegra",i]', 1800)),
 
     # --- day 1, the van, Weggis, and the boat ------------------------------
     dict(slug="zrh-rental", name="Rental Centre, Airport Center Level 1", kind="parking",
-         lat=47.45010, lon=8.56420, days=[1],
-         what="Collect the 7-seat van from 06:00. Desks close 23:30, so no Friday-night pickup.",
+         lat=47.45010, lon=8.56420, days=[0],
+         what="Collect the 7-seat van on arrival. Open 06:00 to 23:30, and the flight lands at 20:30.",
          osm=('nwr[amenity=car_rental]', 900)),
     dict(slug="weggis-village", name="Weggis", kind="town",
          lat=47.03330, lon=8.43330, days=[1, 2, 3],
@@ -199,15 +199,36 @@ STOPS = [
          what="Where the Jodelfest notice sends cars: no parking in Grindelwald 11-13 September.",
          osm=('nwr[amenity=parking]', 900)),
     dict(slug="kloten-welcomeinn", name="Welcome Inn Hotel, Kloten", kind="hotel",
-         lat=47.45170, lon=8.58540, days=[7, 8],
-         what="Last night, free parking, close enough to the airport for an early flight.",
+         lat=47.45170, lon=8.58540, days=[7, 8, 9],
+         what="The last two nights, a double and a triple. Free parking and a free shuttle to the terminal.",
          osm=('nwr[tourism=hotel][name~"Welcome",i]', 1500)),
 
-    # --- day 8, the van goes back -----------------------------------------
+    # --- day 7, the van goes back on the way in ---------------------------
     dict(slug="zrh-parking3", name="Zurich Airport, Parking 3", kind="parking",
-         lat=47.44630, lon=8.55780, days=[8],
-         what="Rental returns, accepted 24/7. About 10 minutes on foot back to the terminal.",
+         lat=47.44630, lon=8.55780, days=[7],
+         what="Rental returns, accepted around the clock. Dropped Friday evening, which keeps the hire at seven days.",
          osm=('nwr[amenity=parking]', 700)),
+
+    # --- day 8, the spare day: rail out to the falls and back into Zurich --
+    dict(slug="zurich-hb", name="Zürich Hauptbahnhof", kind="station",
+         lat=47.37790, lon=8.54030, days=[8],
+         what="Thirteen minutes from the airport. Everything on the spare Saturday starts here.",
+         # Not [railway=station]: the main station's own node carries
+         # public_transport=station, and the railway=station tags sit on the
+         # platforms. Anchoring on the name and widening the radius finds it.
+         osm=('nwr[name~"Hauptbahnhof|^Z.rich HB$",i]', 1400)),
+    dict(slug="rheinfall", name="Rhine Falls, Schloss Laufen", kind="sight",
+         lat=47.67750, lon=8.61480, days=[8],
+         what="Fifty minutes direct, hourly. Lifts and a walkway drop you to a platform in the spray.",
+         osm=('nwr[name~"Rheinfall",i]', 2500)),
+    dict(slug="zurich-altstadt", name="Zurich Old Town, Lindenhof", kind="town",
+         lat=47.37300, lon=8.54100, days=[8],
+         what="Flat, paved and small. Lindenhof, the Fraumünster windows, then the lake promenade.",
+         osm=('nwr[name="Lindenhof"]', 1200)),
+    dict(slug="albisguetli", name="Albisgütli, the Knabenschiessen", kind="sight",
+         lat=47.35420, lon=8.50930, days=[8],
+         what="Zurich's own festival, 12-14 September. Free to walk into, and it runs until 01:30.",
+         osm=('nwr[name~"Albisg",i]', 1800)),
 
     # --- Plan B, days deliberately empty ----------------------------------
     dict(slug="fluelen", name="Flüelen", kind="swap",
@@ -233,10 +254,14 @@ STOPS = [
 # --------------------------------------------------------------------------- #
 
 LEGS = [
-    dict(day=0, mode="walk", a="zrh-terminal", b="zrh-radisson",
-         label="Covered indoor walkway"),
+    dict(day=0, mode="walk", a="zrh-terminal", b="zrh-rental",
+         label="Through to the Rental Centre on Level 1"),
+    dict(day=0, mode="drive", a="zrh-rental", b="kloten-allegra",
+         label="Five minutes by road into Kloten"),
 
-    dict(day=1, mode="drive", a="zrh-rental", b="weggis-village",
+    dict(day=1, mode="drive", a="kloten-allegra", b="zrh-terminal",
+         label="Back to arrivals for the 06:30 landing"),
+    dict(day=1, mode="drive", a="zrh-terminal", b="weggis-village",
          label="A4 south past Zug, exit Küssnacht am Rigi"),
     dict(day=1, mode="walk", a="weggis-village", b="weggis-pier",
          label="Down to the pier"),
@@ -313,13 +338,19 @@ LEGS = [
          label="Down to Meiringen, about 30 min"),
     dict(day=7, mode="walk", a="aareschlucht-west", b="aareschlucht-ost",
          label="Through the gorge, 1.4 km of walkway"),
-    dict(day=7, mode="drive", a="aareschlucht-west", b="kloten-welcomeinn",
-         label="Back over the Brünig, past Lucerne, A4 to Kloten"),
+    dict(day=7, mode="drive", a="aareschlucht-west", b="zrh-parking3",
+         label="Back over the Brünig, past Lucerne, A4 to Kloten, and the van goes back"),
+    dict(day=7, mode="drive", a="zrh-parking3", b="kloten-welcomeinn",
+         label="Hotel shuttle from the terminal"),
 
-    dict(day=8, mode="drive", a="kloten-welcomeinn", b="zrh-parking3",
-         label="Rental return, then 10 minutes on foot to the terminal"),
-    dict(day=8, mode="walk", a="zrh-parking3", b="zrh-terminal",
-         label="On foot back to check-in"),
+    dict(day=8, mode="lift", a="zrh-terminal", b="zurich-hb",
+         label="Train to the main station, 13 minutes"),
+    dict(day=8, mode="lift", a="zurich-hb", b="rheinfall",
+         label="Direct train to Schloss Laufen am Rheinfall, 50 minutes"),
+    dict(day=8, mode="walk", a="zurich-hb", b="zurich-altstadt",
+         label="Over the Limmat into the old town"),
+    dict(day=8, mode="lift", a="zurich-altstadt", b="albisguetli",
+         label="Tram 13, which stops short at Laubegg during the festival"),
 ]
 
 # --------------------------------------------------------------------------- #

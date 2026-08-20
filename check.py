@@ -209,6 +209,16 @@ SENTENCE_START = {
     "Mountains", "Free", "Passed", "Top", "End", "Cog", "Cogwheel", "Where",
     "Little", "Bottom", "Enter", "Walkways", "Come", "Altitude", "Europe", "Down",
     "Into", "Through", "On", "Back", "This", "Both", "Rental", "Base",
+    # From the revision that added the ninth night. Ordinary words that happen to
+    # open a sentence or a cost line.
+    "Only", "Collecting", "Collected", "Picking", "Returning", "That", "Four",
+    "One", "Two", "Be", "Add", "Late", "Rail", "You", "Passport",
+    # and from the new map prose on the spare Saturday
+    "Direct", "Thirteen", "Flat", "Lifts", "Dropped", "Open", "Everything",
+    # Tel Aviv is the travellers' own city. Hebrew and Arabic write it in their own
+    # script, and glossing it in Latin the way a Swiss place name is glossed would
+    # be absurd — so it is exempt rather than expected to survive.
+    "Tel", "Aviv",
 }
 # Latin-1 letters, not just A-Z: the Swiss names carry umlauts (Brünig, Männlichen).
 TOKEN = re.compile(r"\b[A-ZÄÖÜÉÈÀ][A-Za-zäöüéèàÄÖÜ]+\b|\b[A-Z]{2,}\b|\b[A-Z]\d+\b")
@@ -635,8 +645,9 @@ KNOWN_DRIVE_DRIFT = {
     3: "Weggis to Grindelwald over the Brunig is 130 km by road, not 105. There is "
        "no shorter way: Meiringen to Grindelwald has to go back out via Brienz and "
        "Interlaken, because the direct pass, Grosse Scheidegg, is closed to cars.",
-    8: "Kloten to Parking 3 is 2.5 km, not 10. The 12 minutes is about right for "
-       "the traffic, so only the distance is out.",
+    # The old day-8 entry is gone on purpose. That drift was the departure day's
+    # Kloten-to-Parking-3 hop, costed at 10 km when it is 2.5. The van now goes back
+    # on the 11th, so the last two days have no driving at all and nothing to drift.
 }
 for i, day in enumerate(DATA["days"]):
     stated = day.get("drive_km") or 0

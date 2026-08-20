@@ -782,7 +782,7 @@ def block(markup: str) -> None:
     st.markdown(markup, unsafe_allow_html=True)
 
 
-def render_header(d, T, C, tx, dirattr, cur, fx, images):
+def render_header(d, T, C, tx, dirattr, cur, fx, images, show_prices=True):
     trip, totals = d["trip"], d["totals"]
     party = trip["party"]
     per_person = {
@@ -794,6 +794,18 @@ def render_header(d, T, C, tx, dirattr, cur, fx, images):
     dates = T("ui.range", start=trip["start"], end=trip["end"])
 
     title = C("trip.title", trip["title"])
+    # The two big figures are the thing people asked not to be met by every time, so
+    # they come out of the header entirely rather than being greyed or blurred. The
+    # Costs tab still has them: hiding them here makes looking at them a choice.
+    stats = "" if not show_prices else (
+        f'<div class="tp-stats">'
+        f'<div class="tp-stat"><span class="lbl">{tx(T("ui.header.trip_total"))}</span>'
+        f'<span class="val">{num(money(totals["grand_total_chf"], cur, fx))}</span></div>'
+        f'<div class="tp-stat"><span class="lbl">{tx(T("ui.header.per_person"))}</span>'
+        f'<span class="val">{num(per_person[cur])}</span>'
+        f'<span class="alt">{num(others)}</span></div>'
+        f'</div>'
+    )
     block(
         f'<div class="tp" {dirattr}><div class="tp-head">'
         f'<div class="tp-hero">'
@@ -805,13 +817,7 @@ def render_header(d, T, C, tx, dirattr, cur, fx, images):
         f'<span class="dot">{tx(T("ui.sep"))}</span>'
         f'{tx(T("ui.header.party", total=party["total"], parents=party["parents"], adults=party["adults"]))}</p>'
         f'</div></div>'
-        f'<div class="tp-stats">'
-        f'<div class="tp-stat"><span class="lbl">{tx(T("ui.header.trip_total"))}</span>'
-        f'<span class="val">{num(money(totals["grand_total_chf"], cur, fx))}</span></div>'
-        f'<div class="tp-stat"><span class="lbl">{tx(T("ui.header.per_person"))}</span>'
-        f'<span class="val">{num(per_person[cur])}</span>'
-        f'<span class="alt">{num(others)}</span></div>'
-        f'</div></div></div>'
+        f'{stats}</div></div>'
     )
 
 
@@ -916,7 +922,8 @@ def day_cost_table(day, i, n, T, C, tx, cur, fx):
     )
 
 
-def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, notes_n=0):
+def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today,
+                  notes_n=0, show_prices=True):
     """One day card, as markup. Pure — no Streamlit, so check.py can render and read it."""
     day = d["days"][i]
     n = d["trip"]["party"]["total"]
@@ -937,14 +944,17 @@ def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, n
         if day["drive_km"] else T("ui.day.no_drive")
     )
     title = C(f"days.{i}.title", day["title"])
+    total = "" if not show_prices else (
+        f'<span class="total">{tx(T("ui.day.total"))} '
+        f'{num(money(day["day_total_chf"], cur, fx))}</span>'
+    )
     head = (
         "<summary>" + band(images, f"day{i}", title,
             f'<div class="tp-sum">'
             f'<div class="tp-meta"><span class="date">{num(day["date"])}</span>'
             f'<span class="dow">{tx(C(f"days.{i}.dow", day["dow"]))}</span>{chips}</div>'
             f'<div class="title">{tx(title)}</div>'
-            f'<div class="headfoot"><span class="total">{tx(T("ui.day.total"))} '
-            f'{num(money(day["day_total_chf"], cur, fx))}</span>'
+            f'<div class="headfoot">{total}'
             f'<span class="drive">{tx(drive)}</span></div></div>'
         ) + "</summary>"
     )
@@ -980,7 +990,8 @@ def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today, n
             f'<span class="tp-lbl">{tx(T("ui.day.tips"))}</span>'
             f'<ul class="tp-tips">{tips}</ul>'
         )
-    body.append(day_cost_table(day, i, n, T, C, tx, cur, fx))
+    if show_prices:
+        body.append(day_cost_table(day, i, n, T, C, tx, cur, fx))
 
     return (
         f'<div class="tp" {dirattr}>'
@@ -1092,7 +1103,8 @@ def act_delete(store, note_id, who, day_key) -> None:
     read_notes.clear()
 
 
-def render_days(d, T, C, tx, dirattr, cur, fx, expand_all, images, notes, store, who):
+def render_days(d, T, C, tx, dirattr, cur, fx, expand_all, images, notes, store, who,
+                show_prices=True):
     # During the trip the app is opened on a phone to answer "what are we doing now",
     # so today's card is marked and starts open. Outside the trip nothing matches.
     today = date.today().isoformat()
@@ -1106,7 +1118,7 @@ def render_days(d, T, C, tx, dirattr, cur, fx, expand_all, images, notes, store,
         for i, day in enumerate(d["days"]):
             day_notes = notes.get(day["date"], [])
             block(day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all,
-                                images, today, len(day_notes)))
+                                images, today, len(day_notes), show_prices))
             # No store means no drawer at all, rather than buttons that fail on click.
             if store is not None:
                 notes_drawer(day["date"], day_notes, store, T, tx, dirattr, who)
@@ -1213,25 +1225,33 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
     )
 
 
-def render_options(d, T, C, tx, dirattr, cur, fx):
+def render_options(d, T, C, tx, dirattr, cur, fx, show_prices=True):
     """The in-trip fallbacks, on their own so they are quick to find in bad weather."""
+    # With prices off the column goes rather than emptying: an empty right-hand column
+    # reads as missing data, and these are the pages you scan in bad weather.
     swaps = []
     for i, s in enumerate(d["weather_swaps"]):
-        price = (
-            num(money(s["chf_pp"], cur, fx)) if s["chf_pp"] is not None
-            else tx(T("ui.swaps.no_cost"))
-        )
+        price = ""
+        if show_prices:
+            shown = (
+                num(money(s["chf_pp"], cur, fx)) if s["chf_pp"] is not None
+                else tx(T("ui.swaps.no_cost"))
+            )
+            price = f'<td class="n">{shown}</td>'
         swaps.append(
             f'<tr><td class="wrap">{tx(C(f"weather_swaps.{i}.instead_of", s["instead_of"]))}</td>'
             f'<td class="wrap">{tx(C(f"weather_swaps.{i}.do", s["do"]))}</td>'
-            f'<td class="n">{price}</td></tr>'
+            f'{price}</tr>'
         )
+    cost_head = (
+        f'<th scope="col" class="n">{tx(T("ui.swaps.cost"))}</th>' if show_prices else ""
+    )
     block(
         f'<div class="tp" {dirattr}>'
         f'<h2>{tx(T("ui.swaps.title"))}</h2>'
         f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
         f'<th scope="col">{tx(T("ui.swaps.instead_of"))}</th><th scope="col">{tx(T("ui.swaps.do"))}</th>'
-        f'<th scope="col" class="n">{tx(T("ui.swaps.cost"))}</th></tr></thead>'
+        f'{cost_head}</tr></thead>'
         f'<tbody>{"".join(swaps)}</tbody></table></div>'
         f'</div>'
     )
@@ -1264,11 +1284,16 @@ def main() -> None:
     if "ink" not in st.session_state:
         q = st.query_params.get("ink")
         st.session_state.ink = q if q in INK_TONES else DEFAULT_INK
+    # Off unless the link says otherwise. The plan is the thing people open this for;
+    # the money is something they go and look at.
+    if "prices" not in st.session_state:
+        st.session_state.prices = st.query_params.get("prices") == "1"
 
     def sync_url() -> None:
         st.query_params["lang"] = st.session_state.lang
         st.query_params["cur"] = st.session_state.cur
         st.query_params["ink"] = st.session_state.ink
+        st.query_params["prices"] = "1" if st.session_state.prices else "0"
 
     lang = st.session_state.lang
     rtl = lang in meta["rtl"]
@@ -1309,6 +1334,9 @@ def main() -> None:
             format_func=lambda tone: T(f"ui.ink.{tone}"),
             on_change=sync_url,
         )
+        st.toggle(
+            T("ui.prices"), key="prices", on_change=sync_url, help=T("ui.prices.help"),
+        )
         st.caption(T("ui.currency_note"))
         # Asked once, here, rather than above every note box. Deliberately not put in
         # the URL: the whole point of the link is that it gets forwarded, and a name
@@ -1320,13 +1348,15 @@ def main() -> None:
 
     if (st.query_params.get("lang") != lang
             or st.query_params.get("cur") != st.session_state.cur
-            or st.query_params.get("ink") != st.session_state.ink):
+            or st.query_params.get("ink") != st.session_state.ink
+            or st.query_params.get("prices") != ("1" if st.session_state.prices else "0")):
         sync_url()
 
     cur = st.session_state.cur
     fx = data["trip"]["fx"]
 
-    render_header(data, T, C, tx, dirattr, cur, fx, images)
+    show_prices = st.session_state.prices
+    render_header(data, T, C, tx, dirattr, cur, fx, images, show_prices)
 
     # A store that cannot be opened must not take the itinerary down with it: the plan
     # is the thing people came for, and the notes are the extra.
@@ -1349,7 +1379,7 @@ def main() -> None:
         if store_problem:
             st.warning(T(store_problem))
         render_days(data, T, C, tx, dirattr, cur, fx, expand_all, images, notes,
-                    store, st.session_state.get("who", ""))
+                    store, st.session_state.get("who", ""), show_prices)
     with themap:
         # The map wants to know which pin is today's so it can beat, the same way
         # the day card marks itself. Outside the trip nothing matches and none do.
@@ -1364,7 +1394,7 @@ def main() -> None:
     with costs:
         render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
     with options:
-        render_options(data, T, C, tx, dirattr, cur, fx)
+        render_options(data, T, C, tx, dirattr, cur, fx, show_prices)
 
 
 if __name__ == "__main__":
