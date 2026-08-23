@@ -65,8 +65,8 @@ STOPS = [
 
     # --- day 1, the van, Zug and the move to Schwyz ------------------------
     dict(slug="zrh-rental", name="Rental Centre, Airport Center Level 1", kind="parking",
-         lat=47.45010, lon=8.56420, days=[1],
-         what="The 7-seat VW Caddy is collected here at 09:00 on Saturday and is due back at noon on Friday the 11th.",
+         lat=47.45010, lon=8.56420, days=[0],
+         what="The 7-seat VW Caddy is collected here on landing, on the Friday evening, and is due back at noon on Friday the 11th.",
          osm=('nwr[amenity=car_rental]', 900)),
     dict(slug="zug-altstadt", name="Zug, the old town and the lakefront", kind="town",
          lat=47.16830, lon=8.51750, days=[1],
@@ -139,13 +139,13 @@ STOPS = [
          what="The far end, 1.4 km and about 45 minutes through. There is a train back one stop if legs have had enough.",
          osm=('nwr[name~"Aareschlucht Ost",i]', 3000)),
     dict(slug="grindelwald-village", name="Grindelwald", kind="town",
-         lat=46.62440, lon=8.04140, days=[3, 4, 5, 6, 7],
+         lat=46.62440, lon=8.04140, days=[],
          what="Base for four nights, 7-11 September. Not booked yet: Chalet Adelheid leads at CHF 1,356, five minutes from the Terminal.",
          osm=('nwr[place~"village|town"][name="Grindelwald"]', 2500)),
 
     # --- day 4, Jungfraujoch ----------------------------------------------
     dict(slug="grindelwald-terminal", name="Grindelwald Terminal", kind="lift",
-         lat=46.61110, lon=8.05530, days=[4],
+         lat=46.61482, lon=8.05020, days=[4],
          what="Five minutes from the apartment, or bus 121, free on the guest card. First Eiger Express at 08:00.",
          osm=('nwr[name~"Grindelwald Terminal",i]', 2000)),
     dict(slug="eigergletscher", name="Eigergletscher", kind="station",
@@ -193,19 +193,19 @@ STOPS = [
 
     # --- day 6, First, Bachalpsee, and Harder Kulm in the evening ---------
     dict(slug="grindelwald-first", name="Grindelwald First", kind="lift",
-         lat=46.65900, lon=8.05400, days=[6],
+         lat=46.65900, lon=8.05400, days=[],
          what="2,166 m, 25 minutes up in three stages from the middle of the village. The Cliff Walk at the top is free with the gondola.",
          osm=('nwr[name~"^First|Grindelwald First",i]', 3000)),
     dict(slug="bachalpsee", name="Bachalpsee", kind="sight",
-         lat=46.66856, lon=8.03055, days=[6],
+         lat=46.66856, lon=8.03055, days=[],
          what="3 km each way on a wide, gently rising path, about fifty minutes out. On a still morning the Wetterhorn stands upside down in it.",
          osm=('nwr[natural=water][name~"Bachalpsee",i]', 2500)),
     dict(slug="interlaken-ost", name="Interlaken Ost", kind="station",
-         lat=46.69030, lon=7.86900, days=[6],
+         lat=46.69030, lon=7.86900, days=[],
          what="Half an hour down the valley. The Harder Kulm funicular leaves from beside the station and nearby parking is about CHF 10.",
          osm=('nwr[railway=station][name~"Interlaken Ost",i]', 900)),
     dict(slug="harder-kulm", name="Harder Kulm", kind="summit",
-         lat=46.70170, lon=7.86170, days=[6],
+         lat=46.70170, lon=7.86170, days=[],
          what="1,322 m, ten minutes up, flat at the top, the classic two-lakes view. Runs to 21:10 in September, so it is an evening rather than a day.",
          osm=('nwr[name~"Harder Kulm",i]', 2500)),
 
@@ -232,21 +232,35 @@ STOPS = [
          what="Zurich's own festival, 12-14 September, and the 12th is opening day. Free to walk into and it runs until 01:30. Tram 13 stops short, at Laubegg.",
          osm=('nwr[name~"Albisg",i]', 1800)),
 
+    # --- days 3-7, the Kandertal base ------------------------------------
+    dict(slug="reichenbach", name="Reichenbach im Kandertal, LaVida Peak", kind="hotel",
+         lat=46.61670, lon=7.68330, days=[3, 4, 5, 6, 7],
+         what="Booked, 7-11 September. Free parking on the premises. Frutigen is three minutes, Blausee sixteen, Oeschinensee twenty-three, and Grindelwald Terminal seventy-five.",
+         osm=('nwr[place~"village|town"][name~"^Reichenbach",i]', 2500)),
+    dict(slug="muelenen", name="Mülenen, Niesenbahn valley station", kind="station",
+         lat=46.66029, lon=7.63706, days=[5],
+         what="Ten minutes down the valley. The funicular climbs to 2,362 m in thirty minutes with a change at Schwandegg.",
+         osm=('nwr[railway=station][name~"lenen",i]', 1500)),
+    dict(slug="kandersteg-gondola", name="Kandersteg, Oeschinen gondola", kind="lift",
+         lat=46.49500, lon=7.68100, days=[6],
+         what="Twenty-three minutes up the valley. Parking can be gone by 11:00, and the ascent time slot is mandatory to 20 September.",
+         osm=('nwr[aerialway=station][name~"Oeschinen",i]', 2500)),
+
     # --- Plan B, days deliberately empty ----------------------------------
     dict(slug="fluelen", name="Flüelen", kind="swap",
          lat=46.90220, lon=8.62500, days=[],
          what="Rigi in cloud: boat down the dramatic far end of the lake and back by train, about CHF 27, all of it seated.",
          osm=('nwr[place~"village|town"][name~"^Fl",i]', 2500)),
     dict(slug="blausee", name="Blausee", kind="swap",
-         lat=46.53270, lon=7.66440, days=[],
+         lat=46.53270, lon=7.66440, days=[6],
          what="The washed-out day. A 300 m flat asphalt path from the gate to the water, and the glass-bottomed boat is in the entry price.",
          osm=('nwr[name="Blausee"]', 2000)),
     dict(slug="oeschinensee", name="Oeschinensee", kind="swap",
-         lat=46.49830, lon=7.72830, days=[],
+         lat=46.49830, lon=7.72830, days=[6],
          what="Turquoise water under the Blüemlisalp walls. The ascent time slot is MANDATORY to 20 September and costs CHF 5 - without it you cannot board.",
          osm=('nwr[natural=water][name~"Oeschinensee",i]', 2500)),
     dict(slug="niesen-kulm", name="Niesen Kulm", kind="swap",
-         lat=46.64500, lon=7.65170, days=[],
+         lat=46.64500, lon=7.65170, days=[5],
          what="2,362 m by funicular from Mülenen, thirty minutes. On Wednesday and Friday evenings the last descents run to 23:25, so dinner at the top is possible.",
          osm=('nwr[name~"Niesen",i]', 3000)),
     dict(slug="trummelbach", name="Trümmelbach Falls", kind="swap",
@@ -265,6 +279,15 @@ STOPS = [
          lat=46.65530, lon=7.90800, days=[],
          what="A wet morning: a vintage cog railway from Wilderswil and a free alpine garden with over 750 species, with far fewer people than the famous peaks.",
          osm=('nwr[name~"Schynige Platte",i]', 2500)),
+    dict(slug="engstligenalp", name="Engstligenalp, above Adelboden", kind="swap",
+         lat=46.47500, lon=7.59170, days=[],
+         what="The upper Engstligen fall passes directly beneath the cable car cabin, so a 600 m waterfall costs no walking at all. Runs to 18 October, 08:30-17:00.",
+         osm=('nwr[aerialway=station][name~"Engstligen",i]', 3000)),
+    dict(slug="thun", name="Thun", kind="swap",
+         lat=46.75800, lon=7.62800, days=[],
+         what="Twenty-five minutes down the valley: a medieval castle over a river town, arcaded streets with the shops up on the arcade roofs, and the lake at the bottom. No ticket, no altitude.",
+         osm=('nwr[place~"town|city"][name="Thun"]', 2500)),
+
 ]
 
 # --------------------------------------------------------------------------- #
@@ -276,15 +299,18 @@ STOPS = [
 # --------------------------------------------------------------------------- #
 
 LEGS = [
-    # Day 0 draws nothing on purpose: the van is not collected until Saturday
-    # morning, so getting to the hotel is a shuttle, and the itinerary says 0 km.
+    # --- day 0, the van is taken on landing -------------------------------
+    dict(day=0, mode="walk", a="zrh-terminal", b="zrh-rental",
+         label="Through to the Rental Centre on Level 1, straight off the flight"),
+    dict(day=0, mode="drive", a="zrh-rental", b="kloten-hotel",
+         label="Five minutes up the road to the hotel, about half past nine"),
 
-    # --- day 1, the van, Zug, and the move to Schwyz -----------------------
-    dict(day=1, mode="walk", a="zrh-terminal", b="zrh-rental",
-         label="Through to the Rental Centre on Level 1, van from 09:00"),
-    dict(day=1, mode="drive", a="zrh-rental", b="schwyz-town",
+    # --- day 1, back for the fifth traveller, then south -------------------
+    dict(day=1, mode="drive", a="kloten-hotel", b="zrh-terminal",
+         label="Back to the terminal for the 06:30 arrival - no rental desk to wait for"),
+    dict(day=1, mode="drive", a="zrh-terminal", b="schwyz-town",
          via=["zug-altstadt"],
-         label="A4 south past the Zugersee, Zug for late morning, Schwyz by about 13:15"),
+         label="A4 south past the Zugersee, Zug for late morning, Schwyz by about 12:30"),
     dict(day=1, mode="drive", a="schwyz-town", b="brunnen-quay",
          label="Five minutes to Brunnen while check-in waits for four o'clock"),
 
@@ -310,7 +336,7 @@ LEGS = [
     dict(day=2, mode="drive", a="weggis-village", b="schwyz-town",
          label="Back round the lake to Schwyz, about half an hour"),
 
-    # --- day 3, over the Brünig to the Jungfrau ---------------------------
+    # --- day 3, over the Brünig and on into the Kandertal -----------------
     dict(day=3, mode="drive", a="schwyz-town", b="lungern-lakeside",
          label="A4 to Lucerne, then the A8 south through Sarnen and Giswil"),
     dict(day=3, mode="lift", a="lungern-lakeside", b="lungern-turren",
@@ -320,20 +346,22 @@ LEGS = [
          label="Over the Brünig, then fifteen minutes off the road at Meiringen"),
     dict(day=3, mode="walk", a="aareschlucht-west", b="aareschlucht-ost",
          label="Through the gorge, 1.4 km, the first half level and railed"),
-    dict(day=3, mode="drive", a="aareschlucht-west", b="grindelwald-village",
-         label="Brienz, Interlaken, Wilderswil, Zweilütschinen, and up to Grindelwald"),
+    dict(day=3, mode="drive", a="aareschlucht-west", b="reichenbach",
+         label="Brienz, Interlaken, the Thunersee to Spiez, then south into the Kandertal"),
 
-    # --- day 4, Jungfraujoch ----------------------------------------------
-    dict(day=4, mode="lift", a="grindelwald-village", b="grindelwald-terminal",
-         label="Bus 121 down to the Terminal, free on the guest card"),
+    # --- day 4, the long morning to Jungfraujoch --------------------------
+    dict(day=4, mode="drive", a="reichenbach", b="grindelwald-terminal",
+         label="Out at 06:40. 46 km and about 75 minutes for the 08:00 first gondola"),
     dict(day=4, mode="lift", a="grindelwald-terminal", b="eigergletscher",
-         label="Eiger Express, 15 minutes, first car 08:00"),
+         label="Eiger Express, 15 minutes"),
     dict(day=4, mode="lift", a="eigergletscher", b="jungfraujoch",
          label="Cog railway through the inside of the Eiger, about 25 minutes"),
+    dict(day=4, mode="drive", a="grindelwald-terminal", b="reichenbach",
+         label="And the same 75 minutes back, which is what this base costs"),
 
-    # --- day 5, the Schilthorn round trip, tariff D -----------------------
-    dict(day=5, mode="drive", a="grindelwald-village", b="lauterbrunnen",
-         label="Half an hour down and across, and park at the station"),
+    # --- day 5, the Schilthorn round trip, then the Niesen at dusk --------
+    dict(day=5, mode="drive", a="reichenbach", b="lauterbrunnen",
+         label="Thirty-eight minutes over to Lauterbrunnen, and park at the station"),
     dict(day=5, mode="lift", a="lauterbrunnen", b="grutschalp",
          label="Funicular up the cliff to Grütschalp"),
     dict(day=5, mode="lift", a="grutschalp", b="murren-blm",
@@ -348,24 +376,26 @@ LEGS = [
          label="Down the other side through Birg and Mürren to Gimmelwald"),
     dict(day=5, mode="lift", a="gimmelwald", b="stechelberg-parking",
          label="Last stage to Stechelberg, then bus 141 back up the valley"),
-    dict(day=5, mode="drive", a="lauterbrunnen", b="grindelwald-village",
-         label="Back over to Grindelwald for the last two nights"),
+    dict(day=5, mode="drive", a="lauterbrunnen", b="reichenbach",
+         label="Back to the Kandertal in the late afternoon"),
+    dict(day=5, mode="drive", a="reichenbach", b="muelenen",
+         label="Ten minutes down the valley for the evening funicular"),
+    dict(day=5, mode="lift", a="muelenen", b="niesen-kulm",
+         label="Thirty minutes to 2,362 m. Wednesday descents run to 23:25"),
 
-    # --- day 6, First, Bachalpsee, and Harder Kulm at sunset --------------
-    dict(day=6, mode="lift", a="grindelwald-village", b="grindelwald-first",
-         label="Gondola from the middle of the village, 25 minutes in three stages"),
-    dict(day=6, mode="walk", a="grindelwald-first", b="bachalpsee",
-         label="3 km out on a wide, gently rising path, about fifty minutes"),
-    dict(day=6, mode="drive", a="grindelwald-village", b="interlaken-ost",
-         label="In the evening, half an hour down the valley to Interlaken"),
-    dict(day=6, mode="lift", a="interlaken-ost", b="harder-kulm",
-         label="Ten minutes up. Last descent 21:10 in September"),
-    dict(day=6, mode="drive", a="interlaken-ost", b="grindelwald-village",
-         label="Back up the Lütschental in the dark"),
+    # --- day 6, Oeschinensee, and Blausee on the way home -----------------
+    dict(day=6, mode="drive", a="reichenbach", b="kandersteg-gondola",
+         label="Twenty-three minutes up the valley. Arrive before ten for a space"),
+    dict(day=6, mode="lift", a="kandersteg-gondola", b="oeschinensee",
+         label="Gondola up, then trail C down to the shore, twenty minutes"),
+    dict(day=6, mode="drive", a="kandersteg-gondola", b="blausee",
+         label="Blausee is on the way home, which is the whole reason it is today"),
+    dict(day=6, mode="drive", a="blausee", b="reichenbach",
+         label="Twelve minutes back down the Kandertal"),
 
-    # --- day 7, out before the Jodelfest ----------------------------------
-    dict(day=7, mode="drive", a="grindelwald-village", b="zrh-parking3",
-         label="Interlaken, Spiez, Thun, Bern, then the A1 east. Van back by 12:00"),
+    # --- day 7, down the valley and back to Zurich ------------------------
+    dict(day=7, mode="drive", a="reichenbach", b="zrh-parking3",
+         label="Spiez, Thun, Bern, then the A1 east. Van back by 12:00"),
     dict(day=7, mode="lift", a="zrh-terminal", b="zurich-hb",
          label="Train into the city, 13 minutes, and the afternoon is free"),
     dict(day=7, mode="walk", a="zurich-hb", b="zurich-altstadt",
