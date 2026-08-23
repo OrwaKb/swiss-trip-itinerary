@@ -19,7 +19,7 @@
       "Flights are booked. Four land at Zurich on Friday 4 September at 20:30, the fifth on Saturday 5 September at 06:30, and all five leave for Tel Aviv on Sunday 13 September at 11:45.",
       "Four things are booked and fixed: the first night at the Zleep Hotel in Kloten, the Historical apartment in Schwyz for 5-7 September, LaVida Peak at Reichenbach im Kandertal for 7-11 September, and the van - a 7-seat VW Caddy from Europcar, collected on landing on Friday 4 September and returned Friday 11 September at 12:00, seven days at ILS 1,505, about CHF 414.",
       "The base for the mountain days is the Kandertal, not Grindelwald. Grindelwald sold out for these dates and nothing in the village matched LaVida Peak, so the fallback became the plan. It costs about 75 minutes each way to Grindelwald Terminal on Jungfraujoch morning - and it buys Oeschinensee at 23 minutes, Blausee at 16 and the Niesen at 10, none of which were reachable from Grindelwald at all.",
-      "Two accommodation figures are estimates until the confirmations are read: the Zleep night on the 4th, and the Kloten rooms for 11-13 September, which is the last unbooked item in the plan. Everything else is a published 2026 tariff or a booked rate.",
+      "One accommodation figure is still an estimate: the Zleep night on the 4th, plus the CHF 20 placeholder for hotel parking that night. Everything else is a published 2026 tariff, a booked rate, or a live quote read on 23 August 2026.",
       "Fares are the operators' published 2026 tariffs, verified in August 2026 against Jungfraubahnen, Schilthornbahn, Rigi Bahnen, SGV, Aareschlucht AG, Oeschinensee AG and the Titlis and Niesen operators.",
       "Flights are excluded throughout.",
       "At five people a 7-seat MPV works: the back row folds flat for luggage. At six it would not have."
@@ -352,7 +352,7 @@
       "dow": "Friday",
       "leg": "Transfer",
       "title": "Down the Kandertal and back to Zurich",
-      "sleep": "Kloten (night 1 of 2)",
+      "sleep": "Kloten (Allegra Lodge, one family room, night 1 of 2)",
       "movement": "Out of the Kandertal to Spiez, the A6 through Thun to Bern, then the A1 east to Zurich. About 170 km and two hours, all of it motorway. Van back at the airport by 12:00, refuelled. Then the hotel, and the afternoon is free.",
       "drive_km": 170,
       "drive_min": 120,
@@ -367,17 +367,18 @@
       ],
       "group": [
         {
-          "item": "Kloten rooms, night 1 of 2",
-          "chf": 380
+          "item": "Allegra Lodge, family room sleeping five, night 1 of 2",
+          "chf": 254
         }
       ],
-      "day_total_chf": 420,
+      "day_total_chf": 294.0,
       "tips": [
         "THE VAN IS DUE BACK AT 12:00. The hire is seven days from Saturday 09:00 and an hour late can bill as a whole extra day. Leave Grindelwald by 09:00 and there is an hour in hand.",
         "The Jodelfest opens in Grindelwald today and takes the village over - over a thousand performers and no visitor parking. Being in the Kandertal instead means none of it is your problem, and this is the one day the base pays you back.",
         "Refuel in Kloten town, not at the airport and never at a motorway services. The hire is full to full and the services charge the worst prices in the country.",
-        "The Kloten figure here is an estimate. Five people will not fit in two Zleep rooms - it is either three rooms or a family room somewhere else, and it is the last unpriced piece of the trip.",
-        "Nothing is booked for this afternoon on purpose. After four mountain days in a row, an empty half-day in a flat city is not a gap in the plan."
+        "Allegra Lodge has ONE family room and it sleeps exactly five - 40 m2, four singles and a sofa bed, 8.7 from 1,311 reviews. CHF 508 for both nights non-refundable, or CHF 621 with free cancellation to 14:00 on arrival day and nothing to pay until 9 September. Booking.com said one left.",
+        "Nothing is booked for this afternoon on purpose. After four mountain days in a row, an empty half-day in a flat city is not a gap in the plan.",
+        "Drop the bags at the hotel BEFORE returning the van, not after. The hotel is five minutes from the terminal, the van is due back at noon, and carrying four days of luggage onto a bus is a waste of a perfectly good vehicle."
       ]
     },
     {
@@ -385,7 +386,7 @@
       "dow": "Saturday",
       "leg": "Zurich",
       "title": "Zurich on foot, and the Knabenschiessen",
-      "sleep": "Kloten (night 2 of 2)",
+      "sleep": "Kloten (Allegra Lodge, night 2 of 2)",
       "movement": "No van and no driving - it went back yesterday. The train from the airport into the city takes 13 minutes and runs every few minutes. The old town on foot all day, and the evening at Albisgütli.",
       "drive_km": 0,
       "drive_min": 0,
@@ -400,15 +401,15 @@
       ],
       "group": [
         {
-          "item": "Kloten rooms, night 2 of 2",
-          "chf": 380
+          "item": "Allegra Lodge, family room sleeping five, night 2 of 2",
+          "chf": 254
         },
         {
           "item": "Knabenschiessen, rides and stalls",
           "chf": 100
         }
       ],
-      "day_total_chf": 520,
+      "day_total_chf": 394.0,
       "tips": [
         "The Knabenschiessen is Zurich's own festival, 12 to 14 September, and today is the opening day. Free to walk into, and it runs until 01:30.",
         "Tram 13 normally terminates at Albisgütli, but during the festival it stops at Laubegg, four minutes short. There is no visitor parking at all - which is one more reason the van went back yesterday.",
@@ -487,7 +488,7 @@
   "booking_order": [
     "DONE - the Zleep Hotel in Kloten for Friday 4 September, the Historical apartment in Schwyz for 5-7 September, LaVida Peak at Reichenbach for 7-11 September, and the van: a 7-seat VW Caddy from Europcar, collected on landing on Friday the 4th and back Friday the 11th at 12:00.",
     "The Oeschinensee ascent time slot for Thursday 10 September, five people, at oeschinensee.skiperformance.com. CHF 5 a head and MANDATORY to 20 September - it is the one thing left in this plan with a hard door on it, and sold-out means you do not go up.",
-    "Kloten for 11-13 September, for five. Two Zleep rooms will not hold five people - it is three rooms, or a family room elsewhere. The last unbooked item in the trip, and an airport hotel on a Friday and Saturday is the one thing safe to leave late.",
+    "Kloten for 11-13 September: the Allegra Lodge family room, the only room in the area that sleeps five in one space. CHF 508 for both nights non-refundable or CHF 621 flexible, and there was one left when this was priced. This is the last unbooked item in the trip.",
     "Five Half Fare Cards, covering 4-13 September. Buy before leaving.",
     "Jungfraujoch tickets AND the mandatory seat reservations, at top-of-travel.jungfrau.ch. Book once the week's forecast is readable, but do not leave it to the morning - the reservation is what gets you on the train.",
     "The Piz Gloria brunch for Wednesday. The table reservation is required, not optional.",
@@ -496,17 +497,17 @@
     "Nothing else. Rigi, Lungern-Turren, the Aare Gorge and Blausee are all walk-up, and the Schilthorn tariff D is bought at the window on the day."
   ],
   "totals": {
-    "accommodation_chf": 3308.0,
+    "accommodation_chf": 3056.0,
     "activities_chf": 2125.5,
     "food_chf": 1825.0,
     "half_fare_cards_chf": 750,
     "van_chf": 414,
     "fuel_chf": 250,
     "parking_chf": 71.0,
-    "grand_total_chf": 8743.5,
-    "per_person_chf": 1749,
-    "per_person_eur": 1880,
-    "per_person_ils": 6352,
+    "grand_total_chf": 8491.5,
+    "per_person_chf": 1698,
+    "per_person_eur": 1826,
+    "per_person_ils": 6169,
     "tickets_per_person_full_chf": 733,
     "tickets_per_person_half_chf": 405,
     "note_vs_six": "At six the shared costs barely move - LaVida Peak, the van and the rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted in the Caddy."
