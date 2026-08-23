@@ -19,26 +19,26 @@
    "days": [
     0,
     1,
-    2,
     9
    ],
-   "what": "Land here Friday 20:30. Back Saturday 07:00 for the fifth traveller, Sunday for the van, and once more on the 13th.",
+   "what": "Four land here Friday at 20:30 and the fifth at 06:30 on Saturday. Back once more on the 13th, at the terminal by 08:45.",
    "source": "osm:way/634617986",
    "moved_m": 0
   },
-  "kloten-allegra": {
-   "name": "Allegra Lodge, Kloten",
+  "kloten-hotel": {
+   "name": "Kloten, the airport hotel",
    "kind": "hotel",
    "lat": 47.44896,
    "lon": 8.58595,
    "days": [
     0,
-    1,
-    8
+    7,
+    8,
+    9
    ],
-   "what": "All three airport nights: a two-bedroom suite for the 4th and 5th, a family room for the 12th. Self check-in, so a 20:30 landing needs nobody at a desk.",
-   "source": "osm:way/668187667",
-   "moved_m": 270
+   "what": "The Zleep on the first night, booked. The 11th and 12th are still open, and five people will not fit in two Zleep rooms.",
+   "source": "seed",
+   "moved_m": 0
   },
   "zrh-rental": {
    "name": "Rental Centre, Airport Center Level 1",
@@ -46,10 +46,48 @@
    "lat": 47.44936,
    "lon": 8.56335,
    "days": [
-    2
+    1
    ],
-   "what": "Collect the 7-seat van here on Sunday morning, from 06:00. The first two days need no car at all.",
+   "what": "The 7-seat VW Caddy is collected here at 09:00 on Saturday and is due back at noon on Friday the 11th.",
    "source": "osm:node/12254640952",
+   "moved_m": 0
+  },
+  "zug-altstadt": {
+   "name": "Zug, the old town and the lakefront",
+   "kind": "town",
+   "lat": 47.1683,
+   "lon": 8.5175,
+   "days": [
+    1
+   ],
+   "what": "Late morning on the way south. Flat, paved and full of benches, with the Zytturm to look at and the Kirschtorte to eat.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "schwyz-town": {
+   "name": "Schwyz, the Historical apartment",
+   "kind": "hotel",
+   "lat": 47.0207,
+   "lon": 8.653,
+   "days": [
+    1,
+    2,
+    3
+   ],
+   "what": "Booked, 5-7 September. Self check-in by key box at 16:00. Brunnen is five minutes, Weggis about thirty, Lucerne forty-five.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "brunnen-quay": {
+   "name": "Brunnen quay",
+   "kind": "pier",
+   "lat": 47.0033,
+   "lon": 8.6053,
+   "days": [
+    1
+   ],
+   "what": "Five minutes from the apartment, where the lake turns the corner into the Urnersee. The view on all the old posters.",
+   "source": "seed",
    "moved_m": 0
   },
   "weggis-village": {
@@ -58,48 +96,10 @@
    "lat": 47.03225,
    "lon": 8.43464,
    "days": [
-    6,
-    7,
-    8
+    2
    ],
-   "what": "Base for the last two nights before the airport, on the north shore of Lake Lucerne.",
+   "what": "Half an hour round the lake from Schwyz. Park at the pier - CHF 13 for 24 hours, and it is not free.",
    "source": "osm:node/6581711311",
-   "moved_m": 1
-  },
-  "weggis-pier": {
-   "name": "Weggis boat pier",
-   "kind": "pier",
-   "lat": 47.03144,
-   "lon": 8.43325,
-   "days": [
-    6
-   ],
-   "what": "SGV paddle steamers into Lucerne. The lake is the nicest way in.",
-   "source": "osm:way/1077516353",
-   "moved_m": 0
-  },
-  "lucerne-pier": {
-   "name": "Lucerne, Bahnhofquai pier",
-   "kind": "pier",
-   "lat": 47.05136,
-   "lon": 8.3101,
-   "days": [
-    6
-   ],
-   "what": "Boat arrives beside the station. The old town starts at the bridge.",
-   "source": "osm:way/115606613",
-   "moved_m": 0
-  },
-  "lucerne-kapellbrucke": {
-   "name": "Kapellbrücke, Lucerne",
-   "kind": "sight",
-   "lat": 47.05163,
-   "lon": 8.30741,
-   "days": [
-    6
-   ],
-   "what": "The covered wooden bridge, 1365. Five minutes on foot from the pier.",
-   "source": "osm:way/396669328",
    "moved_m": 1
   },
   "weggis-cablecar": {
@@ -108,9 +108,9 @@
    "lat": 47.03406,
    "lon": 8.44082,
    "days": [
-    7
+    2
    ],
-   "what": "Luftseilbahn Weggis-Rigi Kaltbad. First car up around 08:10, then every half hour - check the board, a weekday differs from a Sunday.",
+   "what": "Luftseilbahn Weggis-Rigi Kaltbad. Check the board: a Sunday timetable is not a weekday one.",
    "source": "osm:node/374535028",
    "moved_m": 0
   },
@@ -120,9 +120,9 @@
    "lat": 47.04395,
    "lon": 8.46662,
    "days": [
-    7
+    2
    ],
-   "what": "Change from the cable car to the cogwheel. Kanzeli viewpoint is an hour from here, gentle.",
+   "what": "Change from the cable car to the cogwheel. The 4 km walk down from Kulm ends here.",
    "source": "osm:node/1360301780",
    "moved_m": 1
   },
@@ -132,7 +132,7 @@
    "lat": 47.04822,
    "lon": 8.4684,
    "days": [
-    7
+    2
    ],
    "what": "The easy one for the parents. Paved, level, straight out over the lake.",
    "source": "osm:node/11748945623",
@@ -144,22 +144,70 @@
    "lat": 47.05516,
    "lon": 8.48539,
    "days": [
-    7
+    2
    ],
-   "what": "1,798 m. Queen of the Mountains. Summit paths are paved with a marked easier route.",
+   "what": "1,798 m. Queen of the Mountains, and exposed - take a layer even if Weggis is warm.",
    "source": "seed",
    "moved_m": 0
   },
+  "weggis-pier": {
+   "name": "Weggis boat pier",
+   "kind": "pier",
+   "lat": 47.03144,
+   "lon": 8.43325,
+   "days": [
+    2
+   ],
+   "what": "SGV boats into Lucerne. The van sits here all day, which is what makes the evening crossing work.",
+   "source": "osm:way/1077516353",
+   "moved_m": 0
+  },
+  "lucerne-pier": {
+   "name": "Lucerne, Bahnhofquai pier",
+   "kind": "pier",
+   "lat": 47.05136,
+   "lon": 8.3101,
+   "days": [
+    2
+   ],
+   "what": "The boat arrives beside the station. Last one back leaves at 19:12 and reaches Weggis at 19:53.",
+   "source": "osm:way/115606613",
+   "moved_m": 0
+  },
+  "lucerne-kapellbrucke": {
+   "name": "Kapellbrücke, Lucerne",
+   "kind": "sight",
+   "lat": 47.05163,
+   "lon": 8.30741,
+   "days": [
+    2
+   ],
+   "what": "The covered wooden bridge, 1365. Five minutes on foot from the pier, and best in the early evening.",
+   "source": "osm:way/396669328",
+   "moved_m": 1
+  },
   "lungern-lakeside": {
-   "name": "Lungern, old Brünigstrasse",
+   "name": "Lungern, Obsee",
    "kind": "sight",
    "lat": 46.78573,
    "lon": 8.16073,
    "days": [
-    2
+    3
    ],
-   "what": "Free, and the reason to leave the main road: the 2012 bypass tunnel hides the lake entirely.",
+   "what": "Park in the Obsee car park - 222 spaces, CHF 5 for 24 hours - not the tight unmarked bend at Chälrütirank.",
    "source": "osm:node/240073107",
+   "moved_m": 0
+  },
+  "lungern-turren": {
+   "name": "Turren, above Lungern",
+   "kind": "lift",
+   "lat": 46.7833,
+   "lon": 8.1417,
+   "days": [
+    3
+   ],
+   "what": "Ten minutes by cable car to a terrace facing the Bernese Alps across the lake. Every 20 minutes, and the last one DOWN on a weekday is 17:00.",
+   "source": "seed",
    "moved_m": 0
   },
   "meiringen": {
@@ -168,11 +216,34 @@
    "lat": 46.72855,
    "lon": 8.18709,
    "days": [
-    2,
-    6
+    3
    ],
-   "what": "Passed through on the way out, and the gorge stop on the way home.",
+   "what": "Fifteen minutes off the Brünig road, and the reason to come off it.",
    "source": "osm:node/60336653",
+   "moved_m": 0
+  },
+  "aareschlucht-west": {
+   "name": "Aareschlucht West",
+   "kind": "gorge",
+   "lat": 46.7261,
+   "lon": 8.1926,
+   "days": [
+    3
+   ],
+   "what": "Go in from this end. Free parking that takes a van, and the first half to mid-gorge is level, railed and wheelchair-passable.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "aareschlucht-ost": {
+   "name": "Aareschlucht Ost",
+   "kind": "gorge",
+   "lat": 46.7292,
+   "lon": 8.2114,
+   "days": [
+    3
+   ],
+   "what": "The far end, 1.4 km and about 45 minutes through. There is a train back one stop if legs have had enough.",
+   "source": "seed",
    "moved_m": 0
   },
   "grindelwald-village": {
@@ -181,13 +252,13 @@
    "lat": 46.62427,
    "lon": 8.03675,
    "days": [
-    2,
     3,
     4,
     5,
-    6
+    6,
+    7
    ],
-   "what": "Base for nights 2 to 5. Still book it first, but these dates fall before the Jodelfest rather than inside it.",
+   "what": "Base for four nights, 7-11 September. Not booked yet: Chalet Adelheid leads at CHF 1,356, five minutes from the Terminal.",
    "source": "osm:node/21311918",
    "moved_m": 0
   },
@@ -197,59 +268,9 @@
    "lat": 46.6111,
    "lon": 8.0553,
    "days": [
-    3,
     4
    ],
-   "what": "Both gondolas leave from here. Bus 121 is free on the guest card.",
-   "source": "seed",
-   "moved_m": 0
-  },
-  "mannlichen-top": {
-   "name": "Männlichen gondola station",
-   "kind": "lift",
-   "lat": 46.61316,
-   "lon": 7.94095,
-   "days": [
-    3
-   ],
-   "what": "Top of the 19-25 minute gondola. The Panoramaweg starts at the door.",
-   "source": "osm:node/272852989",
-   "moved_m": 1
-  },
-  "mannlichen-summit": {
-   "name": "Männlichen summit",
-   "kind": "summit",
-   "lat": 46.61814,
-   "lon": 7.93804,
-   "days": [
-    3
-   ],
-   "what": "2,343 m. The Royal Walk up is 20 minutes on a made path, and optional.",
-   "source": "osm:node/283740485",
-   "moved_m": 0
-  },
-  "kleine-scheidegg": {
-   "name": "Kleine Scheidegg",
-   "kind": "station",
-   "lat": 46.5851,
-   "lon": 7.9609,
-   "days": [
-    3,
-    4
-   ],
-   "what": "End of the Panoramaweg. Cog train down to Grindelwald Grund from here.",
-   "source": "osm:node/3668308747",
-   "moved_m": 0
-  },
-  "grindelwald-grund": {
-   "name": "Grindelwald Grund",
-   "kind": "station",
-   "lat": 46.6116,
-   "lon": 8.0543,
-   "days": [
-    3
-   ],
-   "what": "Where the cog train from Kleine Scheidegg puts you down, beside the Terminal.",
+   "what": "Five minutes from the apartment, or bus 121, free on the guest card. First Eiger Express at 08:00.",
    "source": "seed",
    "moved_m": 0
   },
@@ -261,7 +282,7 @@
    "days": [
     4
    ],
-   "what": "Eiger Express drops you here in 15 minutes. Change to the cog railway into the mountain.",
+   "what": "Fifteen minutes up on the Eiger Express, then change to the cog railway into the mountain. The Eiger Trail starts here on the way down.",
    "source": "osm:node/4313036324",
    "moved_m": 0
   },
@@ -273,91 +294,7 @@
    "days": [
     4
    ],
-   "what": "3,454 m, the highest railway station in Europe. Altitude sickness is common here: go slow.",
-   "source": "seed",
-   "moved_m": 0
-  },
-  "stechelberg-parking": {
-   "name": "Schilthornbahn car park, Stechelberg",
-   "kind": "parking",
-   "lat": 46.55629,
-   "lon": 7.90189,
-   "days": [
-    5
-   ],
-   "what": "CHF 11 for the day, open-air, no height limit. 22 km and about 30 minutes from Grindelwald.",
-   "source": "osm:way/299982282",
-   "moved_m": 0
-  },
-  "gimmelwald": {
-   "name": "Gimmelwald",
-   "kind": "lift",
-   "lat": 46.546,
-   "lon": 7.8942,
-   "days": [
-    5
-   ],
-   "what": "First change on the way up. The cable car stops here whether you want it to or not.",
-   "source": "seed",
-   "moved_m": 0
-  },
-  "murren-schilthornbahn": {
-   "name": "Mürren, Schilthornbahn station",
-   "kind": "lift",
-   "lat": 46.55784,
-   "lon": 7.89127,
-   "days": [
-    5
-   ],
-   "what": "Second change. Mürren is car-free, and worth the walk through it.",
-   "source": "osm:node/5299316733",
-   "moved_m": 0
-  },
-  "birg": {
-   "name": "Birg",
-   "kind": "lift",
-   "lat": 46.5535,
-   "lon": 7.8517,
-   "days": [
-    5
-   ],
-   "what": "2,677 m. Thrill Walk cliff gangway is included and takes 20 minutes.",
-   "source": "seed",
-   "moved_m": 0
-  },
-  "schilthorn": {
-   "name": "Schilthorn, Piz Gloria",
-   "kind": "summit",
-   "lat": 46.55728,
-   "lon": 7.83517,
-   "days": [
-    5
-   ],
-   "what": "2,970 m. The revolving restaurant: brunch is CHF 38 alone, reservation mandatory.",
-   "source": "osm:node/271904229",
-   "moved_m": 0
-  },
-  "murren-blm": {
-   "name": "Mürren BLM station",
-   "kind": "station",
-   "lat": 46.56369,
-   "lon": 7.89712,
-   "days": [
-    5
-   ],
-   "what": "The other end of the village. Little mountain railway along the cliff to Grütschalp.",
-   "source": "osm:node/13991021971",
-   "moved_m": 0
-  },
-  "grutschalp": {
-   "name": "Grütschalp",
-   "kind": "station",
-   "lat": 46.5947,
-   "lon": 7.9034,
-   "days": [
-    5
-   ],
-   "what": "Change to the cable car down. This is why the ticket to ask for is tariff D, the Rundreise.",
+   "what": "3,454 m, the highest railway station in Europe. The seat reservation is mandatory and altitude sickness is common: go slow.",
    "source": "seed",
    "moved_m": 0
   },
@@ -369,31 +306,139 @@
    "days": [
     5
    ],
-   "what": "Bottom of the cable car. Bus 141 back down the valley to the van at Stechelberg.",
+   "what": "Park at the station, CHF 18 for the day. Neither the operator nor the garage publishes a height limit, so measure the van first.",
    "source": "osm:node/6037884620",
    "moved_m": 0
   },
-  "aareschlucht-west": {
-   "name": "Aareschlucht West",
-   "kind": "gorge",
-   "lat": 46.7261,
-   "lon": 8.1926,
+  "grutschalp": {
+   "name": "Grütschalp",
+   "kind": "station",
+   "lat": 46.5947,
+   "lon": 7.9034,
    "days": [
-    6
+    5
    ],
-   "what": "Enter here. Walkways bolted to the wall of a limestone slot, 1.4 km through.",
+   "what": "Top of the funicular up the cliff. This is why the ticket to ask for is tariff D, the Rundreise.",
    "source": "seed",
    "moved_m": 0
   },
-  "aareschlucht-ost": {
-   "name": "Aareschlucht Ost",
-   "kind": "gorge",
-   "lat": 46.7292,
-   "lon": 8.2114,
+  "murren-blm": {
+   "name": "Mürren BLM station",
+   "kind": "station",
+   "lat": 46.56369,
+   "lon": 7.89712,
+   "days": [
+    5
+   ],
+   "what": "Twenty minutes along the cliff shelf with the Jungfrau across the valley. The loveliest flat ride in the Oberland.",
+   "source": "osm:node/13991021971",
+   "moved_m": 0
+  },
+  "murren-schilthornbahn": {
+   "name": "Mürren, Schilthornbahn station",
+   "kind": "lift",
+   "lat": 46.55784,
+   "lon": 7.89127,
+   "days": [
+    5
+   ],
+   "what": "The other end of the village, which is car-free and worth the walk through. First car up at 07:40.",
+   "source": "osm:node/5299316733",
+   "moved_m": 0
+  },
+  "birg": {
+   "name": "Birg",
+   "kind": "lift",
+   "lat": 46.5535,
+   "lon": 7.8517,
+   "days": [
+    5
+   ],
+   "what": "2,677 m. The Thrill Walk gangway is included and takes 20 minutes - and its floor is open metal grating.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "schilthorn": {
+   "name": "Schilthorn, Piz Gloria",
+   "kind": "summit",
+   "lat": 46.55728,
+   "lon": 7.83517,
+   "days": [
+    5
+   ],
+   "what": "2,970 m. The rebuild finished in April 2026, the cars are new, and the revolving restaurant needs a reservation. Last car off the summit 17:50.",
+   "source": "osm:node/271904229",
+   "moved_m": 0
+  },
+  "gimmelwald": {
+   "name": "Gimmelwald",
+   "kind": "lift",
+   "lat": 46.546,
+   "lon": 7.8942,
+   "days": [
+    5
+   ],
+   "what": "On the way back down the other side. The cable car stops here whether you want it to or not.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "stechelberg-parking": {
+   "name": "Schilthornbahn valley station, Stechelberg",
+   "kind": "parking",
+   "lat": 46.55629,
+   "lon": 7.90189,
+   "days": [
+    5
+   ],
+   "what": "The bottom of the other side, and the cheapest car park of the three: CHF 7 for eight hours, open-air, no height limit. Bus 141 back to Lauterbrunnen.",
+   "source": "osm:way/299982282",
+   "moved_m": 0
+  },
+  "grindelwald-first": {
+   "name": "Grindelwald First",
+   "kind": "lift",
+   "lat": 46.659,
+   "lon": 8.054,
    "days": [
     6
    ],
-   "what": "Come out here, or turn round. There is a train back one stop if legs have had enough.",
+   "what": "2,166 m, 25 minutes up in three stages from the middle of the village. The Cliff Walk at the top is free with the gondola.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "bachalpsee": {
+   "name": "Bachalpsee",
+   "kind": "sight",
+   "lat": 46.66856,
+   "lon": 8.03055,
+   "days": [
+    6
+   ],
+   "what": "3 km each way on a wide, gently rising path, about fifty minutes out. On a still morning the Wetterhorn stands upside down in it.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "interlaken-ost": {
+   "name": "Interlaken Ost",
+   "kind": "station",
+   "lat": 46.6903,
+   "lon": 7.869,
+   "days": [
+    6
+   ],
+   "what": "Half an hour down the valley. The Harder Kulm funicular leaves from beside the station and nearby parking is about CHF 10.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "harder-kulm": {
+   "name": "Harder Kulm",
+   "kind": "summit",
+   "lat": 46.7017,
+   "lon": 7.8617,
+   "days": [
+    6
+   ],
+   "what": "1,322 m, ten minutes up, flat at the top, the classic two-lakes view. Runs to 21:10 in September, so it is an evening rather than a day.",
    "source": "seed",
    "moved_m": 0
   },
@@ -403,9 +448,9 @@
    "lat": 47.44963,
    "lon": 8.56133,
    "days": [
-    8
+    7
    ],
-   "what": "Rental returns, accepted around the clock. Dropped Saturday on the way in, which keeps the hire to six days.",
+   "what": "Rental returns, around the clock. The van is due back at 12:00 on the 11th and an hour late can bill as a whole extra day.",
    "source": "osm:node/8659138639",
    "moved_m": 0
   },
@@ -415,22 +460,10 @@
    "lat": 47.3779,
    "lon": 8.5403,
    "days": [
-    1,
+    7,
     8
    ],
-   "what": "Thirteen minutes from the airport. Both Zurich days start here.",
-   "source": "seed",
-   "moved_m": 0
-  },
-  "rheinfall": {
-   "name": "Rhine Falls, Schloss Laufen",
-   "kind": "sight",
-   "lat": 47.6775,
-   "lon": 8.6148,
-   "days": [
-    1
-   ],
-   "what": "Fifty minutes direct, hourly. Optional on the rest day: lifts and a walkway drop you to a platform in the spray.",
+   "what": "Thirteen minutes from the airport. Its shops open on Sundays, which almost nothing else in Switzerland does.",
    "source": "seed",
    "moved_m": 0
   },
@@ -440,7 +473,8 @@
    "lat": 47.37299,
    "lon": 8.5408,
    "days": [
-    1
+    7,
+    8
    ],
    "what": "Flat, paved and small. Lindenhof, the Fraumünster windows, then the lake promenade.",
    "source": "osm:way/10594810",
@@ -454,7 +488,7 @@
    "days": [
     8
    ],
-   "what": "Zurich's own festival, 12-14 September. Free to walk into, and it runs until 01:30.",
+   "what": "Zurich's own festival, 12-14 September, and the 12th is opening day. Free to walk into and it runs until 01:30. Tram 13 stops short, at Laubegg.",
    "source": "osm:node/2018246102",
    "moved_m": 233
   },
@@ -464,18 +498,8 @@
    "lat": 46.90272,
    "lon": 8.62535,
    "days": [],
-   "what": "Rigi in cloud: boat down the dramatic far end of the lake and back by train, about CHF 27.",
+   "what": "Rigi in cloud: boat down the dramatic far end of the lake and back by train, about CHF 27, all of it seated.",
    "source": "osm:node/240121292",
-   "moved_m": 0
-  },
-  "grindelwald-first": {
-   "name": "Grindelwald First",
-   "kind": "swap",
-   "lat": 46.659,
-   "lon": 8.054,
-   "days": [],
-   "what": "Any washed-out day. Cliff Walk free with the gondola. Skip the Flyer, 2-3 hour queues.",
-   "source": "seed",
    "moved_m": 0
   },
   "blausee": {
@@ -484,132 +508,78 @@
    "lat": 46.53291,
    "lon": 7.66455,
    "days": [],
-   "what": "The real bad-weather day: 49 km and 50 minutes from Grindelwald, and better than First for the parents.",
+   "what": "The washed-out day. A 300 m flat asphalt path from the gate to the water, and the glass-bottomed boat is in the entry price.",
    "source": "osm:node/1463725861",
+   "moved_m": 0
+  },
+  "oeschinensee": {
+   "name": "Oeschinensee",
+   "kind": "swap",
+   "lat": 46.4983,
+   "lon": 7.7283,
+   "days": [],
+   "what": "Turquoise water under the Blüemlisalp walls. The ascent time slot is MANDATORY to 20 September and costs CHF 5 - without it you cannot board.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "niesen-kulm": {
+   "name": "Niesen Kulm",
+   "kind": "swap",
+   "lat": 46.645,
+   "lon": 7.6517,
+   "days": [],
+   "what": "2,362 m by funicular from Mülenen, thirty minutes. On Wednesday and Friday evenings the last descents run to 23:25, so dinner at the top is possible.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "trummelbach": {
+   "name": "Trümmelbach Falls",
+   "kind": "swap",
+   "lat": 46.5772,
+   "lon": 7.9058,
+   "days": [],
+   "what": "Ten glacier falls inside the mountain, reached by a lift built into the rock - but stairs past halfway and permanently wet, so adults only.",
+   "source": "seed",
+   "moved_m": 0
+  },
+  "mannlichen-top": {
+   "name": "Männlichen",
+   "kind": "swap",
+   "lat": 46.61316,
+   "lon": 7.94095,
+   "days": [],
+   "what": "A spare day with the parents: gondola up from the Terminal, the almost level Panoramaweg across, cog railway down from Kleine Scheidegg.",
+   "source": "osm:node/272852989",
+   "moved_m": 1
+  },
+  "kleine-scheidegg": {
+   "name": "Kleine Scheidegg",
+   "kind": "swap",
+   "lat": 46.5851,
+   "lon": 7.9609,
+   "days": [],
+   "what": "The far end of the Panoramaweg, and the junction every Jungfrau route passes through.",
+   "source": "osm:node/3668308747",
+   "moved_m": 0
+  },
+  "schynige-platte": {
+   "name": "Schynige Platte",
+   "kind": "swap",
+   "lat": 46.6553,
+   "lon": 7.908,
+   "days": [],
+   "what": "A wet morning: a vintage cog railway from Wilderswil and a free alpine garden with over 750 species, with far fewer people than the famous peaks.",
+   "source": "seed",
    "moved_m": 0
   }
  },
  "legs": [
   {
    "day": 1,
-   "mode": "lift",
-   "from": "zrh-terminal",
-   "to": "zurich-hb",
-   "label": "Train to the main station, 13 minutes",
-   "km": 8.3,
-   "source": "straight",
-   "geometry": [
-    [
-     47.45096,
-     8.56112
-    ],
-    [
-     47.3779,
-     8.5403
-    ]
-   ]
-  },
-  {
-   "day": 1,
-   "mode": "walk",
-   "from": "zurich-hb",
-   "to": "zurich-altstadt",
-   "label": "Over the Limmat into the old town",
-   "km": 0.8,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.37819,
-     8.54058
-    ],
-    [
-     47.37844,
-     8.54072
-    ],
-    [
-     47.37823,
-     8.54127
-    ],
-    [
-     47.37794,
-     8.5414
-    ],
-    [
-     47.37747,
-     8.54113
-    ],
-    [
-     47.37722,
-     8.54146
-    ],
-    [
-     47.37716,
-     8.54197
-    ],
-    [
-     47.37667,
-     8.54182
-    ],
-    [
-     47.37598,
-     8.54202
-    ],
-    [
-     47.37587,
-     8.54119
-    ],
-    [
-     47.37499,
-     8.54078
-    ],
-    [
-     47.37488,
-     8.54033
-    ],
-    [
-     47.37408,
-     8.54026
-    ],
-    [
-     47.37405,
-     8.54048
-    ],
-    [
-     47.37366,
-     8.54073
-    ],
-    [
-     47.37299,
-     8.54073
-    ]
-   ],
-   "min": 11
-  },
-  {
-   "day": 1,
-   "mode": "lift",
-   "from": "zurich-hb",
-   "to": "rheinfall",
-   "label": "Only if everyone is up to it: direct train to the Rhine Falls, 50 minutes",
-   "km": 33.8,
-   "source": "straight",
-   "geometry": [
-    [
-     47.3779,
-     8.5403
-    ],
-    [
-     47.6775,
-     8.6148
-    ]
-   ]
-  },
-  {
-   "day": 2,
    "mode": "walk",
    "from": "zrh-terminal",
    "to": "zrh-rental",
-   "label": "Through to the Rental Centre on Level 1",
+   "label": "Through to the Rental Centre on Level 1, van from 09:00",
    "km": 0.4,
    "source": "valhalla/pedestrian",
    "geometry": [
@@ -641,12 +611,12 @@
    "min": 4
   },
   {
-   "day": 2,
+   "day": 1,
    "mode": "drive",
    "from": "zrh-rental",
-   "to": "grindelwald-village",
-   "label": "A4 and A14 past Lucerne, A8 over the Brünig, the old lakeside road at Lungern",
-   "km": 160.9,
+   "to": "schwyz-town",
+   "label": "A4 south past the Zugersee, Zug for late morning, Schwyz by about 13:15",
+   "km": 74.8,
    "source": "osrm/driving",
    "geometry": [
     [
@@ -806,20 +776,20 @@
      8.46251
     ],
     [
-     47.42113,
-     8.4563
+     47.42035,
+     8.45046
     ],
     [
-     47.4201,
-     8.4492
+     47.41987,
+     8.44832
     ],
     [
-     47.41963,
-     8.44765
+     47.41931,
+     8.44691
     ],
     [
-     47.41897,
-     8.44626
+     47.41838,
+     8.4453
     ],
     [
      47.41614,
@@ -830,28 +800,28 @@
      8.43957
     ],
     [
-     47.41278,
-     8.43133
+     47.41286,
+     8.43161
     ],
     [
-     47.41161,
-     8.42814
+     47.41169,
+     8.4283
     ],
     [
-     47.41077,
-     8.427
+     47.41064,
+     8.42685
     ],
     [
-     47.40783,
-     8.4239
+     47.40728,
+     8.42342
     ],
     [
-     47.4052,
-     8.42202
+     47.40579,
+     8.42234
     ],
     [
-     47.40363,
-     8.42143
+     47.40414,
+     8.42158
     ],
     [
      47.39891,
@@ -922,12 +892,12 @@
      8.4216
     ],
     [
-     47.35456,
-     8.42167
+     47.35494,
+     8.4216
     ],
     [
-     47.35258,
-     8.42242
+     47.35293,
+     8.42224
     ],
     [
      47.35055,
@@ -1022,40 +992,36 @@
      8.42843
     ],
     [
-     47.29093,
-     8.42507
+     47.2891,
+     8.42409
     ],
     [
-     47.28886,
-     8.424
+     47.28761,
+     8.42372
     ],
     [
-     47.2873,
-     8.4237
+     47.28594,
+     8.42382
     ],
     [
-     47.28564,
-     8.4239
+     47.28392,
+     8.4247
     ],
     [
-     47.28357,
-     8.42493
-    ],
-    [
-     47.28002,
-     8.42745
-    ],
-    [
-     47.27854,
-     8.42877
+     47.27885,
+     8.42844
     ],
     [
      47.27698,
      8.43088
     ],
     [
-     47.27466,
-     8.43538
+     47.27518,
+     8.43453
+    ],
+    [
+     47.2744,
+     8.43576
     ],
     [
      47.27345,
@@ -1110,96 +1076,2814 @@
      8.46388
     ],
     [
-     47.21569,
-     8.46968
+     47.21457,
+     8.47023
     ],
     [
-     47.21394,
-     8.47049
+     47.21263,
+     8.47087
     ],
     [
-     47.21231,
-     8.47093
-    ],
-    [
-     47.21074,
-     8.47097
+     47.21097,
+     8.47099
     ],
     [
      47.20938,
      8.47068
     ],
     [
-     47.20715,
-     8.46944
+     47.20782,
+     8.46991
     ],
     [
-     47.20511,
-     8.46738
+     47.20627,
+     8.46866
     ],
     [
-     47.1846,
-     8.43908
+     47.20478,
+     8.46697
     ],
     [
-     47.18238,
-     8.43652
+     47.20351,
+     8.46526
     ],
     [
-     47.18001,
-     8.43451
+     47.20095,
+     8.4611
     ],
     [
-     47.17697,
-     8.43286
+     47.2004,
+     8.4608
     ],
     [
-     47.17498,
-     8.43224
+     47.19981,
+     8.46098
     ],
     [
-     47.17328,
-     8.43197
+     47.19938,
+     8.46153
     ],
     [
-     47.17053,
-     8.43199
+     47.19822,
+     8.4639
     ],
     [
-     47.16026,
-     8.43298
+     47.19728,
+     8.4654
     ],
     [
-     47.15669,
-     8.43277
+     47.19316,
+     8.47051
     ],
     [
-     47.15479,
-     8.43215
+     47.19262,
+     8.4708
     ],
     [
-     47.15297,
-     8.43113
+     47.19147,
+     8.47092
     ],
     [
-     47.15107,
-     8.42955
+     47.19093,
+     8.47183
     ],
     [
-     47.14977,
-     8.42807
+     47.19067,
+     8.47201
     ],
     [
-     47.14848,
-     8.42616
+     47.18869,
+     8.47141
     ],
     [
-     47.14722,
+     47.18753,
+     8.4715
+    ],
+    [
+     47.18668,
+     8.47204
+    ],
+    [
+     47.18602,
+     8.47288
+    ],
+    [
+     47.1854,
+     8.47459
+    ],
+    [
+     47.18503,
+     8.47798
+    ],
+    [
+     47.18429,
+     8.48204
+    ],
+    [
+     47.18367,
+     8.48304
+    ],
+    [
+     47.1821,
+     8.48391
+    ],
+    [
+     47.18159,
+     8.48438
+    ],
+    [
+     47.18048,
+     8.4862
+    ],
+    [
+     47.17915,
+     8.49039
+    ],
+    [
+     47.17799,
+     8.49653
+    ],
+    [
+     47.17545,
+     8.50289
+    ],
+    [
+     47.17463,
+     8.50394
+    ],
+    [
+     47.17368,
+     8.50578
+    ],
+    [
+     47.172,
+     8.51095
+    ],
+    [
+     47.17059,
+     8.51359
+    ],
+    [
+     47.16814,
+     8.51494
+    ],
+    [
+     47.16787,
+     8.51565
+    ],
+    [
+     47.16642,
+     8.51553
+    ],
+    [
+     47.16655,
+     8.51627
+    ],
+    [
+     47.16704,
+     8.51608
+    ],
+    [
+     47.16799,
+     8.51616
+    ],
+    [
+     47.1681,
+     8.51622
+    ],
+    [
+     47.16812,
+     8.51684
+    ],
+    [
+     47.16803,
+     8.51572
+    ],
+    [
+     47.16911,
+     8.51576
+    ],
+    [
+     47.16906,
+     8.51451
+    ],
+    [
+     47.16808,
+     8.515
+    ],
+    [
+     47.16779,
+     8.51567
+    ],
+    [
+     47.16596,
+     8.51547
+    ],
+    [
+     47.16436,
+     8.51441
+    ],
+    [
+     47.15876,
+     8.51226
+    ],
+    [
+     47.15661,
+     8.51103
+    ],
+    [
+     47.15409,
+     8.511
+    ],
+    [
+     47.15227,
+     8.5089
+    ],
+    [
+     47.15029,
+     8.50851
+    ],
+    [
+     47.14898,
+     8.50727
+    ],
+    [
+     47.1474,
+     8.50634
+    ],
+    [
+     47.14613,
+     8.50587
+    ],
+    [
+     47.1422,
+     8.50563
+    ],
+    [
+     47.13931,
+     8.50473
+    ],
+    [
+     47.13877,
+     8.50487
+    ],
+    [
+     47.1372,
+     8.5061
+    ],
+    [
+     47.13633,
+     8.50618
+    ],
+    [
+     47.13345,
+     8.50416
+    ],
+    [
+     47.13112,
+     8.50206
+    ],
+    [
+     47.12987,
+     8.49977
+    ],
+    [
+     47.12786,
+     8.49849
+    ],
+    [
+     47.12584,
+     8.49804
+    ],
+    [
+     47.12419,
+     8.49594
+    ],
+    [
+     47.1229,
+     8.49559
+    ],
+    [
+     47.12177,
+     8.49605
+    ],
+    [
+     47.11907,
+     8.49668
+    ],
+    [
+     47.11809,
+     8.49749
+    ],
+    [
+     47.11754,
+     8.49867
+    ],
+    [
+     47.1168,
+     8.49965
+    ],
+    [
+     47.11525,
+     8.49995
+    ],
+    [
+     47.11397,
+     8.50079
+    ],
+    [
+     47.11191,
+     8.50171
+    ],
+    [
+     47.1111,
+     8.5025
+    ],
+    [
+     47.10982,
+     8.50276
+    ],
+    [
+     47.10844,
+     8.50359
+    ],
+    [
+     47.10807,
+     8.50407
+    ],
+    [
+     47.10757,
+     8.5055
+    ],
+    [
+     47.10672,
+     8.50633
+    ],
+    [
+     47.10607,
+     8.50821
+    ],
+    [
+     47.10463,
+     8.50864
+    ],
+    [
+     47.10253,
+     8.51054
+    ],
+    [
+     47.10151,
+     8.51103
+    ],
+    [
+     47.10082,
+     8.51223
+    ],
+    [
+     47.09961,
+     8.51286
+    ],
+    [
+     47.09862,
+     8.51449
+    ],
+    [
+     47.09601,
+     8.51643
+    ],
+    [
+     47.09566,
+     8.51699
+    ],
+    [
+     47.09518,
+     8.51846
+    ],
+    [
+     47.09479,
+     8.51901
+    ],
+    [
+     47.09367,
+     8.51957
+    ],
+    [
+     47.09258,
+     8.52081
+    ],
+    [
+     47.09105,
+     8.52112
+    ],
+    [
+     47.09048,
+     8.52142
+    ],
+    [
+     47.09005,
+     8.52211
+    ],
+    [
+     47.08972,
+     8.52323
+    ],
+    [
+     47.08926,
+     8.52375
+    ],
+    [
+     47.0885,
+     8.52397
+    ],
+    [
+     47.08784,
+     8.52364
+    ],
+    [
+     47.08716,
+     8.52357
+    ],
+    [
+     47.08644,
+     8.5231
+    ],
+    [
+     47.08566,
+     8.52332
+    ],
+    [
+     47.08454,
+     8.52329
+    ],
+    [
+     47.08332,
+     8.52286
+    ],
+    [
+     47.08045,
+     8.52385
+    ],
+    [
+     47.07947,
+     8.52468
+    ],
+    [
+     47.07702,
+     8.5258
+    ],
+    [
+     47.07601,
+     8.52678
+    ],
+    [
+     47.07348,
+     8.52816
+    ],
+    [
+     47.07157,
+     8.52823
+    ],
+    [
+     47.07023,
+     8.52798
+    ],
+    [
+     47.06906,
+     8.52722
+    ],
+    [
+     47.06743,
+     8.52527
+    ],
+    [
+     47.0662,
+     8.52462
+    ],
+    [
+     47.06494,
+     8.52305
+    ],
+    [
+     47.06406,
+     8.52261
+    ],
+    [
+     47.06344,
+     8.52186
+    ],
+    [
+     47.06325,
+     8.5219
+    ],
+    [
+     47.06314,
+     8.52219
+    ],
+    [
+     47.06238,
+     8.52279
+    ],
+    [
+     47.06173,
+     8.52393
+    ],
+    [
+     47.06103,
+     8.52647
+    ],
+    [
+     47.06018,
+     8.52797
+    ],
+    [
+     47.05922,
+     8.53048
+    ],
+    [
+     47.05501,
+     8.5356
+    ],
+    [
+     47.05364,
+     8.53613
+    ],
+    [
+     47.05301,
+     8.53685
+    ],
+    [
+     47.0523,
+     8.5394
+    ],
+    [
+     47.05217,
+     8.54194
+    ],
+    [
+     47.0516,
+     8.5432
+    ],
+    [
+     47.04987,
+     8.54447
+    ],
+    [
+     47.04476,
+     8.54689
+    ],
+    [
+     47.04328,
+     8.54883
+    ],
+    [
+     47.04275,
+     8.5504
+    ],
+    [
+     47.04229,
+     8.54989
+    ],
+    [
+     47.04222,
+     8.54926
+    ],
+    [
+     47.04243,
+     8.54905
+    ],
+    [
+     47.04265,
+     8.54924
+    ],
+    [
+     47.04306,
+     8.55147
+    ],
+    [
+     47.04419,
+     8.55475
+    ],
+    [
+     47.04507,
+     8.55835
+    ],
+    [
+     47.04572,
+     8.56027
+    ],
+    [
+     47.04682,
+     8.56245
+    ],
+    [
+     47.04889,
+     8.56556
+    ],
+    [
+     47.04947,
+     8.56698
+    ],
+    [
+     47.04977,
+     8.56834
+    ],
+    [
+     47.04979,
+     8.57066
+    ],
+    [
+     47.04931,
+     8.57276
+    ],
+    [
+     47.04865,
+     8.57407
+    ],
+    [
+     47.04657,
+     8.57681
+    ],
+    [
+     47.04605,
+     8.57807
+    ],
+    [
+     47.04575,
+     8.57964
+    ],
+    [
+     47.04574,
+     8.58112
+    ],
+    [
+     47.04591,
+     8.58225
+    ],
+    [
+     47.04742,
+     8.58616
+    ],
+    [
+     47.04783,
+     8.58789
+    ],
+    [
+     47.04797,
+     8.59019
+    ],
+    [
+     47.04774,
+     8.59221
+    ],
+    [
+     47.0473,
+     8.59396
+    ],
+    [
+     47.04659,
+     8.59582
+    ],
+    [
+     47.04231,
+     8.6041
+    ],
+    [
+     47.03854,
+     8.61523
+    ],
+    [
+     47.03648,
+     8.61963
+    ],
+    [
+     47.03531,
+     8.62128
+    ],
+    [
+     47.03408,
+     8.6223
+    ],
+    [
+     47.03083,
+     8.62385
+    ],
+    [
+     47.03006,
+     8.6234
+    ],
+    [
+     47.02969,
+     8.62364
+    ],
+    [
+     47.02957,
+     8.62432
+    ],
+    [
+     47.02966,
+     8.62511
+    ],
+    [
+     47.03057,
+     8.62626
+    ],
+    [
+     47.03058,
+     8.62691
+    ],
+    [
+     47.02911,
+     8.62983
+    ],
+    [
+     47.02724,
+     8.63195
+    ],
+    [
+     47.02634,
+     8.63267
+    ],
+    [
+     47.02539,
+     8.63522
+    ],
+    [
+     47.02544,
+     8.63545
+    ],
+    [
+     47.02507,
+     8.63659
+    ],
+    [
+     47.02326,
+     8.63892
+    ],
+    [
+     47.02273,
+     8.64381
+    ],
+    [
+     47.02071,
+     8.653
+    ]
+   ],
+   "min": 76,
+   "via": [
+    "zug-altstadt"
+   ]
+  },
+  {
+   "day": 1,
+   "mode": "drive",
+   "from": "schwyz-town",
+   "to": "brunnen-quay",
+   "label": "Five minutes to Brunnen while check-in waits for four o'clock",
+   "km": 5.1,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     47.02071,
+     8.653
+    ],
+    [
+     47.0196,
+     8.65178
+    ],
+    [
+     47.01793,
+     8.65103
+    ],
+    [
+     47.017,
+     8.64931
+    ],
+    [
+     47.01525,
+     8.64798
+    ],
+    [
+     47.01443,
+     8.64669
+    ],
+    [
+     47.01443,
+     8.64645
+    ],
+    [
+     47.01427,
+     8.64648
+    ],
+    [
+     47.01362,
+     8.64556
+    ],
+    [
+     47.01136,
+     8.64462
+    ],
+    [
+     47.01083,
+     8.64391
+    ],
+    [
+     47.01047,
+     8.63766
+    ],
+    [
+     47.00788,
+     8.62906
+    ],
+    [
+     47.00361,
+     8.61955
+    ],
+    [
+     47.0035,
+     8.61868
+    ],
+    [
+     47.00307,
+     8.61837
+    ],
+    [
+     47.00245,
+     8.61694
+    ],
+    [
+     47.00049,
+     8.61357
+    ],
+    [
+     47.00033,
+     8.61249
+    ],
+    [
+     47.00068,
+     8.6113
+    ],
+    [
+     47.00063,
+     8.61092
+    ],
+    [
+     46.99937,
+     8.60956
+    ],
+    [
+     47.00011,
+     8.6077
+    ],
+    [
+     47.00026,
+     8.60631
+    ],
+    [
+     47.00308,
+     8.60431
+    ],
+    [
+     47.00321,
+     8.60532
+    ]
+   ],
+   "min": 8
+  },
+  {
+   "day": 2,
+   "mode": "drive",
+   "from": "schwyz-town",
+   "to": "weggis-village",
+   "label": "Half an hour round the lake, and park at the pier",
+   "km": 30.1,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     47.02071,
+     8.653
+    ],
+    [
+     47.02083,
+     8.65306
+    ],
+    [
+     47.0211,
+     8.65128
+    ],
+    [
+     47.02273,
+     8.64381
+    ],
+    [
+     47.02326,
+     8.63892
+    ],
+    [
+     47.02507,
+     8.63659
+    ],
+    [
+     47.02634,
+     8.63267
+    ],
+    [
+     47.02724,
+     8.63195
+    ],
+    [
+     47.02895,
+     8.63004
+    ],
+    [
+     47.02955,
+     8.62909
+    ],
+    [
+     47.03024,
+     8.62742
+    ],
+    [
+     47.03091,
+     8.62656
+    ],
+    [
+     47.03004,
+     8.6256
+    ],
+    [
+     47.02996,
+     8.62523
+    ],
+    [
+     47.03067,
+     8.62438
+    ],
+    [
+     47.03158,
+     8.62364
+    ],
+    [
+     47.03379,
+     8.6226
+    ],
+    [
+     47.03489,
+     8.62183
+    ],
+    [
+     47.03592,
+     8.62068
+    ],
+    [
+     47.03695,
+     8.61895
+    ],
+    [
+     47.03882,
+     8.61469
+    ],
+    [
+     47.0424,
+     8.60412
+    ],
+    [
+     47.04353,
+     8.60173
+    ],
+    [
+     47.04639,
+     8.59647
+    ],
+    [
+     47.04757,
+     8.59332
+    ],
+    [
+     47.048,
+     8.591
+    ],
+    [
+     47.04798,
+     8.58841
+    ],
+    [
+     47.04749,
+     8.58611
+    ],
+    [
+     47.04602,
+     8.58235
+    ],
+    [
+     47.04582,
+     8.58108
+    ],
+    [
+     47.04583,
+     8.57966
+    ],
+    [
+     47.04607,
+     8.57833
+    ],
+    [
+     47.04663,
+     8.57689
+    ],
+    [
+     47.04871,
+     8.57415
+    ],
+    [
+     47.04937,
+     8.57283
+    ],
+    [
+     47.04985,
+     8.57091
+    ],
+    [
+     47.04989,
+     8.56866
+    ],
+    [
+     47.04962,
+     8.56716
+    ],
+    [
+     47.04915,
+     8.56588
+    ],
+    [
+     47.04668,
+     8.56203
+    ],
+    [
+     47.04556,
+     8.55959
+    ],
+    [
+     47.04436,
+     8.55498
+    ],
+    [
+     47.04305,
+     8.55108
+    ],
+    [
+     47.04285,
+     8.54988
+    ],
+    [
+     47.04286,
+     8.54858
+    ],
+    [
+     47.04324,
+     8.5468
+    ],
+    [
+     47.04405,
+     8.54531
+    ],
+    [
+     47.04507,
+     8.54421
+    ],
+    [
+     47.04805,
+     8.54182
+    ],
+    [
+     47.0488,
+     8.54091
+    ],
+    [
+     47.0494,
+     8.53978
+    ],
+    [
+     47.04988,
+     8.53815
+    ],
+    [
+     47.0502,
+     8.5353
+    ],
+    [
+     47.05143,
+     8.52878
+    ],
+    [
+     47.05337,
+     8.52362
+    ],
+    [
+     47.05419,
+     8.51997
+    ],
+    [
+     47.05469,
+     8.51839
+    ],
+    [
+     47.05526,
+     8.51724
+    ],
+    [
+     47.05606,
+     8.51615
+    ],
+    [
+     47.05969,
+     8.5126
+    ],
+    [
+     47.06264,
+     8.51089
+    ],
+    [
+     47.06476,
+     8.50892
+    ],
+    [
+     47.06728,
+     8.50768
+    ],
+    [
+     47.06853,
+     8.50646
+    ],
+    [
+     47.06947,
+     8.50482
+    ],
+    [
+     47.07047,
+     8.50206
+    ],
+    [
+     47.0716,
+     8.49982
+    ],
+    [
+     47.07282,
+     8.49668
+    ],
+    [
+     47.07475,
+     8.49293
+    ],
+    [
+     47.07611,
+     8.49044
+    ],
+    [
+     47.07795,
+     8.48796
+    ],
+    [
+     47.07939,
+     8.48494
+    ],
+    [
+     47.08172,
+     8.48192
+    ],
+    [
+     47.08346,
+     8.47864
+    ],
+    [
+     47.08482,
+     8.47649
+    ],
+    [
+     47.08543,
+     8.47513
+    ],
+    [
+     47.08647,
+     8.47204
+    ],
+    [
+     47.08756,
+     8.46988
+    ],
+    [
+     47.09031,
+     8.46633
+    ],
+    [
+     47.09253,
+     8.46227
+    ],
+    [
+     47.09377,
+     8.4606
+    ],
+    [
+     47.09538,
+     8.45929
+    ],
+    [
+     47.0975,
+     8.45832
+    ],
+    [
+     47.09846,
+     8.45767
+    ],
+    [
+     47.09961,
+     8.45636
+    ],
+    [
+     47.10065,
+     8.45463
+    ],
+    [
+     47.10114,
+     8.45428
+    ],
+    [
+     47.10204,
+     8.45423
+    ],
+    [
+     47.1024,
+     8.45338
+    ],
+    [
+     47.10233,
+     8.45242
+    ],
+    [
+     47.10173,
+     8.45033
+    ],
+    [
+     47.09866,
+     8.44985
+    ],
+    [
+     47.09465,
+     8.44967
+    ],
+    [
+     47.09084,
+     8.44685
+    ],
+    [
+     47.0898,
+     8.44561
+    ],
+    [
+     47.08766,
+     8.44231
+    ],
+    [
+     47.08747,
+     8.44148
+    ],
+    [
+     47.08784,
+     8.44117
+    ],
+    [
+     47.08818,
+     8.44173
+    ],
+    [
+     47.0883,
+     8.44294
+    ],
+    [
+     47.08817,
+     8.44429
+    ],
+    [
+     47.08784,
+     8.44539
+    ],
+    [
+     47.08743,
+     8.44611
+    ],
+    [
+     47.0869,
+     8.44659
+    ],
+    [
+     47.08614,
+     8.44684
+    ],
+    [
+     47.08551,
+     8.44671
+    ],
+    [
+     47.08505,
+     8.44625
+    ],
+    [
+     47.08479,
+     8.44627
+    ],
+    [
+     47.0815,
+     8.44427
+    ],
+    [
+     47.07959,
+     8.44248
+    ],
+    [
+     47.07941,
+     8.44203
+    ],
+    [
+     47.07944,
+     8.44125
+    ],
+    [
+     47.0786,
+     8.4412
+    ],
+    [
+     47.07786,
+     8.44033
+    ],
+    [
+     47.07673,
+     8.43961
+    ],
+    [
+     47.07483,
+     8.43928
+    ],
+    [
+     47.07314,
+     8.43832
+    ],
+    [
+     47.07027,
+     8.43747
+    ],
+    [
+     47.06801,
+     8.43624
+    ],
+    [
+     47.06674,
+     8.43536
+    ],
+    [
+     47.06361,
+     8.43227
+    ],
+    [
+     47.06167,
+     8.43107
+    ],
+    [
+     47.05969,
+     8.42929
+    ],
+    [
+     47.05872,
+     8.42905
+    ],
+    [
+     47.05747,
+     8.42936
+    ],
+    [
+     47.05694,
+     8.42988
+    ],
+    [
+     47.05621,
+     8.43125
+    ],
+    [
+     47.05569,
+     8.43157
+    ],
+    [
+     47.05523,
+     8.43156
+    ],
+    [
+     47.05407,
+     8.4308
+    ],
+    [
+     47.05271,
+     8.42906
+    ],
+    [
+     47.04971,
+     8.42647
+    ],
+    [
+     47.04586,
+     8.42544
+    ],
+    [
+     47.04293,
+     8.42368
+    ],
+    [
+     47.04112,
+     8.4233
+    ],
+    [
+     47.03991,
+     8.42216
+    ],
+    [
+     47.03903,
+     8.42173
+    ],
+    [
+     47.03789,
+     8.42151
+    ],
+    [
+     47.03669,
+     8.42076
+    ],
+    [
+     47.03619,
+     8.42086
+    ],
+    [
+     47.03572,
+     8.42133
+    ],
+    [
+     47.03547,
+     8.42225
+    ],
+    [
+     47.03555,
+     8.42354
+    ],
+    [
+     47.03512,
+     8.42366
+    ],
+    [
+     47.03475,
+     8.42445
+    ],
+    [
+     47.03385,
+     8.42536
+    ],
+    [
+     47.03316,
+     8.42727
+    ],
+    [
+     47.03293,
+     8.42907
+    ],
+    [
+     47.03211,
+     8.42995
+    ],
+    [
+     47.03238,
+     8.43183
+    ],
+    [
+     47.03231,
+     8.43464
+    ]
+   ],
+   "min": 28
+  },
+  {
+   "day": 2,
+   "mode": "walk",
+   "from": "weggis-village",
+   "to": "weggis-cablecar",
+   "label": "Through the village to the cable-car station",
+   "km": 0.6,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     47.03231,
+     8.43464
+    ],
+    [
+     47.03224,
+     8.43647
+    ],
+    [
+     47.03283,
+     8.43761
+    ],
+    [
+     47.03412,
+     8.43894
+    ],
+    [
+     47.03395,
+     8.43914
+    ],
+    [
+     47.0339,
+     8.43973
+    ],
+    [
+     47.03363,
+     8.44
+    ],
+    [
+     47.03406,
+     8.44082
+    ]
+   ],
+   "min": 10
+  },
+  {
+   "day": 2,
+   "mode": "lift",
+   "from": "weggis-cablecar",
+   "to": "rigi-kaltbad",
+   "label": "Luftseilbahn up to Rigi Kaltbad",
+   "km": 2.2,
+   "source": "straight",
+   "geometry": [
+    [
+     47.03406,
+     8.44082
+    ],
+    [
+     47.04395,
+     8.46662
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "mode": "lift",
+   "from": "rigi-kaltbad",
+   "to": "rigi-kulm",
+   "label": "Cogwheel on to the summit, 1,798 m",
+   "km": 1.9,
+   "source": "straight",
+   "geometry": [
+    [
+     47.04395,
+     8.46662
+    ],
+    [
+     47.05516,
+     8.48539
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "mode": "walk",
+   "from": "rigi-kulm",
+   "to": "rigi-kanzeli",
+   "label": "For the adults: 4 km down to Kaltbad, about an hour and a quarter",
+   "km": 1.9,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     47.05507,
+     8.48536
+    ],
+    [
+     47.05515,
+     8.48453
+    ],
+    [
+     47.05495,
+     8.48354
+    ],
+    [
+     47.05493,
+     8.48171
+    ],
+    [
+     47.05441,
+     8.47971
+    ],
+    [
+     47.0542,
+     8.47974
+    ],
+    [
+     47.0539,
+     8.48046
+    ],
+    [
+     47.0536,
+     8.48052
+    ],
+    [
+     47.05328,
+     8.48011
+    ],
+    [
+     47.05354,
+     8.47951
+    ],
+    [
+     47.05341,
+     8.4791
+    ],
+    [
+     47.05368,
+     8.47819
+    ],
+    [
+     47.05359,
+     8.4776
+    ],
+    [
+     47.05397,
+     8.47673
+    ],
+    [
+     47.05375,
+     8.47654
+    ],
+    [
+     47.05385,
+     8.47617
+    ],
+    [
+     47.05327,
+     8.47433
+    ],
+    [
+     47.05296,
+     8.4737
+    ],
+    [
+     47.05244,
+     8.47337
+    ],
+    [
+     47.0524,
+     8.47294
+    ],
+    [
+     47.05191,
+     8.47211
+    ],
+    [
+     47.0518,
+     8.47157
+    ],
+    [
+     47.05085,
+     8.46994
+    ],
+    [
+     47.05033,
+     8.46982
+    ],
+    [
+     47.0496,
+     8.46913
+    ],
+    [
+     47.04874,
+     8.46781
+    ]
+   ],
+   "min": 26
+  },
+  {
+   "day": 2,
+   "mode": "lift",
+   "from": "rigi-kaltbad",
+   "to": "weggis-cablecar",
+   "label": "Back down to Weggis, where the van has been waiting",
+   "km": 2.2,
+   "source": "straight",
+   "geometry": [
+    [
+     47.04395,
+     8.46662
+    ],
+    [
+     47.03406,
+     8.44082
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "mode": "boat",
+   "from": "weggis-pier",
+   "to": "lucerne-pier",
+   "label": "SGV across the lake, 42 minutes, CHF 11.50 on a Half Fare Card",
+   "km": 9.6,
+   "source": "straight",
+   "geometry": [
+    [
+     47.03144,
+     8.43325
+    ],
+    [
+     47.05136,
+     8.3101
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "mode": "walk",
+   "from": "lucerne-pier",
+   "to": "lucerne-kapellbrucke",
+   "label": "Five minutes to the Kapellbrücke, best in the early evening",
+   "km": 0.4,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     47.05136,
+     8.31012
+    ],
+    [
+     47.05119,
+     8.31015
+    ],
+    [
+     47.05116,
+     8.30955
+    ],
+    [
+     47.05104,
+     8.30952
+    ],
+    [
+     47.05113,
+     8.30898
+    ],
+    [
+     47.05091,
+     8.30665
+    ],
+    [
+     47.05105,
+     8.30663
+    ],
+    [
+     47.0516,
+     8.30748
+    ]
+   ],
+   "min": 5
+  },
+  {
+   "day": 2,
+   "mode": "boat",
+   "from": "lucerne-pier",
+   "to": "weggis-pier",
+   "label": "Last boat back at 19:12, into Weggis at 19:53",
+   "km": 9.6,
+   "source": "straight",
+   "geometry": [
+    [
+     47.05136,
+     8.3101
+    ],
+    [
+     47.03144,
+     8.43325
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "mode": "drive",
+   "from": "weggis-village",
+   "to": "schwyz-town",
+   "label": "Back round the lake to Schwyz, about half an hour",
+   "km": 29.6,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     47.03231,
+     8.43464
+    ],
+    [
+     47.03238,
+     8.43183
+    ],
+    [
+     47.03211,
+     8.42995
+    ],
+    [
+     47.03293,
+     8.42907
+    ],
+    [
+     47.03316,
+     8.42727
+    ],
+    [
+     47.03385,
+     8.42536
+    ],
+    [
+     47.03473,
+     8.42448
+    ],
+    [
+     47.03509,
+     8.42371
+    ],
+    [
+     47.03573,
      8.42365
     ],
     [
-     47.14621,
+     47.03547,
+     8.42225
+    ],
+    [
+     47.03572,
+     8.42133
+    ],
+    [
+     47.03619,
      8.42086
+    ],
+    [
+     47.03669,
+     8.42076
+    ],
+    [
+     47.03789,
+     8.42151
+    ],
+    [
+     47.03903,
+     8.42173
+    ],
+    [
+     47.03991,
+     8.42216
+    ],
+    [
+     47.04112,
+     8.4233
+    ],
+    [
+     47.04293,
+     8.42368
+    ],
+    [
+     47.04586,
+     8.42544
+    ],
+    [
+     47.04971,
+     8.42647
+    ],
+    [
+     47.05271,
+     8.42906
+    ],
+    [
+     47.05407,
+     8.4308
+    ],
+    [
+     47.05523,
+     8.43156
+    ],
+    [
+     47.05569,
+     8.43157
+    ],
+    [
+     47.05621,
+     8.43125
+    ],
+    [
+     47.05694,
+     8.42988
+    ],
+    [
+     47.05747,
+     8.42936
+    ],
+    [
+     47.05872,
+     8.42905
+    ],
+    [
+     47.05969,
+     8.42929
+    ],
+    [
+     47.06167,
+     8.43107
+    ],
+    [
+     47.06361,
+     8.43227
+    ],
+    [
+     47.06674,
+     8.43536
+    ],
+    [
+     47.06801,
+     8.43624
+    ],
+    [
+     47.07042,
+     8.43753
+    ],
+    [
+     47.07314,
+     8.43832
+    ],
+    [
+     47.07505,
+     8.43936
+    ],
+    [
+     47.07667,
+     8.43958
+    ],
+    [
+     47.0777,
+     8.4402
+    ],
+    [
+     47.07853,
+     8.44116
+    ],
+    [
+     47.07922,
+     8.44127
+    ],
+    [
+     47.07959,
+     8.44248
+    ],
+    [
+     47.0815,
+     8.44427
+    ],
+    [
+     47.08479,
+     8.44627
+    ],
+    [
+     47.08498,
+     8.44658
+    ],
+    [
+     47.08614,
+     8.44684
+    ],
+    [
+     47.0869,
+     8.44659
+    ],
+    [
+     47.08751,
+     8.446
+    ],
+    [
+     47.08825,
+     8.44455
+    ],
+    [
+     47.08869,
+     8.44442
+    ],
+    [
+     47.09064,
+     8.44667
+    ],
+    [
+     47.09285,
+     8.44843
+    ],
+    [
+     47.09314,
+     8.44891
+    ],
+    [
+     47.09502,
+     8.44976
+    ],
+    [
+     47.09854,
+     8.44987
+    ],
+    [
+     47.10151,
+     8.4504
+    ],
+    [
+     47.1019,
+     8.45128
+    ],
+    [
+     47.10197,
+     8.45195
+    ],
+    [
+     47.1018,
+     8.45251
+    ],
+    [
+     47.10091,
+     8.45361
+    ],
+    [
+     47.09981,
+     8.45583
+    ],
+    [
+     47.09891,
+     8.45707
+    ],
+    [
+     47.09762,
+     8.45812
+    ],
+    [
+     47.09486,
+     8.45947
+    ],
+    [
+     47.09327,
+     8.46099
+    ],
+    [
+     47.09245,
+     8.46216
+    ],
+    [
+     47.09028,
+     8.46609
+    ],
+    [
+     47.08741,
+     8.46985
+    ],
+    [
+     47.08641,
+     8.47181
+    ],
+    [
+     47.08476,
+     8.47629
+    ],
+    [
+     47.08328,
+     8.47867
+    ],
+    [
+     47.08158,
+     8.48191
+    ],
+    [
+     47.0793,
+     8.48488
+    ],
+    [
+     47.07773,
+     8.48814
+    ],
+    [
+     47.07586,
+     8.49064
+    ],
+    [
+     47.0729,
+     8.49629
+    ],
+    [
+     47.07151,
+     8.49977
+    ],
+    [
+     47.07039,
+     8.50199
+    ],
+    [
+     47.06947,
+     8.50459
+    ],
+    [
+     47.0686,
+     8.50618
+    ],
+    [
+     47.06723,
+     8.50758
+    ],
+    [
+     47.06473,
+     8.5088
+    ],
+    [
+     47.06244,
+     8.51089
+    ],
+    [
+     47.06032,
+     8.512
+    ],
+    [
+     47.05944,
+     8.51268
+    ],
+    [
+     47.05599,
+     8.51607
+    ],
+    [
+     47.05508,
+     8.51735
+    ],
+    [
+     47.05455,
+     8.51848
+    ],
+    [
+     47.05315,
+     8.52367
+    ],
+    [
+     47.05134,
+     8.52847
+    ],
+    [
+     47.05066,
+     8.53284
+    ],
+    [
+     47.05013,
+     8.53524
+    ],
+    [
+     47.04982,
+     8.53777
+    ],
+    [
+     47.04932,
+     8.53954
+    ],
+    [
+     47.04867,
+     8.54073
+    ],
+    [
+     47.04795,
+     8.54163
+    ],
+    [
+     47.04501,
+     8.54408
+    ],
+    [
+     47.04397,
+     8.54523
+    ],
+    [
+     47.04321,
+     8.54663
+    ],
+    [
+     47.04278,
+     8.54845
+    ],
+    [
+     47.04276,
+     8.5498
+    ],
+    [
+     47.04294,
+     8.55101
+    ],
+    [
+     47.04427,
+     8.55503
+    ],
+    [
+     47.04536,
+     8.55931
+    ],
+    [
+     47.0464,
+     8.56172
+    ],
+    [
+     47.04908,
+     8.56595
+    ],
+    [
+     47.04953,
+     8.56718
+    ],
+    [
+     47.0498,
+     8.56869
+    ],
+    [
+     47.04977,
+     8.57088
+    ],
+    [
+     47.04931,
+     8.57276
+    ],
+    [
+     47.04865,
+     8.57407
+    ],
+    [
+     47.04657,
+     8.57681
+    ],
+    [
+     47.04605,
+     8.57807
+    ],
+    [
+     47.04575,
+     8.57964
+    ],
+    [
+     47.04574,
+     8.58112
+    ],
+    [
+     47.04591,
+     8.58225
+    ],
+    [
+     47.04742,
+     8.58616
+    ],
+    [
+     47.04786,
+     8.58817
+    ],
+    [
+     47.04795,
+     8.59061
+    ],
+    [
+     47.0475,
+     8.59328
+    ],
+    [
+     47.04632,
+     8.59642
+    ],
+    [
+     47.04347,
+     8.60164
+    ],
+    [
+     47.04231,
+     8.6041
+    ],
+    [
+     47.03854,
+     8.61523
+    ],
+    [
+     47.03648,
+     8.61963
+    ],
+    [
+     47.03531,
+     8.62128
+    ],
+    [
+     47.03408,
+     8.6223
+    ],
+    [
+     47.03083,
+     8.62385
+    ],
+    [
+     47.03006,
+     8.6234
+    ],
+    [
+     47.02969,
+     8.62364
+    ],
+    [
+     47.02957,
+     8.62432
+    ],
+    [
+     47.02966,
+     8.62511
+    ],
+    [
+     47.03057,
+     8.62626
+    ],
+    [
+     47.03058,
+     8.62691
+    ],
+    [
+     47.02911,
+     8.62983
+    ],
+    [
+     47.02724,
+     8.63195
+    ],
+    [
+     47.02634,
+     8.63267
+    ],
+    [
+     47.02539,
+     8.63522
+    ],
+    [
+     47.02544,
+     8.63545
+    ],
+    [
+     47.02507,
+     8.63659
+    ],
+    [
+     47.02326,
+     8.63892
+    ],
+    [
+     47.02273,
+     8.64381
+    ],
+    [
+     47.02071,
+     8.653
+    ]
+   ],
+   "min": 27
+  },
+  {
+   "day": 3,
+   "mode": "drive",
+   "from": "schwyz-town",
+   "to": "lungern-lakeside",
+   "label": "A4 to Lucerne, then the A8 south through Sarnen and Giswil",
+   "km": 79.9,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     47.02071,
+     8.653
+    ],
+    [
+     47.02083,
+     8.65306
+    ],
+    [
+     47.0211,
+     8.65128
+    ],
+    [
+     47.02273,
+     8.64381
+    ],
+    [
+     47.02326,
+     8.63892
+    ],
+    [
+     47.02507,
+     8.63659
+    ],
+    [
+     47.02634,
+     8.63267
+    ],
+    [
+     47.02724,
+     8.63195
+    ],
+    [
+     47.02895,
+     8.63004
+    ],
+    [
+     47.02955,
+     8.62909
+    ],
+    [
+     47.03024,
+     8.62742
+    ],
+    [
+     47.03091,
+     8.62656
+    ],
+    [
+     47.03004,
+     8.6256
+    ],
+    [
+     47.02996,
+     8.62523
+    ],
+    [
+     47.03067,
+     8.62438
+    ],
+    [
+     47.03158,
+     8.62364
+    ],
+    [
+     47.03379,
+     8.6226
+    ],
+    [
+     47.03489,
+     8.62183
+    ],
+    [
+     47.03592,
+     8.62068
+    ],
+    [
+     47.03695,
+     8.61895
+    ],
+    [
+     47.03882,
+     8.61469
+    ],
+    [
+     47.0424,
+     8.60412
+    ],
+    [
+     47.04353,
+     8.60173
+    ],
+    [
+     47.04639,
+     8.59647
+    ],
+    [
+     47.04757,
+     8.59332
+    ],
+    [
+     47.048,
+     8.591
+    ],
+    [
+     47.04798,
+     8.58841
+    ],
+    [
+     47.04749,
+     8.58611
+    ],
+    [
+     47.04602,
+     8.58235
+    ],
+    [
+     47.04582,
+     8.58108
+    ],
+    [
+     47.04583,
+     8.57966
+    ],
+    [
+     47.04607,
+     8.57833
+    ],
+    [
+     47.04663,
+     8.57689
+    ],
+    [
+     47.04871,
+     8.57415
+    ],
+    [
+     47.04937,
+     8.57283
+    ],
+    [
+     47.04985,
+     8.57091
+    ],
+    [
+     47.04989,
+     8.56866
+    ],
+    [
+     47.04962,
+     8.56716
+    ],
+    [
+     47.04915,
+     8.56588
+    ],
+    [
+     47.04668,
+     8.56203
+    ],
+    [
+     47.04556,
+     8.55959
+    ],
+    [
+     47.04436,
+     8.55498
+    ],
+    [
+     47.04305,
+     8.55108
+    ],
+    [
+     47.04285,
+     8.54988
+    ],
+    [
+     47.04286,
+     8.54858
+    ],
+    [
+     47.04324,
+     8.5468
+    ],
+    [
+     47.04405,
+     8.54531
+    ],
+    [
+     47.04507,
+     8.54421
+    ],
+    [
+     47.04805,
+     8.54182
+    ],
+    [
+     47.0488,
+     8.54091
+    ],
+    [
+     47.0494,
+     8.53978
+    ],
+    [
+     47.04988,
+     8.53815
+    ],
+    [
+     47.0502,
+     8.5353
+    ],
+    [
+     47.0515,
+     8.52853
+    ],
+    [
+     47.05321,
+     8.52412
+    ],
+    [
+     47.05431,
+     8.51947
+    ],
+    [
+     47.05526,
+     8.51724
+    ],
+    [
+     47.05661,
+     8.51558
+    ],
+    [
+     47.05988,
+     8.51244
+    ],
+    [
+     47.06264,
+     8.51089
+    ],
+    [
+     47.06476,
+     8.50892
+    ],
+    [
+     47.06728,
+     8.50768
+    ],
+    [
+     47.06863,
+     8.50632
+    ],
+    [
+     47.06947,
+     8.50482
+    ],
+    [
+     47.07047,
+     8.50206
+    ],
+    [
+     47.0716,
+     8.49982
+    ],
+    [
+     47.07282,
+     8.49668
+    ],
+    [
+     47.07475,
+     8.49293
+    ],
+    [
+     47.07611,
+     8.49044
+    ],
+    [
+     47.07795,
+     8.48796
+    ],
+    [
+     47.07939,
+     8.48494
+    ],
+    [
+     47.08172,
+     8.48192
+    ],
+    [
+     47.08346,
+     8.47864
+    ],
+    [
+     47.08482,
+     8.47649
+    ],
+    [
+     47.08543,
+     8.47513
+    ],
+    [
+     47.08647,
+     8.47204
+    ],
+    [
+     47.08756,
+     8.46988
+    ],
+    [
+     47.0905,
+     8.46604
+    ],
+    [
+     47.09237,
+     8.46255
+    ],
+    [
+     47.09337,
+     8.46106
+    ],
+    [
+     47.09513,
+     8.45945
+    ],
+    [
+     47.09766,
+     8.45824
+    ],
+    [
+     47.09864,
+     8.45751
+    ],
+    [
+     47.09961,
+     8.45636
+    ],
+    [
+     47.10094,
+     8.454
+    ],
+    [
+     47.10184,
+     8.45301
+    ],
+    [
+     47.10294,
+     8.45235
+    ],
+    [
+     47.10479,
+     8.45176
+    ],
+    [
+     47.10619,
+     8.45147
+    ],
+    [
+     47.10762,
+     8.45147
+    ],
+    [
+     47.10965,
+     8.45221
+    ],
+    [
+     47.11246,
+     8.45425
+    ],
+    [
+     47.11414,
+     8.4545
+    ],
+    [
+     47.12155,
+     8.45182
+    ],
+    [
+     47.13352,
+     8.44926
+    ],
+    [
+     47.13645,
+     8.44836
+    ],
+    [
+     47.14012,
+     8.44657
+    ],
+    [
+     47.14391,
+     8.44384
+    ],
+    [
+     47.15274,
+     8.43543
+    ],
+    [
+     47.15526,
+     8.43383
+    ],
+    [
+     47.15561,
+     8.43302
+    ],
+    [
+     47.15544,
+     8.43204
+    ],
+    [
+     47.15496,
+     8.43159
+    ],
+    [
+     47.15337,
+     8.4312
+    ],
+    [
+     47.15219,
+     8.43054
+    ],
+    [
+     47.1504,
+     8.42885
+    ],
+    [
+     47.14881,
+     8.4267
+    ],
+    [
+     47.147,
+     8.42312
     ],
     [
      47.14445,
@@ -1218,64 +3902,64 @@
      8.40647
     ],
     [
-     47.13613,
-     8.40115
+     47.13695,
+     8.4024
     ],
     [
-     47.13472,
-     8.39953
+     47.13569,
+     8.40057
+    ],
+    [
+     47.13423,
+     8.3991
     ],
     [
      47.1332,
      8.39836
     ],
     [
-     47.12377,
-     8.39321
+     47.12407,
+     8.39344
     ],
     [
-     47.12208,
-     8.39149
+     47.12246,
+     8.39196
     ],
     [
-     47.12082,
-     8.38948
+     47.1213,
+     8.39035
     ],
     [
-     47.11981,
-     8.38698
+     47.11999,
+     8.38753
     ],
     [
-     47.11915,
-     8.38356
+     47.11925,
+     8.38438
     ],
     [
      47.11905,
      8.38133
     ],
     [
-     47.1191,
-     8.36888
+     47.11901,
+     8.36665
     ],
     [
-     47.11892,
-     8.36574
+     47.11837,
+     8.36295
     ],
     [
-     47.11816,
-     8.36223
+     47.11783,
+     8.36128
     ],
     [
-     47.11744,
-     8.36036
+     47.11702,
+     8.3595
     ],
     [
-     47.11661,
-     8.35876
-    ],
-    [
-     47.11512,
-     8.35668
+     47.1158,
+     8.35755
     ],
     [
      47.11284,
@@ -1358,20 +4042,20 @@
      8.28713
     ],
     [
-     47.06486,
-     8.28647
+     47.06503,
+     8.28657
     ],
     [
-     47.064,
-     8.28625
+     47.0642,
+     8.28626
     ],
     [
-     47.06305,
-     8.28647
+     47.06322,
+     8.28641
     ],
     [
-     47.06081,
-     8.28763
+     47.06135,
+     8.28731
     ],
     [
      47.05967,
@@ -1536,6 +4220,10 @@
     [
      46.96761,
      8.29782
+    ],
+    [
+     46.9666,
+     8.29442
     ],
     [
      46.96623,
@@ -1918,7 +4606,7 @@
      8.1641
     ],
     [
-     46.79263,
+     46.7927,
      8.16435
     ],
     [
@@ -1926,40 +4614,67 @@
      8.16401
     ],
     [
-     46.79134,
-     8.16268
+     46.79141,
+     8.16277
     ],
     [
-     46.78999,
-     8.16103
-    ],
-    [
-     46.78946,
-     8.16069
+     46.78961,
+     8.16075
     ],
     [
      46.78566,
      8.15964
     ],
     [
-     46.78514,
-     8.16034
+     46.78515,
+     8.1603
     ],
     [
-     46.7856,
-     8.16112
+     46.78553,
+     8.16103
+    ]
+   ],
+   "min": 65
+  },
+  {
+   "day": 3,
+   "mode": "lift",
+   "from": "lungern-lakeside",
+   "to": "lungern-turren",
+   "label": "If the morning is clear: ten minutes up to Turren, last one down 17:00",
+   "km": 1.5,
+   "source": "straight",
+   "geometry": [
+    [
+     46.78573,
+     8.16073
     ],
     [
-     46.78471,
-     8.16155
+     46.7833,
+     8.1417
+    ]
+   ]
+  },
+  {
+   "day": 3,
+   "mode": "drive",
+   "from": "lungern-lakeside",
+   "to": "aareschlucht-west",
+   "label": "Over the Brünig, then fifteen minutes off the road at Meiringen",
+   "km": 14.6,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     46.78553,
+     8.16103
     ],
     [
-     46.78462,
-     8.16014
+     46.78515,
+     8.1603
     ],
     [
-     46.78485,
-     8.15929
+     46.78566,
+     8.15964
     ],
     [
      46.78468,
@@ -1986,24 +4701,20 @@
      8.15774
     ],
     [
-     46.77756,
-     8.15849
+     46.7773,
+     8.15855
     ],
     [
-     46.77719,
-     8.15851
+     46.77621,
+     8.15733
     ],
     [
-     46.77613,
-     8.15715
+     46.77542,
+     8.1546
     ],
     [
-     46.77544,
-     8.15482
-    ],
-    [
-     46.7757,
-     8.14974
+     46.77572,
+     8.14983
     ],
     [
      46.77454,
@@ -2014,36 +4725,32 @@
      8.14676
     ],
     [
-     46.77319,
-     8.14439
+     46.77318,
+     8.14431
     ],
     [
-     46.77323,
-     8.14412
+     46.77331,
+     8.14403
     ],
     [
-     46.77343,
-     8.14399
+     46.77388,
+     8.14391
     ],
     [
      46.77557,
      8.14394
     ],
     [
-     46.77575,
-     8.14233
+     46.77576,
+     8.14224
     ],
     [
-     46.77566,
-     8.14182
+     46.77559,
+     8.14172
     ],
     [
-     46.7754,
-     8.14163
-    ],
-    [
-     46.77419,
-     8.14175
+     46.77434,
+     8.14169
     ],
     [
      46.77343,
@@ -2054,12 +4761,8 @@
      8.14242
     ],
     [
-     46.77237,
-     8.1425
-    ],
-    [
-     46.77154,
-     8.14386
+     46.77246,
+     8.14244
     ],
     [
      46.77123,
@@ -2106,8 +4809,8 @@
      8.14151
     ],
     [
-     46.7585,
-     8.14109
+     46.75855,
+     8.14116
     ],
     [
      46.75773,
@@ -2126,8 +4829,8 @@
      8.13504
     ],
     [
-     46.75742,
-     8.13466
+     46.7574,
+     8.13462
     ],
     [
      46.75542,
@@ -2138,32 +4841,36 @@
      8.13099
     ],
     [
-     46.75312,
-     8.12711
+     46.75323,
+     8.1272
     ],
     [
-     46.75254,
-     8.12753
+     46.75303,
+     8.12712
     ],
     [
-     46.75193,
-     8.12763
+     46.75259,
+     8.12751
+    ],
+    [
+     46.75198,
+     8.12761
     ],
     [
      46.75172,
      8.12802
     ],
     [
-     46.75191,
-     8.12819
+     46.75185,
+     8.12816
     ],
     [
      46.75257,
      8.12807
     ],
     [
-     46.75286,
-     8.12843
+     46.7529,
+     8.12854
     ],
     [
      46.7535,
@@ -2306,8 +5013,8 @@
      8.16756
     ],
     [
-     46.73568,
-     8.16863
+     46.73563,
+     8.16871
     ],
     [
      46.73524,
@@ -2318,8 +5025,8 @@
      8.17245
     ],
     [
-     46.73303,
-     8.17487
+     46.73312,
+     8.17471
     ],
     [
      46.73149,
@@ -2358,40 +5065,327 @@
      8.18652
     ],
     [
-     46.72826,
-     8.18394
+     46.72685,
+     8.18827
     ],
     [
-     46.72968,
-     8.18091
+     46.72627,
+     8.18895
     ],
     [
-     46.73051,
-     8.17883
+     46.72598,
+     8.18995
+    ],
+    [
+     46.72555,
+     8.19014
+    ],
+    [
+     46.72519,
+     8.19079
+    ],
+    [
+     46.72373,
+     8.19014
+    ],
+    [
+     46.72367,
+     8.19086
+    ],
+    [
+     46.72496,
+     8.19125
+    ],
+    [
+     46.72527,
+     8.19248
+    ],
+    [
+     46.72589,
+     8.19277
+    ],
+    [
+     46.72614,
+     8.19265
+    ]
+   ],
+   "min": 18,
+   "via": [
+    "meiringen"
+   ]
+  },
+  {
+   "day": 3,
+   "mode": "walk",
+   "from": "aareschlucht-west",
+   "to": "aareschlucht-ost",
+   "label": "Through the gorge, 1.4 km, the first half level and railed",
+   "km": 3.9,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     46.72614,
+     8.19265
+    ],
+    [
+     46.72589,
+     8.19277
+    ],
+    [
+     46.72527,
+     8.19248
+    ],
+    [
+     46.72505,
+     8.19187
+    ],
+    [
+     46.72501,
+     8.19091
+    ],
+    [
+     46.72801,
+     8.1917
+    ],
+    [
+     46.72779,
+     8.193
+    ],
+    [
+     46.72917,
+     8.19362
+    ],
+    [
+     46.72885,
+     8.19375
+    ],
+    [
+     46.72856,
+     8.19438
+    ],
+    [
+     46.72915,
+     8.19415
+    ],
+    [
+     46.72876,
+     8.19464
+    ],
+    [
+     46.72853,
+     8.19553
+    ],
+    [
+     46.7293,
+     8.19478
+    ],
+    [
+     46.72895,
+     8.19641
+    ],
+    [
+     46.72959,
+     8.19526
+    ],
+    [
+     46.72937,
+     8.19664
+    ],
+    [
+     46.72957,
+     8.19629
+    ],
+    [
+     46.72939,
+     8.19732
+    ],
+    [
+     46.72946,
+     8.19783
+    ],
+    [
+     46.72979,
+     8.19701
+    ],
+    [
+     46.72987,
+     8.19614
+    ],
+    [
+     46.73001,
+     8.19691
+    ],
+    [
+     46.7306,
+     8.19627
     ],
     [
      46.73055,
-     8.1784
+     8.19743
     ],
     [
-     46.73031,
-     8.17743
+     46.73085,
+     8.19742
     ],
     [
-     46.72905,
-     8.17471
+     46.73063,
+     8.19786
     ],
     [
-     46.72769,
-     8.17119
+     46.73103,
+     8.19806
     ],
     [
-     46.72713,
-     8.17032
+     46.73129,
+     8.19888
     ],
     [
-     46.72719,
-     8.17007
+     46.73102,
+     8.19957
+    ],
+    [
+     46.73151,
+     8.19941
+    ],
+    [
+     46.73096,
+     8.20065
+    ],
+    [
+     46.73092,
+     8.2015
+    ],
+    [
+     46.73061,
+     8.20169
+    ],
+    [
+     46.73021,
+     8.20148
+    ],
+    [
+     46.72965,
+     8.20257
+    ],
+    [
+     46.7296,
+     8.20387
+    ],
+    [
+     46.72992,
+     8.20454
+    ],
+    [
+     46.72982,
+     8.20513
+    ],
+    [
+     46.73009,
+     8.20545
+    ],
+    [
+     46.73016,
+     8.20616
+    ],
+    [
+     46.73002,
+     8.20779
+    ],
+    [
+     46.73028,
+     8.20871
+    ],
+    [
+     46.73034,
+     8.20969
+    ],
+    [
+     46.7308,
+     8.2102
+    ],
+    [
+     46.73058,
+     8.21117
+    ],
+    [
+     46.73069,
+     8.21181
+    ],
+    [
+     46.73058,
+     8.21214
+    ],
+    [
+     46.73018,
+     8.21224
+    ],
+    [
+     46.73003,
+     8.21209
+    ],
+    [
+     46.72953,
+     8.21104
+    ]
+   ],
+   "min": 84
+  },
+  {
+   "day": 3,
+   "mode": "drive",
+   "from": "aareschlucht-west",
+   "to": "grindelwald-village",
+   "label": "Brienz, Interlaken, Wilderswil, Zweilütschinen, and up to Grindelwald",
+   "km": 47.3,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     46.72614,
+     8.19265
+    ],
+    [
+     46.72589,
+     8.19277
+    ],
+    [
+     46.72527,
+     8.19248
+    ],
+    [
+     46.72496,
+     8.19125
+    ],
+    [
+     46.72367,
+     8.19086
+    ],
+    [
+     46.72373,
+     8.19014
+    ],
+    [
+     46.72205,
+     8.18949
+    ],
+    [
+     46.7219,
+     8.18919
+    ],
+    [
+     46.7226,
+     8.18232
+    ],
+    [
+     46.72365,
+     8.17785
+    ],
+    [
+     46.72514,
+     8.17408
+    ],
+    [
+     46.72734,
+     8.16973
     ],
     [
      46.72876,
@@ -2410,12 +5404,12 @@
      8.14255
     ],
     [
-     46.74325,
-     8.13972
+     46.74319,
+     8.14006
     ],
     [
-     46.7436,
-     8.13705
+     46.74357,
+     8.13739
     ],
     [
      46.74421,
@@ -2466,24 +5460,28 @@
      8.04506
     ],
     [
-     46.73955,
-     8.03917
+     46.73875,
+     8.04359
     ],
     [
-     46.7396,
-     8.03765
+     46.73949,
+     8.03968
     ],
     [
-     46.73948,
-     8.03668
+     46.73954,
+     8.03706
     ],
     [
      46.73896,
      8.03505
     ],
     [
-     46.73688,
-     8.03154
+     46.73729,
+     8.03235
+    ],
+    [
+     46.73648,
+     8.03057
     ],
     [
      46.72841,
@@ -2626,12 +5624,12 @@
      7.89448
     ],
     [
-     46.6828,
-     7.89171
+     46.68282,
+     7.89203
     ],
     [
-     46.68284,
-     7.88971
+     46.6828,
+     7.89015
     ],
     [
      46.68316,
@@ -2642,28 +5640,36 @@
      7.88404
     ],
     [
-     46.68527,
-     7.88248
+     46.6853,
+     7.88226
     ],
     [
-     46.68534,
-     7.88047
+     46.68537,
+     7.88108
+    ],
+    [
+     46.68522,
+     7.87962
     ],
     [
      46.68487,
      7.87843
     ],
     [
-     46.68391,
-     7.87676
+     46.68431,
+     7.87727
     ],
     [
-     46.68261,
-     7.87573
+     46.68338,
+     7.87622
     ],
     [
-     46.68132,
-     7.87546
+     46.68223,
+     7.87559
+    ],
+    [
+     46.68118,
+     7.87547
     ],
     [
      46.67831,
@@ -2746,16 +5752,16 @@
      7.86846
     ],
     [
-     46.65557,
-     7.86697
+     46.65561,
+     7.86698
     ],
     [
-     46.65351,
-     7.86812
+     46.65501,
+     7.86715
     ],
     [
-     46.65192,
-     7.86942
+     46.652,
+     7.86934
     ],
     [
      46.65079,
@@ -2858,6 +5864,14 @@
      7.91399
     ],
     [
+     46.63304,
+     7.9152
+    ],
+    [
+     46.6333,
+     7.91614
+    ],
+    [
      46.63381,
      7.91715
     ],
@@ -3138,611 +6152,24 @@
      8.03654
     ]
    ],
-   "min": 147,
-   "via": [
-    "lungern-lakeside",
-    "meiringen"
-   ]
+   "min": 49
   },
   {
-   "day": 3,
-   "mode": "walk",
+   "day": 4,
+   "mode": "lift",
    "from": "grindelwald-village",
    "to": "grindelwald-terminal",
-   "label": "Walk or bus 121, free on the guest card",
-   "km": 4.5,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     46.62431,
-     8.03654
-    ],
-    [
-     46.62447,
-     8.03627
-    ],
-    [
-     46.62398,
-     8.03594
-    ],
-    [
-     46.62386,
-     8.03606
-    ],
-    [
-     46.62331,
-     8.03812
-    ],
-    [
-     46.6236,
-     8.04031
-    ],
-    [
-     46.62416,
-     8.04149
-    ],
-    [
-     46.62427,
-     8.04275
-    ],
-    [
-     46.6238,
-     8.04283
-    ],
-    [
-     46.62373,
-     8.04306
-    ],
-    [
-     46.62359,
-     8.0429
-    ],
-    [
-     46.6235,
-     8.04317
-    ],
-    [
-     46.62358,
-     8.04383
-    ],
-    [
-     46.62373,
-     8.044
-    ],
-    [
-     46.62365,
-     8.04423
-    ],
-    [
-     46.6228,
-     8.04488
-    ],
-    [
-     46.62282,
-     8.04524
-    ],
-    [
-     46.62252,
-     8.04583
-    ],
-    [
-     46.62204,
-     8.04534
-    ],
-    [
-     46.62175,
-     8.04541
-    ],
-    [
-     46.62169,
-     8.04725
-    ],
-    [
-     46.62155,
-     8.04733
-    ],
-    [
-     46.6211,
-     8.04677
-    ],
-    [
-     46.61879,
-     8.04641
-    ],
-    [
-     46.61819,
-     8.04513
-    ],
-    [
-     46.61768,
-     8.04451
-    ],
-    [
-     46.61732,
-     8.04434
-    ],
-    [
-     46.61481,
-     8.04506
-    ],
-    [
-     46.61421,
-     8.04628
-    ],
-    [
-     46.61374,
-     8.04646
-    ],
-    [
-     46.61436,
-     8.04663
-    ],
-    [
-     46.61529,
-     8.04635
-    ],
-    [
-     46.61509,
-     8.04671
-    ],
-    [
-     46.61568,
-     8.04729
-    ],
-    [
-     46.61594,
-     8.04805
-    ],
-    [
-     46.61551,
-     8.0487
-    ],
-    [
-     46.61538,
-     8.0492
-    ],
-    [
-     46.61574,
-     8.04923
-    ],
-    [
-     46.61594,
-     8.04951
-    ],
-    [
-     46.61664,
-     8.04922
-    ],
-    [
-     46.6174,
-     8.04985
-    ],
-    [
-     46.61813,
-     8.04902
-    ],
-    [
-     46.61828,
-     8.04932
-    ],
-    [
-     46.6186,
-     8.04927
-    ],
-    [
-     46.61888,
-     8.04964
-    ],
-    [
-     46.61845,
-     8.04971
-    ],
-    [
-     46.61816,
-     8.0502
-    ],
-    [
-     46.61792,
-     8.05003
-    ],
-    [
-     46.61714,
-     8.05053
-    ],
-    [
-     46.61656,
-     8.05054
-    ],
-    [
-     46.61647,
-     8.05069
-    ],
-    [
-     46.61663,
-     8.05147
-    ],
-    [
-     46.61638,
-     8.05208
-    ],
-    [
-     46.61597,
-     8.0517
-    ],
-    [
-     46.61547,
-     8.05175
-    ],
-    [
-     46.6148,
-     8.05219
-    ],
-    [
-     46.61573,
-     8.05267
-    ],
-    [
-     46.61542,
-     8.05304
-    ],
-    [
-     46.61552,
-     8.05342
-    ],
-    [
-     46.61529,
-     8.05349
-    ],
-    [
-     46.61551,
-     8.05393
-    ],
-    [
-     46.61266,
-     8.05399
-    ]
-   ],
-   "min": 83
-  },
-  {
-   "day": 3,
-   "mode": "lift",
-   "from": "grindelwald-terminal",
-   "to": "mannlichen-top",
-   "label": "Männlichen gondola, 19-25 min",
-   "km": 8.7,
+   "label": "Bus 121 down to the Terminal, free on the guest card",
+   "km": 2.0,
    "source": "straight",
    "geometry": [
+    [
+     46.62427,
+     8.03675
+    ],
     [
      46.6111,
      8.0553
-    ],
-    [
-     46.61316,
-     7.94095
-    ]
-   ]
-  },
-  {
-   "day": 3,
-   "mode": "walk",
-   "from": "mannlichen-top",
-   "to": "mannlichen-summit",
-   "label": "Royal Walk, 20 min up a made path",
-   "km": 0.7,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     46.61326,
-     7.9411
-    ],
-    [
-     46.61364,
-     7.94119
-    ],
-    [
-     46.61474,
-     7.94077
-    ],
-    [
-     46.61491,
-     7.94055
-    ],
-    [
-     46.61499,
-     7.93989
-    ],
-    [
-     46.61535,
-     7.93985
-    ],
-    [
-     46.61548,
-     7.93959
-    ],
-    [
-     46.61566,
-     7.94019
-    ],
-    [
-     46.61594,
-     7.94016
-    ],
-    [
-     46.61751,
-     7.93841
-    ],
-    [
-     46.61788,
-     7.93835
-    ]
-   ],
-   "min": 17
-  },
-  {
-   "day": 3,
-   "mode": "walk",
-   "from": "mannlichen-top",
-   "to": "kleine-scheidegg",
-   "label": "Panoramaweg, 4.9 km, 1h45, the whole Eiger wall on your left",
-   "km": 4.8,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     46.61326,
-     7.9411
-    ],
-    [
-     46.61293,
-     7.94256
-    ],
-    [
-     46.61216,
-     7.94291
-    ],
-    [
-     46.61144,
-     7.94284
-    ],
-    [
-     46.61087,
-     7.94337
-    ],
-    [
-     46.6097,
-     7.94397
-    ],
-    [
-     46.60866,
-     7.94499
-    ],
-    [
-     46.60786,
-     7.94523
-    ],
-    [
-     46.60763,
-     7.94548
-    ],
-    [
-     46.6076,
-     7.94593
-    ],
-    [
-     46.60686,
-     7.94773
-    ],
-    [
-     46.60636,
-     7.94797
-    ],
-    [
-     46.60626,
-     7.94835
-    ],
-    [
-     46.60575,
-     7.94894
-    ],
-    [
-     46.60511,
-     7.9491
-    ],
-    [
-     46.60445,
-     7.95023
-    ],
-    [
-     46.60429,
-     7.95085
-    ],
-    [
-     46.60275,
-     7.95208
-    ],
-    [
-     46.60238,
-     7.95275
-    ],
-    [
-     46.60192,
-     7.95311
-    ],
-    [
-     46.60173,
-     7.95361
-    ],
-    [
-     46.60125,
-     7.95389
-    ],
-    [
-     46.60092,
-     7.95498
-    ],
-    [
-     46.60061,
-     7.95542
-    ],
-    [
-     46.60059,
-     7.95616
-    ],
-    [
-     46.60031,
-     7.95663
-    ],
-    [
-     46.60041,
-     7.95704
-    ],
-    [
-     46.5996,
-     7.958
-    ],
-    [
-     46.59934,
-     7.95975
-    ],
-    [
-     46.59906,
-     7.96058
-    ],
-    [
-     46.59846,
-     7.9607
-    ],
-    [
-     46.59772,
-     7.96029
-    ],
-    [
-     46.5966,
-     7.96158
-    ],
-    [
-     46.59546,
-     7.96073
-    ],
-    [
-     46.59497,
-     7.96008
-    ],
-    [
-     46.59488,
-     7.95965
-    ],
-    [
-     46.59501,
-     7.95705
-    ],
-    [
-     46.5949,
-     7.95658
-    ],
-    [
-     46.59451,
-     7.95618
-    ],
-    [
-     46.59423,
-     7.95534
-    ],
-    [
-     46.59382,
-     7.95505
-    ],
-    [
-     46.5937,
-     7.9544
-    ],
-    [
-     46.59319,
-     7.95493
-    ],
-    [
-     46.59263,
-     7.95643
-    ],
-    [
-     46.59177,
-     7.95759
-    ],
-    [
-     46.59121,
-     7.95899
-    ],
-    [
-     46.59098,
-     7.95927
-    ],
-    [
-     46.59034,
-     7.95931
-    ],
-    [
-     46.58952,
-     7.96044
-    ],
-    [
-     46.5886,
-     7.9608
-    ],
-    [
-     46.58803,
-     7.96061
-    ],
-    [
-     46.58778,
-     7.96026
-    ],
-    [
-     46.58702,
-     7.96028
-    ],
-    [
-     46.5867,
-     7.96069
-    ],
-    [
-     46.58564,
-     7.96074
-    ],
-    [
-     46.58525,
-     7.96131
-    ],
-    [
-     46.58496,
-     7.96141
-    ],
-    [
-     46.58485,
-     7.9614
-    ],
-    [
-     46.58484,
-     7.96099
-    ]
-   ],
-   "min": 73
-  },
-  {
-   "day": 3,
-   "mode": "lift",
-   "from": "kleine-scheidegg",
-   "to": "grindelwald-grund",
-   "label": "Cog railway down",
-   "km": 7.7,
-   "source": "straight",
-   "geometry": [
-    [
-     46.5851,
-     7.9609
-    ],
-    [
-     46.6116,
-     8.0543
     ]
    ]
   },
@@ -3751,7 +6178,7 @@
    "mode": "lift",
    "from": "grindelwald-terminal",
    "to": "eigergletscher",
-   "label": "Eiger Express gondola, 15 min",
+   "label": "Eiger Express, 15 minutes, first car 08:00",
    "km": 7.4,
    "source": "straight",
    "geometry": [
@@ -3770,89 +6197,17 @@
    "mode": "lift",
    "from": "eigergletscher",
    "to": "jungfraujoch",
-   "label": "Cog railway through the Eiger, 26-30 min",
-   "km": 7.3,
-   "source": "osm/51ways",
+   "label": "Cog railway through the inside of the Eiger, about 25 minutes",
+   "km": 3.1,
+   "source": "straight",
    "geometry": [
     [
-     46.57481,
-     7.97535
+     46.5748,
+     7.97486
     ],
     [
-     46.57463,
-     7.97592
-    ],
-    [
-     46.57467,
-     7.97649
-    ],
-    [
-     46.5751,
-     7.9775
-    ],
-    [
-     46.57707,
-     7.98421
-    ],
-    [
-     46.57756,
-     7.98644
-    ],
-    [
-     46.57935,
-     7.99813
-    ],
-    [
-     46.58018,
-     8.00094
-    ],
-    [
-     46.58149,
-     8.00452
-    ],
-    [
-     46.58162,
-     8.0056
-    ],
-    [
-     46.5814,
-     8.00679
-    ],
-    [
-     46.58066,
-     8.00782
-    ],
-    [
-     46.57338,
-     8.01046
-    ],
-    [
-     46.57289,
-     8.01045
-    ],
-    [
-     46.57033,
-     8.00936
-    ],
-    [
-     46.55188,
-     7.98904
-    ],
-    [
-     46.54923,
-     7.988
-    ],
-    [
-     46.54756,
-     7.98557
-    ],
-    [
-     46.54741,
-     7.98486
-    ],
-    [
-     46.54745,
-     7.982
+     46.5475,
+     7.9806
     ]
    ]
   },
@@ -3860,9 +6215,9 @@
    "day": 5,
    "mode": "drive",
    "from": "grindelwald-village",
-   "to": "stechelberg-parking",
-   "label": "22 km down the valley and up the other one, about 30 min",
-   "km": 21.2,
+   "to": "lauterbrunnen",
+   "label": "Half an hour down and across, and park at the station",
+   "km": 15.8,
    "source": "osrm/driving",
    "geometry": [
     [
@@ -3942,8 +6297,8 @@
      8.01362
     ],
     [
-     46.62673,
-     8.01126
+     46.62669,
+     8.0114
     ],
     [
      46.62779,
@@ -3958,16 +6313,20 @@
      8.00586
     ],
     [
-     46.6302,
-     8.00506
+     46.63024,
+     8.00501
     ],
     [
      46.63114,
      8.00312
     ],
     [
-     46.63239,
-     8.00195
+     46.63208,
+     8.00238
+    ],
+    [
+     46.63248,
+     8.00177
     ],
     [
      46.6334,
@@ -3978,12 +6337,8 @@
      7.99641
     ],
     [
-     46.63531,
-     7.99408
-    ],
-    [
-     46.63563,
-     7.99289
+     46.63547,
+     7.9936
     ],
     [
      46.63618,
@@ -3991,11 +6346,11 @@
     ],
     [
      46.63636,
-     7.98446
+     7.98431
     ],
     [
-     46.63616,
-     7.97974
+     46.63614,
+     7.97948
     ],
     [
      46.63571,
@@ -4086,32 +6441,32 @@
      7.95737
     ],
     [
-     46.63755,
-     7.95588
+     46.63751,
+     7.95599
     ],
     [
-     46.63807,
-     7.9536
+     46.63802,
+     7.95408
     ],
     [
-     46.63824,
-     7.94925
+     46.63825,
+     7.9494
     ],
     [
-     46.63801,
-     7.9489
+     46.63811,
+     7.94898
     ],
     [
-     46.63727,
-     7.94859
+     46.63731,
+     7.94863
     ],
     [
      46.63706,
      7.94819
     ],
     [
-     46.63609,
-     7.94074
+     46.63611,
+     7.94105
     ],
     [
      46.63643,
@@ -4126,8 +6481,12 @@
      7.92746
     ],
     [
-     46.63643,
-     7.92443
+     46.63645,
+     7.92504
+    ],
+    [
+     46.63641,
+     7.92434
     ],
     [
      46.63573,
@@ -4178,36 +6537,28 @@
      7.90332
     ],
     [
-     46.63095,
-     7.90192
-    ],
-    [
-     46.63052,
-     7.90081
+     46.63092,
+     7.90178
     ],
     [
      46.63044,
      7.90067
     ],
     [
-     46.63,
-     7.90147
-    ],
-    [
-     46.62956,
-     7.90184
+     46.62967,
+     7.90178
     ],
     [
      46.62808,
      7.90215
     ],
     [
-     46.62562,
-     7.90365
+     46.62643,
+     7.90323
     ],
     [
-     46.62451,
-     7.90383
+     46.62489,
+     7.90381
     ],
     [
      46.62224,
@@ -4278,204 +6629,140 @@
      7.90549
     ],
     [
-     46.60334,
-     7.90645
+     46.60315,
+     7.90649
     ],
     [
-     46.60229,
-     7.9066
+     46.60204,
+     7.90658
     ],
     [
      46.60086,
      7.90633
     ],
     [
-     46.59977,
-     7.90669
+     46.59971,
+     7.90672
     ],
     [
-     46.59916,
-     7.90741
+     46.59889,
+     7.90763
     ],
     [
-     46.59875,
-     7.90758
-    ],
-    [
-     46.59754,
-     7.90741
-    ],
-    [
-     46.59704,
-     7.90761
-    ],
-    [
-     46.59475,
-     7.90747
-    ],
-    [
-     46.59381,
-     7.90726
-    ],
-    [
-     46.59295,
-     7.90747
-    ],
-    [
-     46.59267,
-     7.90773
-    ],
-    [
-     46.59269,
-     7.90805
-    ],
-    [
-     46.59297,
-     7.90836
-    ],
-    [
-     46.59353,
-     7.90848
-    ],
-    [
-     46.59358,
-     7.90882
-    ],
-    [
-     46.59279,
-     7.91009
-    ],
-    [
-     46.59209,
-     7.91078
-    ],
-    [
-     46.58879,
-     7.91291
-    ],
-    [
-     46.58791,
-     7.91401
-    ],
-    [
-     46.58702,
-     7.91465
-    ],
-    [
-     46.584,
-     7.91552
-    ],
-    [
-     46.5832,
-     7.91503
-    ],
-    [
-     46.58097,
-     7.91504
-    ],
-    [
-     46.57782,
-     7.91436
-    ],
-    [
-     46.57598,
-     7.91382
-    ],
-    [
-     46.57498,
-     7.91319
-    ],
-    [
-     46.57384,
-     7.91284
-    ],
-    [
-     46.57226,
-     7.91182
-    ],
-    [
-     46.57137,
-     7.91097
-    ],
-    [
-     46.5689,
-     7.91006
-    ],
-    [
-     46.56637,
-     7.90871
-    ],
-    [
-     46.56343,
-     7.90669
-    ],
-    [
-     46.562,
-     7.90524
-    ],
-    [
-     46.5598,
-     7.90483
-    ],
-    [
-     46.55681,
-     7.90387
-    ],
-    [
-     46.557,
-     7.90207
-    ],
-    [
-     46.55631,
-     7.90178
+     46.59833,
+     7.90766
     ]
    ],
-   "min": 27
+   "min": 19
   },
   {
    "day": 5,
    "mode": "lift",
-   "from": "stechelberg-parking",
-   "to": "gimmelwald",
-   "label": "Cable car, first section",
-   "km": 1.3,
+   "from": "lauterbrunnen",
+   "to": "grutschalp",
+   "label": "Funicular up the cliff to Grütschalp",
+   "km": 0.5,
    "source": "straight",
    "geometry": [
     [
-     46.55629,
-     7.90189
+     46.59836,
+     7.90804
     ],
     [
-     46.546,
-     7.8942
+     46.5947,
+     7.9034
     ]
    ]
   },
   {
    "day": 5,
    "mode": "lift",
-   "from": "gimmelwald",
-   "to": "murren-schilthornbahn",
-   "label": "Cable car, second section",
-   "km": 1.3,
+   "from": "grutschalp",
+   "to": "murren-blm",
+   "label": "The shelf train to Mürren, twenty flat minutes facing the Jungfrau",
+   "km": 3.5,
    "source": "straight",
    "geometry": [
     [
-     46.546,
-     7.8942
+     46.5947,
+     7.9034
+    ],
+    [
+     46.56369,
+     7.89712
+    ]
+   ]
+  },
+  {
+   "day": 5,
+   "mode": "walk",
+   "from": "murren-blm",
+   "to": "murren-schilthornbahn",
+   "label": "Through Mürren, which is car-free and worth the walk",
+   "km": 0.9,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     46.56368,
+     7.89724
+    ],
+    [
+     46.56307,
+     7.89689
+    ],
+    [
+     46.56277,
+     7.89733
+    ],
+    [
+     46.5625,
+     7.89734
+    ],
+    [
+     46.56159,
+     7.89683
+    ],
+    [
+     46.56079,
+     7.8961
+    ],
+    [
+     46.55999,
+     7.89478
+    ],
+    [
+     46.55948,
+     7.89427
+    ],
+    [
+     46.55877,
+     7.89286
+    ],
+    [
+     46.55873,
+     7.8923
+    ],
+    [
+     46.55808,
+     7.89145
+    ],
+    [
+     46.55828,
+     7.89139
     ],
     [
      46.55784,
-     7.89127
+     7.89125
     ]
-   ]
+   ],
+   "min": 13
   },
   {
    "day": 5,
    "mode": "lift",
    "from": "murren-schilthornbahn",
    "to": "birg",
-   "label": "Cable car to Birg",
+   "label": "Up to Birg, 2,677 m, and the Thrill Walk",
    "km": 3.1,
    "source": "straight",
    "geometry": [
@@ -4494,7 +6781,7 @@
    "mode": "lift",
    "from": "birg",
    "to": "schilthorn",
-   "label": "Last section to Piz Gloria",
+   "label": "On to Piz Gloria, 2,970 m. Last car off the summit 17:50",
    "km": 1.3,
    "source": "straight",
    "geometry": [
@@ -4510,266 +6797,74 @@
   },
   {
    "day": 5,
-   "mode": "walk",
-   "from": "murren-schilthornbahn",
-   "to": "murren-blm",
-   "label": "Through car-free Mürren, end to end",
-   "km": 0.9,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     46.55784,
-     7.89125
-    ],
-    [
-     46.55828,
-     7.89139
-    ],
-    [
-     46.55808,
-     7.89145
-    ],
-    [
-     46.55873,
-     7.8923
-    ],
-    [
-     46.55877,
-     7.89286
-    ],
-    [
-     46.55948,
-     7.89427
-    ],
-    [
-     46.55999,
-     7.89478
-    ],
-    [
-     46.56079,
-     7.8961
-    ],
-    [
-     46.56159,
-     7.89683
-    ],
-    [
-     46.5625,
-     7.89734
-    ],
-    [
-     46.56277,
-     7.89733
-    ],
-    [
-     46.56307,
-     7.89689
-    ],
-    [
-     46.56368,
-     7.89724
-    ]
-   ],
-   "min": 13
-  },
-  {
-   "day": 5,
    "mode": "lift",
-   "from": "murren-blm",
-   "to": "grutschalp",
-   "label": "Cliff railway to Grütschalp",
-   "km": 3.5,
+   "from": "schilthorn",
+   "to": "gimmelwald",
+   "label": "Down the other side through Birg and Mürren to Gimmelwald",
+   "km": 4.7,
    "source": "straight",
    "geometry": [
     [
-     46.56369,
-     7.89712
+     46.55728,
+     7.83517
     ],
     [
-     46.5947,
-     7.9034
+     46.546,
+     7.8942
     ]
    ]
   },
   {
    "day": 5,
    "mode": "lift",
-   "from": "grutschalp",
-   "to": "lauterbrunnen",
-   "label": "Cable car down to the valley",
-   "km": 0.5,
+   "from": "gimmelwald",
+   "to": "stechelberg-parking",
+   "label": "Last stage to Stechelberg, then bus 141 back up the valley",
+   "km": 1.3,
    "source": "straight",
    "geometry": [
     [
-     46.5947,
-     7.9034
+     46.546,
+     7.8942
     ],
     [
-     46.59836,
-     7.90804
+     46.55629,
+     7.90189
     ]
    ]
   },
   {
    "day": 5,
    "mode": "drive",
-   "from": "stechelberg-parking",
+   "from": "lauterbrunnen",
    "to": "grindelwald-village",
-   "label": "Back over to Grindelwald, the same 22 km in reverse",
-   "km": 21.2,
+   "label": "Back over to Grindelwald for the last two nights",
+   "km": 15.8,
    "source": "osrm/driving",
    "geometry": [
     [
-     46.55631,
-     7.90178
+     46.59833,
+     7.90766
     ],
     [
-     46.557,
-     7.90207
+     46.59889,
+     7.90763
     ],
     [
-     46.55681,
-     7.90387
-    ],
-    [
-     46.5598,
-     7.90483
-    ],
-    [
-     46.562,
-     7.90524
-    ],
-    [
-     46.56343,
-     7.90669
-    ],
-    [
-     46.56637,
-     7.90871
-    ],
-    [
-     46.5689,
-     7.91006
-    ],
-    [
-     46.57137,
-     7.91097
-    ],
-    [
-     46.57226,
-     7.91182
-    ],
-    [
-     46.57384,
-     7.91284
-    ],
-    [
-     46.57498,
-     7.91319
-    ],
-    [
-     46.57598,
-     7.91382
-    ],
-    [
-     46.57782,
-     7.91436
-    ],
-    [
-     46.58097,
-     7.91504
-    ],
-    [
-     46.5832,
-     7.91503
-    ],
-    [
-     46.584,
-     7.91552
-    ],
-    [
-     46.58702,
-     7.91465
-    ],
-    [
-     46.58791,
-     7.91401
-    ],
-    [
-     46.58879,
-     7.91291
-    ],
-    [
-     46.59209,
-     7.91078
-    ],
-    [
-     46.59279,
-     7.91009
-    ],
-    [
-     46.59358,
-     7.90882
-    ],
-    [
-     46.59353,
-     7.90848
-    ],
-    [
-     46.59297,
-     7.90836
-    ],
-    [
-     46.59269,
-     7.90805
-    ],
-    [
-     46.59267,
-     7.90773
-    ],
-    [
-     46.59295,
-     7.90747
-    ],
-    [
-     46.59381,
-     7.90726
-    ],
-    [
-     46.59475,
-     7.90747
-    ],
-    [
-     46.59704,
-     7.90761
-    ],
-    [
-     46.59754,
-     7.90741
-    ],
-    [
-     46.59875,
-     7.90758
-    ],
-    [
-     46.59916,
-     7.90741
-    ],
-    [
-     46.59977,
-     7.90669
+     46.59971,
+     7.90672
     ],
     [
      46.60086,
      7.90633
     ],
     [
-     46.60229,
-     7.9066
+     46.60204,
+     7.90658
     ],
     [
-     46.60334,
-     7.90645
+     46.60315,
+     7.90649
     ],
     [
      46.60537,
@@ -4840,36 +6935,28 @@
      7.90346
     ],
     [
-     46.62451,
-     7.90383
+     46.62489,
+     7.90381
     ],
     [
-     46.62562,
-     7.90365
+     46.62643,
+     7.90323
     ],
     [
      46.62808,
      7.90215
     ],
     [
-     46.62956,
-     7.90184
-    ],
-    [
-     46.63,
-     7.90147
+     46.62967,
+     7.90178
     ],
     [
      46.63044,
      7.90067
     ],
     [
-     46.63052,
-     7.90081
-    ],
-    [
-     46.63095,
-     7.90192
+     46.63092,
+     7.90178
     ],
     [
      46.63106,
@@ -4920,8 +7007,12 @@
      7.92289
     ],
     [
-     46.63643,
-     7.92443
+     46.63641,
+     7.92434
+    ],
+    [
+     46.63645,
+     7.92504
     ],
     [
      46.63614,
@@ -4936,32 +7027,32 @@
      7.93424
     ],
     [
-     46.63609,
-     7.94074
+     46.63611,
+     7.94105
     ],
     [
      46.63706,
      7.94819
     ],
     [
-     46.63727,
-     7.94859
+     46.63731,
+     7.94863
     ],
     [
-     46.63801,
-     7.9489
+     46.63811,
+     7.94898
     ],
     [
-     46.63824,
-     7.94925
+     46.63825,
+     7.9494
     ],
     [
-     46.63807,
-     7.9536
+     46.63802,
+     7.95408
     ],
     [
-     46.63755,
-     7.95588
+     46.63751,
+     7.95599
     ],
     [
      46.63647,
@@ -5052,24 +7143,20 @@
      7.97592
     ],
     [
-     46.63616,
-     7.97974
+     46.63614,
+     7.97948
     ],
     [
      46.63636,
-     7.98446
+     7.98431
     ],
     [
      46.63618,
      7.98824
     ],
     [
-     46.63563,
-     7.99289
-    ],
-    [
-     46.63531,
-     7.99408
+     46.63547,
+     7.9936
     ],
     [
      46.63436,
@@ -5080,16 +7167,20 @@
      7.9981
     ],
     [
-     46.63239,
-     8.00195
+     46.63248,
+     8.00177
+    ],
+    [
+     46.63208,
+     8.00238
     ],
     [
      46.63114,
      8.00312
     ],
     [
-     46.6302,
-     8.00506
+     46.63024,
+     8.00501
     ],
     [
      46.62915,
@@ -5104,8 +7195,8 @@
      8.00945
     ],
     [
-     46.62673,
-     8.01126
+     46.62669,
+     8.0114
     ],
     [
      46.62661,
@@ -5184,15 +7275,150 @@
      8.03654
     ]
    ],
-   "min": 27
+   "min": 19
+  },
+  {
+   "day": 6,
+   "mode": "lift",
+   "from": "grindelwald-village",
+   "to": "grindelwald-first",
+   "label": "Gondola from the middle of the village, 25 minutes in three stages",
+   "km": 4.1,
+   "source": "straight",
+   "geometry": [
+    [
+     46.62427,
+     8.03675
+    ],
+    [
+     46.659,
+     8.054
+    ]
+   ]
+  },
+  {
+   "day": 6,
+   "mode": "walk",
+   "from": "grindelwald-first",
+   "to": "bachalpsee",
+   "label": "3 km out on a wide, gently rising path, about fifty minutes",
+   "km": 2.6,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     46.65909,
+     8.05405
+    ],
+    [
+     46.65929,
+     8.05381
+    ],
+    [
+     46.65996,
+     8.05404
+    ],
+    [
+     46.66036,
+     8.05385
+    ],
+    [
+     46.66153,
+     8.05228
+    ],
+    [
+     46.66138,
+     8.05178
+    ],
+    [
+     46.66186,
+     8.05179
+    ],
+    [
+     46.6624,
+     8.05136
+    ],
+    [
+     46.66296,
+     8.05
+    ],
+    [
+     46.66322,
+     8.04864
+    ],
+    [
+     46.66389,
+     8.04793
+    ],
+    [
+     46.66416,
+     8.0465
+    ],
+    [
+     46.66524,
+     8.0469
+    ],
+    [
+     46.66573,
+     8.04663
+    ],
+    [
+     46.66606,
+     8.04584
+    ],
+    [
+     46.66732,
+     8.04537
+    ],
+    [
+     46.66683,
+     8.04395
+    ],
+    [
+     46.6671,
+     8.0428
+    ],
+    [
+     46.66686,
+     8.04135
+    ],
+    [
+     46.66691,
+     8.04053
+    ],
+    [
+     46.66758,
+     8.0372
+    ],
+    [
+     46.66756,
+     8.03666
+    ],
+    [
+     46.668,
+     8.0351
+    ],
+    [
+     46.66795,
+     8.03459
+    ],
+    [
+     46.66832,
+     8.03323
+    ],
+    [
+     46.66856,
+     8.03055
+    ]
+   ],
+   "min": 43
   },
   {
    "day": 6,
    "mode": "drive",
    "from": "grindelwald-village",
-   "to": "aareschlucht-west",
-   "label": "Down to Meiringen, about 30 min",
-   "km": 47.1,
+   "to": "interlaken-ost",
+   "label": "In the evening, half an hour down the valley to Interlaken",
+   "km": 21.4,
    "source": "osrm/driving",
    "geometry": [
     [
@@ -5588,8 +7814,12 @@
      7.86934
     ],
     [
-     46.65501,
-     7.86715
+     46.65492,
+     7.8672
+    ],
+    [
+     46.65526,
+     7.86709
     ],
     [
      46.65583,
@@ -5640,6 +7870,1129 @@
      7.87014
     ],
     [
+     46.67405,
+     7.87224
+    ],
+    [
+     46.67511,
+     7.87383
+    ],
+    [
+     46.67598,
+     7.87477
+    ],
+    [
+     46.67708,
+     7.87552
+    ],
+    [
+     46.67806,
+     7.87586
+    ],
+    [
+     46.67921,
+     7.87592
+    ],
+    [
+     46.68122,
+     7.87562
+    ],
+    [
+     46.68209,
+     7.8758
+    ],
+    [
+     46.68282,
+     7.87646
+    ],
+    [
+     46.68391,
+     7.87836
+    ],
+    [
+     46.68488,
+     7.87884
+    ],
+    [
+     46.6859,
+     7.87864
+    ],
+    [
+     46.68684,
+     7.87802
+    ],
+    [
+     46.68884,
+     7.87533
+    ],
+    [
+     46.68908,
+     7.8753
+    ],
+    [
+     46.68928,
+     7.87556
+    ],
+    [
+     46.68919,
+     7.87635
+    ],
+    [
+     46.68861,
+     7.87683
+    ],
+    [
+     46.68846,
+     7.87665
+    ],
+    [
+     46.68744,
+     7.86961
+    ],
+    [
+     46.69021,
+     7.86866
+    ],
+    [
+     46.69028,
+     7.869
+    ]
+   ],
+   "min": 25
+  },
+  {
+   "day": 6,
+   "mode": "lift",
+   "from": "interlaken-ost",
+   "to": "harder-kulm",
+   "label": "Ten minutes up. Last descent 21:10 in September",
+   "km": 1.4,
+   "source": "straight",
+   "geometry": [
+    [
+     46.6903,
+     7.869
+    ],
+    [
+     46.7017,
+     7.8617
+    ]
+   ]
+  },
+  {
+   "day": 6,
+   "mode": "drive",
+   "from": "interlaken-ost",
+   "to": "grindelwald-village",
+   "label": "Back up the Lütschental in the dark",
+   "km": 21.3,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     46.69028,
+     7.869
+    ],
+    [
+     46.69021,
+     7.86866
+    ],
+    [
+     46.68731,
+     7.86942
+    ],
+    [
+     46.68805,
+     7.87396
+    ],
+    [
+     46.68804,
+     7.87462
+    ],
+    [
+     46.68868,
+     7.87445
+    ],
+    [
+     46.68887,
+     7.87481
+    ],
+    [
+     46.68822,
+     7.87613
+    ],
+    [
+     46.68716,
+     7.87768
+    ],
+    [
+     46.68643,
+     7.87826
+    ],
+    [
+     46.68575,
+     7.87844
+    ],
+    [
+     46.68508,
+     7.87819
+    ],
+    [
+     46.68349,
+     7.87632
+    ],
+    [
+     46.68235,
+     7.87563
+    ],
+    [
+     46.68128,
+     7.87546
+    ],
+    [
+     46.67831,
+     7.87574
+    ],
+    [
+     46.6771,
+     7.87536
+    ],
+    [
+     46.67606,
+     7.87465
+    ],
+    [
+     46.67469,
+     7.87299
+    ],
+    [
+     46.67314,
+     7.87047
+    ],
+    [
+     46.67286,
+     7.86947
+    ],
+    [
+     46.67299,
+     7.86808
+    ],
+    [
+     46.67285,
+     7.86733
+    ],
+    [
+     46.67148,
+     7.86775
+    ],
+    [
+     46.67153,
+     7.86824
+    ],
+    [
+     46.67137,
+     7.869
+    ],
+    [
+     46.67108,
+     7.86985
+    ],
+    [
+     46.67075,
+     7.87027
+    ],
+    [
+     46.66819,
+     7.87105
+    ],
+    [
+     46.66541,
+     7.87019
+    ],
+    [
+     46.66333,
+     7.87027
+    ],
+    [
+     46.66101,
+     7.86899
+    ],
+    [
+     46.65916,
+     7.86877
+    ],
+    [
+     46.65751,
+     7.86887
+    ],
+    [
+     46.65687,
+     7.86846
+    ],
+    [
+     46.65561,
+     7.86698
+    ],
+    [
+     46.65492,
+     7.8672
+    ],
+    [
+     46.652,
+     7.86934
+    ],
+    [
+     46.65079,
+     7.87138
+    ],
+    [
+     46.64972,
+     7.87161
+    ],
+    [
+     46.64877,
+     7.87259
+    ],
+    [
+     46.64697,
+     7.87361
+    ],
+    [
+     46.64521,
+     7.87516
+    ],
+    [
+     46.6449,
+     7.87575
+    ],
+    [
+     46.64444,
+     7.8774
+    ],
+    [
+     46.64376,
+     7.87817
+    ],
+    [
+     46.64243,
+     7.88106
+    ],
+    [
+     46.64136,
+     7.88439
+    ],
+    [
+     46.64046,
+     7.88547
+    ],
+    [
+     46.63925,
+     7.88612
+    ],
+    [
+     46.63828,
+     7.88783
+    ],
+    [
+     46.63749,
+     7.88868
+    ],
+    [
+     46.63622,
+     7.89328
+    ],
+    [
+     46.63586,
+     7.89365
+    ],
+    [
+     46.63417,
+     7.89439
+    ],
+    [
+     46.63044,
+     7.90067
+    ],
+    [
+     46.63092,
+     7.90178
+    ],
+    [
+     46.63106,
+     7.90332
+    ],
+    [
+     46.63167,
+     7.9048
+    ],
+    [
+     46.63151,
+     7.90726
+    ],
+    [
+     46.63111,
+     7.90909
+    ],
+    [
+     46.63181,
+     7.91232
+    ],
+    [
+     46.63239,
+     7.91399
+    ],
+    [
+     46.63304,
+     7.9152
+    ],
+    [
+     46.6333,
+     7.91614
+    ],
+    [
+     46.63381,
+     7.91715
+    ],
+    [
+     46.63425,
+     7.91872
+    ],
+    [
+     46.63526,
+     7.91978
+    ],
+    [
+     46.63573,
+     7.92289
+    ],
+    [
+     46.63643,
+     7.92443
+    ],
+    [
+     46.63614,
+     7.92746
+    ],
+    [
+     46.63647,
+     7.93016
+    ],
+    [
+     46.63643,
+     7.93424
+    ],
+    [
+     46.63609,
+     7.94074
+    ],
+    [
+     46.63706,
+     7.94819
+    ],
+    [
+     46.63727,
+     7.94859
+    ],
+    [
+     46.63801,
+     7.9489
+    ],
+    [
+     46.63824,
+     7.94925
+    ],
+    [
+     46.63807,
+     7.9536
+    ],
+    [
+     46.63755,
+     7.95588
+    ],
+    [
+     46.63647,
+     7.95737
+    ],
+    [
+     46.63623,
+     7.95828
+    ],
+    [
+     46.63628,
+     7.96044
+    ],
+    [
+     46.63681,
+     7.9626
+    ],
+    [
+     46.63635,
+     7.96428
+    ],
+    [
+     46.63708,
+     7.96539
+    ],
+    [
+     46.63715,
+     7.96587
+    ],
+    [
+     46.63683,
+     7.9675
+    ],
+    [
+     46.63615,
+     7.96828
+    ],
+    [
+     46.63596,
+     7.96885
+    ],
+    [
+     46.63624,
+     7.96911
+    ],
+    [
+     46.63703,
+     7.96797
+    ],
+    [
+     46.63726,
+     7.9679
+    ],
+    [
+     46.63736,
+     7.9681
+    ],
+    [
+     46.63723,
+     7.96854
+    ],
+    [
+     46.63661,
+     7.96939
+    ],
+    [
+     46.63665,
+     7.97111
+    ],
+    [
+     46.63611,
+     7.97196
+    ],
+    [
+     46.63606,
+     7.97323
+    ],
+    [
+     46.63578,
+     7.97407
+    ],
+    [
+     46.63585,
+     7.97493
+    ],
+    [
+     46.63571,
+     7.97592
+    ],
+    [
+     46.63616,
+     7.97974
+    ],
+    [
+     46.63636,
+     7.98446
+    ],
+    [
+     46.63618,
+     7.98824
+    ],
+    [
+     46.63563,
+     7.99289
+    ],
+    [
+     46.63531,
+     7.99408
+    ],
+    [
+     46.63436,
+     7.99641
+    ],
+    [
+     46.6334,
+     7.9981
+    ],
+    [
+     46.63239,
+     8.00195
+    ],
+    [
+     46.63114,
+     8.00312
+    ],
+    [
+     46.6302,
+     8.00506
+    ],
+    [
+     46.62915,
+     8.00586
+    ],
+    [
+     46.62873,
+     8.00844
+    ],
+    [
+     46.62779,
+     8.00945
+    ],
+    [
+     46.62673,
+     8.01126
+    ],
+    [
+     46.62661,
+     8.01362
+    ],
+    [
+     46.62622,
+     8.01511
+    ],
+    [
+     46.62611,
+     8.01702
+    ],
+    [
+     46.62571,
+     8.01954
+    ],
+    [
+     46.62583,
+     8.01981
+    ],
+    [
+     46.62573,
+     8.02062
+    ],
+    [
+     46.62645,
+     8.02286
+    ],
+    [
+     46.62541,
+     8.02509
+    ],
+    [
+     46.62517,
+     8.02669
+    ],
+    [
+     46.62548,
+     8.02795
+    ],
+    [
+     46.62547,
+     8.02839
+    ],
+    [
+     46.62493,
+     8.02946
+    ],
+    [
+     46.62406,
+     8.03278
+    ],
+    [
+     46.6244,
+     8.03436
+    ],
+    [
+     46.62428,
+     8.03489
+    ],
+    [
+     46.62387,
+     8.03529
+    ],
+    [
+     46.62382,
+     8.03598
+    ],
+    [
+     46.62447,
+     8.03627
+    ],
+    [
+     46.62431,
+     8.03654
+    ]
+   ],
+   "min": 25
+  },
+  {
+   "day": 7,
+   "mode": "drive",
+   "from": "grindelwald-village",
+   "to": "zrh-parking3",
+   "label": "Interlaken, Spiez, Thun, Bern, then the A1 east. Van back by 12:00",
+   "km": 152.7,
+   "source": "osrm/driving",
+   "geometry": [
+    [
+     46.62431,
+     8.03654
+    ],
+    [
+     46.62447,
+     8.03627
+    ],
+    [
+     46.62382,
+     8.03598
+    ],
+    [
+     46.62387,
+     8.03529
+    ],
+    [
+     46.62428,
+     8.03489
+    ],
+    [
+     46.6244,
+     8.03436
+    ],
+    [
+     46.62406,
+     8.03278
+    ],
+    [
+     46.62493,
+     8.02946
+    ],
+    [
+     46.62547,
+     8.02839
+    ],
+    [
+     46.62548,
+     8.02795
+    ],
+    [
+     46.62517,
+     8.02669
+    ],
+    [
+     46.62541,
+     8.02509
+    ],
+    [
+     46.62645,
+     8.02286
+    ],
+    [
+     46.62571,
+     8.0204
+    ],
+    [
+     46.62588,
+     8.01983
+    ],
+    [
+     46.62581,
+     8.01908
+    ],
+    [
+     46.62611,
+     8.01702
+    ],
+    [
+     46.62622,
+     8.01511
+    ],
+    [
+     46.62661,
+     8.01362
+    ],
+    [
+     46.62673,
+     8.01126
+    ],
+    [
+     46.62779,
+     8.00945
+    ],
+    [
+     46.62873,
+     8.00844
+    ],
+    [
+     46.62915,
+     8.00586
+    ],
+    [
+     46.6302,
+     8.00506
+    ],
+    [
+     46.63114,
+     8.00312
+    ],
+    [
+     46.63239,
+     8.00195
+    ],
+    [
+     46.6334,
+     7.9981
+    ],
+    [
+     46.63436,
+     7.99641
+    ],
+    [
+     46.63531,
+     7.99408
+    ],
+    [
+     46.63563,
+     7.99289
+    ],
+    [
+     46.63618,
+     7.98824
+    ],
+    [
+     46.63636,
+     7.98446
+    ],
+    [
+     46.63616,
+     7.97974
+    ],
+    [
+     46.63571,
+     7.97592
+    ],
+    [
+     46.63585,
+     7.97493
+    ],
+    [
+     46.63578,
+     7.97407
+    ],
+    [
+     46.63606,
+     7.97323
+    ],
+    [
+     46.63611,
+     7.97196
+    ],
+    [
+     46.63665,
+     7.97111
+    ],
+    [
+     46.63661,
+     7.96939
+    ],
+    [
+     46.63723,
+     7.96854
+    ],
+    [
+     46.63736,
+     7.9681
+    ],
+    [
+     46.63726,
+     7.9679
+    ],
+    [
+     46.63703,
+     7.96797
+    ],
+    [
+     46.63624,
+     7.96911
+    ],
+    [
+     46.63596,
+     7.96885
+    ],
+    [
+     46.63615,
+     7.96828
+    ],
+    [
+     46.63683,
+     7.9675
+    ],
+    [
+     46.63715,
+     7.96587
+    ],
+    [
+     46.63708,
+     7.96539
+    ],
+    [
+     46.63635,
+     7.96428
+    ],
+    [
+     46.63681,
+     7.9626
+    ],
+    [
+     46.63628,
+     7.96044
+    ],
+    [
+     46.63623,
+     7.95828
+    ],
+    [
+     46.63647,
+     7.95737
+    ],
+    [
+     46.63755,
+     7.95588
+    ],
+    [
+     46.63807,
+     7.9536
+    ],
+    [
+     46.63824,
+     7.94925
+    ],
+    [
+     46.63801,
+     7.9489
+    ],
+    [
+     46.63727,
+     7.94859
+    ],
+    [
+     46.63706,
+     7.94819
+    ],
+    [
+     46.63609,
+     7.94074
+    ],
+    [
+     46.63643,
+     7.93424
+    ],
+    [
+     46.63647,
+     7.93016
+    ],
+    [
+     46.63614,
+     7.92746
+    ],
+    [
+     46.63643,
+     7.92443
+    ],
+    [
+     46.63573,
+     7.92289
+    ],
+    [
+     46.63526,
+     7.91978
+    ],
+    [
+     46.63425,
+     7.91872
+    ],
+    [
+     46.63381,
+     7.91715
+    ],
+    [
+     46.6333,
+     7.91614
+    ],
+    [
+     46.63304,
+     7.9152
+    ],
+    [
+     46.63239,
+     7.91399
+    ],
+    [
+     46.63181,
+     7.91232
+    ],
+    [
+     46.63111,
+     7.90909
+    ],
+    [
+     46.63151,
+     7.90726
+    ],
+    [
+     46.63167,
+     7.9048
+    ],
+    [
+     46.63106,
+     7.90332
+    ],
+    [
+     46.63092,
+     7.90178
+    ],
+    [
+     46.63044,
+     7.90067
+    ],
+    [
+     46.63417,
+     7.89439
+    ],
+    [
+     46.63586,
+     7.89365
+    ],
+    [
+     46.63622,
+     7.89328
+    ],
+    [
+     46.63749,
+     7.88868
+    ],
+    [
+     46.63828,
+     7.88783
+    ],
+    [
+     46.63925,
+     7.88612
+    ],
+    [
+     46.64046,
+     7.88547
+    ],
+    [
+     46.64136,
+     7.88439
+    ],
+    [
+     46.64243,
+     7.88106
+    ],
+    [
+     46.64376,
+     7.87817
+    ],
+    [
+     46.64444,
+     7.8774
+    ],
+    [
+     46.6449,
+     7.87575
+    ],
+    [
+     46.64521,
+     7.87516
+    ],
+    [
+     46.64697,
+     7.87361
+    ],
+    [
+     46.64877,
+     7.87259
+    ],
+    [
+     46.64972,
+     7.87161
+    ],
+    [
+     46.65079,
+     7.87138
+    ],
+    [
+     46.65192,
+     7.86942
+    ],
+    [
+     46.65336,
+     7.86824
+    ],
+    [
+     46.65526,
+     7.86709
+    ],
+    [
+     46.65583,
+     7.86729
+    ],
+    [
+     46.65687,
+     7.86846
+    ],
+    [
+     46.65751,
+     7.86887
+    ],
+    [
+     46.65916,
+     7.86877
+    ],
+    [
+     46.66101,
+     7.86899
+    ],
+    [
+     46.66333,
+     7.87027
+    ],
+    [
+     46.66541,
+     7.87019
+    ],
+    [
+     46.66819,
+     7.87105
+    ],
+    [
+     46.67083,
+     7.8702
+    ],
+    [
+     46.67117,
+     7.86966
+    ],
+    [
+     46.67163,
+     7.86807
+    ],
+    [
+     46.67178,
+     7.86805
+    ],
+    [
+     46.67275,
+     7.87014
+    ],
+    [
      46.67459,
      7.8731
     ],
@@ -5656,52 +9009,44 @@
      7.87589
     ],
     [
-     46.68144,
+     46.68152,
      7.8756
     ],
     [
-     46.68216,
-     7.8757
+     46.68237,
+     7.87577
     ],
     [
-     46.68322,
-     7.87625
-    ],
-    [
-     46.6842,
-     7.8773
+     46.68372,
+     7.87671
     ],
     [
      46.68475,
      7.87835
     ],
     [
-     46.68511,
-     7.87946
+     46.68527,
+     7.8804
     ],
     [
-     46.68532,
-     7.88195
+     46.68527,
+     7.88248
     ],
     [
-     46.68493,
-     7.88387
+     46.68487,
+     7.88404
     ],
     [
-     46.68359,
-     7.88678
+     46.68316,
+     7.888
     ],
     [
-     46.68305,
-     7.88844
+     46.68284,
+     7.88971
     ],
     [
      46.6828,
-     7.89015
-    ],
-    [
-     46.68282,
-     7.89203
+     7.89171
     ],
     [
      46.68333,
@@ -5844,48 +9189,48 @@
      8.00989
     ],
     [
-     46.73648,
-     8.03057
+     46.73688,
+     8.03154
     ],
     [
-     46.73729,
-     8.03235
-    ],
-    [
-     46.73896,
-     8.03505
+     46.73921,
+     8.03565
     ],
     [
      46.73954,
      8.03706
     ],
     [
-     46.73949,
-     8.03968
+     46.73959,
+     8.03858
     ],
     [
-     46.73875,
-     8.04359
+     46.73931,
+     8.04093
     ],
     [
-     46.73859,
-     8.04506
+     46.73866,
+     8.04425
     ],
     [
-     46.73872,
-     8.04933
+     46.73864,
+     8.04855
     ],
     [
-     46.73908,
-     8.05127
+     46.73884,
+     8.0502
     ],
     [
-     46.73964,
-     8.05307
+     46.73921,
+     8.05177
     ],
     [
-     46.74172,
-     8.0582
+     46.74158,
+     8.05774
+    ],
+    [
+     46.74209,
+     8.05964
     ],
     [
      46.74239,
@@ -5900,588 +9245,216 @@
      8.07555
     ],
     [
-     46.7456,
-     8.09585
+     46.74541,
+     8.09443
     ],
     [
-     46.74613,
-     8.10103
+     46.74542,
+     8.09525
     ],
     [
-     46.74605,
-     8.1037
+     46.74521,
+     8.09566
     ],
     [
-     46.74497,
-     8.11637
+     46.74482,
+     8.09573
     ],
     [
-     46.74474,
-     8.11687
+     46.74456,
+     8.0953
     ],
     [
-     46.74484,
-     8.11781
+     46.74461,
+     8.09468
     ],
     [
-     46.74421,
-     8.12529
+     46.74493,
+     8.09414
     ],
     [
-     46.74357,
-     8.13739
+     46.74587,
+     8.09378
     ],
     [
-     46.74319,
-     8.14006
+     46.74612,
+     8.09388
     ],
     [
-     46.7426,
-     8.14255
-    ],
-    [
-     46.74186,
-     8.14478
-    ],
-    [
-     46.74088,
-     8.14699
-    ],
-    [
-     46.72876,
-     8.16784
-    ],
-    [
-     46.72698,
-     8.17014
-    ],
-    [
-     46.72443,
-     8.17565
-    ],
-    [
-     46.72365,
-     8.17785
-    ],
-    [
-     46.7226,
-     8.18232
-    ],
-    [
-     46.72202,
-     8.18848
-    ],
-    [
-     46.72171,
-     8.18934
-    ],
-    [
-     46.72373,
-     8.19014
-    ],
-    [
-     46.72367,
-     8.19086
-    ],
-    [
-     46.72496,
-     8.19125
-    ],
-    [
-     46.72527,
-     8.19248
-    ],
-    [
-     46.72589,
-     8.19277
-    ],
-    [
-     46.72614,
-     8.19265
-    ]
-   ],
-   "min": 48
-  },
-  {
-   "day": 6,
-   "mode": "walk",
-   "from": "aareschlucht-west",
-   "to": "aareschlucht-ost",
-   "label": "Through the gorge, 1.4 km of walkway",
-   "km": 3.9,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     46.72614,
-     8.19265
-    ],
-    [
-     46.72589,
-     8.19277
-    ],
-    [
-     46.72527,
-     8.19248
-    ],
-    [
-     46.72505,
-     8.19187
-    ],
-    [
-     46.72501,
-     8.19091
-    ],
-    [
-     46.72801,
-     8.1917
-    ],
-    [
-     46.72779,
-     8.193
-    ],
-    [
-     46.72917,
-     8.19362
-    ],
-    [
-     46.72885,
-     8.19375
-    ],
-    [
-     46.72856,
-     8.19438
-    ],
-    [
-     46.72915,
-     8.19415
-    ],
-    [
-     46.72876,
-     8.19464
-    ],
-    [
-     46.72853,
-     8.19553
-    ],
-    [
-     46.7293,
-     8.19478
-    ],
-    [
-     46.72895,
-     8.19641
-    ],
-    [
-     46.72959,
-     8.19526
-    ],
-    [
-     46.72937,
-     8.19664
-    ],
-    [
-     46.72957,
-     8.19629
-    ],
-    [
-     46.72939,
-     8.19732
-    ],
-    [
-     46.72946,
-     8.19783
-    ],
-    [
-     46.72979,
-     8.19701
-    ],
-    [
-     46.72987,
-     8.19614
-    ],
-    [
-     46.73001,
-     8.19691
-    ],
-    [
-     46.7306,
-     8.19627
-    ],
-    [
-     46.73055,
-     8.19743
-    ],
-    [
-     46.73085,
-     8.19742
-    ],
-    [
-     46.73063,
-     8.19786
-    ],
-    [
-     46.73103,
-     8.19806
-    ],
-    [
-     46.73129,
-     8.19888
-    ],
-    [
-     46.73102,
-     8.19957
-    ],
-    [
-     46.73151,
-     8.19941
-    ],
-    [
-     46.73096,
-     8.20065
-    ],
-    [
-     46.73092,
-     8.2015
-    ],
-    [
-     46.73061,
-     8.20169
-    ],
-    [
-     46.73021,
-     8.20148
-    ],
-    [
-     46.72965,
-     8.20257
-    ],
-    [
-     46.7296,
-     8.20387
-    ],
-    [
-     46.72992,
-     8.20454
-    ],
-    [
-     46.72982,
-     8.20513
-    ],
-    [
-     46.73009,
-     8.20545
-    ],
-    [
-     46.73016,
-     8.20616
-    ],
-    [
-     46.73002,
-     8.20779
-    ],
-    [
-     46.73028,
-     8.20871
-    ],
-    [
-     46.73034,
-     8.20969
-    ],
-    [
-     46.7308,
-     8.2102
-    ],
-    [
-     46.73058,
-     8.21117
-    ],
-    [
-     46.73069,
-     8.21181
-    ],
-    [
-     46.73058,
-     8.21214
-    ],
-    [
-     46.73018,
-     8.21224
-    ],
-    [
-     46.73003,
-     8.21209
-    ],
-    [
-     46.72953,
-     8.21104
-    ]
-   ],
-   "min": 84
-  },
-  {
-   "day": 6,
-   "mode": "drive",
-   "from": "aareschlucht-west",
-   "to": "weggis-village",
-   "label": "Back over the Brünig through Sarnen, then along the lake to Weggis",
-   "km": 84.0,
-   "source": "osrm/driving",
-   "geometry": [
-    [
-     46.72614,
-     8.19265
-    ],
-    [
-     46.72589,
-     8.19277
-    ],
-    [
-     46.72527,
-     8.19248
-    ],
-    [
-     46.72496,
-     8.19125
-    ],
-    [
-     46.72367,
-     8.19086
-    ],
-    [
-     46.72373,
-     8.19014
-    ],
-    [
-     46.7251,
-     8.19083
-    ],
-    [
-     46.72555,
-     8.19014
-    ],
-    [
-     46.72596,
-     8.18998
-    ],
-    [
-     46.72627,
-     8.18895
-    ],
-    [
-     46.72685,
-     8.18827
-    ],
-    [
-     46.72768,
-     8.18678
-    ],
-    [
-     46.72839,
-     8.1835
-    ],
-    [
-     46.72968,
-     8.18091
-    ],
-    [
-     46.73051,
-     8.17883
-    ],
-    [
-     46.73055,
-     8.1784
-    ],
-    [
-     46.73082,
-     8.17825
-    ],
-    [
-     46.73149,
-     8.17695
-    ],
-    [
-     46.73303,
-     8.17487
-    ],
-    [
-     46.73395,
-     8.17245
-    ],
-    [
-     46.73524,
-     8.17007
-    ],
-    [
-     46.73568,
-     8.16863
-    ],
-    [
-     46.7372,
-     8.16756
-    ],
-    [
-     46.73893,
-     8.16805
-    ],
-    [
-     46.73953,
-     8.16787
-    ],
-    [
-     46.73994,
-     8.16746
-    ],
-    [
-     46.74272,
-     8.16048
-    ],
-    [
-     46.74511,
-     8.15579
-    ],
-    [
-     46.74607,
-     8.15315
-    ],
-    [
-     46.74625,
-     8.15066
-    ],
-    [
-     46.74663,
-     8.14941
-    ],
-    [
-     46.74675,
-     8.14923
-    ],
-    [
-     46.74691,
-     8.14935
+     46.74658,
+     8.09529
     ],
     [
      46.74681,
-     8.1503
+     8.09702
     ],
     [
-     46.74698,
-     8.15038
+     46.74776,
+     8.09934
     ],
     [
-     46.7471,
-     8.1502
+     46.74821,
+     8.10312
     ],
     [
-     46.7472,
-     8.14781
+     46.74809,
+     8.10669
     ],
     [
-     46.74799,
-     8.14593
+     46.74782,
+     8.10785
     ],
     [
-     46.7477,
-     8.14491
+     46.74809,
+     8.10779
     ],
     [
-     46.74788,
-     8.14486
+     46.74841,
+     8.10651
     ],
     [
-     46.74856,
-     8.14567
+     46.74892,
+     8.10627
     ],
     [
-     46.74903,
-     8.14593
+     46.74925,
+     8.10652
     ],
     [
-     46.74921,
-     8.14582
+     46.74959,
+     8.10719
     ],
     [
-     46.74914,
-     8.14556
+     46.74998,
+     8.10941
     ],
     [
-     46.74835,
-     8.14491
+     46.75038,
+     8.11014
     ],
     [
-     46.74816,
-     8.14436
+     46.75096,
+     8.11029
     ],
     [
-     46.74787,
-     8.14212
+     46.75138,
+     8.11001
     ],
     [
-     46.74828,
-     8.1396
+     46.75163,
+     8.10949
     ],
     [
-     46.74865,
-     8.13924
+     46.75165,
+     8.10872
     ],
     [
-     46.75054,
-     8.13859
+     46.75123,
+     8.10795
     ],
     [
-     46.75211,
-     8.13768
+     46.75057,
+     8.1075
     ],
     [
-     46.75323,
-     8.1374
+     46.74981,
+     8.10793
     ],
     [
-     46.75478,
-     8.13559
+     46.74939,
+     8.10895
     ],
     [
-     46.75482,
-     8.13514
+     46.74943,
+     8.10964
     ],
     [
-     46.75415,
-     8.1329
+     46.74985,
+     8.11001
     ],
     [
-     46.7536,
-     8.1319
+     46.75029,
+     8.10963
     ],
     [
-     46.7535,
-     8.13058
+     46.75031,
+     8.10849
     ],
     [
-     46.75286,
-     8.12843
+     46.75055,
+     8.10849
     ],
     [
-     46.75257,
-     8.12807
+     46.75069,
+     8.10895
     ],
     [
-     46.75191,
-     8.12819
+     46.75043,
+     8.11052
     ],
     [
-     46.75172,
-     8.12802
+     46.74971,
+     8.11156
+    ],
+    [
+     46.74958,
+     8.11389
+    ],
+    [
+     46.74933,
+     8.11508
+    ],
+    [
+     46.74963,
+     8.11785
+    ],
+    [
+     46.74896,
+     8.11964
+    ],
+    [
+     46.74905,
+     8.11998
+    ],
+    [
+     46.74964,
+     8.12068
+    ],
+    [
+     46.75046,
+     8.12302
+    ],
+    [
+     46.75062,
+     8.12422
+    ],
+    [
+     46.75168,
+     8.12674
+    ],
+    [
+     46.75167,
+     8.1272
+    ],
+    [
+     46.75121,
+     8.12799
+    ],
+    [
+     46.75114,
+     8.12847
+    ],
+    [
+     46.75147,
+     8.12856
     ],
     [
      46.75193,
      8.12763
     ],
     [
-     46.75254,
-     8.12753
-    ],
-    [
-     46.75312,
-     8.12711
+     46.7532,
+     8.12716
     ],
     [
      46.75434,
@@ -6620,12 +9593,8 @@
      8.14983
     ],
     [
-     46.77558,
-     8.15098
-    ],
-    [
-     46.77548,
-     8.15501
+     46.77546,
+     8.15493
     ],
     [
      46.77613,
@@ -6640,60 +9609,60 @@
      8.15956
     ],
     [
-     46.77818,
-     8.16235
+     46.77856,
+     8.16347
     ],
     [
-     46.77883,
-     8.16416
+     46.78086,
+     8.16871
     ],
     [
-     46.78224,
-     8.17178
+     46.78267,
+     8.1726
     ],
     [
-     46.78346,
-     8.17381
+     46.78445,
+     8.17493
     ],
     [
-     46.78509,
-     8.17548
+     46.78551,
+     8.17577
     ],
     [
-     46.78617,
-     8.17616
-    ],
-    [
-     46.78766,
-     8.1767
+     46.78717,
+     8.17657
     ],
     [
      46.78882,
      8.17682
     ],
     [
-     46.79056,
-     8.17654
+     46.79015,
+     8.17667
     ],
     [
-     46.79874,
-     8.17212
+     46.79125,
+     8.17627
+    ],
+    [
+     46.79803,
+     8.17253
     ],
     [
      46.80156,
      8.17015
     ],
     [
-     46.80445,
-     8.16902
+     46.80431,
+     8.16903
     ],
     [
-     46.80613,
-     8.16955
+     46.80598,
+     8.16947
     ],
     [
-     46.80783,
-     8.17101
+     46.80766,
+     8.17084
     ],
     [
      46.8087,
@@ -6704,60 +9673,56 @@
      8.17465
     ],
     [
-     46.81112,
-     8.17583
+     46.81125,
+     8.17587
     ],
     [
      46.81386,
      8.1755
     ],
     [
-     46.81662,
+     46.81658,
      8.1745
     ],
     [
-     46.8169,
-     8.17476
+     46.81688,
+     8.1747
     ],
     [
-     46.81718,
-     8.17574
+     46.81724,
+     8.17582
     ],
     [
-     46.81752,
-     8.17586
+     46.81794,
+     8.17563
     ],
     [
-     46.81817,
-     8.17542
+     46.81829,
+     8.17511
     ],
     [
-     46.8183,
-     8.17465
-    ],
-    [
-     46.8181,
-     8.17428
-    ],
-    [
-     46.81691,
-     8.17337
-    ],
-    [
-     46.81679,
-     8.17262
+     46.81826,
+     8.17451
     ],
     [
      46.81698,
-     8.17225
+     8.17346
     ],
     [
-     46.81732,
-     8.17213
+     46.81676,
+     8.17296
     ],
     [
-     46.81831,
-     8.17297
+     46.81694,
+     8.17229
+    ],
+    [
+     46.81745,
+     8.17218
+    ],
+    [
+     46.81841,
+     8.17315
     ],
     [
      46.8186,
@@ -7016,8 +9981,8 @@
      8.29964
     ],
     [
-     46.97985,
-     8.30737
+     46.98004,
+     8.30744
     ],
     [
      46.98216,
@@ -7176,12 +10141,12 @@
      8.28653
     ],
     [
-     47.06435,
-     8.28645
+     47.06417,
+     8.28642
     ],
     [
-     47.06508,
-     8.28679
+     47.06499,
+     8.28673
     ],
     [
      47.0658,
@@ -7336,1205 +10301,112 @@
      8.41243
     ],
     [
-     47.14449,
-     8.41549
+     47.14434,
+     8.41506
     ],
     [
-     47.14664,
-     8.42256
+     47.14624,
+     8.42139
+    ],
+    [
+     47.14711,
+     8.42378
     ],
     [
      47.14837,
      8.42629
     ],
     [
-     47.15074,
-     8.42946
+     47.14992,
+     8.42852
     ],
     [
-     47.15375,
-     8.43205
+     47.15122,
+     8.42993
     ],
     [
-     47.15403,
-     8.43262
+     47.15281,
+     8.43124
     ],
     [
-     47.15404,
-     8.43339
+     47.15474,
+     8.4323
     ],
     [
-     47.15335,
-     8.43452
+     47.15664,
+     8.43292
     ],
     [
-     47.14422,
-     8.44343
-    ],
-    [
-     47.1416,
-     8.44548
-    ],
-    [
-     47.13879,
-     8.44718
-    ],
-    [
-     47.13445,
-     8.44889
-    ],
-    [
-     47.12152,
-     8.4517
-    ],
-    [
-     47.11509,
-     8.45413
-    ],
-    [
-     47.11388,
-     8.45441
-    ],
-    [
-     47.11232,
-     8.45405
-    ],
-    [
-     47.10984,
-     8.4522
-    ],
-    [
-     47.10798,
-     8.45141
-    ],
-    [
-     47.10636,
-     8.45133
-    ],
-    [
-     47.10258,
-     8.45206
-    ],
-    [
-     47.10214,
-     8.45169
-    ],
-    [
-     47.10171,
-     8.45031
-    ],
-    [
-     47.09902,
-     8.44989
-    ],
-    [
-     47.09528,
-     8.44978
-    ],
-    [
-     47.09438,
-     8.44955
-    ],
-    [
-     47.09029,
-     8.44628
-    ],
-    [
-     47.08766,
-     8.44231
-    ],
-    [
-     47.08747,
-     8.44148
-    ],
-    [
-     47.08784,
-     8.44117
-    ],
-    [
-     47.08818,
-     8.44173
-    ],
-    [
-     47.0883,
-     8.44294
-    ],
-    [
-     47.08817,
-     8.44429
-    ],
-    [
-     47.08784,
-     8.44539
-    ],
-    [
-     47.08743,
-     8.44611
-    ],
-    [
-     47.0869,
-     8.44659
-    ],
-    [
-     47.08614,
-     8.44684
-    ],
-    [
-     47.08551,
-     8.44671
-    ],
-    [
-     47.08505,
-     8.44625
-    ],
-    [
-     47.08479,
-     8.44627
-    ],
-    [
-     47.0815,
-     8.44427
-    ],
-    [
-     47.07959,
-     8.44248
-    ],
-    [
-     47.07941,
-     8.44203
-    ],
-    [
-     47.07944,
-     8.44125
-    ],
-    [
-     47.0786,
-     8.4412
-    ],
-    [
-     47.07786,
-     8.44033
-    ],
-    [
-     47.07673,
-     8.43961
-    ],
-    [
-     47.07483,
-     8.43928
-    ],
-    [
-     47.07314,
-     8.43832
-    ],
-    [
-     47.07027,
-     8.43747
-    ],
-    [
-     47.06801,
-     8.43624
-    ],
-    [
-     47.06674,
-     8.43536
-    ],
-    [
-     47.06361,
-     8.43227
-    ],
-    [
-     47.06167,
-     8.43107
-    ],
-    [
-     47.05969,
-     8.42929
-    ],
-    [
-     47.05872,
-     8.42905
-    ],
-    [
-     47.05747,
-     8.42936
-    ],
-    [
-     47.05694,
-     8.42988
-    ],
-    [
-     47.05621,
-     8.43125
-    ],
-    [
-     47.05569,
-     8.43157
-    ],
-    [
-     47.05523,
-     8.43156
-    ],
-    [
-     47.05407,
-     8.4308
-    ],
-    [
-     47.05271,
-     8.42906
-    ],
-    [
-     47.04971,
-     8.42647
-    ],
-    [
-     47.04586,
-     8.42544
-    ],
-    [
-     47.04293,
-     8.42368
-    ],
-    [
-     47.04112,
-     8.4233
-    ],
-    [
-     47.03991,
-     8.42216
-    ],
-    [
-     47.03903,
-     8.42173
-    ],
-    [
-     47.03789,
-     8.42151
-    ],
-    [
-     47.03669,
-     8.42076
-    ],
-    [
-     47.03619,
-     8.42086
-    ],
-    [
-     47.03572,
-     8.42133
-    ],
-    [
-     47.03547,
-     8.42225
-    ],
-    [
-     47.03555,
-     8.42354
-    ],
-    [
-     47.03512,
-     8.42366
-    ],
-    [
-     47.03475,
-     8.42445
-    ],
-    [
-     47.03385,
-     8.42536
-    ],
-    [
-     47.03316,
-     8.42727
-    ],
-    [
-     47.03293,
-     8.42907
-    ],
-    [
-     47.03211,
-     8.42995
-    ],
-    [
-     47.03238,
-     8.43183
-    ],
-    [
-     47.03231,
-     8.43464
-    ]
-   ],
-   "min": 77
-  },
-  {
-   "day": 6,
-   "mode": "walk",
-   "from": "weggis-village",
-   "to": "weggis-pier",
-   "label": "Down to the pier",
-   "km": 0.2,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.03231,
-     8.43464
-    ],
-    [
-     47.03219,
-     8.43479
-    ],
-    [
-     47.03209,
-     8.43416
-    ],
-    [
-     47.03173,
-     8.43341
-    ],
-    [
-     47.03141,
-     8.43326
-    ]
-   ],
-   "min": 2
-  },
-  {
-   "day": 6,
-   "mode": "boat",
-   "from": "weggis-pier",
-   "to": "lucerne-pier",
-   "label": "SGV boat across the lake",
-   "km": 9.6,
-   "source": "straight",
-   "geometry": [
-    [
-     47.03144,
-     8.43325
-    ],
-    [
-     47.05136,
-     8.3101
-    ]
-   ]
-  },
-  {
-   "day": 6,
-   "mode": "walk",
-   "from": "lucerne-pier",
-   "to": "lucerne-kapellbrucke",
-   "label": "Into the old town",
-   "km": 0.4,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.05136,
-     8.31012
-    ],
-    [
-     47.05119,
-     8.31015
-    ],
-    [
-     47.05116,
-     8.30955
-    ],
-    [
-     47.05104,
-     8.30952
-    ],
-    [
-     47.05113,
-     8.30898
-    ],
-    [
-     47.05091,
-     8.30665
-    ],
-    [
-     47.05105,
-     8.30663
-    ],
-    [
-     47.0516,
-     8.30748
-    ]
-   ],
-   "min": 5
-  },
-  {
-   "day": 7,
-   "mode": "walk",
-   "from": "weggis-village",
-   "to": "weggis-cablecar",
-   "label": "Through the village to the cable car",
-   "km": 0.6,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.03231,
-     8.43464
-    ],
-    [
-     47.03224,
-     8.43647
-    ],
-    [
-     47.03283,
-     8.43761
-    ],
-    [
-     47.03412,
-     8.43894
-    ],
-    [
-     47.03395,
-     8.43914
-    ],
-    [
-     47.0339,
-     8.43973
-    ],
-    [
-     47.03363,
-     8.44
-    ],
-    [
-     47.03406,
-     8.44082
-    ]
-   ],
-   "min": 10
-  },
-  {
-   "day": 7,
-   "mode": "lift",
-   "from": "weggis-cablecar",
-   "to": "rigi-kaltbad",
-   "label": "Cable car, Weggis to Rigi Kaltbad",
-   "km": 2.2,
-   "source": "straight",
-   "geometry": [
-    [
-     47.03406,
-     8.44082
-    ],
-    [
-     47.04395,
-     8.46662
-    ]
-   ]
-  },
-  {
-   "day": 7,
-   "mode": "lift",
-   "from": "rigi-kaltbad",
-   "to": "rigi-kulm",
-   "label": "Cogwheel to the summit, hourly",
-   "km": 2.4,
-   "source": "osm/99ways",
-   "geometry": [
-    [
-     47.04449,
-     8.46604
-    ],
-    [
-     47.04633,
-     8.46396
-    ],
-    [
-     47.04704,
-     8.46378
-    ],
-    [
-     47.04781,
-     8.46412
-    ],
-    [
-     47.04849,
-     8.46512
-    ],
-    [
-     47.04875,
-     8.46662
-    ],
-    [
-     47.04905,
-     8.4674
-    ],
-    [
-     47.05037,
-     8.46885
-    ],
-    [
-     47.05179,
-     8.47149
-    ],
-    [
-     47.05442,
-     8.475
-    ],
-    [
-     47.05472,
-     8.47615
-    ],
-    [
-     47.05452,
-     8.4793
-    ],
-    [
-     47.05503,
-     8.48164
-    ],
-    [
-     47.05502,
-     8.48294
-    ],
-    [
-     47.05523,
-     8.48451
-    ],
-    [
-     47.05516,
-     8.48539
-    ]
-   ]
-  },
-  {
-   "day": 7,
-   "mode": "walk",
-   "from": "rigi-kulm",
-   "to": "rigi-kaltbad",
-   "label": "Rigi Panorama Trail, 6 km, wide gravel, mostly downhill",
-   "km": 2.8,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.05507,
-     8.48536
-    ],
-    [
-     47.05515,
-     8.48453
-    ],
-    [
-     47.05495,
-     8.48354
-    ],
-    [
-     47.05493,
-     8.48171
-    ],
-    [
-     47.05441,
-     8.47971
-    ],
-    [
-     47.0542,
-     8.47974
-    ],
-    [
-     47.0539,
-     8.48046
-    ],
-    [
-     47.0536,
-     8.48052
-    ],
-    [
-     47.05328,
-     8.48011
-    ],
-    [
-     47.05354,
-     8.47951
-    ],
-    [
-     47.05341,
-     8.4791
-    ],
-    [
-     47.05368,
-     8.47819
-    ],
-    [
-     47.05359,
-     8.4776
-    ],
-    [
-     47.05397,
-     8.47673
-    ],
-    [
-     47.05375,
-     8.47654
-    ],
-    [
-     47.05385,
-     8.47617
-    ],
-    [
-     47.05344,
-     8.47516
-    ],
-    [
-     47.05333,
-     8.4745
-    ],
-    [
-     47.05301,
-     8.47376
-    ],
-    [
-     47.05244,
-     8.47337
-    ],
-    [
-     47.0524,
-     8.47294
-    ],
-    [
-     47.05191,
-     8.47211
-    ],
-    [
-     47.0518,
-     8.47157
-    ],
-    [
-     47.05045,
-     8.46892
-    ],
-    [
-     47.04898,
-     8.46721
-    ],
-    [
-     47.04872,
-     8.46663
-    ],
-    [
-     47.04851,
-     8.46451
-    ],
-    [
-     47.04823,
-     8.46407
-    ],
-    [
-     47.04748,
-     8.46359
-    ],
-    [
-     47.04743,
-     8.46405
-    ],
-    [
-     47.04695,
-     8.46497
-    ],
-    [
-     47.04682,
-     8.46563
-    ],
-    [
-     47.04538,
-     8.46649
-    ],
-    [
-     47.04482,
-     8.46654
-    ],
-    [
-     47.04464,
-     8.46666
-    ],
-    [
-     47.04451,
-     8.4672
-    ],
-    [
-     47.04405,
-     8.46648
-    ]
-   ],
-   "min": 37
-  },
-  {
-   "day": 7,
-   "mode": "walk",
-   "from": "rigi-kaltbad",
-   "to": "rigi-kanzeli",
-   "label": "Kanzeli, about an hour return, gentle",
-   "km": 1.3,
-   "source": "valhalla/pedestrian",
-   "geometry": [
-    [
-     47.04405,
-     8.46648
-    ],
-    [
-     47.04449,
-     8.4672
-    ],
-    [
-     47.04463,
-     8.46676
-    ],
-    [
-     47.04495,
-     8.46692
-    ],
-    [
-     47.0451,
-     8.46741
-    ],
-    [
-     47.04507,
-     8.46821
-    ],
-    [
-     47.04632,
-     8.46603
-    ],
-    [
-     47.04691,
-     8.46553
-    ],
-    [
-     47.04695,
-     8.46497
-    ],
-    [
-     47.04714,
-     8.4648
-    ],
-    [
-     47.04751,
-     8.46359
-    ],
-    [
-     47.04816,
-     8.46401
-    ],
-    [
-     47.04817,
-     8.46446
-    ],
-    [
-     47.04832,
-     8.4647
-    ],
-    [
-     47.04751,
-     8.4657
-    ],
-    [
-     47.04737,
-     8.46617
-    ],
-    [
-     47.04814,
-     8.46547
-    ],
-    [
-     47.04812,
-     8.46659
-    ],
-    [
-     47.04874,
-     8.46781
-    ]
-   ],
-   "min": 28
-  },
-  {
-   "day": 8,
-   "mode": "drive",
-   "from": "weggis-village",
-   "to": "zrh-parking3",
-   "label": "Along the lake to Küssnacht am Rigi, then A4 north past Zug",
-   "km": 65.7,
-   "source": "osrm/driving",
-   "geometry": [
-    [
-     47.03231,
-     8.43464
-    ],
-    [
-     47.03238,
-     8.43183
-    ],
-    [
-     47.03211,
-     8.42995
-    ],
-    [
-     47.03293,
-     8.42907
-    ],
-    [
-     47.03316,
-     8.42727
-    ],
-    [
-     47.03385,
-     8.42536
-    ],
-    [
-     47.03473,
-     8.42448
-    ],
-    [
-     47.03509,
-     8.42371
-    ],
-    [
-     47.03573,
-     8.42365
-    ],
-    [
-     47.03547,
-     8.42225
-    ],
-    [
-     47.03572,
-     8.42133
-    ],
-    [
-     47.03619,
-     8.42086
-    ],
-    [
-     47.03669,
-     8.42076
-    ],
-    [
-     47.03789,
-     8.42151
-    ],
-    [
-     47.03903,
-     8.42173
-    ],
-    [
-     47.03991,
-     8.42216
-    ],
-    [
-     47.04112,
-     8.4233
-    ],
-    [
-     47.04293,
-     8.42368
-    ],
-    [
-     47.04586,
-     8.42544
-    ],
-    [
-     47.04971,
-     8.42647
-    ],
-    [
-     47.05271,
-     8.42906
-    ],
-    [
-     47.05407,
-     8.4308
-    ],
-    [
-     47.05523,
-     8.43156
-    ],
-    [
-     47.05569,
-     8.43157
-    ],
-    [
-     47.05621,
-     8.43125
-    ],
-    [
-     47.05694,
-     8.42988
-    ],
-    [
-     47.05747,
-     8.42936
-    ],
-    [
-     47.05872,
-     8.42905
-    ],
-    [
-     47.05969,
-     8.42929
-    ],
-    [
-     47.06167,
-     8.43107
-    ],
-    [
-     47.06361,
-     8.43227
-    ],
-    [
-     47.06674,
-     8.43536
-    ],
-    [
-     47.06801,
-     8.43624
-    ],
-    [
-     47.07042,
-     8.43753
-    ],
-    [
-     47.07314,
-     8.43832
-    ],
-    [
-     47.07505,
-     8.43936
-    ],
-    [
-     47.07667,
-     8.43958
-    ],
-    [
-     47.0777,
-     8.4402
-    ],
-    [
-     47.07853,
-     8.44116
-    ],
-    [
-     47.07922,
-     8.44127
-    ],
-    [
-     47.07959,
-     8.44248
-    ],
-    [
-     47.0815,
-     8.44427
-    ],
-    [
-     47.08479,
-     8.44627
-    ],
-    [
-     47.08498,
-     8.44658
-    ],
-    [
-     47.08614,
-     8.44684
-    ],
-    [
-     47.0869,
-     8.44659
-    ],
-    [
-     47.08759,
-     8.44588
-    ],
-    [
-     47.08819,
-     8.44462
-    ],
-    [
-     47.08862,
-     8.44441
-    ],
-    [
-     47.09064,
-     8.44667
-    ],
-    [
-     47.09285,
-     8.44843
-    ],
-    [
-     47.09312,
-     8.4489
-    ],
-    [
-     47.09344,
-     8.44892
-    ],
-    [
-     47.09453,
-     8.44962
-    ],
-    [
-     47.09854,
-     8.44987
-    ],
-    [
-     47.10151,
-     8.4504
-    ],
-    [
-     47.10218,
-     8.45204
-    ],
-    [
-     47.10234,
-     8.45296
-    ],
-    [
-     47.10223,
-     8.45391
-    ],
-    [
-     47.10175,
-     8.45419
-    ],
-    [
-     47.10154,
-     8.45388
-    ],
-    [
-     47.1016,
-     8.4534
-    ],
-    [
-     47.10251,
-     8.45255
-    ],
-    [
-     47.10479,
-     8.45176
-    ],
-    [
-     47.10711,
-     8.45143
-    ],
-    [
-     47.10912,
-     8.45193
-    ],
-    [
-     47.11219,
-     8.45412
-    ],
-    [
-     47.11387,
-     8.45453
-    ],
-    [
-     47.11496,
-     8.4543
-    ],
-    [
-     47.12129,
-     8.45189
-    ],
-    [
-     47.13448,
-     8.44901
-    ],
-    [
-     47.13884,
-     8.44728
-    ],
-    [
-     47.14164,
-     8.4456
-    ],
-    [
-     47.14391,
-     8.44384
-    ],
-    [
-     47.15363,
-     8.43442
-    ],
-    [
-     47.15515,
-     8.43339
-    ],
-    [
-     47.15618,
+     47.16023,
      8.43318
     ],
     [
-     47.16056,
-     8.43316
+     47.17054,
+     8.43215
     ],
     [
-     47.17103,
-     8.43212
+     47.17328,
+     8.43215
     ],
     [
-     47.17472,
-     8.43235
+     47.17497,
+     8.43241
     ],
     [
      47.17694,
      8.43302
     ],
     [
-     47.17908,
-     8.43409
+     47.18011,
+     8.43478
     ],
     [
-     47.18097,
-     8.43543
+     47.18232,
+     8.43665
     ],
     [
-     47.18274,
-     8.43709
+     47.18453,
+     8.43921
     ],
     [
-     47.18534,
-     8.44029
+     47.20495,
+     8.46739
     ],
     [
-     47.20518,
-     8.46767
+     47.20695,
+     8.46946
     ],
     [
-     47.20674,
-     8.46928
+     47.20906,
+     8.47072
     ],
     [
-     47.20829,
-     8.47036
+     47.21049,
+     8.47109
     ],
     [
-     47.20982,
-     8.47096
+     47.21226,
+     8.47109
     ],
     [
-     47.2117,
-     8.47115
-    ],
-    [
-     47.21339,
-     8.47083
+     47.21365,
+     8.47075
     ],
     [
      47.21549,
      8.46995
     ],
     [
-     47.22579,
-     8.46425
+     47.2262,
+     8.46398
     ],
     [
-     47.22744,
-     8.46298
+     47.22763,
+     8.46279
     ],
     [
-     47.23022,
-     8.45995
+     47.23,
+     8.46015
     ],
     [
      47.23192,
@@ -8545,8 +10417,8 @@
      8.45447
     ],
     [
-     47.24623,
-     8.45284
+     47.24667,
+     8.45257
     ],
     [
      47.24944,
@@ -8561,16 +10433,16 @@
      8.44251
     ],
     [
-     47.26145,
-     8.44156
+     47.26111,
+     8.44168
     ],
     [
      47.27077,
      8.43869
     ],
     [
-     47.2723,
-     8.43796
+     47.27215,
+     8.43805
     ],
     [
      47.27344,
@@ -8581,36 +10453,44 @@
      8.43572
     ],
     [
-     47.27731,
-     8.43057
+     47.27707,
+     8.43097
     ],
     [
-     47.27894,
-     8.42854
+     47.27868,
+     8.4288
     ],
     [
-     47.28426,
-     8.42466
+     47.27978,
+     8.4278
     ],
     [
-     47.28545,
-     8.42412
+     47.28354,
+     8.42512
     ],
     [
-     47.28664,
+     47.28477,
+     8.42439
+    ],
+    [
+     47.28596,
+     8.42398
+    ],
+    [
+     47.2875,
      8.42387
     ],
     [
-     47.28809,
-     8.42395
+     47.28901,
+     8.42422
     ],
     [
-     47.28945,
-     8.42442
+     47.29654,
+     8.42883
     ],
     [
-     47.29696,
-     8.42902
+     47.29787,
+     8.42929
     ],
     [
      47.30101,
@@ -8621,36 +10501,36 @@
      8.43098
     ],
     [
-     47.333,
-     8.45855
+     47.33217,
+     8.45784
     ],
     [
      47.33431,
      8.45948
     ],
     [
-     47.3355,
-     8.45994
-    ],
-    [
      47.33626,
      8.46007
     ],
     [
-     47.33807,
-     8.45982
+     47.3383,
+     8.45974
     ],
     [
-     47.3411,
-     8.45818
+     47.34051,
+     8.45858
     ],
     [
-     47.34175,
-     8.45724
+     47.34141,
+     8.45782
     ],
     [
-     47.34207,
-     8.4561
+     47.34201,
+     8.45646
+    ],
+    [
+     47.34212,
+     8.45505
     ],
     [
      47.342,
@@ -8666,55 +10546,47 @@
     ],
     [
      47.34056,
-     8.44249
+     8.44172
     ],
     [
-     47.34078,
-     8.43904
+     47.34069,
+     8.43965
     ],
     [
-     47.34113,
-     8.43727
+     47.341,
+     8.43785
     ],
     [
-     47.34171,
-     8.43539
+     47.34205,
+     8.43456
     ],
     [
-     47.34282,
-     8.43301
+     47.34304,
+     8.43265
     ],
     [
-     47.34408,
-     8.4312
+     47.34432,
+     8.43093
     ],
     [
      47.348,
      8.4275
     ],
     [
-     47.34999,
-     8.42505
-    ],
-    [
-     47.35125,
-     8.42379
+     47.3509,
+     8.4241
     ],
     [
      47.35263,
      8.42282
     ],
     [
-     47.35377,
-     8.42231
+     47.35458,
+     8.42208
     ],
     [
-     47.35603,
-     8.42196
-    ],
-    [
-     47.35778,
-     8.42225
+     47.35674,
+     8.42202
     ],
     [
      47.36376,
@@ -8725,32 +10597,32 @@
      8.42434
     ],
     [
-     47.36731,
-     8.42359
+     47.36707,
+     8.42375
     ],
     [
-     47.36929,
-     8.42187
+     47.36967,
+     8.42159
     ],
     [
-     47.37096,
-     8.42081
+     47.37143,
+     8.42057
     ],
     [
-     47.37611,
-     8.41892
+     47.37551,
+     8.41917
     ],
     [
-     47.38,
-     8.41693
+     47.3796,
+     8.41709
     ],
     [
-     47.38311,
-     8.41589
+     47.38343,
+     8.41576
     ],
     [
-     47.38629,
-     8.41432
+     47.386,
+     8.41444
     ],
     [
      47.38801,
@@ -8765,36 +10637,36 @@
      8.41491
     ],
     [
-     47.39238,
-     8.41581
+     47.3928,
+     8.41618
     ],
     [
      47.39577,
      8.41918
     ],
     [
-     47.39719,
-     8.42017
+     47.39781,
+     8.42047
     ],
     [
-     47.39857,
-     8.42074
+     47.39907,
+     8.42085
     ],
     [
-     47.40312,
-     8.42149
+     47.40344,
+     8.42156
     ],
     [
-     47.4047,
-     8.42197
+     47.40553,
+     8.42238
     ],
     [
      47.40641,
      8.42296
     ],
     [
-     47.40866,
-     8.42512
+     47.40834,
+     8.42476
     ],
     [
      47.40999,
@@ -8809,40 +10681,28 @@
      8.43195
     ],
     [
-     47.4129,
-     8.43287
-    ],
-    [
-     47.41336,
-     8.43414
+     47.41314,
+     8.43348
     ],
     [
      47.41433,
      8.43825
     ],
     [
-     47.41479,
-     8.4396
+     47.41566,
+     8.44173
     ],
     [
-     47.4162,
-     8.44278
+     47.41822,
+     8.44593
     ],
     [
-     47.41849,
-     8.44646
+     47.41942,
+     8.44895
     ],
     [
-     47.41931,
-     8.44862
-    ],
-    [
-     47.41978,
-     8.45038
-    ],
-    [
-     47.42019,
-     8.4526
+     47.42016,
+     8.45241
     ],
     [
      47.4211,
@@ -8873,52 +10733,48 @@
      8.49906
     ],
     [
-     47.42773,
-     8.50409
+     47.42761,
+     8.50357
     ],
     [
-     47.42889,
-     8.50838
+     47.42878,
+     8.50801
     ],
     [
-     47.43167,
-     8.51687
+     47.43205,
+     8.51819
     ],
     [
-     47.4328,
-     8.52136
+     47.43289,
+     8.52182
+    ],
+    [
+     47.43342,
+     8.52508
+    ],
+    [
+     47.43377,
+     8.52932
+    ],
+    [
+     47.43378,
+     8.53364
     ],
     [
      47.43348,
-     8.52556
+     8.53745
     ],
     [
-     47.43379,
-     8.52981
+     47.43283,
+     8.54164
     ],
     [
-     47.4338,
-     8.53313
+     47.4319,
+     8.54548
     ],
     [
-     47.43358,
-     8.5365
-    ],
-    [
-     47.43316,
-     8.53979
-    ],
-    [
-     47.43253,
-     8.54302
-    ],
-    [
-     47.43164,
-     8.54635
-    ],
-    [
-     47.43059,
-     8.54933
+     47.43076,
+     8.54891
     ],
     [
      47.42947,
@@ -8945,20 +10801,20 @@
      8.5698
     ],
     [
-     47.42403,
-     8.57082
+     47.42402,
+     8.57075
     ],
     [
-     47.42426,
-     8.57182
+     47.42419,
+     8.57161
     ],
     [
-     47.42506,
-     8.57294
+     47.42495,
+     8.57285
     ],
     [
-     47.42613,
-     8.57324
+     47.42604,
+     8.57325
     ],
     [
      47.42807,
@@ -9041,114 +10897,109 @@
      8.56171
     ]
    ],
-   "min": 54
+   "min": 133
   },
   {
-   "day": 8,
-   "mode": "drive",
-   "from": "zrh-parking3",
-   "to": "kloten-allegra",
-   "label": "Hotel shuttle from the terminal",
-   "km": 2.5,
-   "source": "osrm/driving",
+   "day": 7,
+   "mode": "lift",
+   "from": "zrh-terminal",
+   "to": "zurich-hb",
+   "label": "Train into the city, 13 minutes, and the afternoon is free",
+   "km": 8.3,
+   "source": "straight",
    "geometry": [
     [
-     47.44954,
-     8.56171
+     47.45096,
+     8.56112
     ],
     [
-     47.44849,
-     8.56282
+     47.3779,
+     8.5403
+    ]
+   ]
+  },
+  {
+   "day": 7,
+   "mode": "walk",
+   "from": "zurich-hb",
+   "to": "zurich-altstadt",
+   "label": "Over the Limmat into the old town",
+   "km": 0.8,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     47.37819,
+     8.54058
     ],
     [
-     47.44906,
-     8.56513
+     47.37844,
+     8.54072
     ],
     [
-     47.44899,
-     8.56592
+     47.37823,
+     8.54127
     ],
     [
-     47.44844,
-     8.56785
+     47.37794,
+     8.5414
     ],
     [
-     47.44804,
-     8.5678
+     47.37747,
+     8.54113
     ],
     [
-     47.44721,
-     8.56914
+     47.37722,
+     8.54146
     ],
     [
-     47.44628,
-     8.57004
+     47.37716,
+     8.54197
     ],
     [
-     47.4449,
-     8.57046
+     47.37667,
+     8.54182
     ],
     [
-     47.44501,
-     8.57106
+     47.37598,
+     8.54202
     ],
     [
-     47.44489,
-     8.57122
+     47.37587,
+     8.54119
     ],
     [
-     47.44489,
-     8.57457
+     47.37499,
+     8.54078
     ],
     [
-     47.44518,
-     8.57626
+     47.37488,
+     8.54033
     ],
     [
-     47.44476,
-     8.57756
+     47.37408,
+     8.54026
     ],
     [
-     47.44487,
-     8.5785
+     47.37405,
+     8.54048
     ],
     [
-     47.44477,
-     8.57922
+     47.37366,
+     8.54073
     ],
     [
-     47.44533,
-     8.5797
-    ],
-    [
-     47.446,
-     8.57986
-    ],
-    [
-     47.44596,
-     8.58076
-    ],
-    [
-     47.4462,
-     8.58179
-    ],
-    [
-     47.44824,
-     8.5845
-    ],
-    [
-     47.44884,
-     8.58562
+     47.37299,
+     8.54073
     ]
    ],
-   "min": 4
+   "min": 11
   },
   {
    "day": 8,
    "mode": "lift",
    "from": "zrh-terminal",
    "to": "zurich-hb",
-   "label": "Train to the main station, 13 minutes",
+   "label": "Thirteen minutes in, and no van to think about",
    "km": 8.3,
    "source": "straight",
    "geometry": [
@@ -9164,10 +11015,86 @@
   },
   {
    "day": 8,
+   "mode": "walk",
+   "from": "zurich-hb",
+   "to": "zurich-altstadt",
+   "label": "Lindenhof, the Fraumünster windows, then the lake promenade",
+   "km": 0.8,
+   "source": "valhalla/pedestrian",
+   "geometry": [
+    [
+     47.37819,
+     8.54058
+    ],
+    [
+     47.37844,
+     8.54072
+    ],
+    [
+     47.37823,
+     8.54127
+    ],
+    [
+     47.37794,
+     8.5414
+    ],
+    [
+     47.37747,
+     8.54113
+    ],
+    [
+     47.37722,
+     8.54146
+    ],
+    [
+     47.37716,
+     8.54197
+    ],
+    [
+     47.37667,
+     8.54182
+    ],
+    [
+     47.37598,
+     8.54202
+    ],
+    [
+     47.37587,
+     8.54119
+    ],
+    [
+     47.37499,
+     8.54078
+    ],
+    [
+     47.37488,
+     8.54033
+    ],
+    [
+     47.37408,
+     8.54026
+    ],
+    [
+     47.37405,
+     8.54048
+    ],
+    [
+     47.37366,
+     8.54073
+    ],
+    [
+     47.37299,
+     8.54073
+    ]
+   ],
+   "min": 11
+  },
+  {
+   "day": 8,
    "mode": "lift",
    "from": "zurich-hb",
    "to": "albisguetli",
-   "label": "Tram 13, which stops short at Laubegg during the festival",
+   "label": "Tram 13 to the festival - it stops at Laubegg, four minutes short",
    "km": 3.7,
    "source": "straight",
    "geometry": [
