@@ -1367,13 +1367,12 @@ def main() -> None:
     except notes_store.StoreError as exc:
         notes, store_problem = {}, exc.key
 
-    overview, days, themap, costs, options = st.tabs([
-        T("ui.tab.overview"), T("ui.tab.days"), T("ui.tab.map"),
-        T("ui.tab.costs"), T("ui.tab.options"),
+    # Order matters: the plan itself comes first, then the map that draws it, and the
+    # reference tabs sit behind them. Anyone opening this on the trip wants the day.
+    days, themap, overview, options, costs = st.tabs([
+        T("ui.tab.days"), T("ui.tab.map"), T("ui.tab.overview"),
+        T("ui.tab.options"), T("ui.tab.costs"),
     ])
-    with overview:
-        render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
-        render_credits(images, T, tx, dirattr, len(data["days"]))
     with days:
         expand_all = st.checkbox(T("ui.day.expand_all"), key="expand_all")
         if store_problem:
@@ -1391,10 +1390,13 @@ def main() -> None:
             FONT_STACK[lang], LINE_HEIGHT[lang],
             todays[0] if todays else -1, block,
         )
-    with costs:
-        render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
+    with overview:
+        render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
+        render_credits(images, T, tx, dirattr, len(data["days"]))
     with options:
         render_options(data, T, C, tx, dirattr, cur, fx, show_prices)
+    with costs:
+        render_costs(data, recon, T, C, tx, dirattr, cur, fx, T("ui.sep"), meta["total_keys"])
 
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File%3AThe_Circle%2C_tunnel_at_Zurich_Airport.jpg",
    "modified": "cropped and resized",
-   "why": "The actual covered walkway from the terminal to The Circle, where the Radisson Blu is. Biased to keep both the wayfinding sign and the whole tunnel arch."
+   "why": "The covered walkway from the terminal at Zurich Airport. Biased to keep both the wayfinding sign and the whole tunnel arch."
   }
  },
  "day1": {
@@ -35,18 +35,33 @@
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "Altstadt Zürich 2015.jpg",
-   "author": "Thomas Wolf , www.foto-tw.de",
-   "licence": "CC BY-SA 3.0 de",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File%3AAltstadt_Z%C3%BCrich_2015.jpg",
+   "title": "Evening sunshine in the old town of Zug.jpg",
+   "author": "Yggdrasilll",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3AEvening_sunshine_in_the_old_town_of_Zug.jpg",
    "modified": "cropped and resized",
-   "why": "Zurich's old town along the Limmat, CC BY-SA 3.0 de. The rest day is spent here on foot, which is the whole point of it."
+   "why": "Zug's old town under evening light with the lake beyond. The day is Zug in the late morning and the Brunnen quay at the end of the afternoon, and this is the light both are chosen for."
   }
  },
  "day2": {
   "file": "day2.webp",
   "thumb": "day2-t.webp",
+  "w": 1200,
+  "h": 600,
+  "credit": {
+   "title": "20240906.Vitznau–Rigi-Bahn.-026.jpg",
+   "author": "Bybbisch94",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3A20240906.Vitznau%E2%80%93Rigi-Bahn.-026.jpg",
+   "modified": "cropped and resized",
+   "why": "Rigi above the sea of fog with the Alps beyond, photographed on 6 September - the same date the family will be up there."
+  }
+ },
+ "day3": {
+  "file": "day3.webp",
+  "thumb": "day3-t.webp",
   "w": 1200,
   "h": 600,
   "credit": {
@@ -57,21 +72,6 @@
    "page": "https://commons.wikimedia.org/wiki/File%3ALake_Lungern%2C_Obwalden.jpg",
    "modified": "cropped and resized",
    "why": "Lungerersee from the old Bruenigstrasse above the shore, looking down the valley: the turquoise water, the village on the bank and a snow-capped summit beyond. The day is now named after this stop, and this is the view the tip about the bypass tunnel is telling you not to miss. Biased up to keep the peak."
-  }
- },
- "day3": {
-  "file": "day3.webp",
-  "thumb": "day3-t.webp",
-  "w": 1200,
-  "h": 600,
-  "credit": {
-   "title": "Eiger, Mönch und Jungfrau.jpg",
-   "author": "Steinmann",
-   "licence": "Public domain",
-   "licence_url": "",
-   "page": "https://commons.wikimedia.org/wiki/File%3AEiger%2C_M%C3%B6nch_und_Jungfrau.jpg",
-   "modified": "cropped and resized",
-   "why": "The Maennlichen ridge with the gravel path curving away and the three summits behind - the Panorama Trail as it is actually walked."
   }
  },
  "day4": {
@@ -110,13 +110,13 @@
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "Aareschlucht 166 7.jpg",
-   "author": "Pazit Polak",
-   "licence": "CC BY-SA 2.0",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3AAareschlucht_166_7.jpg",
+   "title": "Bachalpsee mit Wetterhorn.jpg",
+   "author": "Whgler",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File%3ABachalpsee_mit_Wetterhorn.jpg",
    "modified": "cropped and resized",
-   "why": "Inside the Aare gorge: walls leaning together, sunlit foliage overhanging, the river below."
+   "why": "Bachalpsee with the Wetterhorn standing upside down in it - which is exactly what the walk out from First is for. Centred so both the peaks and the reflection survive the band."
   }
  },
  "day7": {
@@ -125,13 +125,13 @@
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "20240906.Vitznau–Rigi-Bahn.-026.jpg",
-   "author": "Bybbisch94",
-   "licence": "CC BY 4.0",
-   "licence_url": "https://creativecommons.org/licenses/by/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3A20240906.Vitznau%E2%80%93Rigi-Bahn.-026.jpg",
+   "title": "Spiez am Thunersee.JPG",
+   "author": "Jungpionier",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File%3ASpiez_am_Thunersee.JPG",
    "modified": "cropped and resized",
-   "why": "Rigi above the sea of fog with the Alps beyond, photographed on 6 September - the same date the family will be up there."
+   "why": "Spiez, its castle and the Thunersee. The A8 out of the Oberland runs along this shore, so this is the drive to the airport rather than a stop on it."
   }
  },
  "day8": {
@@ -140,13 +140,13 @@
   "w": 1200,
   "h": 600,
   "credit": {
-   "title": "Luzern Wasserturm Kapellbrücke-20130829-RM-104703.jpg",
-   "author": "Reinhold Möller Ermell",
-   "licence": "CC BY-SA 4.0",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File%3ALuzern_Wasserturm_Kapellbr%C3%BCcke-20130829-RM-104703.jpg",
+   "title": "Altstadt Zürich 2015.jpg",
+   "author": "Thomas Wolf , www.foto-tw.de",
+   "licence": "CC BY-SA 3.0 de",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File%3AAltstadt_Z%C3%BCrich_2015.jpg",
    "modified": "cropped and resized",
-   "why": "Overrides the picker's blue-hour frame, which is beautiful but has snow on the bridge and the rooftops. This one is late August: green, flowers on the Kapellbruecke, swans on the Reuss. Biased up so the Wasserturm keeps its spire."
+   "why": "Zurich's old town along the Limmat, CC BY-SA 3.0 de. The rest day is spent here on foot, which is the whole point of it."
   }
  },
  "day9": {
