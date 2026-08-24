@@ -391,7 +391,7 @@ LEGS = [
     dict(day=6, mode="drive", a="kandersteg-gondola", b="blausee",
          label="Blausee is on the way home, which is the whole reason it is today"),
     dict(day=6, mode="drive", a="blausee", b="reichenbach",
-         label="Twelve minutes back down the Kandertal"),
+         label="Fifteen minutes back down the Kandertal"),
 
     # --- day 7, down the valley and back to Zurich ------------------------
     dict(day=7, mode="drive", a="reichenbach", b="zrh-parking3",
