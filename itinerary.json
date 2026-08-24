@@ -298,10 +298,10 @@
       "leg": "Mountain day 4",
       "title": "Oeschinensee, and Blausee on the way home",
       "sleep": "Reichenbach im Kandertal (night 4 of 4)",
-      "movement": "The short day, and deliberately so. Twenty-three minutes up the valley to the Oeschinen gondola at Kandersteg, then the gondola, and from the mountain station either a twenty-minute path down to the lake or the electric taxi. Blausee sits between Kandersteg and home, so it costs nothing to stop there on the way back. Thirty-six kilometres in total.",
+      "movement": "The short day, and deliberately so. Twenty-three minutes up the valley to the Oeschinen gondola at Kandersteg, then the gondola, then twenty-five minutes on foot down to the lake. Blausee sits between Kandersteg and home, so it costs nothing to stop there on the way back. Thirty-six kilometres in total.",
       "drive_km": 36,
       "drive_min": 55,
-      "on_foot": "Trail C, the Direttissima, is a wide gravel and part-asphalt path, twenty to twenty-five minutes down to the shore and explicitly stroller-suitable - but it is a 100 m climb coming back, so take the electric shuttle up rather than earn it twice. At the lake there are rowing boats, a 750 m summer toboggan run and the shore circuit under the Blüemlisalp walls. At Blausee the path from the gate to the water is 300 m of flat asphalt and the glass-bottomed boat is in the entry price; the woodland paths behind it, Felsenzimmer and the Wolfsschlucht, are roots and soft earth and are the part of it worth doing.",
+      "on_foot": "Trail C, the Direttissima, is the walk down to the shore: a wide gravel and part-asphalt path, twenty to twenty-five minutes, explicitly stroller-suitable, and the best scenery of the day rather than a chore. Coming back is the same path and a 100 m climb, which is the harder half - and the electric taxi runs it from 10:45 if anyone has had enough by then. At the lake there are rowing boats, a 750 m summer toboggan run and the shore circuit under the Blüemlisalp walls. At Blausee the path from the gate to the water is 300 m of flat asphalt and the glass-bottomed boat is in the entry price; the woodland paths behind it, Felsenzimmer and the Wolfsschlucht, are roots and soft earth and are the part of it worth doing.",
       "per_person": [
         {
           "item": "Oeschinensee round trip including the ascent time slot, half fare",
@@ -327,9 +327,9 @@
       "day_total_chf": 666.0,
       "tips": [
         "THE ASCENT TIME SLOT IS MANDATORY from 20 June to 20 September, and two of the five slots for 10 September are ALREADY SOLD OUT - 11:30-13:00 and 13:00-14:30 both show zero. The other three each showed over 200 places on 24 August.",
-        "TAKE THE 10:00-11:30 SLOT, not the earliest one. The electric taxi from the mountain station down to the lake does not start until 10:45, and the alternative is a twenty-five minute path with a 100 m climb back. Going up at 08:30 means waiting at the top station for the better part of two hours.",
+        "Take the 10:00-11:30 slot rather than the earliest one. Not because anyone needs carrying - Trail C is a good wide path and the walk down is the point - but because the climb back is the harder half, and the electric taxi that can do it for you does not start until 10:45. Going up at 08:30 means the walk back is the only way back.",
         "One ticket covers everything: the round trip INCLUDES the ascent slot and the descent. The operator's words are that the descent can be made at any time during operating hours - and within the next seven days if you stay up there. CHF 22.50 a head on the Half Fare Card against CHF 40 full. There are NO staffed ticket counters at the valley station, so buy it online; the machines hold only a small remainder.",
-        "The cable car is step-free the whole way to the mountain station. From there the electric taxi runs to the lakeside restaurant and back every half hour, first departure 10:45 from the top, last 17:30 from the lake, paid on the spot. Capacity is limited and only one wheelchair travels per trip, but guests with limited mobility have priority.",
+        "The electric taxi is the insurance, not the plan: it runs between the mountain station and the lakeside restaurant every half hour, first departure 10:45 from the top, last 17:30 from the lake, paid on the spot. Capacity is limited and only one wheelchair travels per trip, but guests with limited mobility have priority. The cable car itself is step-free the whole way to the mountain station.",
         "If the day has to move, the time slot can be rebooked free of charge.",
         "Trail B, the Huble mountain path, is CLOSED for construction. Take trail C, which is the stroller-friendly one anyway.",
         "Blausee is open daily and the Half Fare Card buys nothing there - it is an attraction, not a transport tariff. Booking a table at the restaurant refunds half the admission at lunchtime and all of it in the evening.",
@@ -511,7 +511,7 @@
       "item": "Oeschinensee round trip with the ascent slot, five, Thursday 10 September",
       "chf": 112.5,
       "url": "https://oeschinensee.skiperformance.com/en/store#/en/buy?skugroup_id=5126",
-      "note": "One purchase, not two: under TICKETS OESCHINENSEE take \"Round trip with the cable car incl. time slot for the ascent\", pick 10 September, the GA / Half Fare price of CHF 22.50, and quantity five. The slot is mandatory to 20 September - no slot, no boarding, even with a valid ticket - but the descent is free of it and can be made any time the cable car is running, which is 08:30 to 18:00. Take 10:00-11:30 rather than the earliest slot, because the electric taxi down to the lake does not start until 10:45. Rebooking the slot is free."
+      "note": "One purchase, not two: under TICKETS OESCHINENSEE take \"Round trip with the cable car incl. time slot for the ascent\", pick 10 September, the GA / Half Fare price of CHF 22.50, and quantity five. The slot is mandatory to 20 September - no slot, no boarding, even with a valid ticket - but the descent is free of it and can be made any time the cable car is running, which is 08:30 to 18:00. Take 10:00-11:30 rather than the earliest slot: the walk down to the lake is twenty-five minutes on a wide path and worth doing, but the climb back is the harder half and the electric taxi that can spare you it does not start until 10:45. Rebooking the slot is free."
     },
     {
       "when": "done",
