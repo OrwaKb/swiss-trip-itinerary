@@ -96,7 +96,7 @@ STOPS = [
          osm=('nwr[railway=station][name~"Kaltbad",i]', 900)),
     dict(slug="rigi-kanzeli", name="Kanzeli viewpoint", kind="sight",
          lat=47.04520, lon=8.46650, days=[2],
-         what="The easy one. Paved, level, straight out over the lake.",
+         what="A balcony straight out over the lake, a few minutes along from Kaltbad.",
          osm=('nwr[tourism=viewpoint]', 700)),
     # The pin is the station, not the 1,798 m summit cairn 271 m north of it:
     # the station is where the cog railway stops and where you stand.
@@ -132,7 +132,7 @@ STOPS = [
          osm=('nwr[place~"village|town"][name="Meiringen"]', 2500)),
     dict(slug="aareschlucht-west", name="Aareschlucht West", kind="gorge",
          lat=46.72610, lon=8.19260, days=[3],
-         what="Go in from this end. Free parking that takes a van, and the first half to mid-gorge is level, railed and wheelchair-passable.",
+         what="Go in from this end. Free parking that takes a van, and the operator calls the first half to mid-gorge the most beautiful part.",
          osm=('nwr[name~"Aareschlucht West",i]', 3000)),
     dict(slug="aareschlucht-ost", name="Aareschlucht Ost", kind="gorge",
          lat=46.72920, lon=8.21140, days=[3],
@@ -281,7 +281,7 @@ STOPS = [
          osm=('nwr[name~"Schynige Platte",i]', 2500)),
     dict(slug="engstligenalp", name="Engstligenalp, above Adelboden", kind="swap",
          lat=46.47500, lon=7.59170, days=[],
-         what="The upper Engstligen fall passes directly beneath the cable car cabin, so a 600 m waterfall costs no walking at all. Runs to 18 October, 08:30-17:00.",
+         what="The upper Engstligen fall passes directly beneath the cable car cabin. Runs to 18 October, 08:30-17:00.",
          osm=('nwr[aerialway=station][name~"Engstligen",i]', 3000)),
     dict(slug="thun", name="Thun", kind="swap",
          lat=46.75800, lon=7.62800, days=[],

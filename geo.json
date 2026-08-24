@@ -134,7 +134,7 @@
    "days": [
     2
    ],
-   "what": "The easy one. Paved, level, straight out over the lake.",
+   "what": "A balcony straight out over the lake, a few minutes along from Kaltbad.",
    "source": "osm:node/11748945623",
    "moved_m": 0
   },
@@ -230,7 +230,7 @@
    "days": [
     3
    ],
-   "what": "Go in from this end. Free parking that takes a van, and the first half to mid-gorge is level, railed and wheelchair-passable.",
+   "what": "Go in from this end. Free parking that takes a van, and the operator calls the first half to mid-gorge the most beautiful part.",
    "source": "seed",
    "moved_m": 0
   },
@@ -610,7 +610,7 @@
    "lat": 46.475,
    "lon": 7.5917,
    "days": [],
-   "what": "The upper Engstligen fall passes directly beneath the cable car cabin, so a 600 m waterfall costs no walking at all. Runs to 18 October, 08:30-17:00.",
+   "what": "The upper Engstligen fall passes directly beneath the cable car cabin. Runs to 18 October, 08:30-17:00.",
    "source": "seed",
    "moved_m": 0
   },

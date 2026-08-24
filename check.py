@@ -263,6 +263,10 @@ SENTENCE_START = {
     "Switzerland",
     # and from the merge of the parents/adults split and the booking board
     "Beyond", "Carrying", "Nine", "What", "Whoever", "Scored",
+    # and from the pass that took the accessibility framing back out. The month
+    # names belong here for the same reason the others do: they get translated.
+    "Rebooking", "Trail", "Permanently", "Falls", "Gondola", "Go",
+    "January", "February", "March", "April", "June", "July", "October", "December",
     # Tel Aviv is the travellers' own city. Hebrew and Arabic write it in their own
     # script, and glossing it in Latin the way a Swiss place name is glossed would
     # be absurd — so it is exempt rather than expected to survive.
