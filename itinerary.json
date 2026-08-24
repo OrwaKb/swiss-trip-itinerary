@@ -298,20 +298,15 @@
       "leg": "Mountain day 4",
       "title": "Oeschinensee, and Blausee on the way home",
       "sleep": "Reichenbach im Kandertal (night 4 of 4)",
-      "movement": "The short day, and deliberately so. Twenty-three minutes up the valley to the Oeschinen gondola at Kandersteg, then the gondola and a twenty-minute path down to the lake. Blausee sits between Kandersteg and home, so it costs nothing to stop there on the way back. Thirty-six kilometres in total.",
+      "movement": "The short day, and deliberately so. Twenty-three minutes up the valley to the Oeschinen gondola at Kandersteg, then the gondola, and from the mountain station either a twenty-minute path down to the lake or the electric taxi. Blausee sits between Kandersteg and home, so it costs nothing to stop there on the way back. Thirty-six kilometres in total.",
       "drive_km": 36,
       "drive_min": 55,
       "on_foot": "Trail C, the Direttissima, is a wide gravel and part-asphalt path, twenty to twenty-five minutes down to the shore and explicitly stroller-suitable - but it is a 100 m climb coming back, so take the electric shuttle up rather than earn it twice. At the lake there are rowing boats, a 750 m summer toboggan run and the shore circuit under the Blüemlisalp walls. At Blausee the path from the gate to the water is 300 m of flat asphalt and the glass-bottomed boat is in the entry price; the woodland paths behind it, Felsenzimmer and the Wolfsschlucht, are roots and soft earth and are the part of it worth doing.",
       "per_person": [
         {
-          "item": "Oeschinen gondola return, half fare",
-          "chf": 20.0,
+          "item": "Oeschinensee round trip including the ascent time slot, half fare",
+          "chf": 22.5,
           "full": 40
-        },
-        {
-          "item": "Oeschinensee ascent time slot",
-          "chf": 5.0,
-          "full": 5
         },
         {
           "item": "Blausee entry",
@@ -329,11 +324,12 @@
           "chf": 130
         }
       ],
-      "day_total_chf": 678.5,
+      "day_total_chf": 666.0,
       "tips": [
-        "THE ASCENT TIME SLOT IS MANDATORY and two of the five slots for 10 September are ALREADY SOLD OUT - 11:30-13:00 and 13:00-14:30 both show zero. What is left is 08:30-10:00, 10:00-11:30 and 14:30-16:00. CHF 5 a head at oeschinensee.skiperformance.com, product 5126.",
-        "Take the 08:30-10:00 slot. It is the only one that qualifies for the discounted parking, the operator warns spaces can be gone from about 11:00 anyway, and it leaves the whole afternoon for Blausee on the way home.",
-        "The slot is NOT the fare. You buy the CHF 5 slot from the cable car, and the gondola fare separately as a public-transport ticket through an official channel - the SBB Mobile app - which is where the Half Fare Card halves it to about CHF 20. There are two readers at the gate: slot at the first, SBB ticket at the second.",
+        "THE ASCENT TIME SLOT IS MANDATORY from 20 June to 20 September, and two of the five slots for 10 September are ALREADY SOLD OUT - 11:30-13:00 and 13:00-14:30 both show zero. The other three each showed over 200 places on 24 August.",
+        "TAKE THE 10:00-11:30 SLOT, not the earliest one. The electric taxi from the mountain station down to the lake does not start until 10:45, and the alternative is a twenty-five minute path with a 100 m climb back. Going up at 08:30 means waiting at the top station for the better part of two hours.",
+        "One ticket covers everything: the round trip INCLUDES the ascent slot and the descent. The operator's words are that the descent can be made at any time during operating hours - and within the next seven days if you stay up there. CHF 22.50 a head on the Half Fare Card against CHF 40 full. There are NO staffed ticket counters at the valley station, so buy it online; the machines hold only a small remainder.",
+        "The cable car is step-free the whole way to the mountain station. From there the electric taxi runs to the lakeside restaurant and back every half hour, first departure 10:45 from the top, last 17:30 from the lake, paid on the spot. Capacity is limited and only one wheelchair travels per trip, but guests with limited mobility have priority.",
         "If the day has to move, the time slot can be rebooked free of charge.",
         "Trail B, the Huble mountain path, is CLOSED for construction. Take trail C, which is the stroller-friendly one anyway.",
         "Blausee is open daily and the Half Fare Card buys nothing there - it is an attraction, not a transport tariff. Booking a table at the restaurant refunds half the admission at lunchtime and all of it in the evening.",
@@ -365,7 +361,7 @@
       ],
       "day_total_chf": 425.5,
       "tips": [
-        "THE VAN IS DUE BACK AT 12:00. The hire is seven days from Saturday 09:00 and an hour late can bill as a whole extra day. Leave Grindelwald by 09:00 and there is an hour in hand.",
+        "THE VAN IS DUE BACK AT 12:00. The hire runs seven 24-hour blocks from 22:00 on Friday the 4th, and an hour late can bill as a whole extra day. Leave the Kandertal by 09:00 and there is an hour in hand.",
         "The Jodelfest opens in Grindelwald today and takes the village over - over a thousand performers and no visitor parking. Being in the Kandertal instead means none of it is your problem, and this is the one day the base pays you back.",
         "Refuel in Kloten town, not at the airport and never at a motorway services. The hire is full to full and the services charge the worst prices in the country.",
         "The Welcome Inn splits five across two rooms: a triple at 18 m2 with two singles and a sofa bed, and a double, each with its own bathroom. CHF 655 for the pair non-refundable, or CHF 771 with free cancellation to 14:00 on arrival day and nothing to pay until 9 September. Scored 8.5 from 1,514 reviews, and the airport shuttle is free - which is the point on Sunday, when you need the terminal by 08:45.",
@@ -512,10 +508,10 @@
     },
     {
       "when": "now",
-      "item": "Oeschinensee ascent time slot, five, Thursday 10 September",
-      "chf": 25,
+      "item": "Oeschinensee round trip with the ascent slot, five, Thursday 10 September",
+      "chf": 112.5,
       "url": "https://oeschinensee.skiperformance.com/en/store#/en/buy?skugroup_id=5126",
-      "note": "Mandatory until 20 September - no slot, no boarding, even with a valid ticket. Choose TIMESLOT IN ADDITION TO PT-TICKET, product 5126, and take 08:30-10:00: two of the five slots that day are already sold out and that is the only one left that also earns the discounted parking. Rebooking is free. The slot is not the fare - the gondola itself goes in the SBB app on your Half Fare Card, and there are two readers at the gate."
+      "note": "One purchase, not two: under TICKETS OESCHINENSEE take \"Round trip with the cable car incl. time slot for the ascent\", pick 10 September, the GA / Half Fare price of CHF 22.50, and quantity five. The slot is mandatory to 20 September - no slot, no boarding, even with a valid ticket - but the descent is free of it and can be made any time the cable car is running, which is 08:30 to 18:00. Take 10:00-11:30 rather than the earliest slot, because the electric taxi down to the lake does not start until 10:45. Rebooking the slot is free."
     },
     {
       "when": "done",
@@ -568,13 +564,6 @@
     },
     {
       "when": "walkup",
-      "item": "Oeschinen gondola return, five",
-      "chf": 100,
-      "url": "https://www.oeschinensee.ch/en/",
-      "note": "In the SBB app on the morning, on the Half Fare Card. This is the fare; the slot above is the door."
-    },
-    {
-      "when": "walkup",
       "item": "Lungern-Turren cable car return, five",
       "chf": 90,
       "url": "https://turren.ch/",
@@ -611,18 +600,18 @@
   ],
   "totals": {
     "accommodation_chf": 3303.0,
-    "activities_chf": 2125.5,
+    "activities_chf": 2113.0,
     "food_chf": 1825.0,
     "half_fare_cards_chf": 750,
     "van_chf": 414,
     "fuel_chf": 250,
     "parking_chf": 71.0,
-    "grand_total_chf": 8738.5,
-    "per_person_chf": 1748,
-    "per_person_eur": 1867,
-    "per_person_ils": 6886,
-    "tickets_per_person_full_chf": 733,
-    "tickets_per_person_half_chf": 405,
+    "grand_total_chf": 8726.0,
+    "per_person_chf": 1745,
+    "per_person_eur": 1864,
+    "per_person_ils": 6876,
+    "tickets_per_person_full_chf": 728.2,
+    "tickets_per_person_half_chf": 402.6,
     "note_vs_six": "At six the shared costs barely move - LaVida Peak, the van and the rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted in the Caddy."
   },
   "savings": {
@@ -666,13 +655,13 @@
         "why": "CHF 10 a head against a CHF 598 ticket, and without them the ticket does not board."
       },
       {
-        "item": "The Oeschinensee time slot",
-        "chf": 25,
-        "why": "CHF 5 a head to protect an entire day, and two of the five slots for the 10th have already gone."
+        "item": "The Oeschinensee round trip and its slot",
+        "chf": 112.5,
+        "why": "The slot is mandatory to 20 September and two of the five for the 10th have already gone. It is inside the ticket, so there is nothing here to cut anyway - and there are no staffed counters at the valley station."
       }
     ],
     "saved_chf": 810,
-    "lean_total_chf": 7928.5,
-    "lean_per_person_chf": 1586
+    "lean_total_chf": 7916.0,
+    "lean_per_person_chf": 1583
   }
 }
