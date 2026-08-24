@@ -15,7 +15,7 @@
     "assumptions": [
       "Every traveller holds a Swiss Half Fare Card (CHF 150 each, valid one calendar month, bought to cover 4-13 September).",
       "Flights are booked. Four land at Zurich on Friday 4 September at 20:30, the fifth on Saturday 5 September at 06:30, and all five leave for Tel Aviv on Sunday 13 September at 11:45.",
-      "Four things are booked and fixed: the first night at the Zleep Hotel in Kloten, the Historical apartment in Schwyz for 5-7 September, LaVida Peak at Reichenbach im Kandertal for 7-11 September, and the van - a 7-seat VW Caddy from Europcar, collected on landing on Friday 4 September and returned Friday 11 September at 12:00, seven days at ILS 1,505, about CHF 414.",
+      "Four things are booked and fixed: the first night at the Zleep Hotel in Kloten, the Historical apartment in Schwyz for 5-7 September, LaVida Peak at Reichenbach im Kandertal for 7-11 September, and the van - a 7-seat VW Caddy from Europcar, collected at 22:00 on Friday 4 September and returned Friday 11 September at 12:00, seven days at ILS 1,505, about CHF 414.",
       "The base for the mountain days is the Kandertal, not Grindelwald. Grindelwald sold out for these dates and nothing in the village matched LaVida Peak, so the fallback became the plan. It costs about 75 minutes each way to Grindelwald Terminal on Jungfraujoch morning - and it buys Oeschinensee at 23 minutes, Blausee at 16 and the Niesen at 10, none of which were reachable from Grindelwald at all.",
       "One figure in the whole plan is still a guess: the CHF 20 placeholder for parking at the Zleep on the 4th. The Zleep room itself came in at ILS 962. Everything else is a published 2026 tariff, a booked rate, or a live quote read on 24 August 2026.",
       "Fares are the operators' published 2026 tariffs, verified in August 2026 against Jungfraubahnen, Schilthornbahn, Rigi Bahnen, SGV, Aareschlucht AG, Oeschinensee AG and the Titlis and Niesen operators.",
@@ -35,7 +35,7 @@
     {
       "item": "Van, 7 days, 7-seat VW Caddy",
       "total": 414,
-      "note": "Booked with Europcar at ILS 1,505. Collected on the evening of Friday the 4th, straight off the flight, and returned Friday the 11th at noon. Rentals bill in 24-hour blocks, so a Friday-night collection and a Friday-noon return is still seven days and the same money - but confirm the rate did not move when the pick-up did."
+      "note": "Booked with Europcar at ILS 1,505. Collected at 22:00 on Friday the 4th, straight off the flight, and returned Friday the 11th at noon. Rentals bill in 24-hour blocks, so a Friday-night collection and a Friday-noon return is still seven days and the same money - but confirm the rate did not move when the pick-up did."
     },
     {
       "item": "Fuel, approx 670 km, plus the top-up before the airport",
@@ -55,7 +55,7 @@
       "leg": "Arrival",
       "title": "Land at Zurich, sleep in Kloten",
       "sleep": "Kloten (Zleep Hotel Zurich Airport, booked)",
-      "movement": "Land at 20:30, four of the five. Passport control and bags, then through to the Rental Centre on Level 1 of the Airport Center for the van, and three kilometres up the road to the hotel in Kloten. Taking the van tonight rather than on Saturday morning costs nothing extra and saves the whole 07:15-to-09:00 wait tomorrow.",
+      "movement": "Land at 20:30, four of the five. Passport control and bags, then through to the Rental Centre on Level 1 of the Airport Center - the van is booked for 22:00 - and three kilometres up the road to the hotel in Kloten, in the room by about half past ten. Taking the van tonight rather than on Saturday morning costs nothing extra and saves the whole 07:15-to-09:00 wait tomorrow.",
       "drive_km": 3,
       "drive_min": 10,
       "on_foot": "Straight to bed.",
@@ -75,7 +75,7 @@
         "Only four beds are needed tonight. The fifth traveller lands at 06:30 tomorrow morning.",
         "Zurich is one hour behind Tel Aviv in September, so there is no jet lag to fight - only the flights themselves.",
         "The Zleep night was billed at ILS 962, which is the CHF 244 here. The CHF 20 for parking is still a placeholder - it is the only guess left in the whole plan.",
-        "One of the four who land tonight has to be the named driver, and it is a five-minute drive at about half past nine after a flight. Short, but agree who is doing it before you are standing at the desk.",
+        "One of the four who land tonight has to be the named driver, and it is a five-minute drive at ten at night after a flight. Short, but agree who is doing it before you are standing at the desk.",
         "Check what the hotel charges to park - it is CHF 20 here as a placeholder, and airport hotels vary from free to CHF 25 a night."
       ]
     },
@@ -345,7 +345,7 @@
       "dow": "Friday",
       "leg": "Transfer",
       "title": "Down the Kandertal and back to Zurich",
-      "sleep": "Kloten (Allegra Lodge, one family room, night 1 of 2)",
+      "sleep": "Kloten (Hotel Welcome Inn, a triple and a double, night 1 of 2)",
       "movement": "Out of the Kandertal to Spiez, the A6 through Thun to Bern, then the A1 east to Zurich. About 170 km and two hours, all of it motorway. Van back at the airport by 12:00, refuelled. Then the hotel, and the afternoon is free.",
       "drive_km": 170,
       "drive_min": 120,
@@ -359,16 +359,16 @@
       ],
       "group": [
         {
-          "item": "Allegra Lodge, family room sleeping five, night 1 of 2",
-          "chf": 302.5
+          "item": "Hotel Welcome Inn, Kloten - a triple and a double, night 1 of 2",
+          "chf": 385.5
         }
       ],
-      "day_total_chf": 342.5,
+      "day_total_chf": 425.5,
       "tips": [
         "THE VAN IS DUE BACK AT 12:00. The hire is seven days from Saturday 09:00 and an hour late can bill as a whole extra day. Leave Grindelwald by 09:00 and there is an hour in hand.",
         "The Jodelfest opens in Grindelwald today and takes the village over - over a thousand performers and no visitor parking. Being in the Kandertal instead means none of it is your problem, and this is the one day the base pays you back.",
         "Refuel in Kloten town, not at the airport and never at a motorway services. The hire is full to full and the services charge the worst prices in the country.",
-        "Allegra Lodge has ONE family room and it sleeps exactly five - 40 m2, four singles and a sofa bed, 8.7 from 1,311 reviews. CHF 508 for both nights non-refundable, or CHF 621 with free cancellation to 14:00 on arrival day and nothing to pay until 9 September. Booking.com said one left.",
+        "The Welcome Inn splits five across two rooms: a triple at 18 m2 with two singles and a sofa bed, and a double, each with its own bathroom. CHF 655 for the pair non-refundable, or CHF 771 with free cancellation to 14:00 on arrival day and nothing to pay until 9 September. Scored 8.5 from 1,514 reviews, and the airport shuttle is free - which is the point on Sunday, when you need the terminal by 08:45.",
         "Nothing is booked for this afternoon on purpose. After four mountain days in a row, an empty half-day in a flat city is not a gap in the plan.",
         "Drop the bags at the hotel BEFORE returning the van, not after. The hotel is five minutes from the terminal, the van is due back at noon, and carrying four days of luggage onto a bus is a waste of a perfectly good vehicle."
       ]
@@ -378,7 +378,7 @@
       "dow": "Saturday",
       "leg": "Zurich",
       "title": "Zurich on foot, and the Knabenschiessen",
-      "sleep": "Kloten (Allegra Lodge, night 2 of 2)",
+      "sleep": "Kloten (Hotel Welcome Inn, night 2 of 2)",
       "movement": "No van and no driving - it went back yesterday. The train from the airport into the city takes 13 minutes and runs every few minutes. The old town on foot all day, and the evening at Albisgütli.",
       "drive_km": 0,
       "drive_min": 0,
@@ -392,15 +392,15 @@
       ],
       "group": [
         {
-          "item": "Allegra Lodge, family room sleeping five, night 2 of 2",
-          "chf": 302.5
+          "item": "Hotel Welcome Inn, Kloten - a triple and a double, night 2 of 2",
+          "chf": 385.5
         },
         {
           "item": "Knabenschiessen, rides and stalls",
           "chf": 100
         }
       ],
-      "day_total_chf": 442.5,
+      "day_total_chf": 525.5,
       "tips": [
         "The Knabenschiessen is Zurich's own festival, 12 to 14 September, and today is the opening day. Free to walk into, and it runs until 01:30.",
         "Tram 13 normally terminates at Albisgütli, but during the festival it stops at Laubegg, four minutes short. There is no visitor parking at all - which is one more reason the van went back yesterday.",
@@ -501,14 +501,14 @@
       "item": "Van - 7-seat VW Caddy, Europcar",
       "chf": 414,
       "url": null,
-      "note": "Booked at ILS 1,505. Collected on landing on Friday the 4th and back Friday the 11th at noon: still seven 24-hour blocks, and it deletes the wait for the rental desk on Saturday morning."
+      "note": "Booked at ILS 1,505. Collected at 22:00 on Friday the 4th and back Friday the 11th at noon: still seven 24-hour blocks, and it deletes the wait for the rental desk on Saturday morning."
     },
     {
       "when": "now",
-      "item": "Allegra Lodge, family room sleeping five - 11 to 13 September",
-      "chf": 605,
-      "url": "https://www.booking.com/hotel/ch/allegra-lodge.en-gb.html?checkin=2026-09-11&checkout=2026-09-13&group_adults=5&no_rooms=1",
-      "note": "The family room is 40 m2, four singles and a sofa bed, and there is one left. Three rates: CHF 495 fixed, CHF 605 with free cancellation until 14:00 on the day of check-in and nothing payable until 9 September, or CHF 855 with breakfast. Take the CHF 605 one. It costs nothing today, it holds the only room in the area that sleeps five in one space, and it can still be cancelled free on the morning of the 11th - so the decision genuinely can wait. Zleep for the same two nights needs three double rooms and comes to CHF 1,142."
+      "item": "Hotel Welcome Inn, Kloten - a triple and a double, 11 to 13 September",
+      "chf": 771,
+      "url": "https://www.booking.com/hotel/ch/welcome-inn.en-gb.html?checkin=2026-09-11&checkout=2026-09-13&group_adults=5&no_rooms=2",
+      "note": "Two rooms rather than one big one: a triple, 18 m2 with two singles and a sofa bed, and a double. CHF 655 for the pair non-refundable, or CHF 771 on the rates that cancel free until 14:00 on the day of check-in with nothing payable until 9 September - and that is the rate carried here, because it costs nothing today and still lets you change your mind on the morning. Scored 8.5 from 1,514 reviews, a kilometre out, free airport shuttle, which is what matters for an 08:45 terminal time on the Sunday. The one-room alternative is the Allegra Lodge family room at CHF 605 flexible - CHF 166 cheaper, but 40 m2 for five with a shared bathroom. Zleep for these two nights needs three doubles and comes to CHF 1,034."
     },
     {
       "when": "now",
@@ -610,17 +610,17 @@
     }
   ],
   "totals": {
-    "accommodation_chf": 3137.0,
+    "accommodation_chf": 3303.0,
     "activities_chf": 2125.5,
     "food_chf": 1825.0,
     "half_fare_cards_chf": 750,
     "van_chf": 414,
     "fuel_chf": 250,
     "parking_chf": 71.0,
-    "grand_total_chf": 8572.5,
-    "per_person_chf": 1714,
-    "per_person_eur": 1831,
-    "per_person_ils": 6755,
+    "grand_total_chf": 8738.5,
+    "per_person_chf": 1748,
+    "per_person_eur": 1867,
+    "per_person_ils": 6886,
     "tickets_per_person_full_chf": 733,
     "tickets_per_person_half_chf": 405,
     "note_vs_six": "At six the shared costs barely move - LaVida Peak, the van and the rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted in the Caddy."
@@ -672,7 +672,7 @@
       }
     ],
     "saved_chf": 810,
-    "lean_total_chf": 7762.5,
-    "lean_per_person_chf": 1552
+    "lean_total_chf": 7928.5,
+    "lean_per_person_chf": 1586
   }
 }

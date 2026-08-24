@@ -48,7 +48,7 @@
    "days": [
     0
    ],
-   "what": "The 7-seat VW Caddy is collected here on landing, on the Friday evening, and is due back at noon on Friday the 11th.",
+   "what": "The 7-seat VW Caddy is collected here at 22:00 on the Friday, straight off the flight, and is due back at noon on Friday the 11th.",
    "source": "osm:node/12254640952",
    "moved_m": 0
   },
@@ -631,7 +631,7 @@
    "mode": "walk",
    "from": "zrh-terminal",
    "to": "zrh-rental",
-   "label": "Through to the Rental Centre on Level 1, straight off the flight",
+   "label": "Through to the Rental Centre on Level 1, van booked for 22:00",
    "km": 0.4,
    "source": "valhalla/pedestrian",
    "geometry": [
@@ -667,7 +667,7 @@
    "mode": "drive",
    "from": "zrh-rental",
    "to": "kloten-hotel",
-   "label": "Five minutes up the road to the hotel, about half past nine",
+   "label": "Five minutes up the road to the hotel, in by about 22:15",
    "km": 2.9,
    "source": "osrm/driving",
    "geometry": [

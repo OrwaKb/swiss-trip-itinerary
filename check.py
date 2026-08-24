@@ -262,7 +262,7 @@ SENTENCE_START = {
     # that genuinely translates, and is written in the reader's own script.
     "Switzerland",
     # and from the merge of the parents/adults split and the booking board
-    "Beyond", "Carrying", "Nine", "What", "Whoever",
+    "Beyond", "Carrying", "Nine", "What", "Whoever", "Scored",
     # Tel Aviv is the travellers' own city. Hebrew and Arabic write it in their own
     # script, and glossing it in Latin the way a Swiss place name is glossed would
     # be absurd — so it is exempt rather than expected to survive.
