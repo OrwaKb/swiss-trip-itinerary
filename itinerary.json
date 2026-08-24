@@ -9,8 +9,8 @@
     },
     "currency": "CHF",
     "fx": {
-      "CHF_EUR": 1.075,
-      "CHF_ILS": 3.6324
+      "CHF_EUR": 1.068,
+      "CHF_ILS": 3.94
     },
     "assumptions": [
       "Every traveller holds a Swiss Half Fare Card (CHF 150 each, valid one calendar month, bought to cover 4-13 September).",
@@ -20,7 +20,8 @@
       "One accommodation figure is still an estimate: the Zleep night on the 4th, plus the CHF 20 placeholder for hotel parking that night. Everything else is a published 2026 tariff, a booked rate, or a live quote read on 23 August 2026.",
       "Fares are the operators' published 2026 tariffs, verified in August 2026 against Jungfraubahnen, Schilthornbahn, Rigi Bahnen, SGV, Aareschlucht AG, Oeschinensee AG and the Titlis and Niesen operators.",
       "Flights are excluded throughout.",
-      "At five people a 7-seat MPV works: the back row folds flat for the luggage. At six it would not have."
+      "At five people a 7-seat MPV works: the back row folds flat for the luggage. At six it would not have.",
+      "The shekel figures convert at CHF 1 = ILS 3.94, which is what the card was actually charged for the Half Fare Cards on 24 August - the market rate that day was 3.73, so the difference is the card's own foreign-currency fee. The euro figures convert at the market rate, 1.068, because nothing on this trip is paid in euros. Always ask to be charged in Swiss francs rather than shekels at a Swiss card terminal: choosing shekels hands the exchange rate to the merchant and it is always worse."
     ]
   },
   "trip_wide_costs": [
@@ -29,7 +30,7 @@
       "unit": 150,
       "qty": 5,
       "total": 750,
-      "note": "Buy before departure. It halves almost every fare in this plan, and on the Niesen and the Engstligenalp it beats the senior tariff outright."
+      "note": "Bought on 24 August 2026, and valid from 4 September for one calendar month. It halves almost every fare in this plan, and on the Niesen and the Engstligenalp it beats the senior tariff outright."
     },
     {
       "item": "Van, 7 days, 7-seat VW Caddy",
@@ -618,8 +619,8 @@
     "parking_chf": 71.0,
     "grand_total_chf": 8491.5,
     "per_person_chf": 1698,
-    "per_person_eur": 1826,
-    "per_person_ils": 6169,
+    "per_person_eur": 1814,
+    "per_person_ils": 6691,
     "tickets_per_person_full_chf": 733,
     "tickets_per_person_half_chf": 405,
     "note_vs_six": "At six the shared costs barely move - LaVida Peak, the van and the rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted in the Caddy."
