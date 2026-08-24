@@ -257,7 +257,7 @@ STOPS = [
          osm=('nwr[name="Blausee"]', 2000)),
     dict(slug="oeschinensee", name="Oeschinensee", kind="swap",
          lat=46.49830, lon=7.72830, days=[6],
-         what="Turquoise water under the Blüemlisalp walls. The ascent time slot is MANDATORY to 20 September and costs CHF 5 - without it you cannot board.",
+         what="Turquoise water under the Blüemlisalp walls. The ascent time slot is MANDATORY to 20 September, but it comes inside the round trip ticket - without a slot you cannot board, and the descent needs none.",
          osm=('nwr[natural=water][name~"Oeschinensee",i]', 2500)),
     dict(slug="niesen-kulm", name="Niesen Kulm", kind="swap",
          lat=46.64500, lon=7.65170, days=[5],
