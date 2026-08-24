@@ -115,7 +115,7 @@
       "leg": "Mountain day 1",
       "title": "Mount Rigi from Weggis, and Lucerne at dusk",
       "sleep": "Schwyz (the Historical apartment, night 2 of 2, booked)",
-      "movement": "Drive round the lake to Weggis, about half an hour, and park at the pier. Cable car up to Rigi Kaltbad, then the cog railway to Rigi Kulm. Come down the same way, or walk the 4 km from Kulm to Kaltbad. The van waits at the pier all day, so the late afternoon is the boat across to Lucerne and the 19:12 back.",
+      "movement": "Drive round the lake to Weggis, about half an hour, and park at the pier. Cable car up to Rigi Kaltbad, then the cog railway to Rigi Kulm. Walk the 4 km from Kulm back down to Kaltbad and pick the cable car up there, or ride the whole way down if the cloud has come in. The van waits at the pier all day, so the late afternoon is the boat across to Lucerne and the 19:12 back.",
       "drive_km": 60,
       "drive_min": 65,
       "on_foot": "Cable car and cog railway to the summit, the panorama terrace and the restaurant at the top - then walk Rigi Kulm down to Kaltbad. It is 4 km and about an hour and a quarter on a wide track with the whole of Lake Lucerne underneath you the entire way, and it is the best hour of the day. Cog railway on from Kaltbad. In Lucerne, the Chapel Bridge and the Old Town squares, and the Musegg Wall towers for the view back over the roofs.",
@@ -157,7 +157,7 @@
       "leg": "Transfer",
       "title": "Over the Brünig to the Kandertal, by way of Lungern and the Aare Gorge",
       "sleep": "Reichenbach im Kandertal (LaVida Peak, night 1 of 4, booked)",
-      "movement": "Schwyz to Lucerne on the A4, then the A2 and A8 south through Sarnen and Giswil. Stop at Lungern for the lake and, if the morning is clear, the Turren cable car. Over the Brünig, then fifteen minutes off the road at Meiringen for the Aare Gorge. On through Brienz and Interlaken, along the Thunersee to Spiez, and south into the Kandertal. About 150 km and two and a half hours of driving, four and a half door to door with both stops.",
+      "movement": "Schwyz to Lucerne on the A4, then the A2 and A8 south through Sarnen and Giswil. Stop at Lungern for the lake and, if the morning is clear, the Turren cable car. Over the Brünig, then fifteen minutes off the road at Meiringen for the Aare Gorge. On through Brienz and Interlaken, along the Thunersee to Spiez, and south into the Kandertal. About 150 km and two and a half hours of driving - but nearer six door to door, because Lungern is an hour and the gorge is an hour and a half once you walk it through and back.",
       "drive_km": 148,
       "drive_min": 160,
       "on_foot": "The lakeside path at Lungern-Obsee has a restaurant at each end, and the Turren cable car is ten minutes up to a terrace facing the Bernese Alps across the water. At the gorge, go in from the WEST entrance - that is where the free parking is, and the operator calls the first half the most beautiful part anyway. Walk the full 1.4 km through to the east end, about 45 minutes on railed walkways bolted to the rock above the water.",
@@ -207,7 +207,7 @@
       "movement": "The long morning. Out of the door at 06:40 for the 08:00 first gondola: down the Kandertal to Spiez, the A8 along the Thunersee, Interlaken, Wilderswil, Zweilütschinen and up to Grindelwald Terminal - 46 km and about 75 minutes in a van. Then the Eiger Express to Eigergletscher, 15 minutes, and the cog railway through the inside of the Eiger to Jungfraujoch, about 25 more.",
       "drive_km": 92,
       "drive_min": 150,
-      "on_foot": "Sphinx observation deck, then the Plateau and the Ice Palace. Take the lift rather than the stairs - at 3,571 m that is about the air, not the legs - and ninety minutes to two hours is plenty at this height. Then get off at Eigergletscher on the way down for the Eiger Trail to Alpiglen: 6.5 km, about two and a half hours, almost all of it descending along the foot of the north face, with a train back from Alpiglen. It is the best walk of the trip.",
+      "on_foot": "Sphinx observation deck, then the Plateau and the Ice Palace. Take the lift rather than the stairs - at 3,571 m that is about the air, not the legs - and ninety minutes to two hours is plenty at this height. The Eiger Trail is the big option on the way down: get off at Eigergletscher and it is 6.5 km to Alpiglen, about 700 m of descent on a marked mountain path under the north face, two to two and a half hours. It is a magnificent walk, and a far bigger one than anything else in this plan, on a day that already started at 06:40 - so decide it at Eigergletscher with the weather and the legs in front of you, not now.",
       "per_person": [
         {
           "item": "Jungfraujoch return from Grindelwald Terminal, half fare",
@@ -240,7 +240,8 @@
         "September averages a high of 1 C and a low of minus 5 C at the top, before the wind. Coats, hats, gloves, sunglasses and sunscreen - the glare off the snow is worse than the cold.",
         "The last half-hour of the ascent is inside a tunnel with no view at all. That is normal, not a fault.",
         "Anyone with a heart or lung condition, sleep apnoea, or medication for either should ask their doctor before the trip rather than on the platform. There is a staffed medical room with oxygen at the top.",
-        "Blausee is sixteen minutes from the apartment and open late. After five hours at 3,454 m that is a far better evening than another climb - a flat 300 m asphalt path to the water and the glass-bottomed boat included in the entry."
+        "Blausee is sixteen minutes from the apartment and open late. After a morning at 3,454 m that is a far better evening than another climb - a flat 300 m asphalt path to the water and the glass-bottomed boat included in the entry.",
+        "If you do the Eiger Trail, ask at Grindelwald Terminal whether the return ticket brings you back from Alpiglen. The Eiger Express and the Wengernalpbahn are different lines and the plain return routes you home through Eigergletscher, so the last leg may be a short supplementary fare. Worth asking before you walk rather than at Alpiglen."
       ]
     },
     {
