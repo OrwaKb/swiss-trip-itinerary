@@ -530,18 +530,6 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
 }}
 .tp-list.warn li {{ border-inline-start: 3px solid var(--warn); }}
 .tp-list li .when {{ display: block; color: var(--muted); font-size: 0.74rem; margin-bottom: 3px; }}
-.tp-ol {{ list-style: none; counter-reset: step; padding: 0; margin: 0; }}
-.tp-ol li {{
-  counter-increment: step; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 11px 13px 11px 13px; margin-bottom: 7px;
-  font-size: 0.92rem; display: flex; gap: 11px; align-items: flex-start;
-}}
-.tp-ol li::before {{
-  content: counter(step); flex: 0 0 22px; height: 22px; border-radius: 50%;
-  background: var(--accent-wash); color: var(--ink); font-size: 0.76rem; font-weight: 600;
-  display: flex; align-items: center; justify-content: center;
-  font-variant-numeric: tabular-nums; unicode-bidi: isolate;
-}}
 
 /* ---- day cards ----
    The photograph is the card's header rather than a thumbnail beside it: the date,
@@ -647,8 +635,6 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   background: var(--warn-wash); border: 1px solid var(--warn); border-radius: 9px;
   padding: 11px 12px; margin-top: 12px; font-size: 0.89rem;
 }}
-.tp-split {{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 2px; }}
-.tp-split .col {{ min-width: 0; }}
 .tp-tips {{ list-style: none; padding: 0; margin: 2px 0 0; }}
 .tp-tips li {{
   font-size: 0.89rem; padding: 5px 0 5px 0; border-bottom: 1px solid var(--rule);
@@ -660,6 +646,27 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   cursor: pointer; font-size: 0.8rem; color: var(--accent); list-style: none;
 }}
 .tp-costs > summary::-webkit-details-marker {{ display: none; }}
+
+.tp-book {{ list-style: none; padding: 0; margin: 0 0 4px; }}
+.tp-book li {{
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 11px 13px; margin-bottom: 7px; font-size: 0.92rem;
+}}
+.tp-book li[data-when="now"] {{ border-inline-start: 3px solid var(--warn); }}
+.tp-book li[data-when="done"] {{ opacity: 0.72; }}
+.tp-book .row {{ display: flex; gap: 10px; align-items: baseline; }}
+.tp-book .what {{ flex: 1 1 auto; min-width: 0; font-weight: 600; }}
+.tp-book .amt {{ flex: 0 0 auto; font-variant-numeric: tabular-nums; color: var(--ink2); }}
+.tp-book .why {{ display: block; margin-top: 5px; font-size: 0.85rem; color: var(--ink2); }}
+.tp-book .go {{
+  display: inline-block; margin-top: 8px; padding: 4px 11px; border-radius: 999px;
+  background: var(--accent-wash); color: var(--accent); font-size: 0.78rem;
+  font-weight: 600; text-decoration: none; border: 1px solid var(--border);
+}}
+.tp-when {{ display: flex; gap: 10px; align-items: baseline; margin: 18px 0 2px; }}
+.tp-when h3 {{ flex: 1 1 auto; margin: 0; font-size: 0.98rem; }}
+.tp-when .amt {{ font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.84rem; }}
+.tp-when + .note {{ margin-top: 2px; }}
 
 /* ---- tables ---- */
 .tp-scroll {{ overflow-x: auto; }}
@@ -759,7 +766,6 @@ table.tp-tbl td.wrap {{ min-width: 150px; }}
   .tp-head {{ padding: 15px 14px 12px; }}
   .tp-head h1 {{ font-size: 1.4rem; }}
   .tp-stat {{ flex: 1 1 100%; }}
-  .tp-split {{ grid-template-columns: 1fr; gap: 2px; }}
   .tp-body {{ padding: 2px 13px 13px; }}
   table.tp-tbl {{ font-size: 0.8rem; }}
   /* let the three-column tables fit a 390px phone rather than needing a swipe */
@@ -815,7 +821,7 @@ def render_header(d, T, C, tx, dirattr, cur, fx, images, show_prices=True):
         f'<p class="sub">{num(dates)}<span class="dot">{tx(T("ui.sep"))}</span>'
         f'{tx(T("ui.header.nights", n=trip["nights"]))}'
         f'<span class="dot">{tx(T("ui.sep"))}</span>'
-        f'{tx(T("ui.header.party", total=party["total"], parents=party["parents"], adults=party["adults"]))}</p>'
+        f'{tx(T("ui.header.party", total=party["total"]))}</p>'
         f'</div></div>'
         f'{stats}</div></div>'
     )
@@ -857,17 +863,61 @@ def render_credits(images, T, tx, dirattr, day_count):
     )
 
 
-def render_overview(d, T, C, tx, dirattr, critical):
+# The booking board's groups, in the order they are shown. Named here rather than
+# inline because check.py builds the same "ui.booking.when.*" keys from this tuple:
+# they are the one set of labels app.py asks for without a literal next to a T(.
+BOOKING_WHEN = ("done", "now", "forecast", "soon", "walkup")
+
+def render_overview(d, T, C, tx, dirattr, critical, cur, fx, show_prices=True):
     """Everything that happens before the trip: dangers, premises, then what to book."""
     trip = d["trip"]
     items = "".join(
         f"<li>{tx(C(f'trip.assumptions.{i}', s))}</li>"
         for i, s in enumerate(trip["assumptions"])
     )
-    steps = "".join(
-        f"<li><span>{tx(C(f'booking_order.{i}', s))}</span></li>"
-        for i, s in enumerate(d["booking_order"])
-    )
+    # The board is grouped by WHEN rather than numbered 1..n, because the thing that
+    # was hard about this list was never the order - it was that eighteen items all
+    # looked equally urgent when only three of them are.
+    groups = []
+    for when in BOOKING_WHEN:
+        rows = [(i, b) for i, b in enumerate(d["booking_order"]) if b["when"] == when]
+        if not rows:
+            continue
+        subtotal = ""
+        if show_prices:
+            subtotal = (
+                f'<span class="amt">'
+                f'{num(money(sum(b["chf"] for _, b in rows), cur, fx))}</span>'
+            )
+        cards = ""
+        for i, b in rows:
+            price = ""
+            if show_prices:
+                shown = (
+                    tx(T("ui.booking.free")) if not b["chf"]
+                    else num(money(b["chf"], cur, fx))
+                )
+                price = f'<span class="amt">{shown}</span>'
+            link = ""
+            if b.get("url"):
+                link = (
+                    f'<a class="go" href="{html.escape(b["url"], quote=True)}"'
+                    f' target="_blank" rel="noopener">{tx(T("ui.booking.go"))}</a>'
+                )
+            cards += (
+                f'<li data-when="{when}">'
+                f'<div class="row"><span class="what">'
+                f'{tx(C(f"booking_order.{i}.item", b["item"]))}</span>{price}</div>'
+                f'<span class="why">{tx(C(f"booking_order.{i}.note", b["note"]))}</span>'
+                f'{link}</li>'
+            )
+        groups.append(
+            f'<div class="tp-when"><h3>{tx(T(f"ui.booking.when.{when}"))}</h3>'
+            f'{subtotal}</div>'
+            f'<p class="note">{tx(T(f"ui.booking.note.{when}"))}</p>'
+            f'<ul class="tp-book">{cards}</ul>'
+        )
+    steps = "".join(groups)
 
     warn = []
     for path in critical:
@@ -885,7 +935,8 @@ def render_overview(d, T, C, tx, dirattr, critical):
         f'<h2>{tx(T("ui.overview.assumptions"))}</h2>'
         f'<ul class="tp-list">{items}</ul>'
         f'<h2>{tx(T("ui.booking.title"))}</h2>'
-        f'<ol class="tp-ol">{steps}</ol>'
+        f'<p class="note">{tx(T("ui.booking.note"))}</p>'
+        f'{steps}'
         f'</div>'
     )
 
@@ -969,19 +1020,16 @@ def day_card_html(d, i, T, C, tx, dirattr, cur, fx, expand_all, images, today,
             f'<span class="tp-lbl">{tx(T("ui.day.sleep"))}</span>'
             f'<p>{tx(C(f"days.{i}.sleep", day["sleep"]))}</p>'
         )
-    if day.get("parents") or day.get("adults"):
-        cols = ""
-        if day.get("parents"):
-            cols += (
-                f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.parents"))}</span>'
-                f'<p>{tx(C(f"days.{i}.parents", day["parents"]))}</p></div>'
-            )
-        if day.get("adults"):
-            cols += (
-                f'<div class="col"><span class="tp-lbl">{tx(T("ui.day.adults"))}</span>'
-                f'<p>{tx(C(f"days.{i}.adults", day["adults"]))}</p></div>'
-            )
-        body.append(f'<div class="tp-split">{cols}</div>')
+    # One description, not two columns. The old split was by person - parents on the
+    # left, adults on the right - and the premise turned out to be wrong: the two in
+    # their sixties walk better than the three in their thirties. So each day now
+    # runs the level version first and the harder add-ons after it, and nobody is
+    # assigned to either half.
+    if day.get("on_foot"):
+        body.append(
+            f'<span class="tp-lbl">{tx(T("ui.day.on_foot"))}</span>'
+            f'<p>{tx(C(f"days.{i}.on_foot", day["on_foot"]))}</p>'
+        )
     if day["tips"]:
         tips = "".join(
             f"<li>{tx(C(f'days.{i}.tips.{k}', t))}</li>" for k, t in enumerate(day["tips"])
@@ -1179,6 +1227,23 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
             f'<td class="n">{num(money(item["total"], cur, fx))}</td></tr>'
         )
 
+    # The lean version: what can go, and the four lines that look like savings and
+    # are the opposite. It sits in the Costs tab rather than Before you go because
+    # it is arithmetic, not a task.
+    sv = d["savings"]
+    cut_rows = [
+        f'<tr><td class="wrap">{tx(C(f"savings.cut.{j}.item", c["item"]))}<br>'
+        f'<span class="tp-recon">{tx(C(f"savings.cut.{j}.instead", c["instead"]))}</span></td>'
+        f'<td class="n">{num(money(c["chf"], cur, fx))}</td></tr>'
+        for j, c in enumerate(sv["cut"])
+    ]
+    keep_rows = [
+        f'<tr><td class="wrap">{tx(C(f"savings.keep.{j}.item", k["item"]))}<br>'
+        f'<span class="tp-recon">{tx(C(f"savings.keep.{j}.why", k["why"]))}</span></td>'
+        f'<td class="n">{num(money(k["chf"], cur, fx))}</td></tr>'
+        for j, k in enumerate(sv["keep"])
+    ]
+
     # The rounding drift is a fact about the CHF source figures, so this line stays
     # in CHF whatever the currency toggle says.
     base = d["trip"]["currency"]
@@ -1218,6 +1283,25 @@ def render_costs(d, recon, T, C, tx, dirattr, cur, fx, sep, total_keys):
         f'<th scope="col">{tx(T("ui.cost.item"))}</th><th scope="col" class="n">{tx(T("ui.cost.amount"))}</th>'
         f'</tr></thead><tbody>{"".join(wide_rows)}</tbody></table></div>'
         f'<p class="tp-recon">{tx(recon_line)}</p>'
+
+        f'<h2>{tx(T("ui.savings.title"))}</h2>'
+        f'<p class="note">{tx(C("savings.note", sv["note"]))}</p>'
+        f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
+        f'<th scope="col">{tx(T("ui.savings.cut"))}</th>'
+        f'<th scope="col" class="n">{tx(T("ui.cost.amount"))}</th></tr></thead>'
+        f'<tbody>{"".join(cut_rows)}</tbody>'
+        f'<tfoot><tr><td>{tx(T("ui.savings.saved"))}</td>'
+        f'<td class="n">{num(money(sv["saved_chf"], cur, fx))}</td></tr></tfoot>'
+        f'</table></div>'
+        f'<div class="tp-saving"><span>{tx(T("ui.savings.lean"))}</span>'
+        f'<span class="v">{num(money(sv["lean_total_chf"], cur, fx))}'
+        f'<span class="dot">{tx(T("ui.sep"))}</span>'
+        f'{num(money(sv["lean_per_person_chf"], cur, fx))} {tx(T("ui.savings.each"))}'
+        f'</span></div>'
+        f'<div class="tp-scroll"><table class="tp-tbl"><thead><tr>'
+        f'<th scope="col">{tx(T("ui.savings.keep"))}</th>'
+        f'<th scope="col" class="n">{tx(T("ui.cost.amount"))}</th></tr></thead>'
+        f'<tbody>{"".join(keep_rows)}</tbody></table></div>'
 
         f'<h2>{tx(T("ui.costs.five_vs_six"))}</h2>'
         f'<p class="note">{tx(C("totals.note_vs_six", totals["note_vs_six"]))}</p>'
@@ -1391,7 +1475,8 @@ def main() -> None:
             todays[0] if todays else -1, block,
         )
     with overview:
-        render_overview(data, T, C, tx, dirattr, meta["critical_tips"])
+        render_overview(data, T, C, tx, dirattr, meta["critical_tips"], cur, fx,
+                        show_prices)
         render_credits(images, T, tx, dirattr, len(data["days"]))
     with options:
         render_options(data, T, C, tx, dirattr, cur, fx, show_prices)

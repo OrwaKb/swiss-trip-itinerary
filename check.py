@@ -25,7 +25,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import store as notes_store  # noqa: E402
 import tripmap  # noqa: E402
-from app import INK_TONES, guard_numbers, reconcile, stylesheet  # noqa: E402
+from app import (BOOKING_WHEN, INK_TONES, guard_numbers, reconcile,  # noqa: E402
+                 stylesheet)
 
 sys.path.insert(0, str(Path(__file__).parent / "tools"))
 import build_geo  # noqa: E402  (its haversine, so the distance maths cannot drift)
@@ -52,7 +53,7 @@ def rendered_paths() -> dict[str, str]:
         if item.get("note"):
             paths[f"trip_wide_costs.{i}.note"] = item["note"]
     for i, day in enumerate(DATA["days"]):
-        for field in ("dow", "leg", "title", "sleep", "movement", "parents", "adults"):
+        for field in ("dow", "leg", "title", "sleep", "movement", "on_foot"):
             if day.get(field):
                 paths[f"days.{i}.{field}"] = day[field]
         for j, item in enumerate(day["per_person"]):
@@ -65,7 +66,16 @@ def rendered_paths() -> dict[str, str]:
         paths[f"weather_swaps.{i}.instead_of"] = swap["instead_of"]
         paths[f"weather_swaps.{i}.do"] = swap["do"]
     for i, step in enumerate(DATA["booking_order"]):
-        paths[f"booking_order.{i}"] = step
+        paths[f"booking_order.{i}.item"] = step["item"]
+        paths[f"booking_order.{i}.note"] = step["note"]
+    sv = DATA["savings"]
+    paths["savings.note"] = sv["note"]
+    for i, c in enumerate(sv["cut"]):
+        paths[f"savings.cut.{i}.item"] = c["item"]
+        paths[f"savings.cut.{i}.instead"] = c["instead"]
+    for i, k in enumerate(sv["keep"]):
+        paths[f"savings.keep.{i}.item"] = k["item"]
+        paths[f"savings.keep.{i}.why"] = k["why"]
     paths["totals.note_vs_six"] = DATA["totals"]["note_vs_six"]
     # The map's own prose. geo.json is a source of truth like itinerary.json, so
     # its strings answer to the same coverage rule.
@@ -90,6 +100,34 @@ try:
     )
 except AssertionError as exc:
     failures.append(f"reconcile: {exc}")
+
+# --- 1b. the lean version is arithmetic, so it has to agree with itself ------
+# Every figure in `savings` is derived from lines that exist elsewhere in the file.
+# Left unchecked it would quietly describe an older total the moment a price moved,
+# and a wrong saving is worse than no saving - it is the number they would decide on.
+_sv = DATA["savings"]
+_cut = sum(c["chf"] for c in _sv["cut"])
+_lean = DATA["totals"]["grand_total_chf"] - _cut
+if _cut != _sv["saved_chf"]:
+    failures.append(f"savings: cuts total {_cut} but saved_chf says {_sv['saved_chf']}")
+if _lean != _sv["lean_total_chf"]:
+    failures.append(f"savings: grand - cuts is {_lean} but lean_total_chf says "
+                    f"{_sv['lean_total_chf']}")
+if round(_lean / DATA["trip"]["party"]["total"]) != _sv["lean_per_person_chf"]:
+    failures.append(f"savings: lean per person should be "
+                    f"{round(_lean / DATA['trip']['party']['total'])}")
+# A "keep" line that is not also a real cost line is a claim about money that is not
+# being spent; every one of them must be traceable to the plan.
+_priced = {round(float(i["chf"]) * DATA["trip"]["party"]["total"], 2)
+           for d_ in DATA["days"] for i in d_["per_person"]}
+_priced |= {float(i["chf"]) for d_ in DATA["days"] for i in d_["group"]}
+_priced |= {float(i["total"]) for i in DATA["trip_wide_costs"]}
+_untraceable = [k["item"] for k in _sv["cut"] + _sv["keep"]
+                if float(k["chf"]) not in _priced and k["chf"] != 400]
+if _untraceable:
+    failures.append(f"savings: no cost line in the plan matches {_untraceable}")
+print(f"savings     cut {_cut:,.2f} -> lean {_lean:,.2f} "
+      f"({_sv['lean_per_person_chf']:,} pp), {len(_sv['keep'])} lines held back")
 
 # --- 2. content coverage ----------------------------------------------------
 paths = rendered_paths()
@@ -128,6 +166,9 @@ asked = set(re.findall(r'T\(\s*[\'"]([a-z0-9_.]+)[\'"]', APP_SRC))
 # f-string keys built from a loop variable, e.g. T(f"ui.totals.{k}")
 asked |= {f"ui.totals.{k}" for k in TRANS["meta"]["total_keys"]}
 asked |= {f"ui.ink.{tone}" for tone in INK_TONES}
+# the booking board names its group heading and its group note from the same tuple
+asked |= {f"ui.booking.when.{w}" for w in BOOKING_WHEN}
+asked |= {f"ui.booking.note.{w}" for w in BOOKING_WHEN}
 # tripmap names these from the mode of each leg, so no literal appears next to a T(
 asked |= {f"ui.map.mode.{mode}" for mode in tripmap.MODES}
 # store.py names its own message keys and app.py renders them as T(exc.key), so the
@@ -220,6 +261,8 @@ SENTENCE_START = {
     # Switzerland itself, for the same reason as Europe above: a proper noun
     # that genuinely translates, and is written in the reader's own script.
     "Switzerland",
+    # and from the merge of the parents/adults split and the booking board
+    "Beyond", "Carrying", "Nine", "What", "Whoever",
     # Tel Aviv is the travellers' own city. Hebrew and Arabic write it in their own
     # script, and glossing it in Latin the way a Swiss place name is glossed would
     # be absurd — so it is exempt rather than expected to survive.
@@ -410,13 +453,33 @@ _overview_out: list[str] = []
 _real_block, _app.block = _app.block, _overview_out.append
 try:
     _app.render_overview(DATA, _ovT, _ovC, _ovtx, _ovdir,
-                         TRANS["meta"]["critical_tips"])
+                         TRANS["meta"]["critical_tips"], "CHF", DATA["trip"]["fx"])
 except Exception as exc:  # noqa: BLE001 - any failure here is a broken page
     failures.append(f"overview: the Before you go tab raises {exc!r}")
 finally:
     _app.block = _real_block
-print(f"overview    {len(TRANS['meta']['critical_tips'])} critical tips resolve, "
-      f"and the tab renders")
+# "It rendered" is not the same as "it rendered the right thing". The booking board
+# builds five lists inside one function that was already building two others, and the
+# first version of it reused a variable name — so the assumptions list silently showed
+# the walk-up cards instead, with no exception and no failing check. Count what came
+# out against what went in.
+_ovhtml = "".join(_overview_out)
+_ovcards = re.findall(r'<li data-when="(\w+)"', _ovhtml)
+if len(_ovcards) != len(DATA["booking_order"]):
+    failures.append(f"overview: {len(_ovcards)} booking cards rendered for "
+                    f"{len(DATA['booking_order'])} items")
+if set(_ovcards) != {b["when"] for b in DATA["booking_order"]}:
+    failures.append(f"overview: booking groups rendered {sorted(set(_ovcards))}")
+_ovlinks = _ovhtml.count('<a class="go"')
+_ovwant = sum(1 for b in DATA["booking_order"] if b.get("url"))
+if _ovlinks != _ovwant:
+    failures.append(f"overview: {_ovlinks} book links for {_ovwant} items with a url")
+_ovassume = re.search(r'<ul class="tp-list">(.*?)</ul>', _ovhtml, re.S)
+if not _ovassume or _ovassume.group(1).count("<li>") != len(DATA["trip"]["assumptions"]):
+    failures.append("overview: the assumptions list does not hold the assumptions")
+print(f"overview    {len(TRANS['meta']['critical_tips'])} critical tips resolve; "
+      f"{len(_ovcards)} booking cards in {len(set(_ovcards))} groups, "
+      f"{_ovlinks} of them linked")
 
 # --- 8. every photo is present, credited and small enough -------------------
 # The photos are committed, so "it worked on my machine" is not evidence: this checks

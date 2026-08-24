@@ -134,7 +134,7 @@
    "days": [
     2
    ],
-   "what": "The easy one for the parents. Paved, level, straight out over the lake.",
+   "what": "The easy one. Paved, level, straight out over the lake.",
    "source": "osm:node/11748945623",
    "moved_m": 0
   },
@@ -570,7 +570,7 @@
    "lat": 46.5772,
    "lon": 7.9058,
    "days": [],
-   "what": "Ten glacier falls inside the mountain, reached by a lift built into the rock - but stairs past halfway and permanently wet, so adults only.",
+   "what": "Ten glacier falls inside the mountain, reached by a lift built into the rock - but stairs past halfway and permanently wet, so turn back at the middle if the footing worries you.",
    "source": "seed",
    "moved_m": 0
   },
@@ -580,7 +580,7 @@
    "lat": 46.61316,
    "lon": 7.94095,
    "days": [],
-   "what": "A spare day with the parents: gondola up from the Terminal, the almost level Panoramaweg across, cog railway down from Kleine Scheidegg.",
+   "what": "A spare day taken gently: gondola up from the Terminal, the almost level Panoramaweg across, cog railway down from Kleine Scheidegg.",
    "source": "osm:node/272852989",
    "moved_m": 1
   },
@@ -2952,7 +2952,7 @@
    "mode": "walk",
    "from": "rigi-kulm",
    "to": "rigi-kanzeli",
-   "label": "For the adults: 4 km down to Kaltbad, about an hour and a quarter",
+   "label": "For whoever wants it: 4 km down to Kaltbad, about an hour and a quarter",
    "km": 1.9,
    "source": "valhalla/pedestrian",
    "geometry": [
