@@ -25,8 +25,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import store as notes_store  # noqa: E402
 import tripmap  # noqa: E402
-from app import (BOOKING_WHEN, INK_TONES, guard_numbers, reconcile,  # noqa: E402
-                 stylesheet)
+from app import (BOOKING_WHEN, INK_TONES, STAGE_KEYS, guard_numbers,  # noqa: E402
+                 reconcile, stylesheet, trip_stage)
 
 sys.path.insert(0, str(Path(__file__).parent / "tools"))
 import build_geo  # noqa: E402  (its haversine, so the distance maths cannot drift)
@@ -171,6 +171,8 @@ asked |= {f"ui.booking.when.{w}" for w in BOOKING_WHEN}
 asked |= {f"ui.booking.note.{w}" for w in BOOKING_WHEN}
 # tripmap names these from the mode of each leg, so no literal appears next to a T(
 asked |= {f"ui.map.mode.{mode}" for mode in tripmap.MODES}
+# trip_stage() picks one of these by where today falls against the trip's own dates
+asked |= set(STAGE_KEYS)
 # store.py names its own message keys and app.py renders them as T(exc.key), so the
 # literal never appears next to a T( for the scan above to find.
 for _src in ("store.py", "app.py"):
@@ -481,6 +483,45 @@ if _ovlinks != _ovwant:
 _ovassume = re.search(r'<ul class="tp-list">(.*?)</ul>', _ovhtml, re.S)
 if not _ovassume or _ovassume.group(1).count("<li>") != len(DATA["trip"]["assumptions"]):
     failures.append("overview: the assumptions list does not hold the assumptions")
+
+# The tally is the one line on the page that claims a total, so it is counted against
+# the board rather than trusted. Three groups, and every card belongs to exactly one.
+_ovtally = re.search(r'<div class="tp-saving"><span>(.*?)</span>', _ovhtml, re.S)
+if not _ovtally:
+    failures.append("overview: the booking tally did not render")
+else:
+    _want = (
+        sum(1 for b in DATA["booking_order"] if b["when"] == "done"),
+        sum(1 for b in DATA["booking_order"] if b["when"] in ("now", "forecast", "soon")),
+        sum(1 for b in DATA["booking_order"] if b["when"] == "walkup"),
+    )
+    if sum(_want) != len(DATA["booking_order"]):
+        failures.append(f"overview: the tally covers {sum(_want)} of "
+                        f"{len(DATA['booking_order'])} booking items — a 'when' it "
+                        f"does not count has been added to BOOKING_WHEN")
+    _got = tuple(int(n) for n in re.findall(r"\d+", re.sub(r"<[^>]+>", "", _ovtally.group(1))))
+    if _got != _want:
+        failures.append(f"overview: the tally says {_got}, the board holds {_want}")
+
+# The warnings print a date against every line, so they have to come out in date order
+# however meta.critical_tips happens to be written.
+_ovwarn = re.findall(r'<li><span class="when">.*?(\d{4}-\d{2}-\d{2})', _ovhtml)
+if _ovwarn != sorted(_ovwarn):
+    failures.append(f"overview: the warnings are out of date order: {_ovwarn}")
+if len(_ovwarn) != len(TRANS["meta"]["critical_tips"]):
+    failures.append(f"overview: {len(_ovwarn)} warnings for "
+                    f"{len(TRANS['meta']['critical_tips'])} critical tips")
+
+# The stage line has three branches and only one of them is true on any given day, so
+# all three are exercised here rather than whenever the calendar happens to reach them.
+_stages = [trip_stage(DATA, iso) for iso in
+           (DATA["days"][0]["date"], DATA["days"][-1]["date"], "2000-01-01", "2099-01-01")]
+if _stages[0][0] != STAGE_KEYS[1] or _stages[0][1] != {"n": 1, "of": len(DATA["days"])}:
+    failures.append(f"stage: the first day of the trip reads as {_stages[0]}")
+if _stages[1][0] != STAGE_KEYS[1] or _stages[1][1]["n"] != len(DATA["days"]):
+    failures.append(f"stage: the last day of the trip reads as {_stages[1]}")
+if _stages[2][0] != STAGE_KEYS[0] or _stages[3] is not None:
+    failures.append(f"stage: before/after the trip read as {_stages[2]}, {_stages[3]}")
 print(f"overview    {len(TRANS['meta']['critical_tips'])} critical tips resolve; "
       f"{len(_ovcards)} booking cards in {len(set(_ovcards))} groups, "
       f"{_ovlinks} of them linked")

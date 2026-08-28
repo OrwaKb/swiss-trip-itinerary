@@ -635,6 +635,12 @@ body:has(#tp-dir-ltr) [data-baseweb="tab-list"] {{ flex-direction: row; }}
   background: var(--warn-wash); border: 1px solid var(--warn); border-radius: 9px;
   padding: 11px 12px; margin-top: 12px; font-size: 0.89rem;
 }}
+/* Where the reader is standing relative to the trip. Quiet on purpose: it sits above
+   nine day cards and is orientation, not an announcement. */
+.tp-stage {{
+  color: var(--ink2); font-size: 0.86rem; letter-spacing: 0.01em;
+  padding: 2px 0 8px; border-bottom: 1px solid var(--rule); margin-bottom: 4px;
+}}
 .tp-tips {{ list-style: none; padding: 0; margin: 2px 0 0; }}
 .tp-tips li {{
   font-size: 0.89rem; padding: 5px 0 5px 0; border-bottom: 1px solid var(--rule);
@@ -919,8 +925,32 @@ def render_overview(d, T, C, tx, dirattr, critical, cur, fx, show_prices=True):
         )
     steps = "".join(groups)
 
+    # A week out the question stopped being "what is on the list" and became "what is
+    # still on it", and eighteen cards under four headings do not answer that at a
+    # glance. Counted from the data rather than written down, so it cannot go stale the
+    # next time an item moves out of "book today".
+    outstanding = [b for b in d["booking_order"] if b["when"] in ("now", "forecast", "soon")]
+    at_window = [b for b in d["booking_order"] if b["when"] == "walkup"]
+    settled = [b for b in d["booking_order"] if b["when"] == "done"]
+    tally = (
+        f'<div class="tp-saving"><span>'
+        f'{tx(T("ui.booking.tally", done=len(settled), left=len(outstanding), walkup=len(at_window)))}'
+        f'</span>'
+    )
+    if show_prices:
+        tally += (
+            f'<span class="v">'
+            f'{num(money(sum(b["chf"] for b in outstanding + at_window), cur, fx))} '
+            f'{tx(T("ui.booking.tally_left"))}</span>'
+        )
+    tally += "</div>"
+
+    # Sorted by the day each tip belongs to rather than by the order somebody appended
+    # them to meta.critical_tips. Every line prints its own date, so one entry out of
+    # sequence reads as a mistake in the trip rather than a mistake in the list — which
+    # is exactly how 10 September came to sit above 9 September on the live page.
     warn = []
-    for path in critical:
+    for path in sorted(critical, key=lambda p: (int(p.split(".")[1]), int(p.split(".")[3]))):
         _, day_i, _, tip_i = path.split(".")
         day = d["days"][int(day_i)]
         text = C(path, day["tips"][int(tip_i)])
@@ -936,6 +966,7 @@ def render_overview(d, T, C, tx, dirattr, critical, cur, fx, show_prices=True):
         f'<ul class="tp-list">{items}</ul>'
         f'<h2>{tx(T("ui.booking.title"))}</h2>'
         f'<p class="note">{tx(T("ui.booking.note"))}</p>'
+        f'{tally}'
         f'{steps}'
         f'</div>'
     )
@@ -1151,11 +1182,38 @@ def act_delete(store, note_id, who, day_key) -> None:
     read_notes.clear()
 
 
+# Named here rather than only inside trip_stage() for the same reason as BOOKING_WHEN:
+# the key is chosen at runtime, so no literal sits next to a T( for check.py to find.
+STAGE_KEYS = ("ui.day.countdown", "ui.day.position")
+
+
+def trip_stage(d, today_iso):
+    """Where the reader is standing relative to the trip: a countdown before it, a
+    position inside it, nothing once it is over. Returns (key, kwargs) for T(), or None.
+
+    Nine cards all look alike on a phone. Before the trip the useful fact is how long
+    is left; during it, which of the ten days this is — the today badge says a card is
+    today but not that today is the fifth of ten.
+    """
+    today = date.fromisoformat(today_iso)
+    start = date.fromisoformat(d["days"][0]["date"])
+    end = date.fromisoformat(d["days"][-1]["date"])
+    if today < start:
+        return STAGE_KEYS[0], {"days": (start - today).days}
+    if today <= end:
+        return STAGE_KEYS[1], {"n": (today - start).days + 1, "of": len(d["days"])}
+    return None
+
+
 def render_days(d, T, C, tx, dirattr, cur, fx, expand_all, images, notes, store, who,
                 show_prices=True):
     # During the trip the app is opened on a phone to answer "what are we doing now",
     # so today's card is marked and starts open. Outside the trip nothing matches.
     today = date.today().isoformat()
+    stage = trip_stage(d, today)
+    if stage:
+        block(f'<div class="tp" {dirattr}>'
+              f'<div class="tp-stage">{tx(T(stage[0], **stage[1]))}</div></div>')
     # Said once, above the days. Repeating it inside all nine drawers was louder than
     # the notes themselves.
     if store is not None and not getattr(store, "shared", False):
