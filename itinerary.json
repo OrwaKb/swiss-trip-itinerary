@@ -16,9 +16,9 @@
       "Every traveller holds a Swiss Half Fare Card (CHF 150 each, valid one calendar month, bought to cover 4-13 September).",
       "Flights are booked. Four land at Zurich on Friday 4 September at 20:30, the fifth on Saturday 5 September at 06:30, and all five leave for Tel Aviv on Sunday 13 September at 11:45.",
       "Four things are booked and fixed: the first night at the Zleep Hotel in Kloten, the Historical apartment in Schwyz for 5-7 September, LaVida Peak at Reichenbach im Kandertal for 7-11 September, and the van - a 7-seat VW Caddy from Europcar, collected at 22:00 on Friday 4 September and returned Friday 11 September at 12:00, seven days at ILS 1,505, about CHF 414.",
-      "The base for the mountain days is the Kandertal, not Grindelwald. Grindelwald sold out for these dates and nothing in the village matched LaVida Peak, so the fallback became the plan. It costs about 75 minutes each way to Grindelwald Terminal on Jungfraujoch morning - and it buys Oeschinensee at 23 minutes, Blausee at 16 and the Niesen at 10, none of which were reachable from Grindelwald at all.",
-      "One figure in the whole plan is still a guess: the CHF 20 placeholder for parking at the Zleep on the 4th. The Zleep room itself came in at ILS 962. Everything else is a published 2026 tariff, a booked rate, or a live quote read on 24 August 2026.",
-      "Fares are the operators' published 2026 tariffs, verified in August 2026 against Jungfraubahnen, Schilthornbahn, Rigi Bahnen, SGV, Aareschlucht AG, Oeschinensee AG and the Titlis and Niesen operators.",
+      "The base for the mountain days is the Kandertal, not Grindelwald. Grindelwald sold out for these dates and nothing in the village matched LaVida Peak, so the fallback became the plan. It costs about an hour each way to Grindelwald Terminal on Jungfraujoch morning - 50 km down the valley to Spiez and along the Thunersee - and it buys Oeschinensee at 23 minutes, Blausee at 16 and the Niesen at 10, none of which were reachable from Grindelwald at all.",
+      "Nothing in the plan is a guess any more. The last placeholder - parking at the Zleep on the 4th - is the operator's own CHF 25 a day, and the room came in at ILS 962. Two things are genuinely unpublished and are flagged where they happen: what Blausee charges to park, and what the Oeschinensee electric taxi charges to ride. Everything else is a published 2026 tariff, a booked rate, or a live quote read on 24 or 28 August 2026.",
+      "Fares are the operators' published 2026 tariffs, and they were read again on 28 August 2026 against Jungfraubahnen, Schilthornbahn, Rigi Bahnen, SGV, Aareschlucht AG, Oeschinensee AG, ZVV and the Niesen - which is where the Lucerne boat, the Zurich day ticket and the whole shape of the Niesen evening turned out to be different from the first pass.",
       "Flights are excluded throughout.",
       "At five people a 7-seat MPV works: the back row folds flat for the luggage. At six it would not have.",
       "The shekel figures convert at CHF 1 = ILS 3.94, which is what the card was actually charged for the Half Fare Cards on 24 August - the market rate that day was 3.73, so the difference is the card's own foreign-currency fee. The euro figures convert at the market rate, 1.068, because nothing on this trip is paid in euros. Always ask to be charged in Swiss francs rather than shekels at a Swiss card terminal: choosing shekels hands the exchange rate to the merchant and it is always worse."
@@ -44,8 +44,8 @@
     },
     {
       "item": "Food beyond the two big shops",
-      "total": 1150,
-      "note": "Self-catered breakfasts and lunches, four dinners out for five at Swiss restaurant prices. Parking at Weggis, Lungern, Lauterbrunnen and Grindelwald Terminal is costed on its own day; LaVida Peak has free parking on the premises."
+      "total": 875,
+      "note": "Self-catered breakfasts and lunches, three dinners out for five at Swiss restaurant prices - the fourth is the Niesen, costed on its own day because it is sold as a package with the funicular. Parking at Zug, Weggis, Lungern, Lauterbrunnen, Grindelwald Terminal and Kandersteg is costed on its own day too; LaVida Peak has free parking on the premises."
     }
   ],
   "days": [
@@ -67,16 +67,17 @@
         },
         {
           "item": "Hotel parking, one night",
-          "chf": 20
+          "chf": 25
         }
       ],
-      "day_total_chf": 264,
+      "day_total_chf": 269,
       "tips": [
         "Only four beds are needed tonight. The fifth traveller lands at 06:30 tomorrow morning.",
         "Zurich is one hour behind Tel Aviv in September, so there is no jet lag to fight - only the flights themselves.",
-        "The Zleep night was billed at ILS 962, which is the CHF 244 here. The CHF 20 for parking is still a placeholder - it is the only guess left in the whole plan.",
+        "The Zleep night was billed at ILS 962, which is the CHF 244 here. Parking is the operator's own CHF 25 a day in the public garage on Bahnhofstrasse, or CHF 2 an hour if you would rather feed it. That was the last placeholder in the plan.",
         "One of the four who land tonight has to be the named driver, and it is a five-minute drive at ten at night after a flight. Short, but agree who is doing it before you are standing at the desk.",
-        "Check what the hotel charges to park - it is CHF 20 here as a placeholder, and airport hotels vary from free to CHF 25 a night."
+        "The Zleep runs an airport shuttle, but it is CHF 10 a head - CHF 50 for five. The van is already yours by then and the hotel is three kilometres away, so it is a bus you would be paying for twice.",
+        "Europcar's desk in the rental centre runs to 23:30 every day, so a 22:00 collection after a 20:30 landing has an hour and a half in hand. Worth one call to +41 43 255 56 56 in the week before if the flight looks like slipping."
       ]
     },
     {
@@ -98,15 +99,19 @@
         {
           "item": "Big supermarket shop",
           "chf": 335
+        },
+        {
+          "item": "Parking in Zug, a few hours",
+          "chf": 6
         }
       ],
-      "day_total_chf": 742,
+      "day_total_chf": 748,
       "tips": [
-        "Do the big shop TODAY. Tomorrow is Sunday and Swiss supermarkets shut - the Coop and Migros in Schwyz close around 17:00 on a Saturday and do not open again until Monday.",
+        "Do the big shop TODAY. Tomorrow is Sunday and Swiss supermarkets shut - the Migros at the Mythen Center in Ibach is open until 18:00 on the Saturday and does not open again until Monday.",
         "Because the van came last night, there is no 09:00 rental desk to wait for. That is nearly two hours back on the first proper morning - enough for a real breakfast in Zug rather than a hurried one.",
         "Zug's Kirschtorte is the real thing here, not a tourist confection - the Speck bakery on Alpenstrasse invented it in 1915.",
         "Brunnen is five minutes from the apartment, and the view down the Urnersee from the quay is the one on all the old posters. Go at the end of the afternoon, when the light comes down the lake.",
-        "Do not take the van into Zug's old town. Use the Postplatz or Casino garages and walk in - it is pedestrianised anyway."
+        "Do not take the van into Zug's old town - it is pedestrianised anyway. The Postplatz garage is CHF 1 per half hour, 130 spaces, open around the clock, and it takes anything up to 2.20 m, so the Caddy fits with room over its head."
       ]
     },
     {
@@ -115,7 +120,7 @@
       "leg": "Mountain day 1",
       "title": "Mount Rigi from Weggis, and Lucerne at dusk",
       "sleep": "Schwyz (the Historical apartment, night 2 of 2, booked)",
-      "movement": "Drive round the lake to Weggis, about half an hour, and park at the pier. Cable car up to Rigi Kaltbad, then the cog railway to Rigi Kulm. Walk the 4 km from Kulm back down to Kaltbad and pick the cable car up there, or ride the whole way down if the cloud has come in. The van waits at the pier all day, so the late afternoon is the boat across to Lucerne and the 19:12 back.",
+      "movement": "Drive round the lake to Weggis, about half an hour, and park at P1 or P2 beside the cable car valley station - that is where the CHF 13 tariff is, not at the pier. Cable car up to Rigi Kaltbad, then the cog railway to Rigi Kulm. Walk the 4 km from Kulm back down to Kaltbad and pick the cable car up there, or ride the whole way down if the cloud has come in. The pier is about fifteen minutes on foot from the van, so the late afternoon is the boat across to Lucerne, the 19:12 back, and that same quarter of an hour home.",
       "drive_km": 60,
       "drive_min": 65,
       "on_foot": "Cable car and cog railway to the summit, the panorama terrace and the restaurant at the top - then walk Rigi Kulm down to Kaltbad. It is 4 km and about an hour and a quarter on a wide track with the whole of Lake Lucerne underneath you the entire way, and it is the best hour of the day. Cog railway on from Kaltbad. In Lucerne, the Chapel Bridge and the Old Town squares, and the Musegg Wall towers for the view back over the roofs.",
@@ -127,8 +132,8 @@
         },
         {
           "item": "Boat Weggis-Lucerne return, half fare",
-          "chf": 23.0,
-          "full": 46
+          "chf": 21.5,
+          "full": 43
         }
       ],
       "group": [
@@ -137,18 +142,20 @@
           "chf": 407
         },
         {
-          "item": "Parking at the Weggis pier",
+          "item": "Parking at the Weggis cable car valley station",
           "chf": 13
         }
       ],
-      "day_total_chf": 745.0,
+      "day_total_chf": 737.5,
       "tips": [
-        "The last boat back from Lucerne leaves at 19:12 and reaches Weggis at 19:53. Miss it and it is train plus bus, 51 minutes, CHF 5.20 - not a disaster, but the van is at the pier and the boat is the nicer end to the day.",
+        "The last boat back from Lucerne leaves at 19:12 and reaches Weggis at 19:53. Miss it and it is train plus bus, 51 minutes, CHF 5.20 - not a disaster, but the van is at the cable car station and the boat is the nicer end to the day.",
         "See the Chapel Bridge in the early evening rather than at midday. That is what this day is shaped around.",
         "Rigi Kulm is 1,798 m and the terrace is exposed. Take a layer even if Weggis is warm.",
-        "Weggis parking is CHF 13 for 24 hours and it is not free, whatever the village website implies.",
+        "Weggis parking is CHF 13 for 8 to 24 hours at P1 and P2, the lots beside the cable car valley station. It is not free, whatever the village website implies, and it is not the pier - allow a quarter of an hour on foot between the two.",
         "If Rigi is in cloud, do not go up. Take the boat down to Flüelen instead and the train back - three hours through the dramatic far end of the lake, all of it seated.",
-        "Everything is shut today except restaurants and the stations. This is the whole reason the big shop happened yesterday."
+        "Everything is shut today except restaurants and the stations. This is the whole reason the big shop happened yesterday.",
+        "Sunday has hard ends at both edges. The first Weggis cable car is 08:10 - the 07:00 runs Monday to Friday only - and the first cog that reaches the top puts you on Kulm at 08:47. Coming down, be at Rigi Kaltbad by 19:10 for the 19:25 cable car, which means off the summit by 19:00 at the very latest.",
+        "Sunday 6 September is the last day of both summer timetables - the SGV boats and the Rigi cog railway. Every time on this page is read off them, so if this day ever moves to the 7th or later, read the autumn tables again from the beginning."
       ]
     },
     {
@@ -192,8 +199,8 @@
         "The Aare Gorge is CHF 13 a head in 2026, not the CHF 10 that half the internet still quotes. Parking at the West entrance is free and takes a van.",
         "Both gorge entrances stay open until 18:30 through 20 September, after which it drops to 17:30. There is plenty of margin for a mid-afternoon arrival.",
         "Do NOT pull into the Chälrütirank viewpoint above Lungern with a seven-seater. It is an unmarked pull-in on a wide bend with a handful of spaces and coaches fill it. Use the Obsee car park instead - 222 spaces, CHF 5 for 24 hours.",
-        "The A8 Soliwald tunnel at Brienzwiler, right on this route, is closed every night from 20:00 to 05:00 until 18 September. Be over the Brünig before eight and it is irrelevant.",
-        "The Turren cable car runs every 20 minutes and the last one DOWN on a weekday is 17:00. Do it in the morning or not at all.",
+        "The A8 Soliwald tunnel at Brienzwiler, right on this route, is shut from 20:00 to 05:00 on Monday-to-Friday nights until 18 September, with the diversion running through Brienzwiler village. Today is a Monday, so it applies. Be over the Brünig before eight and it is irrelevant.",
+        "The Turren cable car runs every 20 minutes, and 17:00 is the end of Monday-to-Friday running rather than a scheduled last descent - so treat 16:40 as the last dependable cabin down. Do it in the morning or not at all.",
         "The Half Fare Card buys nothing at the Aare Gorge - it is an attraction, not a transport tariff. It does halve the Turren, to CHF 18 return.",
         "Frutigen is three minutes from the apartment and has the last big Coop before the valley narrows. Worth knowing on the way in, because Reichenbach itself is small."
       ]
@@ -204,10 +211,10 @@
       "leg": "Mountain day 2 (floating)",
       "title": "Jungfraujoch - Top of Europe",
       "sleep": "Reichenbach im Kandertal (night 2 of 4)",
-      "movement": "The long morning. Out of the door at 06:40 for the 08:00 first gondola: down the Kandertal to Spiez, the A8 along the Thunersee, Interlaken, Wilderswil, Zweilütschinen and up to Grindelwald Terminal - 46 km and about 75 minutes in a van. Then the Eiger Express to Eigergletscher, 15 minutes, and the cog railway through the inside of the Eiger to Jungfraujoch, about 25 more.",
-      "drive_km": 92,
-      "drive_min": 150,
-      "on_foot": "Sphinx observation deck, then the Plateau and the Ice Palace. Take the lift rather than the stairs - at 3,571 m that is about the air, not the legs - and ninety minutes to two hours is plenty at this height. Then the Eiger Trail on the way down: get off at Eigergletscher and it is about 6 km to Alpiglen, roughly 700 m of descent on a signed mountain path running directly beneath the north face. Two to two and a half hours walking, closer to three with lunch and a couple of stops, which is the right way to do it. There is a restaurant at Eigergletscher to stock up at and the Berghaus at Alpiglen to finish at, and nothing at all in between - carry water and something to eat. Then the Wengernalpbahn down to Grindelwald and the van.",
+      "movement": "The long morning. Out of the door at 06:40 for the first train up: down the Kandertal to Spiez, the A8 along the Thunersee, Interlaken, Wilderswil, Zweilütschinen and up to Grindelwald Terminal - about 50 km and an hour in a van at that time of day, so roughly twenty minutes in hand for the car park and the turnstiles. The earliest ticketed departures from the Terminal are 07:45 and 08:10. Then the Eiger Express to Eigergletscher, 15 minutes, and the cog railway through the inside of the Eiger to Jungfraujoch, about 25 more.",
+      "drive_km": 100,
+      "drive_min": 120,
+      "on_foot": "Sphinx observation deck, then the Plateau and the Ice Palace. Take the lift rather than the stairs - at 3,571 m that is about the air, not the legs - and ninety minutes to two hours is plenty at this height. Then the Eiger Trail on the way down: get off at Eigergletscher and it is about 6 km to Alpiglen, 2,348 m down to 1,616 m, so 732 m of descent on a white-red-white Bergwanderweg running directly beneath the north face. The operator calls it two hours; two to two and a half is the honest walking figure and closer to three with lunch and a couple of stops, which is the right way to do it. There is a restaurant at Eigergletscher to stock up at and the Berghaus at Alpiglen to finish at, and nothing at all in between - carry water and something to eat. Then the Wengernalpbahn down to Grindelwald and the van.",
       "per_person": [
         {
           "item": "Jungfraujoch return from Grindelwald Terminal, half fare",
@@ -241,10 +248,11 @@
         "The last half-hour of the ascent is inside a tunnel with no view at all. That is normal, not a fault.",
         "Anyone with a heart or lung condition, sleep apnoea, or medication for either should ask their doctor before the trip rather than on the platform. There is a staffed medical room with oxygen at the top.",
         "Blausee is sixteen minutes from the apartment and open late. After a morning at 3,454 m that is a far better evening than another climb - a flat 300 m asphalt path to the water and the glass-bottomed boat included in the entry.",
-        "If you do the Eiger Trail, ask at Grindelwald Terminal whether the return ticket brings you back from Alpiglen. The Eiger Express and the Wengernalpbahn are different lines and the plain return routes you home through Eigergletscher, so the last leg may be a short supplementary fare. Worth asking before you walk rather than at Alpiglen.",
-        "The day with the walk in it: first gondola 08:00, on the summit by about 08:50, back down at Eigergletscher around 11:00, Alpiglen by two with lunch and stops, Grindelwald Terminal by a quarter to three, and home by four. Long, but nowhere near rushed.",
+        "The Eiger Trail question is settled: the Jungfraubahnen tariff prints the Grindelwald Terminal to Jungfraujoch fare with TWO permitted routings at the same price - via Eigergletscher, or via Kleine Scheidegg and Grindelwald Grund. So book it up by the Eiger Express and down by Kleine Scheidegg, and Alpiglen to Grindelwald on the Wengernalpbahn is inside the ticket you are already holding. Say it at the counter when you buy, not at Alpiglen when you are tired.",
+        "The day with the walk in it: away at 06:40, first train up at 07:45, on the summit by about 08:35, back down at Eigergletscher around 10:45, Alpiglen by two with lunch and stops, Grindelwald Terminal by a quarter to three, and home by four. Long, but nowhere near rushed.",
         "Nobody has to do it five-handed. Whoever would rather ride carries straight on down the Eiger Express to the Terminal, where the van already is, and the walkers turn up later on the Wengernalpbahn. Talk it through as a group a day or two before, when the forecast for the floating Tuesday is readable, then confirm it at Eigergletscher with the weather actually in front of you.",
-        "The trail sits on the shaded side of the mountain until the sun comes round, so the layer you took for the summit stays on for the first hour of it. Shoes with a grip: there is loose stuff underfoot in places."
+        "The trail sits on the shaded side of the mountain until the sun comes round, so the layer you took for the summit stays on for the first hour of it. Shoes with a grip: there is loose stuff underfoot in places.",
+        "The Grindelwald Terminal car park is CHF 15 for the day at the machine and CHF 20 if you book the space online, because online booking carries a CHF 5 fee. It holds a thousand cars and is not the thing that sells out on a September Tuesday, so drive up and pay at the machine."
       ]
     },
     {
@@ -253,7 +261,7 @@
       "leg": "Mountain day 3",
       "title": "Schilthorn and Piz Gloria, then dinner on the Niesen",
       "sleep": "Reichenbach im Kandertal (night 3 of 4)",
-      "movement": "Drive to Lauterbrunnen, 38 minutes, and park at the station. Ask for tariff D, the Rundreise via Grütschalp: funicular up the cliff, the shelf train along to Mürren, cable car through Birg to the summit, and back down the other side through Stechelberg. In the evening, the Niesen funicular from Mülenen - ten minutes from the apartment, and Wednesday is one of its two evening nights.",
+      "movement": "Drive to Lauterbrunnen, 38 minutes, and park at the station. Ask for the Rundreise via Grütschalp - the round trip, not a lettered tariff: funicular up the cliff, the shelf train along to Mürren, cable car through Birg to the summit, and back down the other side through Stechelberg. Come off the summit on the 16:50 rather than the last car, because the evening is the Niesen funicular from Mülenen - ten minutes from the apartment, and Wednesday is one of its three evening nights.",
       "drive_km": 86,
       "drive_min": 120,
       "on_foot": "The shelf train from Grütschalp to Mürren is the loveliest ride in the Oberland - twenty minutes of Jungfrau straight across the valley - and Piz Gloria turns a full circle while you eat. The Thrill Walk at Birg is a catwalk bolted to the cliff face with open metal grating underfoot, and the Skyline Walk is out on the summit terrace: both are about heads for heights rather than legs. The Niesen in the evening is thirty seated minutes to 2,362 m and a restaurant at the top.",
@@ -269,9 +277,9 @@
           "full": 38
         },
         {
-          "item": "Niesen return from Mülenen, half fare",
-          "chf": 32.0,
-          "full": 64
+          "item": "Niesen evening, the Kulinarische Abendfahrt: dinner and the funicular",
+          "chf": 84,
+          "full": 84
         }
       ],
       "group": [
@@ -284,16 +292,17 @@
           "chf": 18
         }
       ],
-      "day_total_chf": 1024.0,
+      "day_total_chf": 1284.0,
       "tips": [
         "The Schilthornbahn rebuild is FINISHED - the last of the new cars was inaugurated on 2 April 2026 and there are no closures on these dates. This is the opposite of the Titlis situation.",
-        "Ask for tariff D. The circular route via Grütschalp and Mürren costs CHF 115 full and CHF 57.50 on a Half Fare Card - identical to the plain out-and-back - so there is no financial reason to do the same valley twice.",
-        "The last car off the summit is 17:50, reaching Mürren at 18:05. The last train Mürren to Lauterbrunnen is 19:58.",
+        "Do not ask for \"tariff D\" - Schilthornbahn's 2026 price page uses no lettered tariffs and the window will not know the word. Ask for the Rundreise via Grütschalp, or in English the round trip via Grütschalp. It costs CHF 115 full and CHF 57.50 on a Half Fare Card, identical to the plain out-and-back, so there is no financial reason to do the same valley twice.",
+        "The last car off the summit is 17:50, but do not take it today. 17:50 puts you in Lauterbrunnen at 18:53 with the drive to Mülenen still to do, and the last Niesen ascent is 19:30. Come down on the 16:50 instead - Mürren 17:06, Stechelberg 17:25, bus to Lauterbrunnen 17:48 - and the evening works with room to spare.",
         "The Piz Gloria brunch needs a table reservation. It is not a walk-up.",
-        "Lauterbrunnen's multi-storey is CHF 18 for the day and connects straight to the station. Neither the operator nor the garage publishes a height limit, so measure the van before committing to it - Stechelberg, at CHF 7 for eight hours, is open-air with no limit at all.",
-        "The Niesen runs evening services on Wednesdays and Fridays only, from 1 July to 28 October, with ascents 17:30-19:30 and the last descents at 23:25. Wednesday the 9th is the one evening of this trip it is possible - Friday the 11th you are already at the airport. Book the summit restaurant; these evenings sell out.",
-        "Brunch at 2,970 m and dinner at 2,362 m in one day is a lot of mountain. If it is too much, make Piz Gloria a coffee and keep the Niesen - it is ten minutes from bed and the Half Fare Card halves it to CHF 32.",
-        "The Thrill Walk floor is see-through. Some people find that far more unnerving than they expect, and there is no shame in taking the inside route."
+        "Lauterbrunnen's multi-storey is CHF 18 for the day and connects straight to the station. Neither the operator nor the garage publishes a height limit, so measure the van before committing to it. Stechelberg is the open-air fallback with no limit at all, but Schilthornbahn publishes no private-car tariff for it either - the first hour is free and the rest is read off the machine.",
+        "The Niesen runs evening services on Wednesday, Friday and Saturday nights, and the Wednesday season is 1 July to 28 October. Ascents are 17:30 to 19:30 and the LAST DESCENT LEAVES THE SUMMIT AT 22:55, reaching Mülenen at 23:25 - the 23:25 is the arrival, not the departure. It is sold only as the Kulinarische Abendfahrt: CHF 84 an adult including the funicular, or CHF 55 for the dinner alone, and the Half Fare Card does not touch either. Reserve on +41 33 676 77 11; these evenings sell out.",
+        "Brunch at 2,970 m and dinner at 2,362 m in one day is a lot of mountain. If it is too much, make Piz Gloria a coffee and keep the Niesen - it is ten minutes from bed, and it is the one of the two that cannot be moved to another evening.",
+        "The Thrill Walk floor is see-through. Some people find that far more unnerving than they expect, and there is no shame in taking the inside route.",
+        "One to write down for any future version of this day: the Lauterbrunnen-Grütschalp-Mürren line, which the whole circuit depends on, shuts for revision 13 April to 10 July and 26 October to 6 November 2026. September is clear, but the circuit cannot simply be copied onto another date."
       ]
     },
     {
@@ -305,7 +314,7 @@
       "movement": "The short day, and deliberately so. Twenty-three minutes up the valley to the Oeschinen gondola at Kandersteg, then the gondola, then twenty-five minutes on foot down to the lake. Blausee sits between Kandersteg and home, so it costs nothing to stop there on the way back. Thirty-six kilometres in total.",
       "drive_km": 36,
       "drive_min": 55,
-      "on_foot": "Trail C, the Direttissima, is the walk down to the shore: a wide gravel and part-asphalt path, twenty to twenty-five minutes down and about thirty-five back up the 100 m, and the best scenery of the day. At the lake there are rowing boats, a 750 m summer toboggan run and the shore circuit under the Blüemlisalp walls. At Blausee the glass-bottomed boat is in the entry price, and the woodland paths behind it, Felsenzimmer and the Wolfsschlucht, are roots and soft earth and are the part of it worth doing.",
+      "on_foot": "Trail C, the Direttissima, is the walk down to the shore: a wide gravel and part-asphalt path, twenty to twenty-five minutes down by the operator's own reckoning and something over half an hour back up, and the best scenery of the day. Trail D is the panorama alternative at about thirty-five minutes. At the lake there are rowing boats, a 750 m summer toboggan run and the shore circuit under the Blüemlisalp walls. At Blausee the glass-bottomed boat is in the entry price, and the woodland paths behind it, Felsenzimmer and the Wolfsschlucht, are roots and soft earth and are the part of it worth doing.",
       "per_person": [
         {
           "item": "Oeschinensee round trip including the ascent time slot, half fare",
@@ -326,18 +335,24 @@
         {
           "item": "Lunch at the Oeschinensee lakeside restaurant",
           "chf": 130
+        },
+        {
+          "item": "Oeschinen valley station parking",
+          "chf": 15
         }
       ],
-      "day_total_chf": 666.0,
+      "day_total_chf": 681.0,
       "tips": [
         "THE ASCENT TIME SLOT IS MANDATORY from 20 June to 20 September, and two of the five slots for 10 September are ALREADY SOLD OUT - 11:30-13:00 and 13:00-14:30 both show zero. The other three each showed over 200 places on 24 August.",
-        "The 10:00-11:30 slot is booked. The only thing the earliest slot buys that this one does not is the discounted parking bundle, so leave in good time: the operator warns that Kandersteg spaces fill and that an online ticket does not reserve one. Rebooking the slot is free if you would rather have the early start.",
+        "The 10:00-11:30 slot is booked, and it does qualify for the discounted parking - the operator's condition is an ascent slot between 08:30 and 10:00, which this is. The real condition is the barrier: the reserved CHF 10 space has to be entered by 09:30. Add the parking reservation to the existing booking if you can; otherwise pay the normal tariff at the machine. Rebooking the slot itself is free.",
         "One ticket covers everything: the round trip INCLUDES the ascent slot and the descent. The operator's words are that the descent can be made at any time during operating hours - and within the next seven days if you stay up there. CHF 22.50 a head on the Half Fare Card against CHF 40 full - not exactly half, because the slot part of the ticket is not discounted. There are NO staffed ticket counters at the valley station, so buy it online; the machines hold only a small remainder.",
-        "The rowing boats run 10:00 to 17:30 and the summer toboggan run 09:30 to 17:15, weather permitting. Both are down at the lake rather than up at the mountain station, so they sit on the far side of the walk down.",
+        "The rowing boats are CHF 40 an hour a boat and hold four, so five adults is two boats and CHF 80 - no reservation possible, first come. The toboggan run is CHF 6 a ride before 13:00 and CHF 7 after, machine only, and it publishes no fixed hours at all: they are adjusted to the light and the weather, and wet ground closes it. Check the operator's live status page over breakfast. Both are down at the lake rather than up at the mountain station, so they sit on the far side of the walk down.",
         "If the day has to move, the time slot can be rebooked free of charge.",
         "Trail B, the Huble mountain path, is CLOSED for construction. Take trail C, which is the direct one anyway.",
-        "Blausee is open daily and the Half Fare Card buys nothing there - it is an attraction, not a transport tariff. Booking a table at the restaurant refunds half the admission at lunchtime and all of it in the evening.",
-        "This is the softest day of the trip on purpose. It sits between Jungfraujoch and the airport run, and after nine days five people need one."
+        "Blausee is open daily 09:00 to 21:00, though a private event can close it at 19:30, and the Half Fare Card buys nothing there - it is an attraction, not a transport tariff. Entry is CHF 11 on a weekday and CHF 13 at weekends, so a Thursday is the cheap day. Parking is charged and the price is not published anywhere: pay on site. Booking a table at the restaurant refunds half the admission at lunchtime and all of it in the evening.",
+        "This is the softest day of the trip on purpose. It sits between Jungfraujoch and the airport run, and after nine days five people need one.",
+        "There is an electric taxi between the mountain station and the lakeside restaurant, every half hour, first run 10:45 down from the top and last 17:30 back up from the lake. Capacity is small and it is paid on the spot - the fare is published nowhere, so carry cash or Twint. With a 10:00-11:30 ascent slot the first one is easily caught, which is a pleasant way to arrive with the picnic rather than carry it.",
+        "P1 to P3 at the valley station take nothing over 2 m tall, and going in anyway is an automatic CHF 60. A 7-seat Caddy is normally about 1.8 m, but measure it with anything on the roof before you drive at the barrier - and if it is over, park in the village instead."
       ]
     },
     {
@@ -346,15 +361,15 @@
       "leg": "Transfer",
       "title": "Down the Kandertal and back to Zurich",
       "sleep": "Kloten (Hotel Welcome Inn, a triple and a double, night 1 of 2)",
-      "movement": "Out of the Kandertal to Spiez, the A6 through Thun to Bern, then the A1 east to Zurich. About 170 km and two hours, all of it motorway. Van back at the airport by 12:00, refuelled. Then the hotel, and the afternoon is free.",
+      "movement": "Out of the Kandertal to Spiez, the A6 through Thun to Bern, then the A1 east to Zurich. About 170 km and two hours, all of it motorway. The van goes back to car park P3, which is where the airport signs Car Rental for returns and is not the Level 1 desk you collected it from - by 12:00, refuelled. Then the hotel, and the afternoon is free.",
       "drive_km": 170,
       "drive_min": 120,
-      "on_foot": "A quiet afternoon by design - it is the day the van goes back. The train from the airport into the city is 13 minutes. The old town, the Lindenhof terrace, the lake promenade, and a swim off one of the lake badis if the weather has held.",
+      "on_foot": "A quiet afternoon by design - it is the day the van goes back. The train from the airport into the city is 15 minutes and runs every ten. The old town, the Lindenhof terrace, the lake promenade, and a swim off one of the lake badis if the weather has held.",
       "per_person": [
         {
-          "item": "Zurich 24-hour transport pass, half fare",
-          "chf": 8.0,
-          "full": 16
+          "item": "Zurich 24-hour transport pass, 3 zones, half fare",
+          "chf": 7.2,
+          "full": 14.4
         }
       ],
       "group": [
@@ -363,14 +378,15 @@
           "chf": 385.5
         }
       ],
-      "day_total_chf": 425.5,
+      "day_total_chf": 421.5,
       "tips": [
         "THE VAN IS DUE BACK AT 12:00. The hire runs seven 24-hour blocks from 22:00 on Friday the 4th, and an hour late can bill as a whole extra day. Leave the Kandertal by 09:00 and there is an hour in hand.",
-        "The Jodelfest opens in Grindelwald today and takes the village over - over a thousand performers and no visitor parking. Being in the Kandertal instead means none of it is your problem, and this is the one day the base pays you back.",
+        "The Eidgenössisches Jugendjodelfest opens in Grindelwald this evening at 17:30 and runs through Sunday, taking the village over - over a thousand performers and no visitor parking. Being in the Kandertal instead means none of it is your problem, and this is the one day the base pays you back.",
         "Refuel in Kloten town, not at the airport and never at a motorway services. The hire is full to full and the services charge the worst prices in the country.",
-        "The Welcome Inn splits five across two rooms: a triple at 18 m2 with two singles and a sofa bed, and a double, each with its own bathroom. CHF 655 for the pair non-refundable, or CHF 771 with free cancellation to 14:00 on arrival day and nothing to pay until 9 September. Scored 8.5 from 1,514 reviews, and the airport shuttle is free - which is the point on Sunday, when you need the terminal by 08:45.",
+        "The Welcome Inn splits five across two rooms: a triple at 18 m2 with two singles and a sofa bed, and a double, each with its own bathroom. CHF 655 for the pair non-refundable, or CHF 771 with free cancellation to 14:00 on arrival day. Free parking, mobile key and self check-in, which matters because reception is only staffed 07:00 to 20:00. It does NOT run an airport shuttle, whatever the booking sites say - the hotel's own factsheet offers a taxi or public transport and nothing else.",
         "Nothing is booked for this afternoon on purpose. After four mountain days in a row, an empty half-day in a flat city is not a gap in the plan.",
-        "Drop the bags at the hotel BEFORE returning the van, not after. The hotel is five minutes from the terminal, the van is due back at noon, and carrying four days of luggage onto a bus is a waste of a perfectly good vehicle."
+        "Drop the bags at the hotel BEFORE returning the van, not after. The hotel is five minutes from the terminal, the van is due back at noon, and carrying four days of luggage onto a bus is a waste of a perfectly good vehicle.",
+        "Sunday morning needs arranging tonight, because there is no hotel shuttle. It is 2 km to the terminal: an Airport Taxi ordered the evening before, or bus 731 or 733 from Kloten, which is 300 m from the door. Either way be moving by 08:00 for the 08:45 deadline, and settle it with reception before 20:00, when the desk closes."
       ]
     },
     {
@@ -379,15 +395,15 @@
       "leg": "Zurich",
       "title": "Zurich on foot, and the Knabenschiessen",
       "sleep": "Kloten (Hotel Welcome Inn, night 2 of 2)",
-      "movement": "No van and no driving - it went back yesterday. The train from the airport into the city takes 13 minutes and runs every few minutes. The old town on foot all day, and the evening at Albisgütli.",
+      "movement": "No van and no driving - it went back yesterday. The train from the airport into the city takes 15 minutes and runs every ten. The old town on foot all day, and the evening at Albisgütli.",
       "drive_km": 0,
       "drive_min": 0,
       "on_foot": "Lindenhof for the view over the roofs, the Fraumünster windows, and the lake promenade. The Grossmünster tower is a stair climb to the best view in the city, and the lanes behind Niederdorf are the part of the old town worth getting lost in. At the Knabenschiessen: a funfair, food stalls and most of the city out enjoying itself. Leave whenever you like, or stay - it runs to 01:30 and the trains keep going well past midnight.",
       "per_person": [
         {
-          "item": "Zurich 24-hour transport pass, half fare",
-          "chf": 8.0,
-          "full": 16
+          "item": "Zurich 24-hour transport pass, 3 zones, half fare",
+          "chf": 7.2,
+          "full": 14.4
         }
       ],
       "group": [
@@ -400,13 +416,14 @@
           "chf": 100
         }
       ],
-      "day_total_chf": 525.5,
+      "day_total_chf": 521.5,
       "tips": [
         "The Knabenschiessen is Zurich's own festival, 12 to 14 September, and today is the opening day. Free to walk into, and it runs until 01:30.",
         "Tram 13 normally terminates at Albisgütli, but during the festival it stops at Laubegg, four minutes short. There is no visitor parking at all - which is one more reason the van went back yesterday.",
         "Pack tonight, properly. Tomorrow's terminal time is 08:45 and it is not negotiable.",
         "The shops inside Zurich main station open on Sundays, which almost nothing else in Switzerland does - useful if anything has been forgotten.",
-        "If the festival is too much after nine days, the lake boats run into the evening and the Old Town does not need a ticket."
+        "If the festival is too much after nine days, the lake boats run into the evening and the Old Town does not need a ticket.",
+        "There are three ways to the Knabenschiessen and the tram is only one of them: ZVV names the S-Bahn to Zürich Saalsporthalle, the tram to Laubegg, and the bus to Strassenverkehrsamt. Coming from Kloten the S-Bahn is the simple one - into the main station and straight out again underneath it."
       ]
     },
     {
@@ -430,7 +447,7 @@
   "weather_swaps": [
     {
       "instead_of": "Jungfraujoch in cloud",
-      "do": "Move the day. It is the only thing here that weather ruins outright and the most expensive ticket on the trip, and it is why the Tuesday floats across the whole Grindelwald block.",
+      "do": "Move the day. It is the only thing here that weather ruins outright and the most expensive ticket on the trip, and it is why the Tuesday floats across the whole Kandertal block.",
       "chf_pp": null
     },
     {
@@ -440,7 +457,7 @@
     },
     {
       "instead_of": "A spare mountain day, or a washed-out one",
-      "do": "Grindelwald First. The Cliff Walk is free with the gondola and Bachalpsee is 3 km each way on a wide, gently rising path. It is 75 minutes away from this base, which is why it is here rather than in the plan.",
+      "do": "Grindelwald First. The Cliff Walk is free with the gondola and Bachalpsee is 3 km each way on a wide, gently rising path. It is an hour away from this base before the gondola, which is why it is here rather than in the plan.",
       "chf_pp": 38
     },
     {
@@ -478,9 +495,9 @@
     {
       "when": "done",
       "item": "Zleep Hotel, Kloten - Friday 4 September",
-      "chf": 260,
+      "chf": 269,
       "url": null,
-      "note": "Booked. The figure here is still the estimate rather than the confirmation, and so is the CHF 20 for parking that night - replace both when the email arrives."
+      "note": "Booked, and now fully priced: ILS 962 for the room, which is the CHF 244, plus the operator's CHF 25 a day to park in the public garage on Bahnhofstrasse. Nothing here is an estimate any more."
     },
     {
       "when": "done",
@@ -508,13 +525,13 @@
       "item": "Hotel Welcome Inn, Kloten - a triple and a double, 11 to 13 September",
       "chf": 771,
       "url": "https://www.booking.com/hotel/ch/welcome-inn.en-gb.html?checkin=2026-09-11&checkout=2026-09-13&group_adults=5&no_rooms=2",
-      "note": "Booked on 24 August 2026: a triple and a double, two bathrooms, for the 11th and the 12th. Free airport shuttle, which is what matters on the Sunday when the terminal wants you at 08:45. That is the last bed in the trip - every night from the 4th to the 12th is now paid for."
+      "note": "Booked on 24 August 2026: a triple and a double, two bathrooms, for the 11th and the 12th. That is the last bed in the trip - every night from the 4th to the 12th is now paid for. One correction to what the booking site said: there is no airport shuttle. The hotel is 2 km from the terminal and 300 m from Kloten station, and Sunday morning needs a taxi or the bus, arranged in advance."
     },
     {
       "when": "done",
       "item": "Oeschinensee round trip with the ascent slot, five, Thursday 10 September",
       "chf": 112.5,
-      "url": "https://oeschinensee.skiperformance.com/en/store#/en/buy?skugroup_id=5126",
+      "url": "https://oeschinensee.skiperformance.com/en/store#/en/buy?skugroup_id=5337",
       "note": "Booked on 24 August 2026: the round trip with the ascent slot, five at the GA / Half Fare price of CHF 22.50, slot 10:00-11:30. One ticket covers the slot, the ascent and the descent - the descent is free of any slot and can be made any time the cable car is running, 08:30 to 18:00. Rebooking the slot is free if the day has to move."
     },
     {
@@ -522,7 +539,7 @@
       "item": "Five Swiss Half Fare Cards, covering 4 to 13 September",
       "chf": 750,
       "url": "https://www.swiss-pass.ch/swiss-half-fare-card/",
-      "note": "Bought on 24 August 2026. The one purchase on this list that made the trip cheaper rather than dearer: CHF 733 of full fares each becomes CHF 405. Not buying them costs the party CHF 890. Take the visitor card - one calendar month, CHF 150 - and not SBB's own CHF 190 Half Fare Travelcard, which is an annual product for residents and a different thing entirely."
+      "note": "Bought on 24 August 2026. The one purchase on this list that made the trip cheaper rather than dearer: CHF 742 of full fares each becomes CHF 451.50. Not buying them costs the party CHF 702. Take the visitor card - one calendar month, CHF 150 - and not SBB's own CHF 190 Half Fare Travelcard, which is an annual product for residents and a different thing entirely."
     },
     {
       "when": "forecast",
@@ -541,9 +558,9 @@
     {
       "when": "soon",
       "item": "Niesen summit restaurant, Wednesday evening",
-      "chf": 160,
+      "chf": 420,
       "url": "https://www.niesen.ch/abendfahrten/",
-      "note": "Evening services run Wednesdays and Fridays only, and on Friday the 11th you are already back at the airport - so it is that Wednesday or not at all. The CHF 160 is the five rides; dinner is on top. Reserve by telephone on +41 33 676 77 11."
+      "note": "Evening services run on Wednesday, Friday and Saturday nights, and on Friday the 11th you are already back at the airport - so it is that Wednesday or not at all. It is sold only as the Kulinarische Abendfahrt, CHF 84 an adult for the dinner and the funicular together, and the Half Fare Card does not reduce it. Reserve by telephone on +41 33 676 77 11."
     },
     {
       "when": "walkup",
@@ -555,7 +572,7 @@
     {
       "when": "walkup",
       "item": "Boat, Weggis to Lucerne and back, five",
-      "chf": 115,
+      "chf": 107.5,
       "url": "https://www.lakelucerne.ch/en/",
       "note": "At the pier. If the Rigi is in cloud this becomes the day instead: Flüelen and back is three seated hours through the dramatic end of the lake."
     },
@@ -564,7 +581,7 @@
       "item": "Schilthorn round trip, tariff D via Grütschalp, five",
       "chf": 287.5,
       "url": "https://schilthorn.ch/en/Tickets",
-      "note": "Ask for tariff D by name at the window. It covers the descent you actually plan and costs the same CHF 57.50 on the Half Fare Card as the plain Stechelberg return."
+      "note": "Ask for the Rundreise via Grütschalp - the round trip. Do not ask for \"tariff D\": Schilthornbahn's 2026 prices carry no letters and the window will not recognise it. It covers the descent you actually plan and costs the same CHF 57.50 on the Half Fare Card as the plain Stechelberg return."
     },
     {
       "when": "walkup",
@@ -590,7 +607,7 @@
     {
       "when": "walkup",
       "item": "Zurich 24-hour transport passes, two days",
-      "chf": 80,
+      "chf": 72,
       "url": null,
       "note": "In the SBB app or at any machine, on the Half Fare Card. Buy them on the day you use them, not before."
     },
@@ -604,18 +621,18 @@
   ],
   "totals": {
     "accommodation_chf": 3303.0,
-    "activities_chf": 2113.0,
-    "food_chf": 1825.0,
+    "activities_chf": 2357.5,
+    "food_chf": 1550,
     "half_fare_cards_chf": 750,
     "van_chf": 414,
     "fuel_chf": 250,
-    "parking_chf": 71.0,
-    "grand_total_chf": 8726.0,
-    "per_person_chf": 1745,
-    "per_person_eur": 1864,
-    "per_person_ils": 6876,
-    "tickets_per_person_full_chf": 728.2,
-    "tickets_per_person_half_chf": 402.6,
+    "parking_chf": 97,
+    "grand_total_chf": 8721.5,
+    "per_person_chf": 1744,
+    "per_person_eur": 1863,
+    "per_person_ils": 6873,
+    "tickets_per_person_full_chf": 742.0,
+    "tickets_per_person_half_chf": 451.5,
     "note_vs_six": "At six the shared costs barely move - LaVida Peak, the van and the rooms at each end cost much the same either way - so the total would rise by about one more person's tickets and food while the figure each fell. Five costs less overall but more each. At six the luggage would not have fitted in the Caddy."
   },
   "savings": {
@@ -637,21 +654,21 @@
         "instead": "Ten minutes to a terrace, on a day that already has the Brünig, the Obsee and the gorge in it. The first thing to go if the morning runs late anyway."
       },
       {
-        "item": "Two of the four dinners out, cooked at the apartment instead",
+        "item": "Two of the three dinners out, cooked at the apartment instead",
         "chf": 400,
-        "instead": "Dinner for five at Swiss restaurant prices runs CHF 250 to CHF 350 a time. LaVida Peak has a kitchen and you will have shopped twice by then. Keep two nights out and make them the two you will actually remember."
+        "instead": "Dinner for five at Swiss restaurant prices runs CHF 250 to CHF 350 a time. LaVida Peak has a kitchen and you will have shopped twice by then. The Niesen evening is costed on its own day and is not one of these three."
       }
     ],
     "keep": [
       {
         "item": "The five Half Fare Cards",
         "chf": 750,
-        "why": "Cutting these does not save CHF 750, it costs CHF 890. Every fare in this plan is already priced at the half fare."
+        "why": "Cutting these does not save CHF 750, it costs CHF 702. Every fare in this plan is already priced at the half fare."
       },
       {
         "item": "The Niesen, Wednesday evening",
-        "chf": 160,
-        "why": "Ten minutes from the door, CHF 32 a head, and the evening service runs on Wednesdays and Fridays only - one of which you spend flying home. The cheapest distinctive thing the Kandertal buys you."
+        "chf": 420,
+        "why": "Ten minutes from the door, and the evening service runs on Wednesday, Friday and Saturday nights only - the Friday of this trip you spend flying home. CHF 84 a head buys the funicular and dinner at 2,362 m together, against CHF 250 to CHF 350 for five to eat in the valley, so the mountain costs about a hundred francs more than an ordinary evening out."
       },
       {
         "item": "The Jungfraujoch seat reservations",
@@ -665,7 +682,7 @@
       }
     ],
     "saved_chf": 810,
-    "lean_total_chf": 7916.0,
-    "lean_per_person_chf": 1583
+    "lean_total_chf": 7911.5,
+    "lean_per_person_chf": 1582
   }
 }

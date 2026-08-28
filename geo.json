@@ -6511,7 +6511,7 @@
    "mode": "drive",
    "from": "reichenbach",
    "to": "grindelwald-terminal",
-   "label": "Out at 06:40. 46 km and about 75 minutes for the 08:00 first gondola",
+   "label": "Out at 06:40. About 50 km and an hour for the 07:45 first train",
    "km": 40.6,
    "source": "osrm/driving",
    "geometry": [
@@ -7529,7 +7529,7 @@
    "mode": "drive",
    "from": "grindelwald-terminal",
    "to": "reichenbach",
-   "label": "And the same 75 minutes back, which is what this base costs",
+   "label": "And the same hour back, which is what this base costs",
    "km": 47.0,
    "source": "osrm/driving",
    "geometry": [
