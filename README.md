@@ -206,7 +206,9 @@ not shared with anybody else and are wiped whenever the app restarts or redeploy
      who     text not null,
      primary key (note_id, who)
    );
-   create index notes_day on notes (day, created);
+   -- The app reads every note in one call and orders by created; it never
+   -- filters by day, so this is the index that serves the query it makes.
+   create index notes_created on notes (created);
 
    alter table notes enable row level security;
    alter table likes enable row level security;
@@ -216,6 +218,13 @@ not shared with anybody else and are wiped whenever the app restarts or redeploy
    create policy "likes read"    on likes for select using (true);
    create policy "likes write"   on likes for insert with check (true);
    create policy "likes remove"  on likes for delete using (true);
+
+   -- Supabase grants these by default on a new project, so this is usually a no-op.
+   -- It is here because a missing grant and a missing policy both come back as a
+   -- flat 401, and an hour spent rewriting policies that were already right is an
+   -- hour wasted. Only the three verbs the app uses: it never issues an UPDATE.
+   grant select, insert, delete on notes to anon;
+   grant select, insert, delete on likes to anon;
    ```
 
 3. In the Streamlit Community Cloud app menu, choose **Settings -> Secrets** and paste
@@ -225,6 +234,21 @@ not shared with anybody else and are wiped whenever the app restarts or redeploy
    supabase_url = "https://xxxxxxxx.supabase.co"
    supabase_key = "eyJ..."
    ```
+
+4. Prove it before trusting it to anybody:
+
+   ```
+   python tools/check_supabase.py
+   ```
+
+   It reads the same two values from `.streamlit/secrets.toml` (git-ignored, and it
+   must stay that way — this repo is public) or from `SUPABASE_URL` and `SUPABASE_KEY`
+   in the environment, then runs the real `SupabaseStore` against the real project:
+   write a note, read it back with its timestamp intact, like it, like it twice
+   without duplicating, unlike it, refuse a delete from the wrong author, delete it.
+   Everything it writes is on the sentinel day `1970-01-01` and is removed again in a
+   `finally` block. It never prints the key, and when something fails it says which of
+   the URL, the key, the policies, the grants or the column types is the likely cause.
 
 The app switches over on the next run and the "kept on this server alone" notice
 disappears. Setting only one of the two secrets is treated as a mistake and reported

@@ -7,3 +7,9 @@ venv/
 # Notes written by the local (SQLite) store. Never committed: it is scratch data on
 # one machine, and on a shared deploy the notes live in Supabase instead.
 .notes/
+
+# Streamlit's local secrets file. NEVER committed: this repo is public, and the
+# Supabase anon key belongs in Streamlit Cloud's own Settings -> Secrets box, not in
+# git. .streamlit/config.toml IS tracked, so this folder is half in and half out -
+# which is exactly how a key gets committed by accident.
+.streamlit/secrets.toml
